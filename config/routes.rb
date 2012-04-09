@@ -4,5 +4,5 @@ Acn::Application.routes.draw do
     resources :groups
   end
 
-  root to: 'groups#index'
+  root to: 'welcome#show'
 end
