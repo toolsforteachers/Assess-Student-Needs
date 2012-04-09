@@ -1,4 +1,6 @@
 Acn::Application.routes.draw do
+  devise_for :teachers
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
