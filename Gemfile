@@ -7,6 +7,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
   gem 'twitter-bootstrap-rails'
 end
+gem 'fabrication'
 gem 'haml-rails'
 gem 'jquery-rails'
 gem "rspec-rails", ">= 2.9.0.rc2", :group => [:development, :test]
