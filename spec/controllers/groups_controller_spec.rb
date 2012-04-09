@@ -26,7 +26,7 @@ describe GroupsController do
   def valid_attributes
     {}
   end
-  
+
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # GroupsController. Be sure to keep this updated too.
@@ -81,7 +81,7 @@ describe GroupsController do
 
       it "redirects to the created group" do
         post :create, {:group => valid_attributes}, valid_session
-        response.should redirect_to(Group.last)
+        response.should redirect_to(groups_path)
       end
     end
 
