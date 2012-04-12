@@ -6,6 +6,7 @@ Acn::Application.routes.draw do
     resources :groups do
       resources :students
     end
+    resources :lessons
   end
 
   root to: 'welcome#show'

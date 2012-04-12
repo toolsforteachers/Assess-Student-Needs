@@ -5,3 +5,8 @@ Given /^I am the teacher$/ do
   fill_in "teacher_password", :with => @teacher.password
   click_button "Sign in"
 end
+
+Given /^I am the teacher of "([^"]*)"$/ do |group_name|
+  step "I am the teacher"
+  Fabricate(:group_with_two_students, name: group_name)
+end
