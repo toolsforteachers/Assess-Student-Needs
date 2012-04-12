@@ -11,8 +11,23 @@ class LessonsController < ApplicationController
     @lesson = current_teacher.lessons.find(params[:id])
   end
 
+  def edit
+    @lesson = current_teacher.lessons.find(params[:id])
+  end
+
+  def update
+    @lesson = current_teacher.lessons.find(params[:id])
+
+    if @lesson.update_attributes(params[:lesson])
+      redirect_to lesson_path(@lesson), notice: 'Group was successfully updated.'
+    else
+      render action: "edit"
+    end
+  end
+
   def create
-    @lesson = Lesson.new(params[:lesson], teacher: current_teacher)
+    @lesson = Lesson.new(params[:lesson])
+    @lesson.teacher = current_teacher
     if @lesson.save
       redirect_to lesson_path(@lesson), notice: 'Lesson was successfully created.'
     else
