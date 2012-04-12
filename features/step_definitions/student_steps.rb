@@ -1,5 +1,9 @@
-Given /^I add (\d+) students to the group "([^"]*)"$/ do |number_of_students, group_name|
+Given /^I add two students to the group "([^"]*)"$/ do |group_name|
   click_link "Students"
-
-  pending # express the regexp above with the code you wish you had
+  click_link "New"
+  fill_in :name, with: 'Ann A.'
+  click_button 'Create Student'
+  click_link "New"
+  fill_in :name, with: 'Bob B.'
+  click_button 'Create Student'
 end
