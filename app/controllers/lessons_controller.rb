@@ -1,4 +1,4 @@
-class LessonsController < ApplicationController
+class LessonsController < ProtectedController
   def index
     @lessons = current_teacher.lessons
   end

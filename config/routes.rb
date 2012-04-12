@@ -9,5 +9,5 @@ Acn::Application.routes.draw do
     resources :lessons
   end
 
-  root to: 'welcome#show'
+  root to: 'lessons#index'
 end

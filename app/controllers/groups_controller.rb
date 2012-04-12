@@ -1,4 +1,4 @@
-class GroupsController < ApplicationController
+class GroupsController < ProtectedController
   # GET /groups
   # GET /groups.json
   def index

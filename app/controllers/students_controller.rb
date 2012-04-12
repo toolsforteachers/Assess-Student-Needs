@@ -1,4 +1,4 @@
-class StudentsController < ApplicationController
+class StudentsController < ProtectedController
   before_filter :load_group
 
   def index
