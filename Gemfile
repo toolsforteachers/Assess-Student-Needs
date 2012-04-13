@@ -19,3 +19,4 @@ gem "capybara", ">= 1.1.2", :group => :test
 gem "launchy", :group => :test
 gem "database_cleaner", ">= 0.7.2", :group => :test
 gem 'shoulda-matchers', :group => :test
+gem 'faker', :group => :test
