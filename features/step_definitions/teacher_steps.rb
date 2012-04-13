@@ -6,7 +6,8 @@ Given /^I am the teacher$/ do
   click_button "Sign in"
 end
 
-Given /^I am the teacher of "([^"]*)"$/ do |group_name|
+Given /^I am the teacher of "([^"]*)" with students "([^"]*)"$/ do |group_name, student_names|
   step "I am the teacher"
-  Fabricate(:group_with_two_students, name: group_name)
+  students = student_names.split(",").map{ |name| Fabricate(:student, name: name) }
+  group = Fabricate(:group, name: group_name, students: students)
 end
