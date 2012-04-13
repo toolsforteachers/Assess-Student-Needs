@@ -1,10 +1,10 @@
 = form_for @lesson, :html => { :class => 'form-horizontal' } do |f|
   .control-group
-    = f.label :name, :class => 'control-label'
+    = f.label :name, 'Objective', :class => 'control-label'
     .controls
       = f.text_field :name, :class => 'text_field'
   .control-group
-    = f.label :date, :class => 'control-label', :label => 'Date'
+    = f.label :lesson_datetime, 'Date', :class => 'control-label', :label => 'Date'
     .controls
       = f.datetime_select :lesson_datetime, :class => 'date_field'
   .control-group
