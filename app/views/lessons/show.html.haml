@@ -18,3 +18,15 @@
   = link_to t('.back', :default => t("helpers.links.back")), lessons_path, :class => 'btn'
   = link_to t('.edit', :default => t("helpers.links.edit")), edit_lesson_path(@lesson), :class => 'btn'
   = link_to t('.destroy', :default => t("helpers.links.destroy")), lesson_path(@lesson), :method => "delete", :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')), :class => 'btn btn-danger'
+
+= form_for @lesson do |f|
+  %table.table.table-striped
+    %thead
+      %tr
+        %th Student
+        %th Score
+    %tbody
+      = f.fields_for :lesson_students do |lesson_student_f|
+        %tr
+          %td= lesson_student_f.object.student.name
+          %td= lesson_student_f.text_field :score, id: "student_score_#{ lesson_student_f.object.student.id }"
