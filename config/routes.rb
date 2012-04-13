@@ -1,13 +1,10 @@
 Acn::Application.routes.draw do
-
   devise_for :teachers
 
-  devise_scope :teacher do
-    resources :groups do
-      resources :students
-    end
-    resources :lessons
+  resources :groups do
+   resources :students
   end
+  resources :lessons
 
   root to: 'lessons#index'
 end
