@@ -3,20 +3,17 @@
 %table.table.table-striped
   %thead
     %tr
-      %th= model_class.human_attribute_name(:id)
-      %th= model_class.human_attribute_name(:name)
-      %th= model_class.human_attribute_name(:teacher_id)
-      %th= model_class.human_attribute_name(:group_id)
-      %th= model_class.human_attribute_name(:created_at)
+      %th Objective
+      %th Class
+      %th Date
       %th=t '.actions', :default => t("helpers.actions")
   %tbody
     - @lessons.each do |lesson|
       %tr
-        %td= link_to lesson.id, lesson_path(lesson)
-        %td= lesson.name
-        %td= lesson.teacher_id
-        %td= lesson.group_id
-        %td=l lesson.created_at
+        %td= link_to lesson.name, lesson_path(lesson)
+        %td= lesson.teacher.name
+        %td= lesson.group.name
+        %td= lesson.lesson_date
         %td
           = link_to t('.edit', :default => t("helpers.links.edit")), edit_lesson_path(lesson), :class => 'btn btn-mini'
           = link_to t('.destroy', :default => t("helpers.links.destroy")), lesson_path(lesson), :method => :delete, :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')), :class => 'btn btn-mini btn-danger'
