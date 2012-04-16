@@ -12,10 +12,9 @@
       %tr
         %td= link_to lesson.name, lesson_path(lesson)
         %td= lesson.teacher.name
-        %td= lesson.group.name
+        %td= lesson.group.name if lesson.group
         %td= lesson.lesson_datetime
         %td
           = link_to t('.edit', :default => t("helpers.links.edit")), edit_lesson_path(lesson), :class => 'btn btn-mini'
-          = link_to t('.destroy', :default => t("helpers.links.destroy")), lesson_path(lesson), :method => :delete, :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')), :class => 'btn btn-mini btn-danger'
 
 = link_to t('.new', :default => t("helpers.links.new")), new_lesson_path, :class => 'btn btn-primary'
