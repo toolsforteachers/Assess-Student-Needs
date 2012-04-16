@@ -12,6 +12,7 @@ gem 'haml-rails'
 gem 'jquery-rails'
 gem 'devise'
 gem "bootstrap-datepicker-rails"
+gem 'simple_form'
 
 gem "rspec-rails", ">= 2.9.0.rc2", :group => [:development, :test]
 gem "pry", :group => [:development, :test]

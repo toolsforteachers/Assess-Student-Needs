@@ -168,6 +168,9 @@ GEM
       multi_json (~> 1.0)
       rubyzip
     shoulda-matchers (1.0.0)
+    simple_form (2.0.1)
+      actionpack (~> 3.0)
+      activemodel (~> 3.0)
     slop (2.4.3)
     sprockets (2.1.2)
       hike (~> 1.2)
@@ -216,5 +219,6 @@ DEPENDENCIES
   rspec-rails (>= 2.9.0.rc2)
   sass-rails (~> 3.2.3)
   shoulda-matchers
+  simple_form
   twitter-bootstrap-rails
   uglifier (>= 1.0.3)
