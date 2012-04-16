@@ -11,6 +11,8 @@ gem 'fabrication'
 gem 'haml-rails'
 gem 'jquery-rails'
 gem 'devise'
+gem "bootstrap-datepicker-rails"
+
 gem "rspec-rails", ">= 2.9.0.rc2", :group => [:development, :test]
 gem "pry", :group => [:development, :test]
 gem "email_spec", ">= 1.2.1", :group => :test

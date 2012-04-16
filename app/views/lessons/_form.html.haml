@@ -6,7 +6,7 @@
   .control-group
     = f.label :lesson_datetime, 'Date', :class => 'control-label', :label => 'Date'
     .controls
-      = f.datetime_select :lesson_datetime, :class => 'date_field'
+      = f.text_field :lesson_datetime, :class => 'date_field'
   .control-group
     = f.label :group_id, :class => 'control-label'
     .controls
