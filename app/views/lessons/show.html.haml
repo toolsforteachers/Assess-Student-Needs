@@ -5,7 +5,7 @@
   %table.table.table-striped
     %thead
       %tr
-        %th Student
+        %th=@lesson.group.name
         %th Score
     %tbody
       = f.fields_for :lesson_students do |lesson_student_f|

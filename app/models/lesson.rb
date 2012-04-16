@@ -5,6 +5,8 @@ class Lesson < ActiveRecord::Base
   has_many :students, through: :lesson_students
   validates_presence_of :teacher
   validates_presence_of :name
+  validates_presence_of :lesson_datetime
+  validates_presence_of :group_id
   accepts_nested_attributes_for :lesson_students
 
   after_create :add_students_from_the_group
