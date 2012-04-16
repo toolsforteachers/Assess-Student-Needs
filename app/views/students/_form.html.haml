@@ -1,8 +1,7 @@
-= form_for [@group, @student], :html => { :class => 'form-horizontal' } do |f|
-  .control-group
-    = f.label :name, :class => 'control-label'
-    .controls
-      = f.text_field :name, :class => 'text_field'
+= simple_form_for [@group, @student], :html => { :class => 'form-horizontal' } do |f|
+  = f.input :lesson_id, as: 'hidden'
+  = f.input :name
+  = f.association :groups, :disabled => true, :multiple => false
   .form-actions
     = f.submit nil, :class => 'btn btn-primary'
     = link_to t('.cancel', :default => t("helpers.links.cancel")), group_students_path(@group), :class => 'btn'

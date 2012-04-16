@@ -12,3 +12,6 @@
         %tr
           %td= lesson_student_f.object.student.name
           %td= lesson_student_f.text_field :score, id: "student_score_#{ lesson_student_f.object.student.id }"
+      %tr
+        %td= link_to "Add Student", new_group_student_path(@lesson.group, lesson_id: @lesson.id)
+        %td
