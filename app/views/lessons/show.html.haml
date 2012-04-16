@@ -1,5 +1,5 @@
 - model_class = @lesson.class
-%h1=t '.title', :default => model_class.model_name.human
+%h1.page-header=t '.title', :default => model_class.model_name.human
 
 %p
   %strong= model_class.human_attribute_name(:name) + ':'
