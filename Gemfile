@@ -13,6 +13,8 @@ gem 'jquery-rails'
 gem 'devise'
 gem "bootstrap-datepicker-rails"
 gem 'simple_form'
+gem 'quiet_assets', group: :development
+gem 'thin', group: :development
 
 gem "rspec-rails", ">= 2.9.0.rc2", :group => [:development, :test]
 gem "pry", :group => [:development, :test]
