@@ -21,5 +21,3 @@ Feature: Teacher logs a lesson
   Scenario: recording student scores
     And I record a score of 4 for "Ann"
     And I record a score of 3 for "Bob"
-    And I press "Save"
-    Then I should see the APP GRID

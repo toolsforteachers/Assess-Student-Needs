@@ -1,5 +1,6 @@
 require 'spec_helper'
 
 describe LessonStudent do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it { should belong_to(:lesson) }
+  it { should belong_to(:student) }
 end

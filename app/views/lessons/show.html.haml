@@ -1,17 +1,19 @@
 %h1.page-header
   = @lesson.name
-  %small= @lesson.lesson_datetime.to_s(:full_date)
-= form_for @lesson do |f|
-  %table.table.table-striped
-    %thead
-      %tr
-        %th=@lesson.group.name
-        %th Score
-    %tbody
-      = f.fields_for :lesson_students do |lesson_student_f|
-        %tr
-          %td= lesson_student_f.object.student.name
-          %td= lesson_student_f.text_field :score, id: "student_score_#{ lesson_student_f.object.student.id }"
-      %tr
-        %td= link_to "Add Student", new_group_student_path(@lesson.group, lesson_id: @lesson.id)
+%small= @lesson.lesson_datetime.to_s(:full_date)
+%table.table.table-striped
+  %thead
+    %tr
+      %th=@lesson.group.name
+      %th Score
+  %tbody
+    - @lesson.lesson_students.each do |lesson_student|
+      %tr{ id: "student_score_#{ lesson_student.student_id }" }
+        %td= lesson_student.student.name
         %td
+          = form_for lesson_student do |lesson_student_f|
+            = lesson_student_f.text_field :score
+            = lesson_student_f.submit 'Save'
+    %tr
+      %td= link_to "Add Student", new_group_student_path(@lesson.group, lesson_id: @lesson.id)
+      %td

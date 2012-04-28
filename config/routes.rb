@@ -4,7 +4,7 @@ Acn::Application.routes.draw do
   resources :groups do
    resources :students
   end
-  resources :lessons
+  resources :lessons, :lesson_students
 
   root to: 'lessons#index'
 end
