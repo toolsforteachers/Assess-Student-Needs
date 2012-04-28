@@ -8,6 +8,7 @@ Given /^I add a lesson "([^"]*)" for "([^"]*)"$/ do |lesson_name, group_name|
 end
 
 Given /^I edit the lesson objective to "([^"]*)"$/ do |new_name|
+  visit lessons_path
   click_link "Edit"
   fill_in('Objective', with: new_name)
   click_button "Update Lesson"

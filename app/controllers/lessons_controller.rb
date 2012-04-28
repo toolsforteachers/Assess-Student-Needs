@@ -19,7 +19,7 @@ class LessonsController < ProtectedController
     @lesson = current_teacher.lessons.find(params[:id])
 
     if @lesson.update_attributes(params[:lesson])
-      redirect_to lesson_path(@lesson), notice: 'Group was successfully updated.'
+      redirect_to lesson_path(@lesson), notice: 'Lesson was successfully updated.'
     else
       render action: "edit"
     end
