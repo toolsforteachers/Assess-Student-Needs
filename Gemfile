@@ -14,11 +14,10 @@ gem 'jquery-rails'
 gem 'devise'
 gem "bootstrap-datepicker-rails"
 gem 'simple_form'
-gem 'quiet_assets', group: :development
 
+gem 'quiet_assets', group: :development
 gem "rspec-rails", ">= 2.9.0.rc2", :group => [:development, :test]
 gem "pry", :group => [:development, :test]
-
 gem "email_spec", ">= 1.2.1", :group => :test
 gem "cucumber-rails", ">= 1.3.0", :group => :test, require: false
 gem "capybara", ">= 1.1.2", :group => :test

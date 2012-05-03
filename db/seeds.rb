@@ -7,3 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 teacher = Teacher.create( name: 'Toby P.', email: 'toby@snaplab.co.uk', password: 'password', password_confirmation: 'password' )
+
+Indicator.create(level: 3, name: 'Easy Adding Up')
+Indicator.create(level: 3, name: 'Harder Multiplication')
+Indicator.create(level: 3, name: 'Difficult Trigonometry')
