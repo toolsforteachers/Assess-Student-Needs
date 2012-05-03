@@ -1,3 +1,3 @@
 Fabricator(:student) do
-  name Faker::Name.name
+  name { Faker::Name.name }
 end
