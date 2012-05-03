@@ -1,7 +1,8 @@
-Given /^I add a lesson "([^"]*)" for "([^"]*)"$/ do |lesson_name, group_name|
+Given /^I add a lesson "([^"]*)" for "([^"]*)" with indicator "([^"]*)"$/ do |lesson_name, group_name, indicator|
   click_link "Lessons"
   click_link "New"
   select(group_name, from:'Group')
+  select(indicator, from: 'Assessment Indicator')
   fill_in('Objective', with: lesson_name)
   fill_in('Date', with: 1.day.ago)
   click_button "Create Lesson"
@@ -30,4 +31,9 @@ end
 
 When /^I should be on the lesson page for "([^"]*)"$/ do |lesson_name|
   page.current_path.should include("/lessons/#{ Lesson.find_by_name(lesson_name).id }")
+end
+
+When /^I assign this lesson to level (\d+), indicator "([^"]*)"$/ do |level, indicator|
+  Fabricate(:indicator, name: indicator, level: level)
+  select("(Level: #{ level }) #{ indicator }",)
 end

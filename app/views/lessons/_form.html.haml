@@ -1,6 +1,10 @@
 = simple_form_for @lesson, :html => { :class => 'form-horizontal' } do |f|
   = f.input :name, class: 'text_field', label: 'Objective'
   = f.input :lesson_datetime, class: 'date_field', label: 'Date', as: 'string'
+  .control-group.select
+    = f.label :indicator_id, label: "Assessment Indicator"
+    .controls
+      = f.select :indicator_id, grouped_options_for_select(Indicator.grouped_options)
   = f.association :group
   .form-actions
     = f.error :base

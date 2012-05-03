@@ -1,6 +1,7 @@
 class Lesson < ActiveRecord::Base
   belongs_to :group
   belongs_to :teacher
+  belongs_to :indicator
   has_many :lesson_students
   has_many :students, through: :lesson_students
   validates_presence_of :teacher

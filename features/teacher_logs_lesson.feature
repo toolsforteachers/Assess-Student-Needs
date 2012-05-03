@@ -5,7 +5,10 @@ Feature: Teacher logs a lesson
 
   Background:
     Given I am the teacher of "Year 6A" with students "Ann,Bob"
-    And I add a lesson "Adding Up" for "Year 6A"
+    And the following indicators:
+      | level | name      |
+      | 3     | Adding up |
+    And I add a lesson "Adding Up" for "Year 6A" with indicator "Adding up"
 
   Scenario: editing the lesson objective
     When I edit the lesson objective to "Long Division"
@@ -19,5 +22,6 @@ Feature: Teacher logs a lesson
     And the "Year 6A" group should have 3 students
 
   Scenario: recording student scores
-    And I record a score of 4 for "Ann"
-    And I record a score of 3 for "Bob"
+    Given I record a score of 5 for "Ann"
+    And I record a score of 2 for "Bob"
+
