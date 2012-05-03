@@ -4,6 +4,7 @@
   %thead
     %tr
       %th Objective
+      %th Assessment Indicator
       %th Class
       %th Date
       %th=t '.actions', :default => t("helpers.actions")
@@ -11,10 +12,12 @@
     - @lessons.each do |lesson|
       %tr
         %td= link_to lesson.name, lesson_path(lesson)
+        %td= lesson.indicator.name if lesson.indicator
         %td= lesson.teacher.name
         %td= lesson.group.name
         %td= lesson.lesson_datetime
         %td
+          = link_to t('.view', :default => t("helpers.links.view")), lesson_path(lesson), :class => 'btn btn-mini'
           = link_to t('.edit', :default => t("helpers.links.edit")), edit_lesson_path(lesson), :class => 'btn btn-mini'
 
 = link_to t('.new', :default => t("helpers.links.new")), new_lesson_path, :class => 'btn btn-primary'

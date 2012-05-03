@@ -5,7 +5,7 @@ class Indicator < ActiveRecord::Base
   def self.grouped_options
     ret = []
     1.upto(7) do |i|
-      ret << ["Level #{ i }", Indicator.where(level: i).all.map(&:name)]
+      ret << ["Level #{ i }", Indicator.where(level: i).all.map{ |indicator| [indicator.name, indicator.id]}]
     end
     ret
   end

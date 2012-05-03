@@ -9,6 +9,7 @@ class LessonsController < ProtectedController
 
   def show
     @lesson = current_teacher.lessons.find(params[:id])
+    @lesson_students = @lesson.lesson_students.order('students.name').includes(:student)
   end
 
   def edit
