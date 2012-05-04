@@ -1,15 +1,14 @@
 %h1.page-header
-  = @lesson.name
-%small= @lesson.lesson_datetime.to_s(:full_date)
+  = @lesson.group.name
+  %small= @lesson.name
+%h3
+  Assessment Indicator:
+  = @lesson.indicator.name
+%h5
+  = @lesson.lesson_datetime.to_s(:full_date)
+
+%br
 %table.table.table-striped
-  %thead
-    %tr
-      %th=@lesson.group.name
-      %th Score
-      %th
-        - if @lesson.indicator
-          Assessment Indicator:
-          = @lesson.indicator.name
   %tbody
     - @lesson_students.each do |lesson_student|
       %tr{ id: "student_score_#{ lesson_student.student_id }" }
