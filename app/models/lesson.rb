@@ -14,4 +14,12 @@ class Lesson < ActiveRecord::Base
   def add_students_from_the_group
     group.students.map{ |student| lesson_students.create(student: student) } if group
   end
+
+  def simple_lesson_date
+    lesson_datetime.to_s
+  end
+
+  def simple_lesson_date=the_date
+    lesson_datetime = the_date
+  end
 end
