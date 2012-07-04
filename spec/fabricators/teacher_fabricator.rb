@@ -1,6 +1,6 @@
 Fabricator(:teacher) do
-  name Faker::Name.name
-  email { |teacher| "#{ teacher.name.parameterize }@example.com" }
+  email { |teacher| "#{ Faker::Name.name.parameterize }@example.com" }
+  name { Faker::Name.name }
   password 'password'
   password_confirmation 'password'
 end
