@@ -1,2 +1,4 @@
-- if lesson_student.score
+- if lesson_student.score.to_i > 0
   = pluralize(lesson_student.score - 1, 'tick')
+- else
+  'n/a'
