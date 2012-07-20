@@ -6,7 +6,6 @@ class Lesson < ActiveRecord::Base
   has_many :students, through: :lesson_students
   validates_presence_of :teacher
   validates_presence_of :name
-  validates_presence_of :lesson_datetime
   validates_presence_of :group_id
 
   after_create :add_students_from_the_group
@@ -16,7 +15,7 @@ class Lesson < ActiveRecord::Base
   end
 
   def simple_lesson_date
-    lesson_datetime.to_s
+    lesson_datetime
   end
 
   def simple_lesson_date=the_date

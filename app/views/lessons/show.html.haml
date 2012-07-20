@@ -4,8 +4,9 @@
 %h3
   Assessment Indicator:
   = @lesson.indicator.name
-%h5
-  = @lesson.lesson_datetime.to_s(:full_date)
+- if @lesson.lesson_datetime
+  %h5
+    = @lesson.lesson_datetime.to_s(:full_date)
 
 %br
 %table.table.table-striped
