@@ -14,11 +14,12 @@
     - @lesson_students.each do |lesson_student|
       %tr{ id: "student_score_#{ lesson_student.student_id }" }
         %td= lesson_student.student.name
-        %td
+        %td.scoring
           = form_for lesson_student, remote: true do |lesson_student_f|
             = lesson_student_f.select :score, 1..5, include_blank: true
+            = lesson_student_f.text_field :notes
             = lesson_student_f.submit 'Save'
-        %td.ticks= render partial: 'lesson_students/ticks', locals: { lesson_student: lesson_student }
+        %td.ticks.hide= render partial: 'lesson_students/ticks', locals: { lesson_student: lesson_student }
 
     %tr
       %td= link_to "Add Student", new_group_student_path(@lesson.group, lesson_id: @lesson.id)
