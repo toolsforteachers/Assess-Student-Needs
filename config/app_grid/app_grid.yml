@@ -36,6 +36,8 @@ Trunk: Measuring
     Key: MA3A_MEASURES
 
 Trunk: Ma 4-Handling data and Using and applying mathematics
+  Twig: Specifying the problem and planning, collecting data
+    Key: MA4_PLANNING
   Twig: Processing and representing data
     Key: MA4_PROCESSING
   Twig: Interpreting data
