@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120720145913) do
+ActiveRecord::Schema.define(:version => 20121009105225) do
 
   create_table "attendees", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -41,9 +41,14 @@ ActiveRecord::Schema.define(:version => 20120720145913) do
   create_table "indicators", :force => true do |t|
     t.string   "name"
     t.integer  "level"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.string   "key"
+    t.text     "description"
+    t.integer  "position"
   end
+
+  add_index "indicators", ["key"], :name => "index_indicators_on_key"
 
   create_table "lesson_students", :force => true do |t|
     t.integer  "lesson_id"

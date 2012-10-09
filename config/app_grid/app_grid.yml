@@ -1,0 +1,42 @@
+Trunk: Ma 1 Using and applying mathematics
+  Twig: Problem solving
+    Key: MA1_PROBLEM
+  Twig: Communicating
+    Key: MA1_COMMUNICATING
+  Twig: Reasoning
+    Key: MA1_REASONING
+
+Trunk: Ma2 Number
+  Branch: Counting and understanding numbers
+    Twig: Numbers and the number system
+      Key: MA2_NUMBERS
+    Twig: Fractions
+      Key: MA2_FRACTIONS
+
+Trunk: Calculating
+  Branch: Knowing and using number facts
+    Twig: Operations, relationships between them
+      Key: MA2A_OPERATIONS
+    Twig: Mental methods
+      Key: MA2A_MENTAL_METHODS
+  Branch:
+    Twig: Solving numerical problems
+      Key: MA2A_NUMERICAL_PROBLEMS
+    Twig: Written methods
+      Key: MA2A_WRITTEN_METHODS
+
+Trunk: Ma 3 Shape, Space and Measures-Understanding shapes
+  Twig: Properties of shape
+    Key: MA3_SHAPES
+  Twig: Properties of position and movement
+    Key: MA3_POSITION_MOVEMENT
+
+Trunk: Measuring
+  Twig: Measures
+    Key: MA3A_MEASURES
+
+Trunk: Ma 4-Handling data and Using and applying mathematics
+  Twig: Processing and representing data
+    Key: MA4_PROCESSING
+  Twig: Interpreting data
+    Key: MA4_INTERPRETING
