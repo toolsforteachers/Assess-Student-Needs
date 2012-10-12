@@ -1,9 +1,24 @@
 %h1.page-header
   = @lesson.group.name
   %small= @lesson.name
-%h3
-  Assessment Indicator:
-  = @lesson.indicator.name
+
+
+- if @lesson.indicator
+  %dl.dl-horizontal
+
+    %dt Level
+    %dd #{ @lesson.indicator.level }
+
+    %dt Strand
+    %dd #{ @lesson.indicator.key }
+
+    %dt Indicator
+    %dd #{ @lesson.indicator.name }
+
+    - if description = @lesson.indicator.description
+      %dt Description
+      %dd.muted #{ description.gsub("_ ", "<br/>").html_safe }
+
 - if @lesson.lesson_datetime
   %h5
     = @lesson.lesson_datetime.to_s(:full_date)

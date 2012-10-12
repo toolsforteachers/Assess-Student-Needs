@@ -34,4 +34,5 @@ Feature: Teacher logs a lesson
   @javascript
   Scenario: recording student scores
     When I record a score of 5 for "Ann"
+    And I wait 1 second
     Then I should see "Ann" has 4 ticks for "Adding up"

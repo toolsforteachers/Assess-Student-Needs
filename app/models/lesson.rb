@@ -10,6 +10,8 @@ class Lesson < ActiveRecord::Base
 
   after_create :add_students_from_the_group
 
+  attr_accessor :level, :strand
+
   def add_students_from_the_group
     group.students.map{ |student| lesson_students.create(student: student) } if group
   end
