@@ -2,22 +2,20 @@
   = @lesson.group.name
   %small.lesson_name= @lesson.name
 
+%dl.dl-horizontal
 
-- if @lesson.indicator
-  %dl.dl-horizontal
+  %dt Level
+  %dd.level #{ @lesson.indicator.level }
 
-    %dt Level
-    %dd.level #{ @lesson.indicator.level }
+  %dt Strand
+  %dd.strand #{ @lesson.indicator.strand_name }
 
-    %dt Strand
-    %dd.strand #{ @lesson.indicator.strand_name }
+  %dt Indicator
+  %dd.indicator_name #{ @lesson.indicator.name }
 
-    %dt Indicator
-    %dd.indicator_name #{ @lesson.indicator.name }
-
-    - if description = @lesson.indicator.description
-      %dt Description
-      %dd.muted.description #{ description.gsub("_ ", "<br/>").html_safe }
+  - if description = @lesson.indicator.description
+    %dt Description
+    %dd.muted.description #{ description.gsub("_ ", "<br/>").html_safe }
 
 - if @lesson.lesson_datetime
   %h5

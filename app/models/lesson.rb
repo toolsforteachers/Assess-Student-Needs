@@ -7,6 +7,7 @@ class Lesson < ActiveRecord::Base
   validates_presence_of :teacher
   validates_presence_of :name
   validates_presence_of :group_id
+  validates_presence_of :indicator_id
 
   after_create :add_students_from_the_group
 

@@ -7,6 +7,7 @@ describe Lesson do
   it { should validate_presence_of(:teacher) }
   it { should validate_presence_of(:name) }
   it { should validate_presence_of(:group_id) }
+  it { should validate_presence_of(:indicator_id) }
   it { should have_many(:lesson_students) }
   it { should respond_to(:level) }
   it { should respond_to(:strand) }
