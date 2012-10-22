@@ -1,23 +1,23 @@
 %h1.page-header
   = @lesson.group.name
-  %small= @lesson.name
+  %small.lesson_name= @lesson.name
 
 
 - if @lesson.indicator
   %dl.dl-horizontal
 
     %dt Level
-    %dd #{ @lesson.indicator.level }
+    %dd.level #{ @lesson.indicator.level }
 
     %dt Strand
-    %dd #{ @lesson.indicator.key }
+    %dd.strand #{ @lesson.indicator.strand_name }
 
     %dt Indicator
-    %dd #{ @lesson.indicator.name }
+    %dd.indicator_name #{ @lesson.indicator.name }
 
     - if description = @lesson.indicator.description
       %dt Description
-      %dd.muted #{ description.gsub("_ ", "<br/>").html_safe }
+      %dd.muted.description #{ description.gsub("_ ", "<br/>").html_safe }
 
 - if @lesson.lesson_datetime
   %h5

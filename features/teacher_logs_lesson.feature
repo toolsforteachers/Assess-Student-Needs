@@ -6,13 +6,17 @@ Feature: Teacher logs a lesson
   Background:
     Given I am the teacher of "Year 6A" with students "Ann,Bob,Clare"
     And the following indicators:
-      | level | name      |
-      | 3     | Adding up |
+      | level | name      | key         | description         |
+      | 2     | Adding up | MA2_NUMBERS | about the indicator |
     And I add a lesson "Adding Up" for "Year 6A" with indicator "Adding up"
 
-  Scenario: editing the lesson objective
+  Scenario: editing the lesson objective and checking the strand is rendered from 'MA2_NUMBERS'
     When I edit the lesson objective to "Long Division"
     Then I should be on the lesson page for "Long Division"
+    And I should see "Adding up" for ".indicator_name"
+    And I should see "2" for ".level"
+    And I should see "Numbers > Numbers and the number system" for ".strand"
+    And I should see "about the indicator" for ".description"
 
   Scenario: adding students to the lesson also adds to the group
     Given the lesson "Adding Up" should have 3 students

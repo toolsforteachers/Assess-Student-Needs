@@ -10,6 +10,21 @@ class Indicator < ActiveRecord::Base
     ret
   end
 
+  def strand_name
+    Indicator.transposed_strands[key]
+  end
+
+  def self.transposed_strands
+    h = {}
+    Indicator.grouped_strands.each do |indicators|
+      label = indicators.shift
+      indicators[0].each do |indicator|
+        h[ indicator[1] ] = "#{ label } > #{ indicator[0] }"
+      end
+    end
+    h
+  end
+
   def self.grouped_strands
     [
       [
