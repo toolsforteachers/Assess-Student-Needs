@@ -10,7 +10,7 @@ describe Lesson do
   it { should validate_presence_of(:indicator_id) }
   it { should have_many(:lesson_students) }
   it { should respond_to(:level) }
-  it { should respond_to(:strand) }
+  it { should respond_to(:key) }
 
   describe '#create' do
     subject { Fabricate(:lesson, group: group) }

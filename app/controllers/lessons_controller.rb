@@ -29,6 +29,7 @@ class LessonsController < ProtectedController
   def create
     @lesson = Lesson.new(params[:lesson])
     @lesson.teacher = current_teacher
+
     if @lesson.save
       redirect_to lesson_path(@lesson), notice: 'Lesson was successfully created.'
     else

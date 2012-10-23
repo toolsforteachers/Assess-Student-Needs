@@ -1,0 +1,13 @@
+- if indicator = @lesson.indicator
+  - @lesson.key, @lesson.level = indicator.key, indicator.level
+
+.control-group.select
+  = f.label :indicator_id, label: "Assessment Indicator"
+
+  .controls
+    = f.select :level, (1..5).map{|l| ["Level #{ l }", l]}
+    = f.select :key, Indicator.grouped_strands
+    = link_to 'Update indicator list', '#', remote: true, id: 'update_indicator_list'
+  %p
+  #indicator_list.controls
+    = f.select :indicator_id, Indicator.grouped_options

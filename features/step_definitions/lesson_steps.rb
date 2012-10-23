@@ -37,3 +37,14 @@ When /^I assign this lesson to level (\d+), indicator "([^"]*)"$/ do |level, ind
   Fabricate(:indicator, name: indicator, level: level)
   select("(Level: #{ level }) #{ indicator }",)
 end
+
+When /^I choose "(.*?)" and "(.*?)" and press the update button$/ do |level, strand|
+  select(level, :from => "lesson_level")
+  select(strand, :from => "lesson_key")
+  click_link('Update indicator list')
+end
+
+When /^I choose "(.*?)" from the indicator list$/ do |indicator_name|
+  select(indicator_name, :from => "lesson_indicator_id")
+end
+
