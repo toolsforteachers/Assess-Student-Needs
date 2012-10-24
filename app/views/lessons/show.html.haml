@@ -1,14 +1,17 @@
-%h1.page-header
-  = @lesson.group.name
-  %small.lesson_name= @lesson.name
+%h1.page-header Lesson: #{ @lesson.name }
 
 %dl.dl-horizontal
+  %dt Group
+  %dd= @lesson.group.name
 
- %dt Lesson date
-  %dd
-    - if @lesson.lesson_datetime
-      = @lesson.lesson_datetime.to_s(:full_date)
+  %dt Date
+  %dd= @lesson.lesson_datetime || '&nbsp;'.html_safe
 
+  %dt Objective
+  %dd= @lesson.name
+
+%hr
+%dl.dl-horizontal
   %dt Level
   %dd.level #{ @lesson.indicator.level }
 

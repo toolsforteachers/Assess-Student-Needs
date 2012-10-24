@@ -1,6 +1,10 @@
 class LessonsController < ProtectedController
   def index
     @lessons = current_teacher.lessons
+    if params[:group_id]
+      @group = Group.find(params[:group_id])
+      @lessons = @lessons.where(:group_id => @group.id)
+    end
   end
 
   def new
