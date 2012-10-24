@@ -22,6 +22,6 @@ class Lesson < ActiveRecord::Base
   end
 
   def simple_lesson_date=the_date
-    lesson_datetime = the_date
+    self.lesson_datetime = the_date
   end
 end

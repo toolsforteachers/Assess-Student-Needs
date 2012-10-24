@@ -4,6 +4,11 @@
 
 %dl.dl-horizontal
 
+ %dt Lesson date
+  %dd
+    - if @lesson.lesson_datetime
+      = @lesson.lesson_datetime.to_s(:full_date)
+
   %dt Level
   %dd.level #{ @lesson.indicator.level }
 
@@ -17,9 +22,6 @@
     %dt Description
     %dd.muted.description #{ description.gsub("_ ", "<br/>").html_safe }
 
-- if @lesson.lesson_datetime
-  %h5
-    = @lesson.lesson_datetime.to_s(:full_date)
 
 %br
 %table.table.table-striped
