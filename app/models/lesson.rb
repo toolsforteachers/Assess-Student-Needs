@@ -13,6 +13,8 @@ class Lesson < ActiveRecord::Base
 
   attr_accessor :level, :key
 
+  default_scope order('lesson_datetime is not null, lesson_datetime desc')
+
   def add_students_from_the_group
     group.students.map{ |student| lesson_students.create(student: student) } if group
   end

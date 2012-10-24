@@ -1,0 +1,2 @@
+class HomeController < ProtectedController
+end

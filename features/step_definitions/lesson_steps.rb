@@ -1,16 +1,16 @@
 Given /^I add a lesson "([^"]*)" for "([^"]*)" with indicator "([^"]*)"$/ do |lesson_name, group_name, indicator|
-  click_link "Lessons"
-  click_link "New"
-  select(group_name, from:'Group')
+  click_link group_name
+  click_link "Add Lesson"
   select(indicator, from: 'Assessment Indicator')
   fill_in('Objective', with: lesson_name)
   fill_in('Date', with: 1.day.ago)
   click_button "Create Lesson"
 end
 
-Given /^I edit the lesson objective to "([^"]*)"$/ do |new_name|
-  visit lessons_path
-  click_link "Edit"
+Given /^I edit the lesson objective from "([^"]*)" to "([^"]*)"$/ do |old_name, new_name|
+  visit group_path(@group)
+  click_link old_name
+  click_link "Edit Lesson"
   fill_in('Objective', with: new_name)
   click_button "Update Lesson"
 end

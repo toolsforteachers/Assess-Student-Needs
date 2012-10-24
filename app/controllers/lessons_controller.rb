@@ -1,14 +1,8 @@
 class LessonsController < ProtectedController
-  def index
-    @lessons = current_teacher.lessons
-    if params[:group_id]
-      @group = Group.find(params[:group_id])
-      @lessons = @lessons.where(:group_id => @group.id)
-    end
-  end
+  before_filter :load_group
 
   def new
-    @lesson = current_teacher.lessons.new
+    @lesson = current_teacher.lessons.new :group_id => @group.id
   end
 
   def show
@@ -24,7 +18,7 @@ class LessonsController < ProtectedController
     @lesson = current_teacher.lessons.find(params[:id])
 
     if @lesson.update_attributes(params[:lesson])
-      redirect_to lesson_path(@lesson), notice: 'Lesson was successfully updated.'
+      redirect_to group_lesson_path(@group, @lesson), notice: 'Lesson was successfully updated.'
     else
       render action: "edit"
     end
@@ -35,9 +29,14 @@ class LessonsController < ProtectedController
     @lesson.teacher = current_teacher
 
     if @lesson.save
-      redirect_to lesson_path(@lesson), notice: 'Lesson was successfully created.'
+      redirect_to group_lesson_path(@group, @lesson), notice: 'Lesson was successfully created.'
     else
       render action: "new"
     end
+  end
+
+  protected
+  def load_group
+    @group = Group.find(params[:group_id])
   end
 end

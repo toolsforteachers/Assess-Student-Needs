@@ -12,7 +12,7 @@ Feature: Teacher logs a lesson
     And I add a lesson "Adding Up" for "Year 6A" with indicator "Adding up"
 
   Scenario: editing the lesson objective and checking the strand is rendered from 'MA2_NUMBERS'
-    When I edit the lesson objective to "Long Division"
+    When I edit the lesson objective from "Adding Up" to "Long Division"
     Then I should be on the lesson page for "Long Division"
     And I should see "Adding up" for ".indicator_name"
     And I should see "2" for ".level"

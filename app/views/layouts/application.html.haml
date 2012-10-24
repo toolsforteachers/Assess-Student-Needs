@@ -21,8 +21,13 @@
           .container.nav-collapse
             - if current_teacher
               %ul.nav
-                %li= link_to "Lessons", lessons_path
-                %li= link_to "Groups", groups_path
+                - Group.all.each do |group|
+                  - if group == @group
+                    %li.active= link_to group.name, group_path(group)
+                  - else
+                    %li= link_to group.name, group_path(group)
+                %li= link_to "** New Group **", new_group_path
+                %li= link_to "** Students **", students_path
             %p.navbar-text.pull-right
               - if current_teacher
                 = current_teacher.email

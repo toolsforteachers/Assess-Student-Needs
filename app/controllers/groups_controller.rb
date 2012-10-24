@@ -3,7 +3,6 @@ class GroupsController < ProtectedController
   # GET /groups.json
   def index
     @groups = Group.all
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @groups }
@@ -14,7 +13,8 @@ class GroupsController < ProtectedController
   # GET /groups/1.json
   def show
     @group = Group.find(params[:id])
-
+    @lessons = @group.lessons
+    @students = @group.students
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @group }
@@ -44,7 +44,7 @@ class GroupsController < ProtectedController
 
     respond_to do |format|
       if @group.save
-        format.html { redirect_to groups_path, notice: 'Group was successfully created.' }
+        format.html { redirect_to group_path(@group), notice: 'Group was successfully created.' }
         format.json { render json: @group, status: :created, location: @group }
       else
         format.html { render action: "new" }

@@ -1,32 +1,43 @@
 class StudentsController < ProtectedController
-  before_filter :load_group
-
   def index
-    @students = @group.students
+    @students = Student.includes(:groups)
+  end
+
+  def edit
+    @student = Student.find(params[:id])
   end
 
   def new
-    @student = @group.students.new lesson_id: params[:lesson_id]
+    @student = Student.new
+    if params[:lesson_id]
+      @lesson = Lesson.find(params[:lesson_id])
+      @student.lesson_id = @lesson.id if @lesson
+      @student.use_lesson_id = true
+      @student.groups << @lesson.group
+    end
+  end
+
+  def update
+    @student = Student.find(params[:id])
+    if @student.update_attributes(params[:student])
+      redirect_to students_path, notice: 'Student was successfully updated.'
+    else
+      render action: 'edit'
+    end
   end
 
   def create
     @student = Student.new(params[:student])
     if @student.save
-      @group.students << @student
-      if @student.lesson_id.present?
+      if @student.lesson_id
         @lesson = Lesson.find(@student.lesson_id)
         @lesson.students << @student
-        redirect_to lesson_path(@lesson), notice: 'Student was successfully added.'
+        redirect_to group_lesson_path(@lesson.group, @lesson), notice: 'Student was successfully added.'
       else
-        redirect_to group_students_path(@group), notice: 'Student was successfully created.'
+        redirect_to students_path, notice: 'Student was successfully created.'
       end
     else
       render action: "new"
     end
-  end
-
-  protected
-  def load_group
-    @group = Group.find(params[:group_id])
   end
 end

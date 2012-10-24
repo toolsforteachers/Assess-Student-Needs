@@ -4,9 +4,12 @@
   %thead
     %tr
       %th= model_class.human_attribute_name(:name)
+      %th Groups
+      %th Date Added
   %tbody
     - @students.each do |student|
       %tr
-        %td= student.name
-
-= link_to t('.new', :default => t("helpers.links.new")), new_group_student_path(@group), :class => 'btn btn-primary'
+        %td= link_to student.name, edit_student_path(student)
+        %td= student.groups.map{|group| link_to group.name, group}.join(", ").html_safe
+        %td= student.created_at
+= link_to t('.new', :default => t("helpers.links.new")), new_student_path, :class => 'btn btn-primary'

@@ -1,7 +1,11 @@
-= simple_form_for [@group, @student], :html => { :class => 'form-horizontal' } do |f|
-  = f.input :lesson_id, as: 'hidden'
+= simple_form_for @student, :html => { :class => 'form-horizontal' } do |f|
   = f.input :name
-  = f.association :groups, :disabled => true, :multiple => false
+  - if @student.use_lesson_id
+    = f.input :lesson_id, as: :hidden
+    = f.input :use_lesson_id, as: :boolean, label: 'Lesson', disabled: true, inline_label: @lesson.name
   .form-actions
     = f.submit nil, :class => 'btn btn-primary'
-    = link_to t('.cancel', :default => t("helpers.links.cancel")), group_students_path(@group), :class => 'btn'
+  = f.association :groups, multiple: true, :as => :check_boxes
+  Hold down the command button to select multiple groups
+  .form-actions
+    = f.submit nil, :class => 'btn btn-primary'

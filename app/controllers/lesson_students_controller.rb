@@ -6,7 +6,7 @@ class LessonStudentsController < ProtectedController
     @lesson_student.save
 
     respond_to do |format|
-      format.html {  redirect_to lesson_path(@lesson_student.lesson), notice: 'Score was successfully saved.' }
+      format.html {  redirect_to group_lesson_path(@lesson_student.lesson.group, @lesson_student.lesson), notice: 'Score was successfully saved.' }
       format.js
     end
 

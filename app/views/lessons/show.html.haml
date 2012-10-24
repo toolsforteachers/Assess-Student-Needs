@@ -2,7 +2,7 @@
 
 %dl.dl-horizontal
   %dt Group
-  %dd= @lesson.group.name
+  %dd= link_to @lesson.group.name, group_path(@lesson.group)
 
   %dt Date
   %dd= @lesson.lesson_datetime || '&nbsp;'.html_safe
@@ -10,7 +10,7 @@
   %dt Objective
   %dd= @lesson.name
 
-%hr
+
 %dl.dl-horizontal
   %dt Level
   %dd.level #{ @lesson.indicator.level }
@@ -39,8 +39,7 @@
             = lesson_student_f.submit 'Save'
         %td.ticks.hide= render partial: 'lesson_students/ticks', locals: { lesson_student: lesson_student }
 
-    %tr
-      %td
-        = link_to "Add Student", new_group_student_path(@lesson.group, lesson_id: @lesson.id)
-        |
-        = link_to "Edit Lesson", edit_lesson_path(@lesson)
+%hr
+= link_to "Add Student to this Lesson", new_student_path(@lesson.group, lesson_id: @lesson.id)
+|
+= link_to "Edit Lesson", edit_group_lesson_path(@group, @lesson)
