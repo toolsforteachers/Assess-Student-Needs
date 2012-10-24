@@ -24,9 +24,18 @@ Then /^the lesson "([^"]*)" should have (\d+) students$/ do |lesson_name, amount
 end
 
 When /^I add "([^"]*)" to the lesson "([^"]*)"$/ do |student_name, lesson_name|
-  click_link('Add Student')
+  lesson = Lesson.find_by_name(lesson_name)
+  group = lesson.group
+  click_link('Students')
+  click_link('New Student')
   fill_in('Name', with: student_name)
   click_button('Create Student')
+  click_link(group.name)
+  click_link(lesson_name)
+  click_link("Edit Lesson")
+  fill_in('Objective', with: lesson_name)
+  check(student_name)
+  click_button "Update Lesson"
 end
 
 When /^I should be on the lesson page for "([^"]*)"$/ do |lesson_name|

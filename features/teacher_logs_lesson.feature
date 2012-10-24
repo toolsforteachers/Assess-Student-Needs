@@ -19,12 +19,11 @@ Feature: Teacher logs a lesson
     And I should see "Numbers > Numbers and the number system" for ".strand"
     And I should see "about the indicator" for ".description"
 
-  Scenario: adding students to the lesson also adds to the group
+  Scenario: adding students to the lesson
     Given the lesson "Adding Up" should have 3 students
     When I add "Diane" to the lesson "Adding Up"
     Then I should be on the lesson page for "Adding Up"
     And the lesson "Adding Up" should have 4 students
-    And the "Year 6A" group should have 4 students
 
   Scenario: recording student scores
     When I record a score of 5 for "Ann"

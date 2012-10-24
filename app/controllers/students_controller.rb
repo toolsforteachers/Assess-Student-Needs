@@ -29,13 +29,7 @@ class StudentsController < ProtectedController
   def create
     @student = Student.new(params[:student])
     if @student.save
-      if @student.lesson_id
-        @lesson = Lesson.find(@student.lesson_id)
-        @lesson.students << @student
-        redirect_to group_lesson_path(@lesson.group, @lesson), notice: 'Student was successfully added.'
-      else
-        redirect_to students_path, notice: 'Student was successfully created.'
-      end
+      redirect_to students_path, notice: 'Student was successfully created.'
     else
       render action: "new"
     end

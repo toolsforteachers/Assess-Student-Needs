@@ -1,11 +1,7 @@
 = simple_form_for @student, :html => { :class => 'form-horizontal' } do |f|
   = f.input :name
-  - if @student.use_lesson_id
-    = f.input :lesson_id, as: :hidden
-    = f.input :use_lesson_id, as: :boolean, label: 'Lesson', disabled: true, inline_label: @lesson.name
-  .form-actions
-    = f.submit nil, :class => 'btn btn-primary'
   = f.association :groups, multiple: true, :as => :check_boxes
-  Hold down the command button to select multiple groups
+  %p Hold down the command button to select multiple groups
+  %p Note that new students are not added to Lessons that already exist.
   .form-actions
     = f.submit nil, :class => 'btn btn-primary'

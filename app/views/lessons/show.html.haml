@@ -40,6 +40,4 @@
         %td.ticks.hide= render partial: 'lesson_students/ticks', locals: { lesson_student: lesson_student }
 
 %hr
-= link_to "Add Student to this Lesson", new_student_path(@lesson.group, lesson_id: @lesson.id)
-|
 = link_to "Edit Lesson", edit_group_lesson_path(@group, @lesson)
