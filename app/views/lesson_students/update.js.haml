@@ -1,3 +1,2 @@
 :plain
   $("tr#student_score_#{ @lesson_student.student.id} td.ticks").show().html("#{ escape_javascript(render :partial => 'lesson_students/ticks', :locals => { :lesson_student => @lesson_student }) }");
-  $("tr#student_score_#{ @lesson_student.student.id} td.scoring").hide();
