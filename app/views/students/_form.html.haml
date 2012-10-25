@@ -1,7 +1,6 @@
 = simple_form_for @student, :html => { :class => 'form-horizontal' } do |f|
   = f.input :name
   = f.association :groups, multiple: true, :as => :check_boxes
-  %p Hold down the command button to select multiple groups
   %p Note that new students are not added to Lessons that already exist.
   .form-actions
     = f.submit nil, :class => 'btn btn-primary'
