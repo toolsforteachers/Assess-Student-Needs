@@ -9,9 +9,6 @@
 teacher = Teacher.create( name: 'Toby P.', email: 'toby@snaplab.co.uk', password: 'password', password_confirmation: 'password' )
 nick = Teacher.create( name: 'Nick T.', email: 'nick@smallfish.net', password: 'f1shes', password_confirmation: 'f1shes' )
 
-Indicator.create(level: 4, name: 'Understand how to place value in numbers to 1000')
-Indicator.create(level: 3, name: 'Recognise negative numbers in contexts such as temperature')
-
 alice = Student.create(name: 'Alice')
 ben = Student.create(name: 'Ben')
 clare = Student.create(name: 'Clare')
@@ -24,5 +21,3 @@ apples.students << ben
 apples.students << clare
 apples.students << dave
 apples.save!
-
-nick.lessons.create name: 'Adding up & Quiz', lesson_datetime: 1.day.ago, indicator: Indicator.first, group: apples
