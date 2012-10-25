@@ -10,7 +10,7 @@ describe LessonStudent do
 
     context 'without a score' do
       let(:score) { nil }
-      it { should be_nil }
+      it { should eql(0) }
     end
 
     context 'with a score' do

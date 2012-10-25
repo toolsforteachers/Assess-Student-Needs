@@ -1,5 +1,4 @@
-- tick_count = lesson_student.score.to_i > 0 ? lesson_student.score - 1 : 0
-- ticks = "ticks_#{ tick_count }"
+- ticks = "ticks_#{ lesson_student.ticks }"
 
 %tr{ id: "student_score_#{ lesson_student.student_id }"}
   = form_for lesson_student, remote: true do |lesson_student_f|
@@ -12,7 +11,7 @@
       = lesson_student_f.submit 'Save'
     %td{ class: ticks }
       this lesson ticks:
-      = tick_count
+      = lesson_student.ticks
       |
       ticks for all lessons:
       0

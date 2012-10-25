@@ -3,13 +3,15 @@
 %table.table.table-striped
   %thead
     %tr
-      %th= model_class.human_attribute_name(:name)
+      %th Students
+      %th
       %th Groups
       %th Date Added
   %tbody
     - @students.each do |student|
       %tr
-        %td= link_to student.name, edit_student_path(student)
+        %td= link_to student.name, student_path(student)
+        %td= render partial: 'students/actions', locals: { student: student }
         %td= student.groups.map{|group| link_to group.name, group}.join(", ").html_safe
         %td= student.created_at
 = link_to "New Student", new_student_path

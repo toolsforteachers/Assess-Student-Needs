@@ -1,4 +1,4 @@
-%h1.page-header=t '.title', :default => @group.name
+%h1.page-header=t '.title', :default => "Group: #{ @group.name }"
 
 = render :partial => '/lessons/list'
 = link_to "Add Lesson", new_group_lesson_path(@group)
@@ -7,9 +7,11 @@
   %thead
     %tr
       %th Students
+      %th
   %tbody
     - @students.each do |student|
       %tr
-        %td= link_to student.name, edit_student_path(student)
+        %td= link_to student.name, student_path(student)
+        %td= render partial: 'students/actions', locals: { student: student }
 %hr
 = link_to "Edit Group", edit_group_path(@group)

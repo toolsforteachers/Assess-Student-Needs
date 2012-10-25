@@ -7,6 +7,11 @@ class StudentsController < ProtectedController
     @student = Student.find(params[:id])
   end
 
+  def show
+    @student = Student.find(params[:id])
+    @level = params[:level] || 1
+  end
+
   def new
     @student = Student.new
     if params[:lesson_id]
