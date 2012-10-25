@@ -2,20 +2,20 @@ class LessonsController < ProtectedController
   before_filter :load_group
 
   def new
-    @lesson = current_teacher.lessons.new :group_id => @group.id
+    @lesson = Lesson.new :group_id => @group.id
   end
 
   def show
-    @lesson = current_teacher.lessons.find(params[:id])
+    @lesson = Lesson.find(params[:id])
     @lesson_students = @lesson.lesson_students.order('students.name').includes(:student)
   end
 
   def edit
-    @lesson = current_teacher.lessons.find(params[:id])
+    @lesson = Lesson.find(params[:id])
   end
 
   def update
-    @lesson = current_teacher.lessons.find(params[:id])
+    @lesson = Lesson.find(params[:id])
 
     if @lesson.update_attributes(params[:lesson])
       redirect_to group_lesson_path(@group, @lesson), notice: 'Lesson was successfully updated.'
