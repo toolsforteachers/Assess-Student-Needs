@@ -10,8 +10,7 @@ end
 Then /^I should see "([^"]*)" has (\d+) ticks for "([^"]*)"$/ do |student_name, ticks, level_name|
   student = Student.find_by_name(student_name)
   within(:css, "tr#student_score_#{ student.id }") do
-    text.should have_content("#{ ticks } ticks")
-    text.should have_content("A note")
+    text.should have_content("this lesson ticks: #{ ticks }")
   end
 end
 

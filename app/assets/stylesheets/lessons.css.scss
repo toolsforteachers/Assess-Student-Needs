@@ -1,8 +1,13 @@
-// Place all the styles related to the lessons controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
 select#lesson_student_score { width:50px; }
 textarea#lesson_name { width: 400px; height: 60px;}
 select#lesson_indicator_id { width: 700px; }
 select#lesson_strand { width: 350px; }
+.ticks_0 { background-color: #fff; }
+.ticks_1 { background-color: #FFFF00; }
+.table tbody tr:hover td.ticks_1 { background-color: #FFFF00; }
+.ticks_2 { background-color: #FF8C00; color: #fff; }
+.table tbody tr:hover td.ticks_2 { background-color: #FF8C00; }
+.ticks_3 { background-color: #8B0000; color: #fff; }
+.table tbody tr:hover td.ticks_3 { background-color: #8B0000; }
+.ticks_4 { background-color: #228B22; color: #fff; }
+.table tbody tr:hover td.ticks_4 { background-color: #228B22; }

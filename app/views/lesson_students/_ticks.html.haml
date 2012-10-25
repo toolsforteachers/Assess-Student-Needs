@@ -1,5 +1,14 @@
-- if lesson_student.score.to_i > 0
-  = pluralize(lesson_student.score - 1, 'tick')
-- else
-  'n/a'
-%strong= lesson_student.notes
+ticks for this lesson:
+= ticks
+|
+ticks for all lessons:
+0
+|
+manual ticks:
+0
+
+
+-# - if lesson_student.score.to_i > 0
+-#   = pluralize(lesson_student.score - 1, 'tick')
+-# - else
+-#   'n/a'
