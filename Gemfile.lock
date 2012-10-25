@@ -231,5 +231,5 @@ DEPENDENCIES
   shoulda-matchers
   simple_form
   thin
-  twitter-bootstrap-rails
+  twitter-bootstrap-rails (= 2.1.0)
   uglifier (>= 1.0.3)
