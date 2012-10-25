@@ -11,7 +11,7 @@
     %th Problem solving
     %th Communicating
     %th Reasoning
-  %tr.warning
+  %tr
     %td= i("MA1_PROBLEM")
     %td= i("MA1_COMMUNICATING")
     %td= i("MA1_REASONING")
@@ -21,7 +21,7 @@
   %tr
     %th Numbers and the number system
     %th Fractions
-  %tr.warning
+  %tr
     %td= i("MA2_NUMBERS")
     %td= i("MA2_FRACTIONS")
 
@@ -35,7 +35,7 @@
     %th Mental methods
     %th Solving numerical problems
     %th Written methods
-  %tr.warning
+  %tr
     %td= i("MA2A_OPERATIONS")
     %td= i("MA2A_MENTAL_METHODS")
     %td= i("MA2A_NUMERICAL_PROBLEMS")
@@ -50,7 +50,7 @@
     %th Properties of shape
     %th Properties of position and movement
     %th Measures
-  %tr.warning
+  %tr
     %td= i("MA3_SHAPES")
     %td= i("MA3_POSITION_MOVEMENT")
     %td= i("MA3A_MEASURES")
@@ -58,10 +58,12 @@
 %h3.center Handling data and Using and applying
 %table#MA2.table.table-bordered
   %tr
-    %th Specifying the problem and planning, collecting data
+    - if @level > 3
+      %th Specifying the problem and planning, collecting data
     %th Processing and representing data
     %th Interpreting data
-  %tr.warning
-    %td= i("MA4_PLANNING")
+  %tr
+    - if @level > 3
+      %td= i("MA4_PLANNING")
     %td= i("MA4_PROCESSING")
     %td= i("MA4_INTERPRETING")

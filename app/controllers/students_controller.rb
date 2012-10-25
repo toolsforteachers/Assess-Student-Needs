@@ -9,7 +9,7 @@ class StudentsController < ProtectedController
 
   def show
     @student = Student.find(params[:id])
-    @level = params[:level] || 1
+    @level = (params[:level] || 1).to_i
   end
 
   def new
