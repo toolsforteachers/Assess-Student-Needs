@@ -11,11 +11,26 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121009105225) do
+ActiveRecord::Schema.define(:version => 20121102131429) do
 
-  create_table "attendees", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+  create_table "assessment_students", :force => true do |t|
+    t.integer  "assessment_id"
+    t.integer  "student_id"
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
+    t.integer  "score"
+    t.string   "notes",         :limit => 500
+  end
+
+  create_table "assessments", :force => true do |t|
+    t.string   "name"
+    t.integer  "teacher_id"
+    t.integer  "group_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.datetime "lesson_datetime"
+    t.integer  "indicator_id"
+    t.string   "type"
   end
 
   create_table "group_students", :force => true do |t|
@@ -31,13 +46,6 @@ ActiveRecord::Schema.define(:version => 20121009105225) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "groups_students", :force => true do |t|
-    t.integer  "groups_id"
-    t.integer  "students_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
-
   create_table "indicators", :force => true do |t|
     t.string   "name"
     t.integer  "level"
@@ -49,32 +57,6 @@ ActiveRecord::Schema.define(:version => 20121009105225) do
   end
 
   add_index "indicators", ["key"], :name => "index_indicators_on_key"
-
-  create_table "lesson_students", :force => true do |t|
-    t.integer  "lesson_id"
-    t.integer  "student_id"
-    t.datetime "created_at",                :null => false
-    t.datetime "updated_at",                :null => false
-    t.integer  "score"
-    t.string   "notes",      :limit => 500
-  end
-
-  create_table "lessons", :force => true do |t|
-    t.string   "name"
-    t.integer  "teacher_id"
-    t.integer  "group_id"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
-    t.datetime "lesson_datetime"
-    t.integer  "indicator_id"
-  end
-
-  create_table "products", :force => true do |t|
-    t.string   "name"
-    t.decimal  "price"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
 
   create_table "students", :force => true do |t|
     t.string   "name"

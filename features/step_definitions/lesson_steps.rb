@@ -4,15 +4,13 @@ Given /^I add a lesson "([^"]*)" for "([^"]*)" with indicator "([^"]*)"$/ do |le
   select(indicator, from: 'Assessment Indicator')
   fill_in('Objective', with: lesson_name)
   fill_in('Date', with: 1.day.ago)
-  click_button "Create Lesson"
+  click_button "Create"
 end
 
 Given /^I edit the lesson objective from "([^"]*)" to "([^"]*)"$/ do |old_name, new_name|
-  visit group_path(@group)
-  click_link old_name
-  click_link "Edit Lesson"
+  click_link "Edit Details"
   fill_in('Objective', with: new_name)
-  click_button "Update Lesson"
+  click_button "Update"
 end
 
 When /^I go to the lesson page for "([^"]*)"$/ do |lesson_name|
@@ -20,26 +18,26 @@ When /^I go to the lesson page for "([^"]*)"$/ do |lesson_name|
 end
 
 Then /^the lesson "([^"]*)" should have (\d+) students$/ do |lesson_name, amount|
-  Lesson.find_by_name(lesson_name).students.length.should == amount.to_i
+  Assessment.find_by_name(lesson_name).students.length.should == amount.to_i
 end
 
 When /^I add "([^"]*)" to the lesson "([^"]*)"$/ do |student_name, lesson_name|
-  lesson = Lesson.find_by_name(lesson_name)
-  group = lesson.group
+  assessment = Assessment.find_by_name(lesson_name)
+  group = assessment.group
   click_link('Students')
   click_link('New Student')
   fill_in('Name', with: student_name)
   click_button('Create Student')
   click_link(group.name)
   click_link(lesson_name)
-  click_link("Edit Lesson")
+  click_link("Edit Details")
   fill_in('Objective', with: lesson_name)
   check(student_name)
-  click_button "Update Lesson"
+  click_button "Update"
 end
 
 When /^I should be on the lesson page for "([^"]*)"$/ do |lesson_name|
-  page.current_path.should include("/lessons/#{ Lesson.find_by_name(lesson_name).id }")
+  page.current_path.should include("/assessments/#{ Assessment.find_by_name(lesson_name).id }")
 end
 
 When /^I assign this lesson to level (\d+), indicator "([^"]*)"$/ do |level, indicator|
@@ -48,12 +46,12 @@ When /^I assign this lesson to level (\d+), indicator "([^"]*)"$/ do |level, ind
 end
 
 When /^I choose "(.*?)" and "(.*?)" and press the update button$/ do |level, strand|
-  select(level, :from => "lesson_level")
-  select(strand, :from => "lesson_key")
+  select(level, :from => "assessment_level")
+  select(strand, :from => "assessment_key")
   click_link('Update indicator list')
 end
 
 When /^I choose "(.*?)" from the indicator list$/ do |indicator_name|
-  select(indicator_name, :from => "lesson_indicator_id")
+  select(indicator_name, :from => "assessment_indicator_id")
 end
 

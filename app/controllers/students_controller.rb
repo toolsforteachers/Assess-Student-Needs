@@ -15,10 +15,10 @@ class StudentsController < ProtectedController
   def new
     @student = Student.new
     if params[:lesson_id]
-      @lesson = Lesson.find(params[:lesson_id])
-      @student.lesson_id = @lesson.id if @lesson
+      @assessment = Lesson.find(params[:lesson_id])
+      @student.lesson_id = @assessment.id if @assessment
       @student.use_lesson_id = true
-      @student.groups << @lesson.group
+      @student.groups << @assessment.group
     end
   end
 

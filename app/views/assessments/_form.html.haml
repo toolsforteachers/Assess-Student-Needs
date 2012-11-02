@@ -1,4 +1,4 @@
-= simple_form_for [@group, @lesson], :html => { :class => 'form-horizontal' } do |f|
+= simple_form_for [@group, @assessment], :html => { :class => 'form-horizontal' } do |f|
   = f.association :group, disabled: true
   = f.input :group_id, as: :hidden
   = f.input :simple_lesson_date, name: 'lesson_date_time', class: 'date_field', label: 'Date', as: 'string'
@@ -6,9 +6,9 @@
   = render partial: 'indicator_picker', locals: { f: f }
   .form-actions
     = f.error :base
-    = f.submit nil, :class => 'btn btn-primary'
+    = f.submit "#{ @assessment.new_record? ? 'Create' : 'Update' }", :class => 'btn btn-primary'
 
-  - unless @lesson.new_record?
+  - unless @assessment.new_record?
     = f.association :students, multiple: true, as: :check_boxes
     .form-actions
       = f.submit nil, :class => 'btn btn-primary'

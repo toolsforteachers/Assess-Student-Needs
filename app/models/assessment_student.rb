@@ -1,6 +1,6 @@
-class LessonStudent < ActiveRecord::Base
+class AssessmentStudent < ActiveRecord::Base
   belongs_to :student
-  belongs_to :lesson
+  belongs_to :assessment
 
   def ticks
     return 0 unless score

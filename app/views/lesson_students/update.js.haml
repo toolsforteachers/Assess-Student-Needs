@@ -1,3 +1,0 @@
-:plain
-  $("tr#student_score_#{ @lesson_student.student.id}").replaceWith("#{ escape_javascript(render :partial => 'lessons/student', locals: { :lesson_student => @lesson_student}) }");
-  $("tr#student_score_#{ @lesson_student.student.id} form").attr('method','put')

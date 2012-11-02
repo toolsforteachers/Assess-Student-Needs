@@ -1,7 +1,7 @@
-select#lesson_student_score { width:50px; }
-textarea#lesson_name { width: 400px; height: 60px;}
-select#lesson_indicator_id { width: 700px; }
-select#lesson_strand { width: 350px; }
+select#assessment_student_score { width:50px; }
+textarea#assessment_name { width: 400px; height: 60px;}
+select#assessment_indicator_id, select#teacher_judgement_indicator_id { width: 700px; }
+select#assessment_strand, select#teacher_judgement_strand { width: 350px; }
 .ticks_0 { background-color: #fff; }
 .ticks_1 { background-color: #FFFF00; }
 .table tbody tr:hover td.ticks_1 { background-color: #FFFF00; }

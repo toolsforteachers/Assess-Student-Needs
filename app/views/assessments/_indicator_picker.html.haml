@@ -1,5 +1,5 @@
-- if indicator = @lesson.indicator
-  - @lesson.key, @lesson.level = indicator.key, indicator.level
+- if indicator = @assessment.indicator
+  - @assessment.key, @assessment.level = indicator.key, indicator.level
 
 .control-group.select
   = f.label :indicator_id, label: "Assessment Indicator"

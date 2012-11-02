@@ -1,12 +1,12 @@
 require 'spec_helper'
 
-describe LessonStudent do
-  it { should belong_to(:lesson) }
+describe AssessmentStudent do
+  it { should belong_to(:assessment) }
   it { should belong_to(:student) }
 
   describe '.ticks' do
-    let(:lesson_student) { Fabricate(:lesson_student, score: score) }
-    subject { lesson_student.ticks }
+    let(:assessment_student) { Fabricate(:assessment_student, score: score) }
+    subject { assessment_student.ticks }
 
     context 'without a score' do
       let(:score) { nil }

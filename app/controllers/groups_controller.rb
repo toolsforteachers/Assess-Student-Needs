@@ -13,7 +13,7 @@ class GroupsController < ProtectedController
   # GET /groups/1.json
   def show
     @group = Group.find(params[:id])
-    @lessons = @group.lessons
+    @assessments = @group.assessments
     @students = @group.students
     respond_to do |format|
       format.html # show.html.erb

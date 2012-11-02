@@ -6,7 +6,7 @@ describe "groups/show" do
       :name => "Name"
     ))
     @students = []
-    @lessons = []
+    @assessments = []
   end
 
   it "renders attributes in <p>" do

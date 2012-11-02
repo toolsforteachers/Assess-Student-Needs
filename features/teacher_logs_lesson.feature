@@ -43,13 +43,13 @@ Feature: Teacher logs a lesson
 
   @javascript
   Scenario: updating the indicator select menu and seeing values preset on the page
-    When I follow "Edit Lesson"
+    When I follow "Edit Details"
     And I choose "Level 4" and "Measures" and press the update button
     And I choose "Measuring stuff" from the indicator list
-    And I press "Update Lesson"
+    And I press "Update"
     Then I should see "Measuring stuff" for ".indicator_name"
 
-    When I follow "Edit Lesson"
-    Then I should see "Level 1" for "#lesson_level"
-    And I should see "Measures" for "#lesson_key"
-    And I should see "Measuring stuff" for "#lesson_indicator_id"
+    When I follow "Edit Details"
+    Then I should see "Level 1" for "#assessment_level"
+    And I should see "Measures" for "#assessment_key"
+    And I should see "Measuring stuff" for "#assessment_indicator_id"
