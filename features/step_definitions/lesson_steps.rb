@@ -1,6 +1,7 @@
 Given /^I add a lesson "([^"]*)" for "([^"]*)" with indicator "([^"]*)"$/ do |lesson_name, group_name, indicator|
   click_link group_name
   click_link "Add Lesson"
+  step %(I should see lesson specific fields)
   select(indicator, from: 'Assessment Indicator')
   fill_in('Objective', with: lesson_name)
   fill_in('Date', with: 1.day.ago)
@@ -37,7 +38,7 @@ When /^I add "([^"]*)" to the lesson "([^"]*)"$/ do |student_name, lesson_name|
 end
 
 When /^I should be on the lesson page for "([^"]*)"$/ do |lesson_name|
-  page.current_path.should include("/assessments/#{ Assessment.find_by_name(lesson_name).id }")
+  page.current_path.should include("/assessments/#{ Lesson.find_by_name(lesson_name).id }")
 end
 
 When /^I assign this lesson to level (\d+), indicator "([^"]*)"$/ do |level, indicator|
@@ -55,3 +56,24 @@ When /^I choose "(.*?)" from the indicator list$/ do |indicator_name|
   select(indicator_name, :from => "assessment_indicator_id")
 end
 
+Then /^I should( not)? see lesson specific fields$/ do |negate|
+  within(:css, '.page-header') do
+    if negate
+      text.should have_content('Judgement')
+      text.should_not have_content('Lesson')
+    else
+      text.should_not have_content('Judgement')
+      text.should have_content('Lesson')
+    end
+  end
+
+  within(:css, '#assessment_details') do
+    if negate
+      text.should_not have_content('Date')
+      text.should_not have_content('Objective')
+    else
+      text.should have_content('Date')
+      text.should have_content('Objective')
+    end
+  end
+end

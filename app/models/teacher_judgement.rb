@@ -1,0 +1,2 @@
+class TeacherJudgement < Assessment
+end

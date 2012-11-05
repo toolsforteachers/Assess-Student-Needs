@@ -11,6 +11,10 @@ Feature: Teacher logs a lesson
       | 4     | Measuring stuff | MA3A_MEASURES |                     |
     And I add a lesson "Adding Up" for "Year 6A" with indicator "Adding up"
 
+  Scenario: fields to be displayed
+    When I follow "Edit Details"
+    Then I should see lesson specific fields
+
   Scenario: editing the lesson objective and checking the strand is rendered from 'MA2_NUMBERS'
     When I edit the lesson objective from "Adding Up" to "Long Division"
     Then I should be on the lesson page for "Long Division"

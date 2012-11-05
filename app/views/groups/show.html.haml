@@ -1,7 +1,9 @@
-%h1.page-header=t '.title', :default => "Group: #{ @group.name }"
+%h1.page-header= @group.name
 
 = render :partial => '/assessments/list'
 = link_to "Add Lesson", new_group_assessment_path(@group, type_helper: 'Lesson')
+|
+= link_to "Add Teacher Judgement", new_group_assessment_path(@group, type_helper: 'TeacherJudgement')
 %hr
 %table.table.table-striped
   %thead

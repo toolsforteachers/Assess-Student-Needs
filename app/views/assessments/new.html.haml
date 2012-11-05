@@ -1,3 +1,2 @@
-- model_class = eval("#{ @assessment.type_helper }.new.class")
-%h1.page-header=t '.title', :default => t('helpers.titles.new', :model => model_class.model_name.human, :default => "New #{model_class.model_name.human}")
+%h1.page-header= assessment_display_type_name
 = render :partial => "form"

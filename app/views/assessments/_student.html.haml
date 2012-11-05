@@ -5,7 +5,8 @@
     %td{ class: ticks }
       = assessment_student.student.name
     %td{ class: ticks }
-      = assessment_student_f.text_field :notes
+      - if lesson?
+        = assessment_student_f.text_field :notes
       = assessment_student_f.select :score, 1..5, include_blank: true
     %td{ class: ticks }
       = assessment_student_f.submit 'Save'

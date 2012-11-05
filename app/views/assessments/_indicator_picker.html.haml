@@ -5,9 +5,9 @@
   = f.label :indicator_id, label: "Assessment Indicator"
 
   .controls
-    = f.select :level, (1..5).map{|l| ["Level #{ l }", l]}
-    = f.select :key, Indicator.grouped_strands
+    = f.select :level, (1..5).map{|l| ["Level #{ l }", l]}, {}, id: 'assessment_level'
+    = f.select :key, Indicator.grouped_strands, {}, id: 'assessment_key'
     = link_to 'Update indicator list', '#', remote: true, id: 'update_indicator_list'
   %p
   #indicator_list.controls
-    = f.select :indicator_id, Indicator.grouped_options
+    = f.select :indicator_id, Indicator.grouped_options, {}, id: 'assessment_indicator_id'

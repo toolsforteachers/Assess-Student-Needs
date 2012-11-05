@@ -16,8 +16,7 @@ class AssessmentsController < ProtectedController
 
   def update
     @assessment = Assessment.find(params[:id])
-
-    if @assessment.update_attributes(params[:assessment])
+    if @assessment.update_attributes(params[:lesson] || params[:teacher_judgement])
       redirect_to group_assessment_path(@group, @assessment), notice: 'Assessment was successfully updated.'
     else
       render action: "edit"

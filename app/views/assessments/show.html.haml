@@ -1,4 +1,4 @@
-%h1.page-header Lesson: #{ @assessment.name}
+%h1.page-header= assessment_display_type_name
 
 %dl.dl-horizontal
   %dt Group
@@ -30,7 +30,6 @@
 = link_to "Report View", group_assessment_path(@group, @assessment, mode: 'report')
 |
 = link_to "Edit Details & Students ", edit_group_assessment_path(@group, @assessment)
-
 
 
 %p
