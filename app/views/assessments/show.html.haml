@@ -1,14 +1,15 @@
 %h1.page-header= assessment_display_type_name
 
-%dl.dl-horizontal
+%dl#assessment_details.dl-horizontal
   %dt Group
   %dd= link_to @assessment.group.name, group_path(@assessment.group)
 
-  %dt Date
-  %dd= @assessment.lesson_datetime || '&nbsp;'.html_safe
+  - if lesson?
+    %dt Date
+    %dd= @assessment.lesson_datetime || '&nbsp;'.html_safe
 
-  %dt Objective
-  %dd= @assessment.name
+    %dt Objective
+    %dd= @assessment.name
 
 
 %dl.dl-horizontal

@@ -1,0 +1,17 @@
+%h3 Lessons
+%table.table.table-striped.table-bordered
+  %thead
+    %tr
+      %th Lesson Date
+      %th Objective
+      %th Level
+      %th Strand
+      %th Assessment Indicator
+  %tbody
+    - @group.lessons.each do |assessment|
+      %tr
+        %td= assessment.lesson_datetime
+        %td= link_to assessment.name, group_assessment_path(@group, assessment)
+        %td= assessment.indicator.level
+        %td= assessment.indicator.strand_name
+        %td= assessment.indicator.name if assessment.indicator

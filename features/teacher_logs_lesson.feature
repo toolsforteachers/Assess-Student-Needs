@@ -11,7 +11,8 @@ Feature: Teacher logs a lesson
       | 4     | Measuring stuff | MA3A_MEASURES |                     |
     And I add a lesson "Adding Up" for "Year 6A" with indicator "Adding up"
 
-  Scenario: fields to be displayed
+  Scenario: fields to be displayed (currently on show page)
+    Then I should see lesson specific fields
     When I follow "Edit Details"
     Then I should see lesson specific fields
 

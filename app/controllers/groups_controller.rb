@@ -12,9 +12,7 @@ class GroupsController < ProtectedController
   # GET /groups/1
   # GET /groups/1.json
   def show
-    @group = Group.find(params[:id])
-    @assessments = @group.assessments
-    @students = @group.students
+    @group = Group.find(params[:id], include: [:lessons, :teacher_judgements, :students => [:groups]])
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @group }

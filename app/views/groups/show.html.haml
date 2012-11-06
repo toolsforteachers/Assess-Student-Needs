@@ -1,19 +1,10 @@
 %h1.page-header= @group.name
-
-= render :partial => '/assessments/list'
+= link_to "Edit Group", edit_group_path(@group)
+|
 = link_to "Add Lesson", new_group_assessment_path(@group, type_helper: 'Lesson')
 |
 = link_to "Add Teacher Judgement", new_group_assessment_path(@group, type_helper: 'TeacherJudgement')
 %hr
-%table.table.table-striped
-  %thead
-    %tr
-      %th Students
-      %th
-  %tbody
-    - @students.each do |student|
-      %tr
-        %td= link_to student.name, student_path(student)
-        %td= render partial: 'students/actions', locals: { student: student }
-%hr
-= link_to "Edit Group", edit_group_path(@group)
+= render :partial => '/groups/lessons'
+= render :partial => '/groups/students'
+= render :partial => '/groups/teacher_judgements'
