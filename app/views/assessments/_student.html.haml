@@ -1,9 +1,14 @@
-- ticks = "ticks_#{ assessment_student.ticks }"
+- student = assessment_student.student
+- assessment_students = student.assessment_students.includes(:assessment).where(['assessments.indicator_id = ?', @assessment.indicator_id])
+- average = assessment_students.average(:score).to_i
+- attempts = assessment_students.where("assessments.type = 'Lesson'").where('score is not null')
+- judgements = assessment_students.where("assessments.type = 'TeacherJudgement'").where('score is not null')
 
+- ticks = "ticks_#{ average }"
 %tr{ id: "student_score_#{ assessment_student.student_id }"}
   = form_for assessment_student, remote: true do |assessment_student_f|
     %td{ class: ticks }
-      = assessment_student.student.name
+      = student.name
     %td{ class: ticks }
       - if lesson?
         = assessment_student_f.text_field :notes
@@ -11,11 +16,14 @@
     %td{ class: ticks }
       = assessment_student_f.submit 'Save'
     %td{ class: ticks }
-      this lesson ticks:
-      = assessment_student.ticks
-      |
-      ticks for all lessons:
-      0
-      |
-      manual ticks:
-      0
+      - attempts.each do |attempt|
+        .icon-ok
+          (#{ attempt.score })
+          = link_to attempt.assessment.lesson_datetime, group_assessment_path(@group, attempt.assessment)
+          &nbsp;
+
+      - judgements.each do |judgement|
+        %strong TJ
+        (#{ judgement.score })
+        = link_to judgement.assessment.created_at, group_assessment_path(@group, judgement.assessment)
+        &nbsp;

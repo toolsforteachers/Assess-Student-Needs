@@ -4,6 +4,8 @@ describe AssessmentStudent do
   it { should belong_to(:assessment) }
   it { should belong_to(:student) }
 
+  it 'should test the calculation of ticks / averages in /assessments/student'
+
   describe '.ticks' do
     let(:assessment_student) { Fabricate(:assessment_student, score: score) }
     subject { assessment_student.ticks }

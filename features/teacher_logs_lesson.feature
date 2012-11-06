@@ -32,19 +32,16 @@ Feature: Teacher logs a lesson
 
   Scenario: recording student scores
     When I record a score of 5 for "Ann"
-    Then I should see "Ann" has 4 ticks for "Adding up"
+    Then I should see "Ann" has 5 ticks for "Adding up"
 
     When I record a score of 3 for "Bob"
-    Then I should see "Bob" has 2 ticks for "Adding up"
-
-    When I record a score of 1 for "Clare"
-    Then I should see "Clare" has 0 ticks for "Adding up"
+    Then I should see "Bob" has 3 ticks for "Adding up"
 
   @javascript
   Scenario: recording student scores
     When I record a score of 5 for "Ann"
     And I wait 1 second
-    Then I should see "Ann" has 4 ticks for "Adding up"
+    Then I should see "Ann" has 5 ticks for "Adding up"
 
   @javascript
   Scenario: updating the indicator select menu and seeing values preset on the page
