@@ -46,7 +46,7 @@
         %th Score
         %th Note
       - @assessment_students.sort_by(&:ticks).each do |assessment_student|
-        - ticks = "ticks_#{ assessment_student.ticks }"
+        - ticks = "ticks_#{ raise "DO report view ticks" }"
         %tr
           %td{ class: ticks }= link_to assessment_student.student.name, student_path(assessment_student.student)
           %td{ class: ticks }= assessment_student.ticks
@@ -58,7 +58,6 @@
       %tr
         %th Student
         %th Notes / Score
-        %th
         %th Accomplishment
       - @assessment_students.sort{|ls| ls.student.name <=> ls.student.name }.each do |assessment_student|
         = render :partial => 'student', locals: { assessment_student: assessment_student }

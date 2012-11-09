@@ -7,3 +7,6 @@ jQuery ->
     key = $('#assessment_key option:selected').val()
     target = "/indicators?level=#{ level }&key=#{ key }"
     $('#update_indicator_list').attr('href', target)
+
+  $('.indicator_score').live 'click', ->
+    $(this).parents("form").submit()

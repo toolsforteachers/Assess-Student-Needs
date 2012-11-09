@@ -11,14 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121109105239) do
+ActiveRecord::Schema.define(:version => 20121109170956) do
 
   create_table "assessment_students", :force => true do |t|
     t.integer  "assessment_id"
     t.integer  "student_id"
-    t.datetime "created_at",                   :null => false
-    t.datetime "updated_at",                   :null => false
-    t.integer  "score"
+    t.datetime "created_at",                                  :null => false
+    t.datetime "updated_at",                                  :null => false
+    t.integer  "score",                        :default => 0
     t.string   "notes",         :limit => 500
   end
 

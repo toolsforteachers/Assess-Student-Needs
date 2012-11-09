@@ -1,29 +1,33 @@
 - student = assessment_student.student
-- assessment_students = student.assessment_students.includes(:assessment).where(['assessments.indicator_id = ?', @assessment.indicator_id])
+- assessment_students = student.assessment_students.includes(:assessment).where(['assessments.indicator_id = ? and score > 0', @assessment.indicator_id])
 - average = assessment_students.average(:score).to_i
-- attempts = assessment_students.where("assessments.type = 'Lesson'").where('score is not null')
-- judgements = assessment_students.where("assessments.type = 'TeacherJudgement'").where('score is not null')
+- attempts = assessment_students.where("assessments.type = 'Lesson'").where('score > 0')
+- judgements = assessment_students.where("assessments.type = 'TeacherJudgement'").where('score > 0')
 
 - ticks = "ticks_#{ average }"
 %tr{ id: "student_score_#{ assessment_student.student_id }"}
-  = form_for assessment_student, remote: true do |assessment_student_f|
-    %td{ class: ticks }
-      = student.name
-    %td{ class: ticks }
+
+  %td{ class: ticks }
+    = student.name
+  %td{ class: ticks }
+    = form_for assessment_student, remote: true, html: { class: 'form-inline' } do |assessment_student_f|
+      - 0.upto(5) do |i|
+        .indicator_score
+          %label.radio
+            = assessment_student_f.radio_button :score, i
+            = i == 0 ? "n/a" : i
       - if lesson?
         = assessment_student_f.text_field :notes
-      = assessment_student_f.select :score, 1..5, include_blank: true
-    %td{ class: ticks }
-      = assessment_student_f.submit 'Save'
-    %td{ class: ticks }
-      - attempts.each do |attempt|
-        .icon-ok
-          (#{ attempt.score })
-          = link_to attempt.assessment.lesson_datetime, group_assessment_path(@group, attempt.assessment)
-          &nbsp;
-
-      - judgements.each do |judgement|
-        %strong TJ
-        (#{ judgement.score })
-        = link_to judgement.assessment.created_at, group_assessment_path(@group, judgement.assessment)
+        = assessment_student_f.submit 'Save', class: 'btn'
+  %td{ class: ticks }
+    - attempts.each do |attempt|
+      .icon-ok
+        (#{ attempt.score })
+        = link_to attempt.assessment.lesson_datetime, group_assessment_path(@group, attempt.assessment)
         &nbsp;
+
+    - judgements.each do |judgement|
+      %strong TJ
+      (#{ judgement.score })
+      = link_to judgement.assessment.created_at, group_assessment_path(@group, judgement.assessment)
+      &nbsp;

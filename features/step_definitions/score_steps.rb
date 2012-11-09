@@ -1,7 +1,7 @@
 When /^I record a score of (\d+) for "([^"]*)"$/ do |score, student_name|
   student = Student.find_by_name(student_name)
   within(:css, "tr#student_score_#{ student.id }") do
-    select(score, from: 'assessment_student_score')
+    choose("assessment_student_score_#{ score }")
     fill_in('assessment_student_notes', with: 'A note')
     click_button("Save")
   end

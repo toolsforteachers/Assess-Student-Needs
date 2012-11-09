@@ -2,15 +2,21 @@ select#assessment_student_score { width:50px; }
 textarea#assessment_name { width: 400px; height: 60px;}
 select#assessment_indicator_id { width: 700px; }
 select#assessment_strand { width: 350px; }
-.ticks_0 { background-color: #fff; }
-.ticks_1 { background-color: #FFFF00; }
-.table tbody tr:hover td.ticks_1 { background-color: #FFFF00; }
-.ticks_2 { background-color: #FF8C00; color: #fff; }
-.ticks_2 a { background-color: #FF8C00; color: #fff; }
-.table tbody tr:hover td.ticks_2 { background-color: #FF8C00; }
-.ticks_3 { background-color: #8B0000; color: #fff; }
-.ticks_3 a { background-color: #8B0000; color: #fff; }
-.table tbody tr:hover td.ticks_3 { background-color: #8B0000; }
-.ticks_4 { background-color: #228B22; color: #fff; }
-.ticks_4 a { background-color: #228B22; color: #fff; }
-.table tbody tr:hover td.ticks_4 { background-color: #228B22; }
+.ticks_0 { background-color: #C0C0C0; }
+.ticks_1 { background-color: #FFF; }
+.table tbody tr:hover td.ticks_1 { background-color: #FFF; }
+.ticks_2 { background-color: #FFFF00; }
+.table tbody tr:hover td.ticks_2 { background-color: #FFFF00; }
+.ticks_3 { background-color: #FF8C00; color: #fff; }
+.ticks_3 a { background-color: #FF8C00; color: #fff; }
+.table tbody tr:hover td.ticks_3 { background-color: #FF8C00; }
+.ticks_4 { background-color: #8B0000; color: #fff; }
+.ticks_4 a { background-color: #8B0000; color: #fff; }
+.table tbody tr:hover td.ticks_4 { background-color: #8B0000; }
+.ticks_5 { background-color: #228B22; color: #fff; }
+.ticks_5 a { background-color: #228B22; color: #fff; }
+.table tbody tr:hover td.ticks_5 { background-color: #228B22; }
+
+#assessment_student_notes { margin-left: 30px; }
+.indicator_score { display: inline; margin-right: 4px;}
+.indicator_score label {}
