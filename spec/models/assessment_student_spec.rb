@@ -4,20 +4,18 @@ describe AssessmentStudent do
   it { should belong_to(:assessment) }
   it { should belong_to(:student) }
 
-  it 'should test the calculation of ticks / averages in /assessments/student'
+  describe '.lesson?' do
+    let(:assessment_student) { Fabricate(:assessment_student, assessment: assessment) }
+    subject { assessment_student.lesson? }
 
-  describe '.ticks' do
-    let(:assessment_student) { Fabricate(:assessment_student, score: score) }
-    subject { assessment_student.ticks }
-
-    context 'without a score' do
-      let(:score) { nil }
-      it { should eql(0) }
+    context 'true' do
+      let(:assessment) { Fabricate(:lesson) }
+      it { should be_true }
     end
 
-    context 'with a score' do
-      let(:score) { 3 }
-      it { should eql(2) }
+    context 'false' do
+      let(:assessment) { Fabricate(:teacher_judgement) }
+      it { should be_false }
     end
   end
 end

@@ -1,10 +1,5 @@
 - student = assessment_student.student
-- assessment_students = student.assessment_students.includes(:assessment).where(['assessments.indicator_id = ? and score > 0', @assessment.indicator_id])
-- average = assessment_students.average(:score).to_i
-- attempts = assessment_students.where("assessments.type = 'Lesson'").where('score > 0')
-- judgements = assessment_students.where("assessments.type = 'TeacherJudgement'").where('score > 0')
-
-- ticks = "ticks_#{ average }"
+- ticks = "ticks_#{ student.indicator_score(@assessment.indicator) }"
 %tr{ id: "student_score_#{ assessment_student.student_id }"}
 
   %td{ class: ticks }
@@ -20,14 +15,5 @@
         = assessment_student_f.text_field :notes
         = assessment_student_f.submit 'Save', class: 'btn'
   %td{ class: ticks }
-    - attempts.each do |attempt|
-      .icon-star
-        (#{ attempt.score })
-        = link_to attempt.assessment.lesson_datetime, group_assessment_path(@group, attempt.assessment)
-        &nbsp;
-
-    - judgements.each do |judgement|
-      .icon-star-empty
-      (#{ judgement.score })
-      = link_to "TJ", group_assessment_path(@group, judgement.assessment)
-      &nbsp;
+    - student.indicator_assessments(@assessment.indicator).each do |attempt|
+      = render partial: "/assessment_students/attempt", locals: { attempt: attempt }

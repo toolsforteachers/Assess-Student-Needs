@@ -7,7 +7,7 @@ class AssessmentsController < ProtectedController
 
   def show
     @assessment = Assessment.find(params[:id])
-    @assessment_students = @assessment.assessment_students.order('students.name').includes(:student)
+    @assessment_students = @assessment.assessment_students.order('students.name').includes(:student => [:assessment_students => [:assessment]])
   end
 
   def edit
