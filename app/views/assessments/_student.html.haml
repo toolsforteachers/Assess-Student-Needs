@@ -3,7 +3,7 @@
 %tr{ id: "student_score_#{ assessment_student.student_id }"}
 
   %td{ class: ticks }
-    = student.name
+    = link_to student.name, student_path(student)
   %td{ class: ticks }
     = form_for assessment_student, remote: true, html: { class: 'form-inline' } do |assessment_student_f|
       - 0.upto(5) do |i|

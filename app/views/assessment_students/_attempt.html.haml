@@ -1,9 +1,10 @@
+- group = @group || attempt.assessment.group
 - if attempt.lesson?
   .icon-star
     (#{ attempt.score })
-    = link_to "L", group_assessment_path(@group, attempt.assessment)
+    = link_to "L", group_assessment_path(group, attempt.assessment)
 - else
   .icon-star-empty
     (#{ attempt.score })
-    = link_to "TJ", group_assessment_path(@group, attempt.assessment)
+    = link_to "TJ", group_assessment_path(group, attempt.assessment)
 &nbsp;

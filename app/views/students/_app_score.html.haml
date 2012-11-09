@@ -1,3 +1,7 @@
 %blockquote
-  %p.indicators{ class: "ticks_#{ Random.new.rand(0..5) }"}= indicator.name
+  %p.indicators{ class: "ticks_#{ @student.indicator_score(indicator) }"}
+    = indicator.name
   = indicator.description.split("_").compact.join("<br/>-").html_safe
+  %br
+  - @student.indicator_assessments(indicator).each do |attempt|
+    = render partial: "/assessment_students/attempt", locals: { attempt: attempt }

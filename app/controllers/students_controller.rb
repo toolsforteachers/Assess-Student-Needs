@@ -8,7 +8,7 @@ class StudentsController < ProtectedController
   end
 
   def show
-    @student = Student.find(params[:id])
+    @student = Student.find(params[:id], include: [:assessment_students => [:assessment]])
     @level = (params[:level] || 1).to_i
   end
 
