@@ -10,7 +10,9 @@
 
     %dt Objective
     %dd= @assessment.name
-
+  - else
+    %dt Notes
+    %dd= @assessment.notes
 
 %dl.dl-horizontal
   %dt Level

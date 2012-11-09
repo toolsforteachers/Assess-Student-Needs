@@ -71,9 +71,11 @@ Then /^I should( not)? see lesson specific fields$/ do |negate|
     if negate
       text.should_not have_content('Date')
       text.should_not have_content('Objective')
+      text.should have_content('Notes')
     else
       text.should have_content('Date')
       text.should have_content('Objective')
+      text.should_not have_content('Notes')
     end
   end
 end

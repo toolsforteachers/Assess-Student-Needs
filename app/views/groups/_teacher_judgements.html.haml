@@ -3,6 +3,7 @@
   %thead
     %tr
       %th Date Added
+      %th Notes
       %th Level
       %th Strand
       %th Assessment Indicator
@@ -10,6 +11,7 @@
     - @group.teacher_judgements.each do |assessment|
       %tr
         %td= link_to assessment.created_at, group_assessment_path(@group, assessment)
+        %td= assessment.notes
         %td= assessment.indicator.level
         %td= assessment.indicator.strand_name
         %td= assessment.indicator.name if assessment.indicator
