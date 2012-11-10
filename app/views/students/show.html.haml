@@ -5,7 +5,7 @@
     %li{ class: "#{ 'active' if @level.to_i == i }"}
       = link_to "Level #{ i }", student_path(@student, level: i)
 
-#app_grid{ class: "#{ 'completed' if @student.prior_knowledge_level >= @level }" }
+#app_grid{ class: "#{ 'completed' if @student.prior_knowledge_level.to_i >= @level }" }
   %h3.center Using and applying
   %table#MA1.table.table-bordered
     %tr
