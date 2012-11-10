@@ -55,3 +55,8 @@ Feature: Teacher logs a lesson
     Then I should see "Level 1" for "#assessment_level"
     And I should see "Measures" for "#assessment_key"
     And I should see "Measuring stuff" for "#assessment_indicator_id"
+
+  Scenario: report view
+    When I record a score of 5 for "Ann"
+    And I follow "Report View"
+    Then I should see "Ann" has 5 ticks for "Adding up"
