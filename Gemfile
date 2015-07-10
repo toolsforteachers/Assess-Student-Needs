@@ -18,6 +18,7 @@ gem 'simple_form'
 
 gem 'quiet_assets', group: :development
 gem "rspec-rails", :group => [:development, :test]
+gem 'rspec-activemodel-mocks', :group => [:test]
 gem "pry", :group => [:development, :test]
 gem "email_spec", :group => :test
 gem "cucumber-rails", :group => :test, require: false
