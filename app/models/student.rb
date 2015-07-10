@@ -7,7 +7,7 @@ class Student < ActiveRecord::Base
   validates_uniqueness_of :name
   validates :prior_knowledge_level, numericality: { less_than: 5 }, allow_nil: true
 
-  default_scope order('name asc')
+  default_scope { order('name asc') }
 
   def current_level
     cl = assessments.map(&:indicator).map(&:level).max || 1

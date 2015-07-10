@@ -5,5 +5,5 @@ class Group < ActiveRecord::Base
   has_many :lessons
   has_many :teacher_judgements
   validates_uniqueness_of :name
-  default_scope order('name')
+  default_scope { order('name') }
 end
