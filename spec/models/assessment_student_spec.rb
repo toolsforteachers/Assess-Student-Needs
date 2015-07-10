@@ -10,12 +10,12 @@ describe AssessmentStudent do
 
     context 'true' do
       let(:assessment) { Fabricate(:lesson) }
-      it { should be_true }
+      it { should be true }
     end
 
     context 'false' do
       let(:assessment) { Fabricate(:teacher_judgement) }
-      it { should be_false }
+      it { should be false }
     end
   end
 end

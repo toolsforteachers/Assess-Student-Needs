@@ -14,10 +14,10 @@ describe Lesson do
 
   describe '#create' do
     subject { Fabricate(:lesson, group: group) }
+    let(:group) { Fabricate(:group, students: [Fabricate(:student), Fabricate(:student)] ) }
 
-    context 'when there is a group of students' do
-       let(:group) { Fabricate(:group, students: [Fabricate(:student), Fabricate(:student)] ) }
-      it { should have(2).assessment_students }
+    it 'when there is a group of students' do
+      expect(subject.assessment_students.length).to eql(2)
     end
   end
 end
