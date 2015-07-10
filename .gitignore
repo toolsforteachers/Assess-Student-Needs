@@ -17,3 +17,5 @@
 .rvmrc
 
 /config/database.yml
+
+.ruby-version
