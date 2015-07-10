@@ -250,6 +250,3 @@ DEPENDENCIES
   thin
   twitter-bootstrap-rails
   uglifier
-
-BUNDLED WITH
-   1.10.5
