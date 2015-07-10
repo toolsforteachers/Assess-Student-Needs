@@ -1,12 +1,13 @@
 source 'https://rubygems.org'
-gem 'rails', '3.2.6'
+ruby '2.1.2'
+gem 'rails', '4.2.3'
 gem 'pg'
 gem 'thin'
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
-  gem 'uglifier', '>= 1.0.3'
-  gem 'twitter-bootstrap-rails', '2.1.0'
+  gem 'sass-rails'
+  gem 'coffee-rails'
+  gem 'uglifier'
+  gem 'twitter-bootstrap-rails'
 end
 gem 'fabrication'
 gem 'haml-rails'
@@ -16,12 +17,12 @@ gem "bootstrap-datepicker-rails"
 gem 'simple_form'
 
 gem 'quiet_assets', group: :development
-gem "rspec-rails", ">= 2.9.0.rc2", :group => [:development, :test]
+gem "rspec-rails", :group => [:development, :test]
 gem "pry", :group => [:development, :test]
-gem "email_spec", ">= 1.2.1", :group => :test
-gem "cucumber-rails", ">= 1.3.0", :group => :test, require: false
-gem "capybara", ">= 1.1.2", :group => :test
+gem "email_spec", :group => :test
+gem "cucumber-rails", :group => :test, require: false
+gem "capybara", :group => :test
 gem "launchy", :group => :test
-gem "database_cleaner", ">= 0.7.2", :group => :test
+gem "database_cleaner", :group => :test
 gem 'shoulda-matchers', :group => :test
 gem 'faker', :group => :test
