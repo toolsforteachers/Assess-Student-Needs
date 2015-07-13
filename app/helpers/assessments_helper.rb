@@ -4,6 +4,6 @@ module AssessmentsHelper
   end
 
   def assessment_display_type_name
-    lesson? ? "Lesson#{ ' : ' + @assessment.name unless @assessment.new_record? }" : 'Teacher Judgement'
+    lesson? ? "Lesson#{ ' : ' + (@assessment.name || '') }" : 'Teacher Judgement'
   end
 end
