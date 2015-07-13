@@ -1,20 +1,11 @@
 development:
   database: acn_development
   adapter: postgresql
-  pool: 5
-  timeout: 5000
-  min_messages: warning
-  username: dev
-  password: password
+  host: localhost
 
 test: &test
-  database: acn_test<%=ENV['TEST_ENV_NUMBER']%>
+  database: acn_test
   adapter: postgresql
-  pool: 5
-  timeout: 5000
-  min_messages: warning
-  username: dev
-  password: password
-
+  host: localhost
 cucumber:
   <<: *test
