@@ -16,7 +16,8 @@ class AssessmentsController < ProtectedController
 
   def update
     @assessment = Assessment.find(params[:id])
-    if @assessment.update_attributes(params[:lesson] || params[:teacher_judgement])
+
+    if @assessment.update_attributes(sti_params)
       redirect_to group_assessment_path(@group, @assessment), notice: 'Assessment was successfully updated.'
     else
       render action: "edit"
@@ -40,6 +41,24 @@ class AssessmentsController < ProtectedController
   end
 
   def assessment_params
-    params.require(:assessment).permit(:type_helper, :group_id, :notes, :level, :key, :indicator_id)
+    params.require(:assessment).permit(sti_param_attributes)
+  end
+
+  def sti_params
+    return lesson_params if params[:lesson]
+    return teacher_judgement_params if params[:teacher_judgement]
+  end
+
+  def sti_param_attributes
+    [:type_helper, :group_id, :name, :notes, :level,
+      :key, :simple_lesson_date, :indicator_id, student_ids: []]
+  end
+
+  def teacher_judgement_params
+    params.require(:teacher_judgement).permit(sti_param_attributes)
+  end
+
+  def lesson_params
+    params.require(:lesson).permit(sti_param_attributes)
   end
 end
