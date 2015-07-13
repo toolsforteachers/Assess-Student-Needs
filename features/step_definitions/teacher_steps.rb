@@ -3,7 +3,7 @@ Given /^I am the teacher$/ do
   visit '/teachers/sign_in'
   fill_in "teacher_email", :with => @teacher.email
   fill_in "teacher_password", :with => @teacher.password
-  click_button "Sign in"
+  click_button "Log in"
 end
 
 Given /^I am the teacher of "([^"]*)" with students "([^"]*)"$/ do |group_name, student_names|
