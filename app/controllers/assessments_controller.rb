@@ -24,7 +24,7 @@ class AssessmentsController < ProtectedController
   end
 
   def create
-    @assessment = Assessment.new(params[:assessment])
+    @assessment = Assessment.new(assessment_params)
     @assessment.teacher = current_teacher
 
     if @assessment.save
@@ -37,5 +37,9 @@ class AssessmentsController < ProtectedController
   protected
   def load_group
     @group = Group.find(params[:group_id])
+  end
+
+  def assessment_params
+    params.require(:assessment).permit(:type_helper, :group_id, :notes, :level, :key, :indicator_id)
   end
 end
