@@ -27,3 +27,4 @@ gem "launchy", :group => :test
 gem "database_cleaner", :group => :test
 gem 'shoulda-matchers', :group => :test
 gem 'faker', :group => :test
+gem 'railroady', :group => [:development, :test]
