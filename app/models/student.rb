@@ -18,6 +18,7 @@ class Student < ActiveRecord::Base
     assessment_students.includes(:assessment)
       .where(['assessments.indicator_id = ? and score > 0', indicator.id])
       .order('assessment_students.created_at desc')
+      .references(:assessment)
   end
 
   def indicator_score(indicator)
