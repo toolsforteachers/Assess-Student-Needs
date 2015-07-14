@@ -24,7 +24,7 @@ class StudentsController < ProtectedController
 
   def update
     @student = Student.find(params[:id])
-    if @student.update_attributes(params[:student])
+    if @student.update_attributes(student_params)
       redirect_to students_path, notice: 'Student was successfully updated.'
     else
       render action: 'edit'
@@ -32,11 +32,17 @@ class StudentsController < ProtectedController
   end
 
   def create
-    @student = Student.new(params[:student])
+    @student = Student.new(student_params)
     if @student.save
       redirect_to students_path, notice: 'Student was successfully created.'
     else
       render action: "new"
     end
+  end
+
+  private
+
+  def student_params
+    params.require(:student).permit(:name, :prior_knowledge_level, group_ids: [])
   end
 end
