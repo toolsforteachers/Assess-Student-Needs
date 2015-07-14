@@ -14,6 +14,7 @@ gem 'devise'
 gem "bootstrap-datepicker-rails"
 gem 'simple_form'
 gem 'rails_12factor'
+gem 'puma'
 
 gem 'quiet_assets', group: :development
 gem "rspec-rails", :group => [:development, :test]
