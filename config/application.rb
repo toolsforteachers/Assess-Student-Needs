@@ -52,7 +52,7 @@ module Acn
 
     # Enable the asset pipeline
     config.assets.enabled = true
-    config.serve_static_assets = true
+    config.serve_static_files = true
     config.assets.version = '1.1'
   end
 end
