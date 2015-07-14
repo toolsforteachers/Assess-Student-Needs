@@ -29,7 +29,9 @@ When /^I add "([^"]*)" to the lesson "([^"]*)"$/ do |student_name, lesson_name|
   click_link('New Student')
   fill_in('Name', with: student_name)
   click_button('Create Student')
-  click_link(group.name)
+  within('ul.navbar-nav') do
+    click_link(group.name)
+  end
   click_link(lesson_name)
   click_link("Edit Details")
   fill_in('Objective', with: lesson_name)
