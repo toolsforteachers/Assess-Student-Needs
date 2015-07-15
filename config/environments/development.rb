@@ -6,7 +6,7 @@ Acn::Application.configure do
   # since you don't have to restart the web server when you make code changes.
   config.cache_classes = false
 
-  # RAILS 4.2 upgrader
+  # RAILS 4.2 upgrade
   config.eager_load = false
   config.active_record.migration_error = :page_load
 
