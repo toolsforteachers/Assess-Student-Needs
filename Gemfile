@@ -6,15 +6,16 @@ gem 'thin'
 gem 'sass-rails'
 gem 'coffee-rails'
 gem 'uglifier'
-gem 'twitter-bootstrap-rails'
 gem 'fabrication'
 gem 'haml-rails'
 gem 'jquery-rails'
 gem 'devise'
-gem "bootstrap-datepicker-rails"
 gem 'simple_form'
 gem 'rails_12factor'
 gem 'puma'
+gem 'therubyracer'
+gem 'twitter-bootswatch-rails'
+gem 'twitter-bootswatch-rails-helpers'
 
 gem 'quiet_assets', group: :development
 gem "rspec-rails", :group => [:development, :test]
