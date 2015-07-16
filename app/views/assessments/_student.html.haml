@@ -13,7 +13,7 @@
             = i == 0 ? "n/a" : i
       - if lesson?
         = assessment_student_f.text_field :notes
-        = assessment_student_f.submit 'Save', class: 'btn'
+      = assessment_student_f.submit 'Save', class: 'btn'
   %td{ class: ticks }
     - student.indicator_assessments(@assessment.indicator).each do |attempt|
       = render partial: "/assessment_students/attempt", locals: { attempt: attempt }

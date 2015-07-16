@@ -20,3 +20,9 @@ Scenario: updating the indicator select menu and seeing values preset on the pag
   And I choose "Measuring stuff" from the indicator list
   And I press "Update"
   Then I should see "Measuring stuff" for ".indicator_name"
+
+@javascript
+Scenario: recording student scores
+  When I record a teacher judgement of 5 for "Ann"
+  And I wait 1 second
+  Then I should see "Ann" has 5 ticks for "Adding up"
