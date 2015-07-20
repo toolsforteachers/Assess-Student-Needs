@@ -24,12 +24,14 @@
         .navbar-collapse.collapse.navbar-responsive-collapse
           - if current_teacher
             %ul.nav.navbar-nav
-              %li
-              - Group.all.each do |group|
-                - if group == @group
-                  %li.active= link_to group.name, group_path(group)
-                - else
-                  %li= link_to group.name, group_path(group)
+              %li.dropdown
+                = link_to "#", { class: 'dropdown-toggle', data: { toggle: 'dropdown' } } do
+                  My Classes
+                  %span.caret
+                %ul.dropdown-menu.teacher-groups
+                  - Group.all.each do |group|
+                    %li
+                      = link_to group.name, group
           %p.navbar-text.pull-right
             - if current_teacher
               = current_teacher.email
