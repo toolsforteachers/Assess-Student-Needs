@@ -24,10 +24,16 @@
         .navbar-collapse.collapse.navbar-responsive-collapse
           = render partial: 'layouts/navigation'
     .container
-      .row
-        .col-lg-9
-          = bootstrap_flash
-          = yield
+      .bs-docs-section.clearfix
+        .row
+          .col-lg-9
+            = bootstrap_flash
+            .page-header
+              .row
+                .col-lg-9
+                  - if @page_header
+                    %h1= @page_header
+            = yield
       %footer
         %p &copy; Snap Lab Limited 2015
 

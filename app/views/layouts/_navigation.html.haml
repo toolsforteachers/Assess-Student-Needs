@@ -20,10 +20,6 @@
           = link_to '+ Class', new_group_path
         %li
           = link_to '+ Student', new_student_path
-%p.navbar-text.pull-right
-  - if current_teacher
-    = current_teacher.email
-    |
-    = link_to "Sign out", destroy_teacher_session_path, :method => :delete
-  - else
-    = link_to "Sign in", new_teacher_session_path
+  %ul.nav.navbar-nav.navbar-right
+    %li= link_to current_teacher.email, '#'
+    %li= link_to "Sign out", destroy_teacher_session_path, :method => :delete
