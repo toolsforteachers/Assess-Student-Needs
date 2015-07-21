@@ -1,11 +1,11 @@
 Given /^I add a group named "(.*?)" with two students$/ do |group_name|
   Student.create name: 'Ann'
   Student.create name: 'Bob'
-  click_link "New Group"
+  click_link "New Class"
   fill_in 'Name', with: group_name
-  check("An")
+  check("Ann")
   check("Bob")
-  click_button "Create Group"
+  click_button "Save"
 end
 
 When(/^I choose "(.*?)" from the groups dropdown$/) do |group_name|

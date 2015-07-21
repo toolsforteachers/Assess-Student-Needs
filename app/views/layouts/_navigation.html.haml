@@ -8,6 +8,13 @@
         - Group.all.each do |group|
           %li
             = link_to group.name, group
+    %li.dropdown
+      = link_to "#", { class: 'dropdown-toggle', data: { toggle: 'dropdown' } } do
+        Settings
+        %span.caret
+      %ul.dropdown-menu.settings
+        %li
+          = link_to 'New Class', new_group_path
 %p.navbar-text.pull-right
   - if current_teacher
     = current_teacher.email
