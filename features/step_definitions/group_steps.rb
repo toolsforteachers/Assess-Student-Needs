@@ -1,7 +1,7 @@
 Given /^I add a group named "(.*?)" with two students$/ do |group_name|
   Student.create name: 'Ann'
   Student.create name: 'Bob'
-  click_link "New Class"
+  click_link "+ Class"
   fill_in 'Name', with: group_name
   check("Ann")
   check("Bob")
@@ -9,7 +9,7 @@ Given /^I add a group named "(.*?)" with two students$/ do |group_name|
 end
 
 When(/^I choose "(.*?)" from the groups dropdown$/) do |group_name|
-  within(:css, 'ul.teacher-groups > li') do
+  within(:css, 'ul.teacher-groups') do
     click_link(group_name)
   end
 end
