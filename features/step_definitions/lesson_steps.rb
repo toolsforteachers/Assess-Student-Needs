@@ -1,6 +1,6 @@
 Given /^I add a lesson "([^"]*)" for "([^"]*)" with indicator "([^"]*)"$/ do |lesson_name, group_name, indicator|
-  visit group_path(Group.find_by(name: group_name))
-  click_link "Add Lesson"
+  group = Group.find_by(name: group_name)
+  visit new_group_assessment_path(group, type_helper: 'Lesson')
   step %(I should see lesson specific fields)
   select(indicator, from: 'Assessment Indicator')
   fill_in('Objective', with: lesson_name)
@@ -28,7 +28,7 @@ When /^I add "([^"]*)" to the lesson "([^"]*)"$/ do |student_name, lesson_name|
   click_link('+ Student')
   fill_in('Name', with: student_name)
   click_button('Create Student')
-  within('ul.navbar-nav') do
+  within('ul.teacher-groups') do
     click_link(group.name)
   end
   click_link(lesson_name)
@@ -60,11 +60,11 @@ end
 Then /^I should( not)? see lesson specific fields$/ do |negate|
   within(:css, '.page-header') do
     if negate
-      text.should have_content('Judgement')
-      text.should_not have_content('Lesson')
+      text.should have_content('judgement')
+      text.should_not have_content('lesson')
     else
-      text.should_not have_content('Judgement')
-      text.should have_content('Lesson')
+      text.should_not have_content('judgement')
+      text.should have_content('lesson')
     end
   end
 

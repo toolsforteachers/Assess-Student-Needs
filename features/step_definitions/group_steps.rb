@@ -23,3 +23,15 @@ Then(/^I should see "(.*?)" in the list of students$/) do |list_of_student_names
     page.should have_css('tr.student', text: student_name)
   end
 end
+
+When(/^I the follow the add lesson link$/) do
+  within(:css, 'li.add-lesson') do
+    click_link('Lesson')
+  end
+end
+
+When(/^I follow the teacher judgement link$/) do
+  within(:css, 'li.add-judgement') do
+    click_link('Teacher judgement')
+  end
+end

@@ -1,10 +1,35 @@
 %h1.page-header= @group.name
-= link_to "Edit Group", edit_group_path(@group)
-|
-= link_to "Add Lesson", new_group_assessment_path(@group, type_helper: 'Lesson')
-|
-= link_to "Add Teacher Judgement", new_group_assessment_path(@group, type_helper: 'TeacherJudgement')
-%hr
-= render :partial => '/groups/lessons'
-= render :partial => '/groups/students'
-= render :partial => '/groups/teacher_judgements'
+%ul.nav.nav-tabs
+  %li.active
+    = link_to '#students', { data: { toggle: 'tab' } } do
+      Students
+  %li
+    = link_to '#lessons', { data: { toggle: 'tab' } } do
+      Lessons
+  %li
+    = link_to '#judgements', { data: { toggle: 'tab' } } do
+      Teacher judgements
+  %li.dropdown
+    = link_to "#", { class: 'dropdown-toggle', data: { toggle: 'dropdown' } } do
+      Actions
+      %span.caret
+    %ul.dropdown-menu
+      %li.add-lesson
+        = link_to new_group_assessment_path(@group, type_helper: 'Lesson') do
+          .span.glyphicon.glyphicon-plus
+          Lesson
+      %li.add-judgement
+        = link_to new_group_assessment_path(@group, type_helper: 'TeacherJudgement') do
+          .span.glyphicon.glyphicon-plus
+          Teacher judgement
+
+      %li.edit-group
+        = link_to edit_group_path(@group) do
+          .span.glyphicon.glyphicon-cog
+          Edit class
+
+
+.tab-content
+  #students.tab-pane.active= render partial: '/groups/students'
+  #lessons.tab-pane= render partial: '/groups/lessons'
+  #judgements.tab-pane= render partial: '/groups/teacher_judgements'

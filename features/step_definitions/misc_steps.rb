@@ -13,3 +13,9 @@ end
 When /^I press "(.*?)"$/ do |button_name|
   click_button button_name
 end
+
+Then(/^I should see the page header "(.*?)"$/) do |page_header|
+  within(:css, '.page-header') do
+    page.should have_text(page_header)
+  end
+end

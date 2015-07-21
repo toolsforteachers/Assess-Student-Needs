@@ -1,0 +1,7 @@
+%h1.page-header= @group.name
+= link_to "Edit Group", edit_group_path(@group)
+|
+= link_to "Add Lesson", new_group_assessment_path(@group, type_helper: 'Lesson')
+|
+= link_to "Add Teacher Judgement", new_group_assessment_path(@group, type_helper: 'TeacherJudgement')
+%hr
