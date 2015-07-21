@@ -27,12 +27,16 @@
       .bs-docs-section.clearfix
         .row
           .col-lg-9
-            = bootstrap_flash
             .page-header
               .row
                 .col-lg-9
                   - if @page_header
                     %h1= @page_header
+
+        .row
+          .col-lg-9
+
+            = bootstrap_flash
             = yield
 
       %footer
