@@ -8,8 +8,7 @@
         - Group.all.each do |group|
           %li
             = link_to group.name, group
-        %li
-          = link_to '-------------', '#'
+        %li.divider
         %li
           = link_to 'All students', students_path
     %li.dropdown
