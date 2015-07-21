@@ -25,7 +25,9 @@ end
 When /^I add "([^"]*)" to the lesson "([^"]*)"$/ do |student_name, lesson_name|
   assessment = Assessment.find_by_name(lesson_name)
   group = assessment.group
-  click_link('+ Student')
+  within('ul.settings') do
+    click_link('Student')
+  end
   fill_in('Name', with: student_name)
   click_button('Create Student')
   within('ul.teacher-groups') do

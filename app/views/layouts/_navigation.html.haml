@@ -17,9 +17,13 @@
         %span.caret
       %ul.dropdown-menu.settings
         %li
-          = link_to '+ Class', new_group_path
+          = link_to new_group_path do
+            .span.glyphicon.glyphicon-plus
+            Class
         %li
-          = link_to '+ Student', new_student_path
+          = link_to new_student_path do
+            .span.glyphicon.glyphicon-plus
+            Student
   %ul.nav.navbar-nav.navbar-right
     %li= link_to current_teacher.email, '#'
     %li= link_to "Sign out", destroy_teacher_session_path, :method => :delete

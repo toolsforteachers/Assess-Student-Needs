@@ -1,7 +1,9 @@
 Given /^I add a group named "(.*?)" with two students$/ do |group_name|
   Student.create name: 'Ann'
   Student.create name: 'Bob'
-  click_link "+ Class"
+  within('ul.settings') do
+    click_link "Class"
+  end
   fill_in 'Name', with: group_name
   check("Ann")
   check("Bob")
