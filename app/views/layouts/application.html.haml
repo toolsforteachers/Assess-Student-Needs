@@ -22,22 +22,7 @@
           %span.icon-bar
         %a.navbar-brand(href="/") Tools for Teachers
         .navbar-collapse.collapse.navbar-responsive-collapse
-          - if current_teacher
-            %ul.nav.navbar-nav
-              %li.dropdown
-                = link_to "#", { class: 'dropdown-toggle', data: { toggle: 'dropdown' } } do
-                  My Classes
-                  %span.caret
-                %ul.dropdown-menu.teacher-groups
-                  - Group.all.each do |group|
-                    %li
-                      = link_to group.name, group
-          %p.navbar-text.pull-right
-            - if current_teacher
-              = current_teacher.email
-              = link_to "Sign out", destroy_teacher_session_path, :method => :delete
-            - else
-              = link_to "Sign in", new_teacher_session_path
+          = render partial: 'layouts/navigation'
     .container
       .row
         .col-lg-9

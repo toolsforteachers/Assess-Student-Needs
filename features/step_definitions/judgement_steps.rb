@@ -1,5 +1,5 @@
 Given /^I add a judgement for "([^"]*)" with indicator "([^"]*)"$/ do |group_name, indicator|
-  click_link group_name
+  visit group_path(Group.find_by(name: group_name))
   click_link "Add Teacher Judgement"
   step %(I should not see lesson specific fields)
   select(indicator, from: 'Assessment Indicator')
