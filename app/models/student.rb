@@ -1,4 +1,6 @@
 class Student < ActiveRecord::Base
+  acts_as_paranoid
+
   has_many :group_students
   has_many :groups, through: :group_students
   has_many :assessment_students
