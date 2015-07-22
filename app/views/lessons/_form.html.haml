@@ -1,0 +1,5 @@
+= bootstrap_form_for [@group, @lesson] do |f|
+  = f.date_field :simple_lesson_date, label: 'Lesson date'
+  = f.text_field :name,  label: 'Lesson objective'
+  = f.text_field :indicator_id
+  = f.submit 'Save'
