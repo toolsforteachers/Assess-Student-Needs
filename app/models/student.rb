@@ -5,7 +5,6 @@ class Student < ActiveRecord::Base
   has_many :assessment_students
   has_many :assessments, through: :assessment_students
   validates :name, presence: :true, uniqueness: { scope: :group_id }
-  validates :group_id, presence: :true
   validates :prior_knowledge_level, numericality: { less_than: 5 }, allow_nil: true
 
   default_scope { order('name asc') }

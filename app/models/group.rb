@@ -13,5 +13,7 @@ class Group < ActiveRecord::Base
   validates :name, uniqueness: { scope: :teacher_id }
   default_scope { order('name') }
 
-  accepts_nested_attributes_for :students, allow_destroy: true
+  accepts_nested_attributes_for :students,
+    allow_destroy: true,
+    reject_if: proc { |attributes| attributes['name'].blank? }
 end
