@@ -3,7 +3,7 @@ class Assessment < ActiveRecord::Base
   belongs_to :teacher
   belongs_to :indicator
   has_many :assessment_students, :dependent => :destroy
-  has_many :students, through: :assessment_students
+  delegate :students, to: :group
 
   validates_presence_of :group_id
   validates_presence_of :indicator_id
