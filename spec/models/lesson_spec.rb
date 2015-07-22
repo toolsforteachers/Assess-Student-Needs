@@ -2,9 +2,7 @@ require 'spec_helper'
 
 describe Lesson do
   it { should belong_to(:group) }
-  it { should belong_to(:teacher) }
   it { should belong_to(:indicator) }
-  it { should validate_presence_of(:teacher) }
   it { should validate_presence_of(:name) }
   it { should validate_presence_of(:group_id) }
   it { should validate_presence_of(:indicator_id) }

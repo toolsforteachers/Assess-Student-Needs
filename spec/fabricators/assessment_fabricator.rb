@@ -1,5 +1,4 @@
 Fabricator(:assessment) do
-  teacher
   group
   indicator { Fabricate(:indicator) }
 end
