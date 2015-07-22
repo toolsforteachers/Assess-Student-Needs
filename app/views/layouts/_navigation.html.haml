@@ -5,7 +5,7 @@
         My Classes
         %span.caret
       %ul.dropdown-menu.teacher-groups
-        - Group.all.each do |group|
+        - current_teacher.groups.all.each do |group|
           %li
             = link_to group.name, group
         %li.divider

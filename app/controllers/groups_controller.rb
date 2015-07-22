@@ -2,7 +2,7 @@ class GroupsController < ProtectedController
   # GET /groups
   # GET /groups.json
   def index
-    @groups = Group.all
+    @groups = scoped_groups.all
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @groups }
@@ -12,7 +12,7 @@ class GroupsController < ProtectedController
   # GET /groups/1
   # GET /groups/1.json
   def show
-    @group = Group.find(params[:id])
+    @group = scoped_groups.find(params[:id])
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @group }
@@ -22,7 +22,7 @@ class GroupsController < ProtectedController
   # GET /groups/new
   # GET /groups/new.json
   def new
-    @group = Group.new
+    @group = scoped_groups.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -32,14 +32,13 @@ class GroupsController < ProtectedController
 
   # GET /groups/1/edit
   def edit
-    @group = Group.find(params[:id])
+    @group = scoped_groups.find(params[:id])
   end
 
   # POST /groups
   # POST /groups.json
   def create
-    @group = Group.new(group_params)
-    @group.teacher = current_teacher
+    @group = scoped_groups.new(group_params)
 
     respond_to do |format|
       if @group.save
@@ -55,7 +54,7 @@ class GroupsController < ProtectedController
   # PUT /groups/1
   # PUT /groups/1.json
   def update
-    @group = Group.find(params[:id])
+    @group = scoped_groups.find(params[:id])
 
     respond_to do |format|
       if @group.update_attributes(group_params)
@@ -71,7 +70,7 @@ class GroupsController < ProtectedController
   # DELETE /groups/1
   # DELETE /groups/1.json
   def destroy
-    @group = Group.find(params[:id])
+    @group = scoped_groups.find(params[:id])
     @group.destroy
 
     respond_to do |format|
@@ -81,6 +80,10 @@ class GroupsController < ProtectedController
   end
 
   private
+
+  def scoped_groups
+    current_teacher.groups
+  end
 
   def group_params
     params.require(:group).permit([:name, student_ids: []])
