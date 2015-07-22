@@ -42,7 +42,7 @@ class GroupsController < ProtectedController
 
     respond_to do |format|
       if @group.save
-        format.html { redirect_to group_path(@group), notice: 'Group was successfully created.' }
+        format.html { redirect_to group_path(@group), notice: 'Class was successfully created.' }
         format.json { render json: @group, status: :created, location: @group }
       else
         format.html { render action: "new" }
@@ -58,7 +58,7 @@ class GroupsController < ProtectedController
 
     respond_to do |format|
       if @group.update_attributes(group_params)
-        format.html { redirect_to @group, notice: 'Group was successfully updated.' }
+        format.html { redirect_to @group, notice: 'Class was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
