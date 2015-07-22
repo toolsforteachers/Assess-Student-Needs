@@ -25,5 +25,5 @@
             .span.glyphicon.glyphicon-plus
             Student
   %ul.nav.navbar-nav.navbar-right
-    %li= link_to current_teacher.email, '#'
+    %li= link_to current_teacher.name, '#'
     %li= link_to "Sign out", destroy_teacher_session_path, :method => :delete
