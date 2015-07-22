@@ -1,4 +1,7 @@
 class Group < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :name, use: [:slugged, :finders]
+
   has_many :group_students
   has_many :students, through: :group_students
   has_many :assessments
