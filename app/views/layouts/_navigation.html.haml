@@ -20,10 +20,6 @@
           = link_to new_group_path do
             .span.glyphicon.glyphicon-plus
             Class
-        %li
-          = link_to new_student_path do
-            .span.glyphicon.glyphicon-plus
-            Student
   %ul.nav.navbar-nav.navbar-right
     %li= link_to current_teacher.name, '#'
     %li= link_to "Sign out", destroy_teacher_session_path, :method => :delete
