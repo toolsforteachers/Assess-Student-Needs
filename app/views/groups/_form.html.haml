@@ -1,3 +1,4 @@
 = bootstrap_form_for(@group) do |f|
-  = f.text_field :name
+  = f.text_field :name, label: 'Class name'
+  = f.select :teacher_id, Teacher.all.map{ |t| [t.name, t.id]}, { selected: current_teacher.id }, { disabled: true }
   = f.submit 'Save'
