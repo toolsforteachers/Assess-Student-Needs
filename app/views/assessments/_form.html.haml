@@ -1,19 +1,9 @@
-= simple_form_for [@group, @assessment], :html => { :class => 'form-horizontal ' } do |f|
-  = f.input :type_helper, as: :hidden
-  #assessment_details
-    = f.association :group, disabled: true
-    = f.input :group_id, as: :hidden
-    - if lesson?
-      = f.input :simple_lesson_date, name: 'lesson_date_time', class: 'date_field', label: 'Date', as: 'string'
-      = f.input :name, :as => :text, label: 'Objective', :input_html => { rows: 5, maxlength: 200 }, hint: 'Max length 200 characters'
-    - else
-      = f.input :notes, :as => :text, :input_html => { rows: 5, maxlength: 200 }, hint: 'Max length 200 characters'
-  = render partial: 'indicator_picker', locals: { f: f }
-  .form-actions
-    = f.error :base
-    = f.submit "#{ @assessment.new_record? ? 'Create' : 'Update' }", :class => 'btn btn-primary'
-
-  - unless @assessment.new_record?
-    = f.association :students, multiple: true, as: :check_boxes
-    .form-actions
-      = f.submit nil, :class => 'btn btn-primary'
+= bootstrap_form_for [@group, @assessment] do |f|
+  = f.hidden_field :type_helper
+  - if lesson?
+    = f.date_field :simple_lesson_date, label: 'Lesson date'
+    = f.text_field :name,  label: 'Lesson objective'
+  - else
+    = f.text_field :notes
+  / = "render partial: 'indicator_picker', locals: { f: f }"
+  = f.submit 'Save'
