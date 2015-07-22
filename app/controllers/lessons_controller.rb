@@ -30,6 +30,9 @@ class LessonsController < ApplicationController
     end
   end
 
+  def index
+  end
+
   protected
   def load_group
     @group = Group.find(params[:group_id])
