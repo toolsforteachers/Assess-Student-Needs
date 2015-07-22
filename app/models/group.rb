@@ -2,11 +2,17 @@ class Group < ActiveRecord::Base
   extend FriendlyId
   friendly_id :name, use: [:slugged, :finders]
 
+  belongs_to :teacher
   has_many :group_students
   has_many :students, through: :group_students
   has_many :assessments
   has_many :lessons
   has_many :teacher_judgements
-  validates_uniqueness_of :name
+
+  validates :name, presence: :true
+  validates :teacher_id, presence: true
+  validates :name, uniqueness: { scope: :teacher_id }
   default_scope { order('name') }
+
+
 end

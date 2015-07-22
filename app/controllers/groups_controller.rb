@@ -39,6 +39,7 @@ class GroupsController < ProtectedController
   # POST /groups.json
   def create
     @group = Group.new(group_params)
+    @group.teacher = current_teacher
 
     respond_to do |format|
       if @group.save

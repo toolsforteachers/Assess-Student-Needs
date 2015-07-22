@@ -37,3 +37,9 @@ When(/^I follow the teacher judgement link$/) do
     click_link('Teacher judgement')
   end
 end
+
+Then(/^I should be the teacher of "(.*?)"$/) do |group_name|
+  within(:css, 'ul.teacher-groups') do
+    page.should have_text(group_name)
+  end
+end

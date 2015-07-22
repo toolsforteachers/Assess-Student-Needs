@@ -1,3 +1,4 @@
 Fabricator(:group) do
-  name 'year 6A'
+  name(Faker::Team.name)
+  teacher
 end
