@@ -11,6 +11,7 @@ gem 'haml-rails'
 gem 'jquery-rails'
 gem 'devise'
 gem 'simple_form'
+gem 'nested_form'
 gem 'bootstrap_form'
 gem 'rails_12factor'
 gem 'puma'
@@ -18,6 +19,7 @@ gem 'therubyracer'
 gem 'twitter-bootswatch-rails'
 gem 'twitter-bootswatch-rails-helpers'
 gem 'friendly_id'
+gem 'paranoia', '~> 2.0'
 
 gem 'quiet_assets', group: :development
 gem "rspec-rails", :group => [:development, :test]
