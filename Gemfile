@@ -16,6 +16,7 @@ gem 'puma'
 gem 'therubyracer'
 gem 'twitter-bootswatch-rails'
 gem 'twitter-bootswatch-rails-helpers'
+gem 'friendly_id'
 
 gem 'quiet_assets', group: :development
 gem "rspec-rails", :group => [:development, :test]
