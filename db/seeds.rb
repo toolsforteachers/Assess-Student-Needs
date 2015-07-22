@@ -6,7 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-teacher = Teacher.create( name: 'Toby P.', email: 'toby@snaplab.co.uk', password: 'password', password_confirmation: 'password' )
+toby = Teacher.create( name: 'Toby P.', email: 'toby@snaplab.co.uk', password: 'password', password_confirmation: 'password' )
 nick = Teacher.create( name: 'Nick T.', email: 'nick@smallfish.net', password: 'f1shes', password_confirmation: 'f1shes' )
 
 alice = Student.create(name: 'Alice')
@@ -15,7 +15,7 @@ clare = Student.create(name: 'Clare')
 dave = Student.create(name: 'Dave')
 
 
-apples = Group.create(name: 'Apples')
+apples = Group.create(name: 'Apples', teacher: toby)
 apples.students << alice
 apples.students << ben
 apples.students << clare
