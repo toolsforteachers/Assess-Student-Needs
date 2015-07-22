@@ -1,6 +1,6 @@
 class StudentsController < ProtectedController
   def index
-    @students = Student.includes(:groups)
+    @students = Student.all
   end
 
   def edit

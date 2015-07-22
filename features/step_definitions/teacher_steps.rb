@@ -8,7 +8,9 @@ end
 
 Given /^I am the teacher of "([^"]*)" with students "([^"]*)"$/ do |group_name, student_names|
   step "I am the teacher"
-  students = student_names.split(",").map{ |name| Fabricate(:student, name: name) }
-  @group = Fabricate(:group, name: group_name, students: students, teacher: Teacher.last)
+  group = Fabricate(:group, name: group_name, teacher: Teacher.last)
+  student_names.split(",").each do |name|
+    Fabricate(:student, name: name, group: group)
+  end
   visit "/"
 end
