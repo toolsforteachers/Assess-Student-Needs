@@ -1,12 +1,10 @@
 class Student < ActiveRecord::Base
   acts_as_paranoid
 
-  has_many :group_students
-  has_many :groups, through: :group_students
+  belongs_to :group
   has_many :assessment_students
   has_many :assessments, through: :assessment_students
-  validates_presence_of :name
-  validates_uniqueness_of :name
+  validates :name, presence: :true, uniqueness: { scope: :group_id }
   validates :prior_knowledge_level, numericality: { less_than: 5 }, allow_nil: true
 
   default_scope { order('name asc') }

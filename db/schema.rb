@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150722132014) do
+ActiveRecord::Schema.define(version: 20150722132921) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,13 +50,6 @@ ActiveRecord::Schema.define(version: 20150722132014) do
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
-  create_table "group_students", force: :cascade do |t|
-    t.integer  "group_id"
-    t.integer  "student_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "groups", force: :cascade do |t|
     t.string   "name",       limit: 255
     t.datetime "created_at",             null: false
@@ -86,9 +79,11 @@ ActiveRecord::Schema.define(version: 20150722132014) do
     t.datetime "updated_at",                        null: false
     t.integer  "prior_knowledge_level"
     t.datetime "deleted_at"
+    t.integer  "group_id"
   end
 
   add_index "students", ["deleted_at"], name: "index_students_on_deleted_at", using: :btree
+  add_index "students", ["group_id"], name: "index_students_on_group_id", using: :btree
 
   create_table "teachers", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
