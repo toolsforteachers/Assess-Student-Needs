@@ -82,3 +82,7 @@ Then /^I should( not)? see lesson specific fields$/ do |negate|
     end
   end
 end
+
+Then(/^I should see the new lesson form$/) do
+  page.should have_css('form#new_lesson')
+end

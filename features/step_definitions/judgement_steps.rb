@@ -5,3 +5,7 @@ Given /^I add a judgement for "([^"]*)" with indicator "([^"]*)"$/ do |group_nam
   select(indicator, from: 'Assessment Indicator')
   click_button "Create"
 end
+
+Then(/^I should see the new teacher judgement form$/) do
+   page.should have_css('form#new_assessment')
+end
