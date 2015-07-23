@@ -2,7 +2,7 @@ class LessonsController < ApplicationController
   before_filter :load_group
 
   def new
-    @lesson = Lesson.new :group_id => @group.id, type_helper: params[:type_helper]
+    @lesson = Lesson.new simple_lesson_date: Date.today
   end
 
   def edit

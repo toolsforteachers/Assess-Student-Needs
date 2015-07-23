@@ -1,5 +1,17 @@
-= bootstrap_form_for [@group, @lesson] do |f|
-  = f.date_field :simple_lesson_date, label: 'Lesson date'
-  = f.text_field :name,  label: 'Lesson objective'
-  = f.text_field :indicator_id
-  = f.submit 'Save'
+%p
+  %span.glyphicon.glyphicon-triangle-left
+  =link_to 'Lessons', group_lessons_path(@group)
+
+.panel.panel-default
+  .panel-heading
+    .panel-title
+      = @lesson.new_record? ? 'Add a new lesson' : 'Edit lesson'
+  .panel-body
+    = bootstrap_form_for [@group, @lesson], layout: 'horizontal' do |f|
+      = f.date_field :simple_lesson_date, label: 'Date'
+      = f.text_field :name,  label: 'Goal'
+
+
+
+      = f.text_field :indicator_id
+      = f.submit 'Save'
