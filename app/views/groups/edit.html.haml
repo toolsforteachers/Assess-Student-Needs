@@ -1,2 +1,7 @@
 - @page_header = link_to_group
+%p
+  =link_to group_path(@group) do
+    %span.glyphicon.glyphicon-triangle-left
+    Back
+
 = render :partial => "form"

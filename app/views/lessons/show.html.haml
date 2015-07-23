@@ -1,5 +1,5 @@
 - @page_header = link_to_group
-
+= render partial: 'nav'
 
 %p= @lesson.inspect
 = link_to 'edit lesson', edit_group_lesson_path(@group, @lesson)
