@@ -3,14 +3,11 @@
     %tr
       %th Lesson Date
       %th Objective
-      %th Level
-      %th Strand
-      %th Assessment Indicator
-  %tbody
-    - @group.lessons.each do |assessment|
+      %th
+
+    - @group.lessons.each do |lesson|
       %tr
-        %td= assessment.lesson_datetime
-        %td= link_to assessment.name, group_assessment_path(@group, assessment)
-        %td= assessment.indicator.level
-        %td= assessment.indicator.strand_name
-        %td= assessment.indicator.name if assessment.indicator
+        %td= lesson.lesson_date
+        %td= link_to lesson.name, group_lesson_path(@group, lesson)
+        %td= link_to 'edit', edit_group_lesson_path(@group, lesson)
+

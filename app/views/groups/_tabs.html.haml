@@ -33,4 +33,5 @@
     = render partial: '/groups/students'
   #lessons.tab-pane{ class: "#{ 'active' if activate == :lessons }" }
     = render partial: '/groups/lessons'
-  #judgements.tab-pane= render partial: '/groups/teacher_judgements'
+  #judgements.tab-pane
+    / = render partial: '/groups/teacher_judgements'

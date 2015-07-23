@@ -2,7 +2,7 @@ class LessonsController < ApplicationController
   before_filter :load_group
 
   def new
-    @lesson = Lesson.new simple_lesson_date: Date.today
+    @lesson = Lesson.new lesson_date: Date.today
   end
 
   def edit
