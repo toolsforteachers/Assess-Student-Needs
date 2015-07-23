@@ -14,16 +14,19 @@ class Student < ActiveRecord::Base
   end
 
   def indicator_assessments(indicator)
-    assessment.includes(:assessment)
+    return [] unless indicator
+     assessments
       .where(['assessments.indicator_id = ? and score > 0', indicator.id])
       .order('assessments.created_at desc')
   end
 
   def indicator_score(indicator)
+    return [] unless indicator
     indicator_assessments(indicator).limit(2).average(:score).to_i
   end
 
   def indicator_lessons(indicator)
+    return [] unless indicator
     indicator_assessments(indicator).where("assessments.type = 'Lesson'")
   end
 end
