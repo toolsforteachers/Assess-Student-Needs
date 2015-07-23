@@ -1,4 +1,4 @@
-- @assessment = Assessment.find_or_initialize_by(student: student, lesson: @lesson)
+- @assessment = Assessment.find_or_initialize_by(student: student, assessor: @lesson)
 
 - ticks = "ticks_#{ student.indicator_score(@assessment.indicator) }"
 
@@ -6,14 +6,14 @@
 
   %td= student.name
   %td
-    = form_for @assessment, remote: true, html: { class: 'form-inline' } do |assessment_f|
+    = form_for [@group, @assessment], remote: true, html: { class: 'form-inline' } do |assessment_f|
       - 0.upto(5) do |i|
         .indicator_score
           %label.radio
             = assessment_f.radio_button :score, i
             = i == 0 ? "n/a" : i
 
-      = assessment_f.text_field :notes
+      = assessment_f.text_field :name
       = assessment_f.submit 'Save', class: 'btn'
   / %td{ class: ticks }
   /   - student.indicator_assessments(@assessment.indicator).each do |attempt|
