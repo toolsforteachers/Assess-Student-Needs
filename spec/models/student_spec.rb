@@ -10,50 +10,47 @@ describe Student do
   it 'should test the indicator_* methods'
 
   context '.current_level' do
-    before do
-      @student = Fabricate(:student)
-      @group = Fabricate(:group)
-      @group.students << @student
-    end
+
+    let(:student) { Fabricate(:student) }
 
     context 'without assessments' do
-      it { expect(@student.current_level).to eql(1) }
+      it { expect(student.current_level).to eql(1) }
     end
 
     context 'with a prior_knowledge_level of 3 and a level one assessment' do
       before do
-        Fabricate(:level_1_assessment, group: @group)
-        @student.update_attribute(:prior_knowledge_level, 3)
+        Fabricate(:level_1_assessment, student: student)
+        student.update_attribute(:prior_knowledge_level, 3)
       end
 
-      it { expect(@student.current_level).to eql(4) }
+      it { expect(student.current_level).to eql(4) }
     end
 
     context 'with a prior_knowledge_level of 1 and a level three assessment' do
       before do
-        Fabricate(:level_3_assessment, group: @group)
-        @student.update_attribute(:prior_knowledge_level, 1)
+        Fabricate(:level_3_assessment, student: student)
+        student.update_attribute(:prior_knowledge_level, 1)
       end
 
-      it { expect(@student.current_level).to eql(3) }
+      it { expect(student.current_level).to eql(3) }
     end
 
     context 'with a level one assessment' do
-      before { Fabricate(:level_1_assessment, group: @group) }
-      it { expect(@student.current_level).to eql(1) }
+      before { Fabricate(:level_1_assessment, student: student) }
+      it { expect(student.current_level).to eql(1) }
     end
 
     context 'with a level three assessment' do
-      before { Fabricate(:level_3_assessment, group: @group) }
-      it { expect(@student.current_level).to eql(3) }
+      before { Fabricate(:level_3_assessment, student: student) }
+      it { expect(student.current_level).to eql(3) }
     end
 
     context 'with a level one and a level three assessment' do
       before do
-        Fabricate(:level_1_assessment, group: @group)
-        Fabricate(:level_3_assessment, group: @group)
+        Fabricate(:level_1_assessment, student: student)
+        Fabricate(:level_3_assessment, student: student)
       end
-      it { expect(@student.current_level).to eql(3) }
+      it { expect(student.current_level).to eql(3) }
     end
   end
 end

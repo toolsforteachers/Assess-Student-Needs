@@ -1,21 +1,20 @@
-- ticks = "ticks_#{ rand(5) }" #{}"ticks_#{ student.indicator_score(@assessment.indicator) }"
+- @assessment = Assessment.find_or_initialize_by(student: student, lesson: @lesson)
 
-%tr{ class: ticks, id: "student_score_#{ 'assessment_student.student_id' }"}
+- ticks = "ticks_#{ student.indicator_score(@assessment.indicator) }"
+
+%tr{ class: ticks }
 
   %td= student.name
   %td
+    = form_for @assessment, remote: true, html: { class: 'form-inline' } do |assessment_f|
+      - 0.upto(5) do |i|
+        .indicator_score
+          %label.radio
+            = assessment_f.radio_button :score, i
+            = i == 0 ? "n/a" : i
 
-    = link_to 'Choose objective'
-  %td= 'TJ(1)'
-  /   = form_for assessment_student, remote: true, html: { class: 'form-inline' } do |assessment_f|
-  /     - 0.upto(5) do |i|
-  /       .indicator_score
-  /         %label.radio
-  /           = assessment_student_f.radio_button :score, i
-  /           = i == 0 ? "n/a" : i
-  /     - if lesson?
-  /       = assessment_student_f.text_field :notes
-  /     = assessment_student_f.submit 'Save', class: 'btn'
+      = assessment_f.text_field :notes
+      = assessment_f.submit 'Save', class: 'btn'
   / %td{ class: ticks }
   /   - student.indicator_assessments(@assessment.indicator).each do |attempt|
   /     = render partial: "/assessment_students/attempt", locals: { attempt: attempt }

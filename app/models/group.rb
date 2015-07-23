@@ -4,9 +4,7 @@ class Group < ActiveRecord::Base
 
   belongs_to :teacher
   has_many :students
-  has_many :assessments
   has_many :lessons
-  has_many :teacher_judgements
 
   validates :name, presence: :true
   validates :teacher_id, presence: true

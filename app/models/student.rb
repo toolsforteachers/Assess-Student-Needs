@@ -2,8 +2,7 @@ class Student < ActiveRecord::Base
   acts_as_paranoid
 
   belongs_to :group
-  has_many :assessment_students
-  has_many :assessments, through: :assessment_students
+  has_many :assessments
   validates :name, presence: :true, uniqueness: { scope: :group_id }
   validates :prior_knowledge_level, numericality: { less_than: 5 }, allow_nil: true
 
@@ -15,10 +14,9 @@ class Student < ActiveRecord::Base
   end
 
   def indicator_assessments(indicator)
-    assessment_students.includes(:assessment)
+    assessment.includes(:assessment)
       .where(['assessments.indicator_id = ? and score > 0', indicator.id])
-      .order('assessment_students.created_at desc')
-      .references(:assessment)
+      .order('assessments.created_at desc')
   end
 
   def indicator_score(indicator)

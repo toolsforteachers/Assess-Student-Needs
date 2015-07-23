@@ -1,6 +1,7 @@
 class Lesson < ActiveRecord::Base
   belongs_to :group
   has_many :objectives
+  has_many :assessments, as: :assessor
 
   validates :lesson_date, presence: :true
   validates :group_id, presence: :true
