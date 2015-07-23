@@ -1,5 +1,4 @@
 Fabricator(:assessment) do
-  group
   indicator { Fabricate(:indicator) }
 end
 
