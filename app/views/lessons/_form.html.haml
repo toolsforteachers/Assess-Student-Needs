@@ -1,15 +1,21 @@
 %p
-  %span.glyphicon.glyphicon-triangle-left
-  =link_to 'Lessons', group_lessons_path(@group)
+  =link_to group_lessons_path(@group) do
+    %span.glyphicon.glyphicon-triangle-left
+    Lessons
 
 .panel.panel-default
   .panel-heading
     .panel-title
       = @lesson.new_record? ? 'Add a new lesson' : 'Edit lesson'
   .panel-body
-    = bootstrap_form_for [@group, @lesson], layout: 'horizontal' do |f|
+    = bootstrap_nested_form_for [@group, @lesson], layout: 'horizontal' do |f|
       = f.date_field :lesson_date, label: 'Date'
-      = f.text_field :name,  label: 'Goal'
+      = f.text_field :name, label: 'Goal'
+      = f.fields_for :objectives do |objective_f|
+        .panel.panel-default.objective
+          .panel-heading
+            = objective_f.text_field :indicator_id,
+              label: "Objective (#{ objective_f.link_to_remove('Remove') })".html_safe
 
-
+      %p= f.link_to_add 'Add an objective', :objectives
       = f.submit 'Save'

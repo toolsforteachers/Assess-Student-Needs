@@ -1,0 +1,9 @@
+- @page_header = link_to_group
+
+
+%p= @lesson.inspect
+= link_to 'edit lesson', edit_group_lesson_path(@group, @lesson)
+%table
+  - @lesson.objectives.each do |objective|
+    %tr.objective
+      %td= objective.inspect

@@ -1,3 +1,31 @@
+Given(/^I add a new lesson for "(.*?)"$/) do |group_name|
+  group = Group.find_by(name: group_name)
+  visit new_group_lesson_path(group)
+  fill_in('Goal', with: 'Do stuff')
+  fill_in 'Objective', with: '1'
+  click_link 'Add an objective'
+  within(page.all(:css, '.panel.objective').last) do
+    fill_in 'Objective', with: '2'
+  end
+  click_button "Save"
+end
+
+Then(/^the lesson should have (\d+) objectives$/) do |objective_count|
+  page.should have_css('tr.objective', count: objective_count)
+end
+
+When(/^I edit the lesson$/) do
+  click_link('edit lesson')
+  within(page.all(:css, '.panel.objective').last) do
+    click_link('Remove')
+  end
+  click_button "Save"
+end
+
+Then(/^I should see the new lesson form$/) do
+  page.should have_css('form#new_lesson')
+end
+
 Given /^I add a lesson "([^"]*)" for "([^"]*)" with indicator "([^"]*)"$/ do |lesson_name, group_name, indicator|
   group = Group.find_by(name: group_name)
   visit new_group_assessment_path(group, type_helper: 'Lesson')
@@ -83,6 +111,3 @@ Then /^I should( not)? see lesson specific fields$/ do |negate|
   end
 end
 
-Then(/^I should see the new lesson form$/) do
-  page.should have_css('form#new_lesson')
-end
