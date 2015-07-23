@@ -1,9 +1,18 @@
 - @page_header = link_to_group
 = render partial: 'nav'
 
-%p= @lesson.inspect
-= link_to 'edit lesson', edit_group_lesson_path(@group, @lesson)
-%table
-  - @lesson.objectives.each do |objective|
-    %tr.objective
-      %td= objective.inspect
+%h3= "#{ @lesson.name }, #{ @lesson.lesson_date }."
+.panel.panel-default
+  .panel-heading Objective
+  .panel-body
+    - @lesson.objectives.each do |objective|
+      .objective.well.well-sm
+        = objective.indicator.name
+    = link_to edit_group_lesson_path(@group, @lesson) do
+      .span.glyphicon.glyphicon-cog
+      Edit lesson
+
+%h3 Students
+
+%table.table
+  = render partial: 'assessments/student', collection: @lesson.students

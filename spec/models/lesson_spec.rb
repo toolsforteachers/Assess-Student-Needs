@@ -6,4 +6,5 @@ describe Lesson do
   it { should validate_presence_of(:name) }
   it { should validate_presence_of(:group_id) }
   it { should have_many(:objectives) }
+  it { should have_many(:students) }
 end

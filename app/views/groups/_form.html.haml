@@ -6,3 +6,8 @@
       label: "Student (#{ student_f.link_to_remove('Remove') })".html_safe
   %p= f.link_to_add 'Add a student', :students
   = f.submit 'Save'
+
+%p
+.alert.alert-info
+  %strong Pending feature:
+  Add students from other classes

@@ -1,13 +1,5 @@
-%table.table.table-striped.table-bordered
-  %thead
-    %tr
-      %th Lesson Date
-      %th Objective
-      %th
-
-    - @group.lessons.each do |lesson|
-      %tr
-        %td= lesson.lesson_date
-        %td= link_to lesson.name, group_lesson_path(@group, lesson)
-        %td= link_to 'edit', edit_group_lesson_path(@group, lesson)
-
+.list-group
+  - @group.lessons.each do |lesson|
+    .list-group-item
+      %span.badge= lesson.lesson_date.to_s
+      = link_to lesson.name, group_lesson_path(@group, lesson)
