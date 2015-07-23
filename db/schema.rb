@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20150723153200) do
     t.datetime "updated_at",                null: false
     t.integer  "student_id"
     t.integer  "indicator_id"
-    t.string   "assessor_id"
+    t.integer  "assessor_id"
     t.string   "assessor_type"
     t.integer  "score"
   end
