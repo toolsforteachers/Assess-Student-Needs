@@ -1,6 +1,0 @@
-= simple_form_for @student, :html => { :class => 'form-horizontal' } do |f|
-  = f.input :name
-  = f.input :prior_knowledge_level, as: :select, collection: (1..4)
-  %p Note that new students are not added to Lessons that already exist.
-  .form-actions
-    = f.submit nil, :class => 'btn btn-primary'

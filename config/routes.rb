@@ -4,9 +4,10 @@ Acn::Application.routes.draw do
   resources :groups do
    resources :assessments
    resources :lessons
-   resources :teacher_judgements  , controller: :assessments
+   resources :students
+   resources :teacher_judgements, controller: :assessments
   end
-  resources :students, :assessment_students, :indicators
+  resources :assessment_students, :indicators
 
   root to: 'home#show'
 end

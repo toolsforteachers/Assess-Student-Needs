@@ -1,11 +1,12 @@
 Feature: APP grid
 
+@javascript
 Scenario: display student's default level
-  Given a student "Bob" with current level 2
-  And I am the teacher
-  And I follow "All students"
-  And I follow "Bob"
-  Then I should see an APP grid for "Bob" displaying level 2
+  Given I am the teacher
+  And I am on the home page
+  And I add a group named "Year 6A" with a student named "Ann"
+  And I follow "Ann"
+  Then I should see an APP grid for "Ann" displaying level 1
 
   When I follow "Level 5"
-  Then I should see an APP grid for "Bob" displaying level 5
+  Then I should see an APP grid for "Ann" displaying level 5

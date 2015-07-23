@@ -2,5 +2,4 @@
   %tbody
     - @group.students.each do |student|
       %tr.student
-        %td= link_to student.name, student_path(student)
-        %td= render partial: 'students/actions', locals: { student: student }
+        %td= link_to student.name, group_student_path(@group, student)
