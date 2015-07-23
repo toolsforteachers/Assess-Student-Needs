@@ -11,28 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150723111717) do
+ActiveRecord::Schema.define(version: 20150723153200) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "assessment_students", force: :cascade do |t|
-    t.integer  "assessment_id"
-    t.integer  "student_id"
-    t.datetime "created_at",                            null: false
-    t.datetime "updated_at",                            null: false
-    t.integer  "score",                     default: 0
-    t.string   "notes",         limit: 500
-  end
-
   create_table "assessments", force: :cascade do |t|
-    t.string   "name",            limit: 255
-    t.integer  "group_id"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
-    t.datetime "lesson_datetime"
-    t.string   "type",            limit: 255
-    t.string   "notes",           limit: 255
+    t.string   "name",          limit: 255
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.integer  "student_id"
+    t.integer  "indicator_id"
+    t.string   "assessor_id"
+    t.string   "assessor_type"
+    t.integer  "score"
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
