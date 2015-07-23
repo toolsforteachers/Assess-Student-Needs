@@ -1,9 +1,9 @@
 = bootstrap_form_for [@group, @assessment] do |f|
-  = f.hidden_field :type_helper
-  - if lesson?
-    = f.date_field :simple_lesson_date, label: 'Lesson date'
-    = f.text_field :name,  label: 'Lesson objective'
-  - else
-    = f.text_field :notes
-  / = "render partial: 'indicator_picker', locals: { f: f }"
-  = f.submit 'Save'
+  / = f.hidden_field :type_helper
+  / - if lesson?
+  /   = f.date_field :simple_lesson_date, label: 'Lesson date'
+  /   = f.text_field :name,  label: 'Lesson objective'
+  / - else
+  /   = f.text_field :notes
+  / / = "render partial: 'indicator_picker', locals: { f: f }"
+  / = f.submit 'Save'

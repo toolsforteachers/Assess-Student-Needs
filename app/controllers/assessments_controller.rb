@@ -2,7 +2,7 @@ class AssessmentsController < ProtectedController
   before_filter :load_group
 
   def new
-    @assessment = Assessment.new :group_id => @group.id, type_helper: params[:type_helper]
+    @assessment = Assessment.new #:group_id => @group.id, type_helper: params[:type_helper]
   end
 
   def show
