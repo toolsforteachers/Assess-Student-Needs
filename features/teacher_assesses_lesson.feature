@@ -6,9 +6,9 @@ Feature: Teacher assesses a lesson
   Background:
     Given I am the teacher of "Year 6A" with students "Ann,Bob,Clare"
     And the following indicators:
-      | level | name            | key           | description         |
-      | 2     | Adding up       | MA2_NUMBERS   | about the indicator |
-      | 4     | Measuring stuff | MA3A_MEASURES |                     |
+      | name            |
+      | Adding up       |
+      | Measuring stuff |
     And I add a lesson "Adding Up" for "Year 6A" with indicators "Adding up,Measuring stuff"
     And "Ann" already has a score of 4 for "Measuring stuff"
 
