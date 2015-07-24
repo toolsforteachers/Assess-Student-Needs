@@ -1,4 +1,4 @@
-class LessonsController < ApplicationController
+class LessonsController < ProtectedController
   before_filter :load_group
 
   def new
