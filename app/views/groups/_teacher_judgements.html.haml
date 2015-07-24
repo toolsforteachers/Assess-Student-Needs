@@ -1,16 +1,7 @@
-%table.table.table-striped.table-bordered
-  %thead
-    %tr
-      %th Date Added
-      %th Notes
-      %th Level
-      %th Strand
-      %th Assessment Indicator
-  %tbody
-    - @group.teacher_judgements.each do |assessment|
-      %tr
-        %td= link_to assessment.created_at, group_assessment_path(@group, assessment)
-        %td= assessment.notes
-        %td= assessment.indicator.level
-        %td= assessment.indicator.strand_name
-        %td= assessment.indicator.name if assessment.indicator
+.bs-component
+  .jumbotron
+    %p We've not build this feature yet.
+    %p But you can achieve the same functionality with a lesson.
+    = link_to new_group_lesson_path(@group) do
+      .btn.btn-primary.btn-lg
+        Add a lesson

@@ -17,11 +17,6 @@
         = link_to new_group_lesson_path(@group) do
           .span.glyphicon.glyphicon-plus
           Lesson
-      %li.add-judgement
-        = link_to new_group_assessment_path(@group, type_helper: 'TeacherJudgement') do
-          .span.glyphicon.glyphicon-plus
-          Teacher judgement
-
       %li.edit-group
         = link_to edit_group_path(@group) do
           .span.glyphicon.glyphicon-cog
@@ -34,4 +29,4 @@
   #lessons.tab-pane{ class: "#{ 'active' if activate == :lessons }" }
     = render partial: '/groups/lessons'
   #judgements.tab-pane
-    / = render partial: '/groups/teacher_judgements'
+    = render partial: '/groups/teacher_judgements'
