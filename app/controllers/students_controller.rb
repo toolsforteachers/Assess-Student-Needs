@@ -3,6 +3,5 @@ class StudentsController < ProtectedController
 
   def show
     @student = @group.students.find(params[:id])
-    @level = (params[:level] || @student.current_level).to_i
   end
 end
