@@ -9,8 +9,3 @@ Scenario: going to the group page and clicking the tabs
   Then I should see "Ann,Bob,Clare" in the list of students
   When I the follow the add lesson link
   Then I should see the new lesson form
-
-  When I choose "Year 6A" from the groups dropdown
-  And I follow the teacher judgement link
-  Then I should see the new teacher judgement form
-

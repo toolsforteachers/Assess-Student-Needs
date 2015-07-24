@@ -1,2 +1,0 @@
-class TeacherJudgement < Assessment
-end

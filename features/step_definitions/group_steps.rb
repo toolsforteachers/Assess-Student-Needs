@@ -28,12 +28,6 @@ When(/^I the follow the add lesson link$/) do
   end
 end
 
-When(/^I follow the teacher judgement link$/) do
-  within(:css, 'li.add-judgement') do
-    click_link('Teacher judgement')
-  end
-end
-
 Then(/^I should be the teacher of "(.*?)"$/) do |group_name|
   within(:css, 'h1') do
     page.should have_text(group_name)
