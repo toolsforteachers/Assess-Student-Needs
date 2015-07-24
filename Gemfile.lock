@@ -226,9 +226,6 @@ GEM
     sexp_processor (4.6.0)
     shoulda-matchers (2.8.0)
       activesupport (>= 3.0.0)
-    simple_form (3.1.0)
-      actionpack (~> 4.0)
-      activemodel (~> 4.0)
     slop (3.6.0)
     sprockets (3.2.0)
       rack (~> 1.0)
@@ -294,7 +291,6 @@ DEPENDENCIES
   sass-rails
   selenium-webdriver
   shoulda-matchers
-  simple_form
   therubyracer
   thin
   twitter-bootswatch-rails
