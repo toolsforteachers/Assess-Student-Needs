@@ -6,6 +6,10 @@
     = @lesson.lesson_date
 %ul.nav.nav-pills
   %li.presentation
+    = link_to edit_group_lesson_path(@group, @lesson) do
+      .span.glyphicon.glyphicon-cog
+      Edit lesson
+  %li.presentation
     = link_to group_lesson_report_path(@group, @lesson) do
       .span.glyphicon.glyphicon-print
       Report view
