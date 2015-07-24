@@ -6,7 +6,9 @@ Scenario:
 
   When I add a new lesson for "Year 6A"
   Then the lesson should have 2 objectives
+  And the lesson name should be "old goal"
 
   When I edit the lesson
   Then the lesson should have 1 objectives
+  And the lesson name should be "new goal"
 
