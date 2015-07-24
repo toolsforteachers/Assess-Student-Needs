@@ -19,6 +19,7 @@ gem 'twitter-bootswatch-rails'
 gem 'twitter-bootswatch-rails-helpers'
 gem 'friendly_id'
 gem 'paranoia', '~> 2.0'
+gem 'closure_tree'
 
 gem 'quiet_assets', group: :development
 gem "rspec-rails", :group => [:development, :test]

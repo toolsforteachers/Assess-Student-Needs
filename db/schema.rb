@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150724152608) do
+ActiveRecord::Schema.define(version: 20150724160058) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,12 +58,22 @@ ActiveRecord::Schema.define(version: 20150724152608) do
   add_index "groups", ["slug"], name: "index_groups_on_slug", using: :btree
   add_index "groups", ["teacher_id"], name: "index_groups_on_teacher_id", using: :btree
 
+  create_table "indicator_hierarchies", id: false, force: :cascade do |t|
+    t.integer "ancestor_id",   null: false
+    t.integer "descendant_id", null: false
+    t.integer "generations",   null: false
+  end
+
+  add_index "indicator_hierarchies", ["ancestor_id", "descendant_id", "generations"], name: "indicator_anc_desc_idx", unique: true, using: :btree
+  add_index "indicator_hierarchies", ["descendant_id"], name: "indicator_desc_idx", using: :btree
+
   create_table "indicators", force: :cascade do |t|
     t.string   "name",          limit: 255
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
     t.integer  "position"
     t.integer  "curriculum_id"
+    t.integer  "parent_id"
   end
 
   create_table "lessons", force: :cascade do |t|
