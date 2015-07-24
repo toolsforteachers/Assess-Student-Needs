@@ -1,0 +1,22 @@
+- @page_header = link_to_group
+
+%h3
+  = @lesson.name
+  %small
+    = @lesson.lesson_date
+%ul.nav.nav-pills
+  %li.presentation
+    = link_to group_lesson_path(@group, @lesson) do
+      .span.glyphicon.glyphicon-pencil
+      Scoring view
+
+- @lesson.objectives.each do |objective|
+  .panel.panel-default
+    .panel-heading
+      = objective.indicator.name
+    .panel-body
+      - @lesson.assessments.where(indicator: objective.indicator).each do |assessment|
+        %table.table
+          %tbody
+            %tr{ class: "ticks_#{ assessment.student.indicator_score(assessment.indicator) }" }
+              %td= assessment.student.name

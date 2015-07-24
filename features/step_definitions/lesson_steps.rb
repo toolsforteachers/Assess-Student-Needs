@@ -37,7 +37,7 @@ When(/^I edit the lesson$/) do
   click_button "Save"
 end
 
-Given /^I add a lesson "([^"]*)" for "([^"]*)" with indicators "([^"]*)"$/ do |lesson_name, group_name, indicator_names|
+Given /^I add a lesson "([^"]*)" for "([^"]*)" with indicators "([^\"]*)"$/ do |lesson_name, group_name, indicator_names|
   group = Group.find_by(name: group_name)
   lesson = Fabricate(:lesson, group: group, name: lesson_name)
 
@@ -47,4 +47,10 @@ Given /^I add a lesson "([^"]*)" for "([^"]*)" with indicators "([^"]*)"$/ do |l
   end
 
   visit group_lesson_path(group, lesson)
+end
+
+Then(/^I should see "(.*?)" in the "(.*?)" section$/) do |student_name, section_name|
+  within('.panel', text: section_name) do
+    page.should have_text(student_name)
+  end
 end

@@ -23,7 +23,6 @@ Feature: Teacher assesses a lesson
     And I wait 1 second
     Then I should see "Bob" has 3 ticks for "Adding up"
 
-  Scenario: report view
-    When I record a score of 5 for "Ann"
-    And I follow "Report View"
-    Then I should see "Ann" has 5 ticks for "Measuring stuff"
+    When I follow "Report view"
+    And I should see "Bob" in the "Adding up" section
+    Then I should see "Ann" in the "Measuring stuff" section
