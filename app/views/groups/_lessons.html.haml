@@ -14,3 +14,6 @@
         = link_to lesson.name, group_lesson_path(@group, lesson)
         + list of indicators
         + date
+        = link_to edit_group_lesson_path(@group, lesson) do
+          .span.glyphicon.glyphicon-cog
+          Edit lesson
