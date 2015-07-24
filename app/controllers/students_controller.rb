@@ -5,10 +5,4 @@ class StudentsController < ProtectedController
     @student = @group.students.find(params[:id])
     @level = (params[:level] || @student.current_level).to_i
   end
-
-  protected
-
-  def load_group
-    @group = Group.find(params[:group_id])
-  end
 end

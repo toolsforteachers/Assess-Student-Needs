@@ -40,9 +40,6 @@ class LessonsController < ApplicationController
   end
 
   protected
-  def load_group
-    @group = Group.find(params[:group_id])
-  end
 
   def lesson_params
     params.require(:lesson).permit([:lesson_date, :name,
