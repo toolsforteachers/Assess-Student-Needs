@@ -1,6 +1,0 @@
-:plain
-  var html = "#{ escape_javascript(render :partial => 'assessments/student', locals: { :assessment_student => @assessment_student}) } }"
-  $("tr#student_score_#{ @assessment_student.student.id}").replaceWith(function() {
-      return $(html).hide().fadeIn();
-  });
-  $("tr#student_score_#{ @assessment_student.student.id} form").attr('method','put')

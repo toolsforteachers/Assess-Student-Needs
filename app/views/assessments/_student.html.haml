@@ -1,22 +1,3 @@
-- @assessment = Assessment.find_or_initialize_by(student: student,assessor: @lesson)
-- ticks = "ticks_#{ student.indicator_score(@assessment.indicator) }"
-
-%tr{ class: ticks }
-  %td= student.name
-  %td
-    = form_for [@group, @assessment], html: { class: 'form-inline' } do |assessment_f|
-      = assessment_f.hidden_field :assessor_id
-      = assessment_f.hidden_field :assessor_type
-      = assessment_f.hidden_field :student_id
-
-      = assessment_f.select :indicator_id, @lesson.indicators.map{ |t| [truncate(t.name, length: 20), t.id]}, class: 'input-small'
-      &nbsp;
-      - 0.upto(5) do |i|
-        .indicator_score
-          %label.radio
-            = assessment_f.radio_button :score, i
-            = i == 0 ? "n/a" : i
-      = assessment_f.submit 'Save', class: 'btn'
-  %td
-    - student.indicator_assessments(@assessment.indicator).each do |attempt|
-      = render partial: "/assessment_students/attempt", locals: { attempt: attempt }
+- assessment ||= Assessment.find_or_initialize_by(student: student, assessor: @lesson)
+= render partial: 'assessments/form',
+  locals: { assessment: assessment, indicators: @lesson.indicators }

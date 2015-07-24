@@ -18,6 +18,16 @@ Then(/^the lesson should have (\d+) objectives$/) do |objective_count|
   page.should have_css('.well.objective', count: objective_count)
 end
 
+Then(/^the lesson name should be "(.*?)"$/) do |lesson_name|
+  within('h3') do
+    page.should have_text(lesson_name)
+  end
+end
+
+Then(/^I should see the new lesson form$/) do
+  page.should have_css('form#new_lesson')
+end
+
 When(/^I edit the lesson$/) do
   click_link('Edit lesson')
   within(page.all(:css, '.well.objective').last) do

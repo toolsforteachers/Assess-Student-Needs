@@ -1,9 +1,24 @@
-= bootstrap_form_for [@group, @assessment] do |f|
-  / = f.hidden_field :type_helper
-  / - if lesson?
-  /   = f.date_field :simple_lesson_date, label: 'Lesson date'
-  /   = f.text_field :name,  label: 'Lesson objective'
-  / - else
-  /   = f.text_field :notes
-  / / = "render partial: 'indicator_picker', locals: { f: f }"
-  / = f.submit 'Save'
+- ticks = "ticks_#{ assessment.student.indicator_score(assessment.indicator) }"
+%table.table{ class: ticks, id: "student_#{ assessment.student_id }" }
+  %tr
+    %td{ width: 100 }= assessment.student.name
+    %td.nowrap
+      = form_for [@group, assessment], remote: true, html: { class: 'form-inline' } do |assessment_f|
+        = assessment_f.hidden_field :assessor_id
+        = assessment_f.hidden_field :assessor_type
+        = assessment_f.hidden_field :student_id
+
+        = assessment_f.select :indicator_id, indicators.map{ |t| [truncate(t.name, length: 20), t.id]}, class: 'input-small'
+        &nbsp;
+        - 0.upto(5) do |i|
+          .indicator_score
+            %label.radio
+              = assessment_f.radio_button :score, i
+              = i == 0 ? "n/a" : i
+
+        = assessment_f.text_field :name
+        = assessment_f.submit 'Save', class: 'btn btn-primary btn-xs'
+
+      - assessment.student.indicator_assessments(assessment.indicator).each do |attempt|
+        - unless attempt == assessment
+          = render partial: "/assessments/attempt", locals: { attempt: attempt }
