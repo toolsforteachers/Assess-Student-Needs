@@ -1,6 +1,5 @@
 class IndicatorsController < ProtectedController
-
   def index
-    @indicators = Indicator.all
+    @subject = Indicators::Subject.last
   end
 end

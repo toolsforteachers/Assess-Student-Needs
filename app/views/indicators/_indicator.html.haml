@@ -1,0 +1,9 @@
+- collection.each do |indicator, sub_item|
+  %li
+    = indicator
+    (#{ indicator.class })
+    <br>
+    - unless indicator.leaf?
+      %ul
+        = render partial: 'indicator', locals: { collection: indicator.children }
+

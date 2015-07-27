@@ -9,5 +9,6 @@ Acn::Application.routes.draw do
     resources :students
   end
 
+  resources :indicators
   root to: 'home#show'
 end
