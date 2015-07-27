@@ -8,7 +8,9 @@ class GdsCurriculumPage
   def initialize(page_url)
     @page = Nokogiri::HTML(open(page_url))
 
-    @subject = Indicator.create!(name: @page.at_css('h1').inner_html)
+    @subject = Indicator.create!(
+      type: 'Indicators::Subject',
+      name: @page.at_css('h1').inner_html)
 
     #start at the first relevant level
     @node = @page.css('h2').select{ |n| /^Year/.match(n.inner_html) }.first
@@ -26,7 +28,9 @@ class GdsCurriculumPage
   def check_h2
     if @node.name == 'h2' and /^Year/.match(@node.inner_html)
       reset_all
-      @level = @subject.children.create!(name: @node.inner_html)
+      @level = @subject.children.create!(
+        type: 'Indicators::Level',
+        name: @node.inner_html)
     end
   end
 
@@ -35,11 +39,15 @@ class GdsCurriculumPage
       topic_strand = @node.inner_html.split(' - ')
 
       # note - this might exist for the same level
-      @topic = Indicator.find_by(name: topic_strand[0], parent_id: @level.id)
-      @topic ||= @level.children.create!(name: topic_strand[0])
+      @topic = Indicators::Topic.find_by(name: topic_strand[0], parent_id: @level.id)
+      @topic ||= @level.children.create!(
+        type: 'Indicators::Topic',
+        name: topic_strand[0])
 
       if topic_strand[1]
-        @strand = @topic.children.create!(name: topic_strand[1])
+        @strand = @topic.children.create!(
+          type: 'Indicators::Strand',
+          name: topic_strand[1])
       end
     end
   end
@@ -47,7 +55,9 @@ class GdsCurriculumPage
   def check_p
     if @node.name == 'p' && (@strand || @topic)
       parent = @strand || @topic
-      @prompt = parent.children.create!(name: @node.inner_html)
+      @prompt = parent.children.create!(
+        type: 'Indicators::Prompt',
+        name: @node.inner_html)
     end
   end
 
@@ -57,7 +67,9 @@ class GdsCurriculumPage
       if parent
         @node.css('li').each do |li|
           unless li.blank?
-            parent.children.create!(name: li.inner_html)
+            parent.children.create!(
+              type: 'Indicators::Objective',
+              name: li.inner_html)
           end
         end
       end
