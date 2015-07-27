@@ -48,6 +48,8 @@ class GdsCurriculumPage
         @strand = @topic.children.create!(
           type: 'Indicators::Strand',
           name: topic_strand[1])
+      else
+        @strand = nil
       end
     end
   end
@@ -66,10 +68,33 @@ class GdsCurriculumPage
       parent = @prompt || @strand || @topic
       if parent
         @node.css('li').each do |li|
-          unless li.blank?
+          next if li.blank?
+
+          if li.css('ul li').blank?
             parent.children.create!(
               type: 'Indicators::Objective',
               name: li.inner_html)
+
+          else
+            # this is a nested li ul lu
+            # the outer li becomes the Prompt
+            # and the inner li is the Objective
+
+            next if li.children.first.text.blank?
+
+            sub_prompt = parent.children.create!(
+              type: 'Indicators::Prompt',
+              name: li.children.first.text)
+
+            li.css('ul').each do |li_ul|
+              next if li.blank?
+
+              li_ul.css('li').each do |li_ul_li|
+                sub_prompt.children.create!(
+                  type: 'Indicators::Objective',
+                  name: li_ul_li.inner_html)
+              end
+            end
           end
         end
       end
@@ -79,7 +104,6 @@ class GdsCurriculumPage
   def check_call_to_action
     if @node.attr('class') == 'call-to-action'
       parent = @strand || @topic
-
       # attach a note to the parent
     end
   end
