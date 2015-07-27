@@ -15,6 +15,5 @@ class CreateFriendlyIdSlugs < ActiveRecord::Migration
 
     add_column :groups, :slug, :string, unique: true
     add_index :groups, :slug
-    Group.find_each(&:save)
   end
 end
