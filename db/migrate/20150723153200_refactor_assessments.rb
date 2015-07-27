@@ -8,7 +8,7 @@ class RefactorAssessments < ActiveRecord::Migration
     remove_column :assessments, :notes, :string
 
     add_column :assessments, :student_id, :integer, index: true
-    add_column :assessments, :indicator_id, :integer, index: true
+    # add_column :assessments, :indicator_id, :integer, index: true
     add_column :assessments, :assessor_id, :integer, index: true
     add_column :assessments, :assessor_type, :string, index: true
     add_column :assessments, :score, :integer
