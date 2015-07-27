@@ -1,0 +1,78 @@
+require 'rubygems'
+require 'nokogiri'
+require 'open-uri'
+
+class GdsCurriculumPage
+  attr_accessor :page, :subject, :level, :topic, :strand, :prompt, :objective, :node
+
+  def initialize(page_url)
+    @page = Nokogiri::HTML(open(page_url))
+
+    @subject = Indicator.create!(name: @page.at_css('h1').inner_html)
+
+    #start at the first relevant level
+    @node = @page.css('h2').select{ |n| /^Year/.match(n.inner_html) }.first
+
+    while @node do
+      check_h2
+      check_h3
+      check_p
+      check_ul
+      check_call_to_action
+      @node = @node.next_element
+    end
+  end
+
+  def check_h2
+    if @node.name == 'h2' and /^Year/.match(@node.inner_html)
+      reset_all
+      @level = @subject.children.create!(name: @node.inner_html)
+    end
+  end
+
+  def check_h3
+    if @node.name == 'h3'
+      topic_strand = @node.inner_html.split(' - ')
+
+      # note - this might exist for the same level
+      @topic = Indicator.find_by(name: topic_strand[0], parent_id: @level.id)
+      @topic ||= @level.children.create!(name: topic_strand[0])
+
+      if topic_strand[1]
+        @strand = @topic.children.create!(name: topic_strand[1])
+      end
+    end
+  end
+
+  def check_p
+    if @node.name == 'p' && (@strand || @topic)
+      parent = @strand || @topic
+      @prompt = parent.children.create!(name: @node.inner_html)
+    end
+  end
+
+  def check_ul
+    if @node.name == 'ul'
+      parent = @prompt || @strand || @topic
+      if parent
+        @node.css('li').each do |li|
+          unless li.blank?
+            parent.children.create!(name: li.inner_html)
+          end
+        end
+      end
+    end
+  end
+
+  def check_call_to_action
+    if @node.attr('class') == 'call-to-action'
+      parent = @strand || @topic
+
+      # attach a note to the parent
+    end
+  end
+
+  def reset_all
+     @level, @topic, @strand, @prompt = nil, nil, nil, nil
+  end
+end
