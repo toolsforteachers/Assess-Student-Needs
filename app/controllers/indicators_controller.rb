@@ -1,9 +1,13 @@
 class IndicatorsController < ProtectedController
   def index
-    redirect_to indicator_path(Indicators::Subject.first)
+    @subjects = Indicators::Subject.all
   end
 
   def show
     @indicator = Indicator.find(params[:id])
+  end
+
+  def new
+    @indicator = Indicators::Subject.new
   end
 end

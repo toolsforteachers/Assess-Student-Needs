@@ -1,0 +1,9 @@
+- @page_header = 'Curriculum'
+
+- if @subjects.empty?
+  .bs-component
+    .jumbotron
+      %p You don't have any subjects yet.
+      = link_to new_indicators_subject_path do
+        .btn.btn-primary.btn-lg
+          Add a new subject
