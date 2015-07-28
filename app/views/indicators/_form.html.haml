@@ -6,7 +6,4 @@
           = indicator_f.static_control :parent
           = indicator_f.hidden_field :parent_id
         = indicator_f.text_field :name, label: @indicator.friendly_type
-
-        %p= link_to 'Add a new level',
-          new_indicators_level_path(parent_id: @indicator.id)
       = indicator_f.submit 'Save'
