@@ -19,5 +19,9 @@ When(/^I add a level "(.*?)" to "(.*?)"$/) do |level_name, subject_name|
   click_link "Add a new level"
   fill_in "Level", with: level_name
   click_button 'Save'
+
+  within(:css, '.breadcrumb') do
+    page.should have_text(subject_name)
+  end
   page.should have_text('Level was successfully created')
 end
