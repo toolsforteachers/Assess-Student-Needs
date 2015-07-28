@@ -11,6 +11,7 @@ Acn::Application.routes.draw do
 
   resources :indicators
   resources :indicators_subjects, controller: 'indicators/subjects'
+  resources :indicators_levels, controller: 'indicators/levels'
 
   root to: 'home#show'
 end

@@ -5,7 +5,7 @@ class Indicators::SubjectsController < IndicatorsController
   end
 
   def create
-    @indicator = Indicators::Subject.new(indicator_params)
+    @indicator = Indicators::Subject.new(subject_params)
     if @indicator.save
       redirect_to indicators_path, notice: "#{ @indicator.friendly_type } was successfully created."
     else
@@ -15,7 +15,7 @@ class Indicators::SubjectsController < IndicatorsController
 
   protected
 
-  def indicator_params
+  def subject_params
     params.require(:indicators_subject).permit([:name])
   end
 end
