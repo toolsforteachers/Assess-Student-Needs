@@ -7,3 +7,6 @@
       = link_to new_indicators_subject_path do
         .btn.btn-primary.btn-lg
           Add a new subject
+- else
+  - @subjects.each do |subject|
+    %h3= link_to subject.name, indicator_path(subject)
