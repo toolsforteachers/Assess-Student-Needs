@@ -10,4 +10,8 @@ class Indicator < ActiveRecord::Base
   def friendly_type
     self.class.to_s.gsub('Indicators::', '')
   end
+
+  def allowable_child_types
+    []
+  end
 end
