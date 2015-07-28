@@ -10,9 +10,9 @@ When(/^I add a subject "(.*?)"$/) do |subject_name|
 end
 
 Then(/^I should be on the indicator page for "(.*?)"$/) do |indicator_name|
-  indicator = Indicator.find_by(name: indicator_name)
-  text_field_id = "indicators_#{ indicator.friendly_type.downcase }_name"
-  find_field(text_field_id).value.should eql(indicator_name)
+  within(:css, '.indicator-form') do
+    page.should have_text(indicator_name)
+  end
 end
 
 When(/^I add a level "(.*?)" to "(.*?)"$/) do |level_name, subject_name|
