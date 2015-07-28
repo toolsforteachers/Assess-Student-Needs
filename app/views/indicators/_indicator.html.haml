@@ -1,8 +1,9 @@
 - collection.each do |indicator, sub_item|
-  %li
+  %li.list-group-item
+    %span.badge= indicator.class.to_s.gsub('Indicators::','')
     = link_to_indicator(indicator)
-    <br>
+
     - unless indicator.leaf?
-      %ul
+      %ul.list-group
         = render partial: 'indicator', locals: { collection: indicator.children }
 

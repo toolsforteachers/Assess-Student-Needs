@@ -3,8 +3,10 @@
     %li= link_to_indicator(indicator)
   %li= @indicator
 
-%h1= @indicator
+%h1
+  = @indicator
+  .small Enable: edit parent, edit name, add child (must be lower class), change type
 
-%ul
+%ul.list-group
   = render partial: 'indicator', locals: { collection: @indicator.children }
 
