@@ -25,3 +25,10 @@ When(/^I add a level "(.*?)" to "(.*?)"$/) do |level_name, subject_name|
   end
   page.should have_text('Level was successfully created')
 end
+
+When(/^I add a topic "(.*?)" to "(.*?)"$/) do |topic_name, level_name|
+  click_link "Add a new topic"
+  fill_in "Topic", with: topic_name
+  click_button 'Save'
+  page.should have_text('Topic was successfully created')
+end
