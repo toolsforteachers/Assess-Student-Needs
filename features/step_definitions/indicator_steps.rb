@@ -20,9 +20,8 @@ When(/^I add a level "(.*?)" to "(.*?)"$/) do |level_name, subject_name|
   fill_in "Level", with: level_name
   click_button 'Save'
 
-  within(:css, '.breadcrumb') do
-    page.should have_text(subject_name)
-  end
+  parent_name = Indicators::Level.find_by(name: level_name).parent.name
+  parent_name.should eql(subject_name)
   page.should have_text('Level was successfully created')
 end
 
@@ -30,5 +29,18 @@ When(/^I add a topic "(.*?)" to "(.*?)"$/) do |topic_name, level_name|
   click_link "Add a new topic"
   fill_in "Topic", with: topic_name
   click_button 'Save'
+
+  parent_name = Indicators::Topic.find_by(name: topic_name).parent.name
+  parent_name.should eql(level_name)
   page.should have_text('Topic was successfully created')
+end
+
+When(/^I add a strand "(.*?)" to "(.*?)"$/) do |strand_name, topic_name|
+  click_link "Add a new strand"
+  fill_in "Strand", with: strand_name
+  click_button 'Save'
+
+  parent_name = Indicators::Strand.find_by(name: strand_name).parent.name
+  parent_name.should eql(topic_name)
+  page.should have_text('Strand was successfully created')
 end

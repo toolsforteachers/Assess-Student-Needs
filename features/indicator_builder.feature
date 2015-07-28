@@ -16,3 +16,6 @@ Scenario: Adding a subject and several children
 
   When I add a topic "Grammar" to "Year 1"
   Then I should be on the indicator page for "Grammar"
+
+  When I add a strand "Past and present" to "Grammar"
+  Then I should be on the indicator page for "Past and present"
