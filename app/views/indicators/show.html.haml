@@ -1,0 +1,10 @@
+%ul.breadcrumb
+  - @indicator.ancestors.reverse_order.each do |indicator|
+    %li= link_to_indicator(indicator)
+  %li= @indicator
+
+%h1= @indicator
+
+%ul
+  = render partial: 'indicator', locals: { collection: @indicator.children }
+

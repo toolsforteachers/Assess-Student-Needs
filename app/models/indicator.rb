@@ -1,5 +1,5 @@
 class Indicator < ActiveRecord::Base
-  has_closure_tree
+  has_closure_tree order: 'name'
   validates :name, presence: :true
   validates :type, presence: :true
 

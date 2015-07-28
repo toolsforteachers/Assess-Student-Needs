@@ -1,7 +1,6 @@
 - collection.each do |indicator, sub_item|
   %li
-    = indicator
-    (#{ indicator.class })
+    = link_to_indicator(indicator)
     <br>
     - unless indicator.leaf?
       %ul
