@@ -10,3 +10,6 @@ Scenario: Adding a subject
   And I visit the indicators page
   And I follow "Spanish"
   Then I should be on the indicator page for "Spanish"
+
+  When I add a level "Year 1" to "Spanish"
+  Then I should be on the indicator page for "Year 1"

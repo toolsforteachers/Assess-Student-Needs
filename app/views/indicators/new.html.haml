@@ -1,2 +1,7 @@
-- @page_header = 'Add a new subject'
+%ul.breadcrumb
+  - if @indicator.parent
+    - @indicator.parent.self_and_ancestors.reverse_order.each do |indicator|
+      %li= link_to_indicator(indicator)
+  %li= "Add a new #{ @indicator.friendly_type }"
+
 = render partial: 'form'
