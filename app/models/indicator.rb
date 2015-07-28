@@ -6,4 +6,8 @@ class Indicator < ActiveRecord::Base
   def to_s
     name.capitalize
   end
+
+  def friendly_type
+    self.class.to_s.gsub('Indicators::', '')
+  end
 end

@@ -1,6 +1,6 @@
 - collection.each do |indicator, sub_item|
   %li.list-group-item
-    %span.badge= indicator.class.to_s.gsub('Indicators::','')
+    %span.badge= indicator.friendly_type
     = link_to_indicator(indicator)
 
     - unless indicator.leaf?
