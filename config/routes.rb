@@ -10,6 +10,7 @@ Acn::Application.routes.draw do
   end
 
   resources :indicators
-  resources :indicators_subjects, controller: :indicators
+  resources :indicators_subjects, controller: 'indicators/subjects'
+
   root to: 'home#show'
 end

@@ -5,4 +5,7 @@ Background:
 
 Scenario:
   When I visit the indicators page
-  And I follow "Add a new subject"
+  And I add a subject "Spanish"
+  And I add a level "Year 1" to "Spanish"
+  And I add topics "Oral,Verbs" to "Year 1"
+  And I attach a note to "Oral"

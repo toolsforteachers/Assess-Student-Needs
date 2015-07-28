@@ -8,6 +8,14 @@ class IndicatorsController < ProtectedController
   end
 
   def new
-    @indicator = Indicators::Subject.new
+    render action: 'new'
+  end
+
+  def create
+    if @indicator.save
+      redirect_to @indicator, notice: "#{ @indicator.friendly_type } was successfully created."
+    else
+      render action: 'edit'
+    end
   end
 end

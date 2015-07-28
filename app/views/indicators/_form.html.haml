@@ -1,2 +1,6 @@
 = bootstrap_form_for(@indicator) do |indicator_f|
   .panel.panel-default
+    .panel-heading
+      .panel-title
+        = indicator_f.text_field :name
+        = indicator_f.submit 'Save'
