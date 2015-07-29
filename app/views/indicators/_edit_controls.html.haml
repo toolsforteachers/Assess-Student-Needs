@@ -1,16 +1,16 @@
 .btn-group
   = link_to edit_indicator_path(@indicator), class: 'btn' do
-    .span.glyphicon.glyphicon-cog
-      Edit
+    %span.glyphicon.glyphicon-cog
+    Edit
 
   - if @indicator.deletable?
     = link_to '#trash', class: 'btn', method: :delete, data: { confirm: 'Are you sure you want to permanently delete this?' } do
-      .span.glyphicon.glyphicon-trash
+      %span.glyphicon.glyphicon-trash
       Delete
 
   - @indicator.allowable_child_types.map do |child_type|
     = link_to "/indicators_#{ child_type }s/new?parent_id=#{ @indicator.id }",
       class: 'btn' do
-      .span.glyphicon.glyphicon-plus
+      %span.glyphicon.glyphicon-plus
       Add a new #{ child_type }
 
