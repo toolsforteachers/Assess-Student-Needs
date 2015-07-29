@@ -7,6 +7,67 @@ describe Indicator do
   it 'has notes attached (eg from GDS import'
   it 'fixes the imported fraction images'
 
+  describe '#deletable?' do
+    let(:indicator) { Fabricate(:indicator, type: 'Indicators::Subject') }
+
+    context 'by default' do
+      it 'can be deleted' do
+        expect(indicator).to be_deletable
+      end
+    end
+
+    context 'when it has children' do
+      before do
+        Fabricate(:indicator, type: 'Indicators::Level', parent: indicator)
+        indicator.reload
+      end
+
+      it 'can not be deleted' do
+        expect(indicator).not_to be_deletable
+      end
+    end
+
+    context 'when it has been used as a lesson objective' do
+      before do
+        Fabricate(:objective, indicator: indicator)
+      end
+
+      it 'can not be deleted' do
+        expect(indicator).not_to be_deletable
+      end
+    end
+
+    context 'when it has been assessed' do
+      before do
+        Fabricate(:assessment, indicator: indicator)
+      end
+
+      it 'can not be deleted' do
+        expect(indicator).not_to be_deletable
+      end
+    end
+  end
+
+  describe '#destroy' do
+    let(:indicator) { Fabricate(:indicator, type: 'Indicators::Subject') }
+    let(:indicator_id) { indicator.id }
+
+    context 'when it is deletable' do
+      it 'gets deleted' do
+        indicator.destroy
+        expect(Indicator.find_by(id: indicator_id)).to be_nil
+      end
+    end
+
+    context 'when it is not deletable' do
+      before { allow(indicator).to receive(:deletable?) { false } }
+
+      it 'is not deleted' do
+        expect{ indicator.destroy }.to raise_error
+      end
+    end
+  end
+
   context '#friendly_type' do
     it 'is friendly for indicators' do
       expect(Indicator.new.friendly_type).to eql('Indicator')
