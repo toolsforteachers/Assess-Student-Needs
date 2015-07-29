@@ -58,3 +58,13 @@ When(/^I add an objective "(.*?)" to "(.*?)"$/) do |objective_name, prompt_name|
   parent_name.should eql(prompt_name)
   page.should have_text('Objective was successfully created')
 end
+
+When(/^I change the name of topic "(.*?)" to "(.*?)"$/) do |topic_name, new_topic_name|
+  click_link topic_name
+  click_link "Edit"
+  fill_in "Topic name", with: new_topic_name
+  click_button 'Save'
+  page.should have_text('Topic was successfully updated')
+
+end
+

@@ -23,4 +23,14 @@ class IndicatorsController < ProtectedController
   def edit
     @indicator = Indicator.find(params[:id])
   end
+
+  def update
+    @indicator = Indicator.find(params[:id])
+
+    if @indicator.update_attributes(permitted_params)
+      redirect_to @indicator, notice: "#{ @indicator.friendly_type } was successfully updated."
+    else
+      render action: 'edit'
+    end
+  end
 end

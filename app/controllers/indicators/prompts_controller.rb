@@ -5,13 +5,13 @@ class Indicators::PromptsController < IndicatorsController
   end
 
   def create
-    @indicator = Indicators::Prompt.new(level_params)
+    @indicator = Indicators::Prompt.new(permitted_params)
     super
   end
 
   protected
 
-  def level_params
+  def permitted_params
     params.require(:indicators_prompt).permit([:name, :parent_id])
   end
 end

@@ -5,13 +5,13 @@ class Indicators::TopicsController < IndicatorsController
   end
 
   def create
-    @indicator = Indicators::Topic.new(topic_params)
+    @indicator = Indicators::Topic.new(permitted_params)
     super
   end
 
   protected
 
-  def topic_params
+  def permitted_params
     params.require(:indicators_topic).permit([:name, :parent_id])
   end
 end

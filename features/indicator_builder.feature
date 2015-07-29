@@ -14,3 +14,5 @@ Scenario: Adding a subject and several children
   And I add a prompt "Students should" to "Past and present"
   And I add an objective "order a beer" to "Students should"
 
+  And I change the name of topic "Grammar" to "Grammatica"
+

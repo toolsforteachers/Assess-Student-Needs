@@ -5,13 +5,13 @@ class Indicators::ObjectivesController < IndicatorsController
   end
 
   def create
-    @indicator = Indicators::Objective.new(level_params)
+    @indicator = Indicators::Objective.new(permitted_params)
     super
   end
 
   protected
 
-  def level_params
+  def permitted_params
     params.require(:indicators_objective).permit([:name, :parent_id])
   end
 end
