@@ -3,9 +3,6 @@
     .span.glyphicon.glyphicon-cog
       Edit
 
-  = link_to '#comment', class: 'btn' do
-    .span.glyphicon.glyphicon-comment
-
   - if @indicator.deletable?
     = link_to '#trash', class: 'btn', method: :delete, data: { confirm: 'Are you sure you want to permanently delete this?' } do
       .span.glyphicon.glyphicon-trash
