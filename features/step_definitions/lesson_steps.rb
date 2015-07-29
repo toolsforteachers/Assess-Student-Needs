@@ -1,6 +1,6 @@
 Given(/^I add a new lesson for "(.*?)"$/) do |group_name|
-  Fabricate(:indicator, name: 'bar')
-  Fabricate(:indicator, name: 'foo')
+  Fabricate(:indicators_objective, name: 'bar')
+  Fabricate(:indicators_objective, name: 'foo')
 
   group = Group.find_by(name: group_name)
   visit new_group_lesson_path(group)

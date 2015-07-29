@@ -5,7 +5,7 @@ Feature: Teacher assesses a lesson
 
   Background:
     Given I am the teacher of "Year 6A" with students "Ann,Bob,Clare"
-    And the following indicators:
+    And the following indicators_objectives:
       | name            |
       | Adding up       |
       | Measuring stuff |
