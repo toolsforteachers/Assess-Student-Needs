@@ -6,10 +6,9 @@ Given(/^I add a group named "(.*?)" with a student named "(.*?)"$/) do |group_na
   click_button "Save"
 end
 
-When(/^I choose "(.*?)" from the groups dropdown$/) do |group_name|
-  within(:css, 'ul.teacher-groups') do
-    click_link(group_name)
-  end
+When(/^I navigate to the "(.*?)" group page$/) do |group_name|
+  click_link "Classes"
+  click_link group_name
 end
 
 When /^the "(.*)" group should have (\d+) students$/ do |group_name, count|

@@ -5,7 +5,7 @@ Background:
 
 Scenario: going to the group page and clicking the tabs
   When I am on the home page
-  And I choose "Year 6A" from the groups dropdown
+  And I navigate to the "Year 6A" group page
   Then I should see "Ann,Bob,Clare" in the list of students
   When I the follow the add lesson link
   Then I should see the new lesson form

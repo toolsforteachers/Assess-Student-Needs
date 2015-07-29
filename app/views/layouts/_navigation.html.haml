@@ -1,26 +1,11 @@
 - if current_teacher
   %ul.nav.navbar-nav
     %li.dropdown
-      = link_to "#", { class: 'dropdown-toggle', data: { toggle: 'dropdown' } } do
-        My Classes
-        %span.caret
-      %ul.dropdown-menu.teacher-groups
-        - current_teacher.groups.all.each do |group|
-          %li
-            = link_to group.name, group
+      = link_to groups_path do
+        Classes
     %li.dropdown
-      = link_to "#", { class: 'dropdown-toggle', data: { toggle: 'dropdown' } } do
-        Settings
-        %span.caret
-      %ul.dropdown-menu.settings
-        %li
-          = link_to indicators_path do
-            .span.glyphicon.glyphicon-cog
-            Curriculum
-        %li
-          = link_to new_group_path do
-            .span.glyphicon.glyphicon-plus
-            Class
+      = link_to indicators_path do
+        Subjects
   %ul.nav.navbar-nav.navbar-right
     %li= link_to current_teacher.name, '#'
     %li= link_to "Sign out", destroy_teacher_session_path, :method => :delete

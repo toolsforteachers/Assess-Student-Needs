@@ -1,12 +1,18 @@
-- @page_header = 'Curriculum'
+- @page_header = 'Subjects'
 
-- if @subjects.empty?
-  .bs-component
-    .jumbotron
+
+.bs-component
+  .jumbotron
+    - if @subjects.empty?
       %p You don't have any subjects yet.
       = link_to new_indicators_subject_path do
         .btn.btn-primary.btn-lg
           Add a new subject
-- else
-  - @subjects.each do |subject|
-    %h3= link_to subject.name, indicator_path(subject)
+    - else
+      - @subjects.each do |subject|
+        %p= link_to subject.name, indicator_path(subject)
+
+      = link_to new_indicators_subject_path do
+        .span.glyphicon.glyphicon-plus
+        Add a new subject
+

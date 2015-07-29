@@ -1,0 +1,17 @@
+- @page_header = 'Classes'
+
+.bs-component
+  .jumbotron
+    - if current_teacher.groups.empty?
+      %p You don't have any classes yet.
+      = link_to new_group_path do
+        .btn.btn-primary.btn-lg
+          .span.glyphicon.glyphicon-plus
+          Add a new class
+    - else
+      - current_teacher.groups.each do |group|
+        %p= link_to group.name, group
+
+      = link_to new_group_path do
+        .span.glyphicon.glyphicon-plus
+        Add a new class
