@@ -5,7 +5,6 @@ describe Group do
   it { should have_many(:lessons) }
   it { should validate_presence_of(:teacher_id) }
   it { should validate_uniqueness_of(:name).scoped_to(:teacher_id) }
-  it { should belong_to(:curriculum) }
 
   it 'tests that friendly_id appends the teacher last name'
 end

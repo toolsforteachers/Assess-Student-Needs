@@ -3,7 +3,6 @@ class Group < ActiveRecord::Base
   friendly_id :name, use: [:slugged, :finders]
 
   belongs_to :teacher
-  belongs_to :curriculum
   has_many :students
   has_many :lessons
 
