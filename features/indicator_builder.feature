@@ -19,3 +19,6 @@ Scenario: Adding a subject and several children
 
   When I add a strand "Past and present" to "Grammar"
   Then I should be on the indicator page for "Past and present"
+
+  When I add a prompt "Students should" to "Past and present"
+  Then I should be on the indicator page for "Students should"
