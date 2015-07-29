@@ -8,8 +8,11 @@
     .panel-heading
       .panel-title
         = f.fields_for :students do |student_f|
+
+          - remove_link_text = "Remove#{ (' ' + student_f.object.name) unless student_f.object.new_record?}"
+
           = student_f.text_field :name,
-            label: "Student (#{ student_f.link_to_remove('Remove') })".html_safe
+            label: "Student (#{ student_f.link_to_remove(remove_link_text) })".html_safe
         %p= f.link_to_add 'Add a student', :students
         = f.submit 'Save'
 

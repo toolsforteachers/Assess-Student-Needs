@@ -17,7 +17,7 @@ end
 
 Then(/^I should see "(.*?)" in the list of students$/) do |list_of_student_names|
   list_of_student_names.split(',').each do |student_name|
-    page.should have_css('tr.student', text: student_name)
+    page.should have_css('.list-group-item', text: student_name)
   end
 end
 
@@ -37,7 +37,7 @@ When(/^I edit the group "(.*?)"$/) do |group_name|
   visit edit_group_path(Group.find_by_name(group_name))
 end
 
-When(/^I remove the student$/) do
-  click_link 'Remove'
+When(/^I remove the student named "(.*?)"$/) do |student_name|
+  click_link "Remove #{ student_name }"
   click_button 'Save'
 end

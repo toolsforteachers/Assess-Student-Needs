@@ -1,7 +1,7 @@
 %ul.list-group
   - unless @indicator.root?
     - @indicator.parent.self_and_ancestors.reverse_order.each do |indicator|
-      %li.list-group-item.indicator-builder-item
+      %li.list-group-item.larger-list-group-item
         %span.badge.left= indicator.friendly_type
         = link_to_indicator(indicator)
 

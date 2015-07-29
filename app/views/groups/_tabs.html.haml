@@ -1,10 +1,10 @@
 %ul.nav.nav-tabs.nav-justified
-  %li{ class: "#{ 'active' if activate == :lessons }" }
-    = link_to '#lessons', { data: { toggle: 'tab' } } do
-      Lessons
   %li{ class: "#{ 'active' if activate == :students }" }
     = link_to '#students', { data: { toggle: 'tab' } } do
       Students
+  %li{ class: "#{ 'active' if activate == :lessons }" }
+    = link_to '#lessons', { data: { toggle: 'tab' } } do
+      Lessons
   %li
     = link_to '#judgements', { data: { toggle: 'tab' } } do
       Teacher judgements

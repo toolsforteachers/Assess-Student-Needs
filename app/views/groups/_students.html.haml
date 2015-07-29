@@ -7,8 +7,7 @@
           Add some students
 
 - else
-  %table.table.table-striped.table-bordered.table-hover
-    %tbody
-      - @group.students.each do |student|
-        %tr.student
-          %td= link_to student.name, group_student_path(@group, student)
+  .list-group
+    - @group.students.each do |student|
+      .list-group-item.larger-list-group-item
+        = link_to student.name, group_student_path(@group, student)

@@ -9,5 +9,5 @@ Scenario:
   And I should be the teacher of "Year 6A"
 
   When I edit the group "Year 6A"
-  And I remove the student
+  And I remove the student named "Ann"
   Then the "Year 6A" group should have 0 students

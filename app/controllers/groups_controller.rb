@@ -33,6 +33,10 @@ class GroupsController < ProtectedController
   # GET /groups/1/edit
   def edit
     @group = scoped_groups.find(params[:id])
+    (5 - @group.students.length).times do
+      @group.students.build
+    end
+
   end
 
   # POST /groups

@@ -1,5 +1,5 @@
 - collection.each do |indicator, sub_item|
-  %li.list-group-item.indicator-builder-item
+  %li.list-group-item.larger-list-group-item
     %span.badge.left= indicator.friendly_type
 
     - if indicator == @indicator
@@ -9,6 +9,6 @@
       = link_to_indicator(indicator)
 
     - unless indicator.leaf?
-      %ul.list-group.indicator-builder-item
+      %ul.list-group.larger-list-group-item
         = render partial: 'indicator', locals: { collection: indicator.children }
 
