@@ -65,6 +65,17 @@ When(/^I change the name of topic "(.*?)" to "(.*?)"$/) do |topic_name, new_topi
   fill_in "Topic name", with: new_topic_name
   click_button 'Save'
   page.should have_text('Topic was successfully updated')
-
 end
 
+When(/^I can not delete "(.*?)"$/) do |indicator_name|
+  click_link indicator_name
+  page.should_not have_link('Delete')
+end
+
+When(/^I delete "(.*?)"$/) do |indicator_name|
+  indicator_name = Indicator.find_by(name: indicator_name).name
+  click_link indicator_name
+  click_link 'Delete'
+  page.driver.browser.switch_to.alert.accept
+  page.should have_text("#{ indicator_name } was successfully deleted.")
+end

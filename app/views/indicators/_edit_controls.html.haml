@@ -6,8 +6,11 @@
   = link_to '#comment', class: 'btn' do
     .span.glyphicon.glyphicon-comment
 
-  = link_to '#trash', class: 'btn' do
-    .span.glyphicon.glyphicon-trash
+  - if @indicator.deletable?
+    = link_to '#trash', class: 'btn', method: :delete, data: { confirm: 'Are you sure you want to permanently delete this?' } do
+      .span.glyphicon.glyphicon-trash
+      Delete
+
   - @indicator.allowable_child_types.map do |child_type|
     = link_to "/indicators_#{ child_type }s/new?parent_id=#{ @indicator.id }",
       class: 'btn' do

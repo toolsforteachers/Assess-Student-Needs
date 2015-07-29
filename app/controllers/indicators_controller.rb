@@ -33,4 +33,15 @@ class IndicatorsController < ProtectedController
       render action: 'edit'
     end
   end
+
+  def destroy
+    @indicator = Indicator.find(params[:id])
+    indicator_parent = @indicator.parent
+    msg = "#{ @indicator } was successfully deleted."
+    if @indicator.destroy
+      redirect_to (indicator_parent || indicators_path), notice: msg
+    else
+      redirect_to @indicator
+    end
+  end
 end
