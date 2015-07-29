@@ -1,0 +1,16 @@
+.btn-group
+  = link_to edit_indicator_path(@indicator), class: 'btn' do
+    .span.glyphicon.glyphicon-cog
+      Edit
+
+  = link_to '#comment', class: 'btn' do
+    .span.glyphicon.glyphicon-comment
+
+  = link_to '#trash', class: 'btn' do
+    .span.glyphicon.glyphicon-trash
+  - @indicator.allowable_child_types.map do |child_type|
+    = link_to "/indicators_#{ child_type }s/new?parent_id=#{ @indicator.id }",
+      class: 'btn' do
+      .span.glyphicon.glyphicon-plus
+      Add a new #{ child_type }
+

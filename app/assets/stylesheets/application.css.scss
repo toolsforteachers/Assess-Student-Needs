@@ -19,3 +19,17 @@ footer {
 ul.list-group {
   margin-top:10px;
 }
+
+.list-group-item > .badge.left {
+  float: left !important;
+  margin-right: 12px;
+}
+
+.list-group-item > right {
+  float: right;
+}
+
+.indicator-builder-item {
+  font-size: 15px;
+}
+

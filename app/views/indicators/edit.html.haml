@@ -1,0 +1,5 @@
+= render partial: 'breadcrumbs'
+%ul.list-group
+  = render partial: 'form'
+
+= render partial: 'indicator', locals: { collection: @indicator.children }

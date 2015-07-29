@@ -2,8 +2,7 @@
   .panel.panel-default
     .panel-heading
       .panel-title
-        - if @indicator.parent
-          = indicator_f.static_control :parent
-          = indicator_f.hidden_field :parent_id
-        = indicator_f.text_field :name, label: @indicator.friendly_type
+        = indicator_f.hidden_field :parent_id
+        = indicator_f.text_field :name,
+          label: "#{ @indicator.friendly_type } name"
       = indicator_f.submit 'Save'

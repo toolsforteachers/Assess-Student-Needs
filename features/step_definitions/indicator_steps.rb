@@ -9,12 +9,6 @@ When(/^I add a subject "(.*?)"$/) do |subject_name|
   page.should have_text('Subject was successfully created')
 end
 
-Then(/^I should be on the indicator page for "(.*?)"$/) do |indicator_name|
-  within(:css, '.indicator-form') do
-    page.should have_text(indicator_name)
-  end
-end
-
 When(/^I add a level "(.*?)" to "(.*?)"$/) do |level_name, subject_name|
   click_link "Add a new level"
   fill_in "Level", with: level_name
