@@ -22,3 +22,6 @@ Scenario: Adding a subject and several children
 
   When I add a prompt "Students should" to "Past and present"
   Then I should be on the indicator page for "Students should"
+
+  When I add an objective "order a beer" to "Students should"
+  Then I should be on the indicator page for "order a beer"

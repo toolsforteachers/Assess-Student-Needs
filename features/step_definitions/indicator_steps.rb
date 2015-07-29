@@ -54,3 +54,13 @@ When(/^I add a prompt "(.*?)" to "(.*?)"$/) do |prompt_name, strand_name|
   parent_name.should eql(strand_name)
   page.should have_text('Prompt was successfully created')
 end
+
+When(/^I add an objective "(.*?)" to "(.*?)"$/) do |objective_name, prompt_name|
+  click_link "Add a new objective"
+  fill_in "Objective", with: objective_name
+  click_button 'Save'
+
+  parent_name = Indicators::Objective.find_by(name: objective_name).parent.name
+  parent_name.should eql(prompt_name)
+  page.should have_text('Objective was successfully created')
+end
