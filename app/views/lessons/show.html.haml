@@ -16,7 +16,7 @@
 
 - @lesson.objectives.each do |objective|
   .panel.panel-default.objective
-    .panel-heading= objective.name
+    .panel-heading= objective.stream
     .panel-body= objective.indicator.delimited_ancestry_names
 
 = render partial: 'assessments/student', collection: @lesson.students

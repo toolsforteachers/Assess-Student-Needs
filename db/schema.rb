@@ -83,7 +83,7 @@ ActiveRecord::Schema.define(version: 20150729122101) do
 
   create_table "objectives", force: :cascade do |t|
     t.integer  "lesson_id"
-    t.string   "name"
+    t.string   "stream"
     t.integer  "indicator_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false

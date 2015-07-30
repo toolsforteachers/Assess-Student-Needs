@@ -8,7 +8,7 @@
       = f.date_field :lesson_date, label: 'Date'
       = f.fields_for :objectives do |objective_f|
         .well.objective
-          = objective_f.text_field :name, class: 'objective-name'
+          = objective_f.text_field :stream, label: 'Stream', class: 'objective-name'
           = objective_f.select :indicator_id,
             Indicators::Objective.includes(:self_and_ancestors).map{ |t| [t.delimited_ancestry_names, t.id]},
             label: "Objective (#{ objective_f.link_to_remove('Remove') })".html_safe

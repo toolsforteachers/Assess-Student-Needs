@@ -8,7 +8,7 @@
         = assessment_f.hidden_field :assessor_type
         = assessment_f.hidden_field :student_id
 
-        = assessment_f.select :indicator_id, objectives.map{ |t| [truncate(t.name, length: 20), t.indicator_id]}, class: 'input-small'
+        = assessment_f.select :indicator_id, objectives.map{ |t| [truncate(t.stream, length: 20), t.indicator_id]}, class: 'input-small'
         &nbsp;
         - 0.upto(5) do |i|
           .indicator_score

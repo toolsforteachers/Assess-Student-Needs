@@ -16,6 +16,9 @@ end
 
 Then(/^the lesson should have (\d+) objectives$/) do |objective_count|
   page.should have_css('.panel.objective', count: objective_count)
+  page.should have_css('.objective .panel-heading', text: 'Stream 1')
+  page.should have_css('.objective .panel-heading', text: 'Stream 1')
+
 end
 
 Then(/^the lesson name should be "(.*?)"$/) do |lesson_name|
@@ -44,7 +47,7 @@ Given /^I add a lesson "([^"]*)" for "([^"]*)" with indicators "([^\"]*)" as "([
   indicator_names.split(',').each_with_index do |indicator_name, index|
     indicator = Indicator.find_by(name: indicator_name)
     Fabricate(:objective, lesson: lesson, indicator: indicator,
-      name: objective_names.split(',')[index])
+      stream: objective_names.split(',')[index])
   end
 
   visit group_lesson_path(group, lesson)
