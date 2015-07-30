@@ -1,6 +1,7 @@
-- ticks = "ticks_#{ assessment.student.indicator_score(assessment.indicator) }"
-%table.table{ class: ticks, id: "student_#{ assessment.student_id }" }
-  %tr
+- bg_class = likert_style(assessment.student.indicator_score(assessment.indicator))
+
+%table.table{ id: "student_#{ assessment.student_id }" }
+  %tr{ class: bg_class }
     %td{ width: 60 }= assessment.student.name
     %td.nowrap
       = form_for [@group, assessment], remote: true, html: { class: 'form-inline' } do |assessment_f|

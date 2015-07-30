@@ -18,5 +18,5 @@
       - @lesson.assessments.where(indicator: objective.indicator).each do |assessment|
         %table.table
           %tbody
-            %tr{ class: "ticks_#{ assessment.student.indicator_score(assessment.indicator) }" }
+            %tr{ class: likert_style(assessment.student.indicator_score(assessment.indicator)) }
               %td= assessment.student.name
