@@ -3,7 +3,7 @@ class LessonsController < ProtectedController
 
   def new
     @lesson = @group.lessons.new lesson_date: Date.today
-    @lesson.objectives.build
+    @lesson.objectives.build(name: 'Stream 1')
   end
 
   def edit

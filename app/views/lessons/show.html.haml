@@ -19,7 +19,7 @@
   .panel-body
     - @lesson.objectives.each do |objective|
       .objective.well.well-sm
-        = objective.indicator.name
+        = objective.indicator.delimited_ancestry_names
 
 
 

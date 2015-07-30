@@ -1,5 +1,8 @@
 class Indicator < ActiveRecord::Base
   has_closure_tree order: 'name', dependent: :destroy
+  has_many :self_and_descendants, through: :descendant_hierarchies, source: :descendant
+  has_many :self_and_ancestors, through: :ancestor_hierarchies, source: :ancestor
+
   validates :name, presence: :true
   validates :type, presence: :true
 

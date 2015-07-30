@@ -8,8 +8,9 @@
       = f.date_field :lesson_date, label: 'Date'
       = f.fields_for :objectives do |objective_f|
         .well.objective
+          = objective_f.text_field :name, class: 'objective-name'
           = objective_f.select :indicator_id,
-            Indicator.order('name').all.map{ |t| [t.name, t.id]},
+            Indicators::Objective.includes(:self_and_ancestors).map{ |t| [t.delimited_ancestry_names, t.id]},
             label: "Objective (#{ objective_f.link_to_remove('Remove') })".html_safe
 
       %p= f.link_to_add 'Add an objective', :objectives
