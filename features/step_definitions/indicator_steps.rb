@@ -76,6 +76,5 @@ When(/^I delete "(.*?)"$/) do |indicator_name|
   indicator_name = Indicator.find_by(name: indicator_name).name
   click_link indicator_name
   click_link 'Delete'
-  page.driver.browser.switch_to.alert.accept
   page.should have_text("#{ indicator_name } was successfully deleted.")
 end
