@@ -3,7 +3,7 @@ When /^I record a score of (\d+) for "([^"]*)" for "([^"]*)"$/ do |score, studen
 
   within(:css, "table#student_#{ student.id }") do
     select(indicator_name, from: 'assessment_indicator_id')
-    choose("assessment_score_#{ score }")
+    find("#assessment_score_#{ score }").trigger('click')
     click_button("Save")
   end
 end
