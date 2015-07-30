@@ -4,6 +4,6 @@ class Indicators::Subject < Indicator
   default_scope { order('name') }
 
   def allowable_child_types
-    [:level, :topic, :prompt, :objective]
+    [:level, :topic]
   end
 end
