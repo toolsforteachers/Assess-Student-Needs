@@ -5,12 +5,12 @@ require 'open-uri'
 class GdsCurriculumPage
   attr_accessor :page, :subject, :level, :topic, :strand, :prompt, :objective, :node
 
-  def initialize(page_url)
+  def initialize(page_url, subject=nil)
     @page = Nokogiri::HTML(open(page_url))
 
     @subject = Indicator.create!(
       type: 'Indicators::Subject',
-      name: @page.at_css('h1').inner_html)
+      name: subject || @page.at_css('h1').inner_html)
 
     #start at the first relevant level
     @node = @page.css('h2').select{ |n| /^Year/.match(n.inner_html) }.first
@@ -30,7 +30,7 @@ class GdsCurriculumPage
       reset_all
       @level = @subject.children.create!(
         type: 'Indicators::Level',
-        name: @node.inner_html)
+        name: @node.inner_html.gsub(' programme of study', ''))
     end
   end
 
