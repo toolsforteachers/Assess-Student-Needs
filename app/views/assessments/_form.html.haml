@@ -1,24 +1,22 @@
-- bg_class = likert_style(assessment.student.indicator_score(assessment.indicator))
-
 %table.table{ id: "student_#{ assessment.student_id }" }
-  %tr{ class: bg_class }
-    %td{ width: 60 }= assessment.student.name
+  %tr{ class: likert_style(assessment.score) }
+    %td.lead{ width: 60 }= assessment.student.name
     %td.nowrap
-      = form_for [@group, assessment], remote: true, html: { class: 'form-inline' } do |assessment_f|
+      = bootstrap_form_for [@group, assessment], remote: true, layout: :inline do |assessment_f|
         = assessment_f.hidden_field :assessor_id
         = assessment_f.hidden_field :assessor_type
         = assessment_f.hidden_field :student_id
+        = assessment_f.select :indicator_id, objectives.map{ |t| [truncate(t.stream, length: 20), t.indicator_id]}, hide_label: true
 
-        = assessment_f.select :indicator_id, objectives.map{ |t| [truncate(t.stream, length: 20), t.indicator_id]}, class: 'input-small'
-        &nbsp;
-        - 0.upto(5) do |i|
-          .indicator_score
-            %label.radio
-              = assessment_f.radio_button :score, i
-              = i == 0 ? "n/a" : i
+        .btn-group{ data: { toggle: 'buttons' }}
+          - 0.upto(5) do |i|
+            = assessment_f.radio_button :score, i,
+              label: (i == 0 ? "n/a" : i.to_s),
+              class: 'asssessment-score',
+              label_class: "btn btn-primary#{ ' active' if i == assessment.score } asssessment-score",
+              inline: true
 
-        = assessment_f.text_field :name
-        = assessment_f.submit 'Save', class: 'btn btn-primary btn-xs'
+        = assessment_f.submit 'Save', class: 'submit-assessment hidden'
 
       - assessment.student.indicator_assessments(assessment.indicator).each do |attempt|
         - unless attempt == assessment

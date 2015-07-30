@@ -4,7 +4,6 @@ When /^I record a score of (\d+) for "([^"]*)" for "([^"]*)"$/ do |score, studen
   within(:css, "table#student_#{ student.id }") do
     select(indicator_name, from: 'assessment_indicator_id')
     choose("assessment_score_#{ score }")
-    fill_in('assessment_name', with: 'A note')
     click_button("Save")
   end
 end
