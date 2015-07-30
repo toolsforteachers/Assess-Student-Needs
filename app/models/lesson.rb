@@ -1,6 +1,6 @@
 class Lesson < ActiveRecord::Base
   belongs_to :group
-  has_many :objectives
+  has_many :objectives, dependent: :destroy
   has_many :indicators, through: :objectives
   has_many :assessments, as: :assessor
 
