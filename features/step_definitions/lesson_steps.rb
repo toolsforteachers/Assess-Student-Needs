@@ -15,7 +15,7 @@ Given(/^I add a new lesson for "(.*?)"$/) do |group_name|
 end
 
 Then(/^the lesson should have (\d+) objectives$/) do |objective_count|
-  page.should have_css('.well.objective', count: objective_count)
+  page.should have_css('.panel.objective', count: objective_count)
 end
 
 Then(/^the lesson name should be "(.*?)"$/) do |lesson_name|
@@ -37,13 +37,14 @@ When(/^I edit the lesson$/) do
   click_button "Save"
 end
 
-Given /^I add a lesson "([^"]*)" for "([^"]*)" with indicators "([^\"]*)"$/ do |lesson_name, group_name, indicator_names|
+Given /^I add a lesson "([^"]*)" for "([^"]*)" with indicators "([^\"]*)" as "([^\"]*)"$/ do |lesson_name, group_name, indicator_names, objective_names|
   group = Group.find_by(name: group_name)
   lesson = Fabricate(:lesson, group: group, name: lesson_name)
 
-  indicator_names.split(',').each do |indicator_name|
+  indicator_names.split(',').each_with_index do |indicator_name, index|
     indicator = Indicator.find_by(name: indicator_name)
-    Fabricate(:objective, lesson: lesson, indicator: indicator)
+    Fabricate(:objective, lesson: lesson, indicator: indicator,
+      name: objective_names.split(',')[index])
   end
 
   visit group_lesson_path(group, lesson)

@@ -13,14 +13,10 @@
     = link_to group_lesson_report_path(@group, @lesson) do
       .span.glyphicon.glyphicon-print
       Report view
-.panel.panel-default
-  .panel-heading
-    Objectives
-  .panel-body
-    - @lesson.objectives.each do |objective|
-      .objective.well.well-sm
-        = objective.indicator.delimited_ancestry_names
 
-
+- @lesson.objectives.each do |objective|
+  .panel.panel-default.objective
+    .panel-heading= objective.name
+    .panel-body= objective.indicator.delimited_ancestry_names
 
 = render partial: 'assessments/student', collection: @lesson.students

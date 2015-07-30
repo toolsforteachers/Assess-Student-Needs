@@ -2,7 +2,7 @@
   var html = "#{ escape_javascript(render :partial => 'assessments/form',
     locals: { student: @assessment.student,
               assessment: @assessment,
-              indicators: @assessment.assessor.indicators }) } }"
+              objectives: @assessment.assessor.objectives }) } }"
 
   $("table#student_#{ @assessment.student_id }").replaceWith(function() {
       return $(html).hide().fadeIn();
