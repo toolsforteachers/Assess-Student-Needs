@@ -12,4 +12,10 @@ module ApplicationHelper
       when 1 then 'danger'
     end
   end
+
+  def glyph(name, icon)
+    s = "<span class='span glyphicon glyphicon-#{ icon }'></span> "
+    s += name
+    raw s
+  end
 end

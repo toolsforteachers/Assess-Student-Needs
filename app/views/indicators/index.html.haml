@@ -12,5 +12,4 @@
         %p= link_to subject.name, indicator_path(subject)
 
       = link_to new_indicators_subject_path do
-        .span.glyphicon.glyphicon-plus
-        Add a new subject
+        = glyph('Add a new subject', 'plus')

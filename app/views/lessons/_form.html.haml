@@ -13,9 +13,9 @@
             = objective_f.text_field :stream, label: 'Stream', class: 'objective-name'
             = objective_f.select :indicator_id,
               subject.leaves.where(type: 'Indicators::Objective').includes(:self_and_ancestors).map{ |t| [t.delimited_ancestry_names, t.id]},
-              label: "Objective (#{ objective_f.link_to_remove('Remove') })".html_safe
+              label: "Objective (#{ objective_f.link_to_remove(glyph('Remove', 'trash')) })".html_safe
 
-        %p= f.link_to_add 'Add an objective', :objectives
+        %p= f.link_to_add glyph('Add an objective', 'plus'), :objectives
       - else
         .well.objective
           To add objectives, you should first

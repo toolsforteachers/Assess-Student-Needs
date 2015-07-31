@@ -6,12 +6,11 @@
       %p You don't have any classes yet.
       = link_to new_group_path do
         .btn.btn-primary.btn-lg
-          .span.glyphicon.glyphicon-plus
-          Add a new class
+          = glyph('Add a new class', 'plus')
+
     - else
       - current_teacher.groups.each do |group|
         %p= link_to group.name, group
 
       = link_to new_group_path do
-        .span.glyphicon.glyphicon-plus
-        Add a new class
+        = glyph('Add a new class', 'plus')
