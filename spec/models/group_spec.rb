@@ -3,6 +3,7 @@ require 'spec_helper'
 describe Group do
   it { should have_many(:students) }
   it { should have_many(:lessons) }
+  it { should belong_to(:subject) }
   it { should validate_presence_of(:teacher_id) }
   it { should validate_uniqueness_of(:name).scoped_to(:teacher_id) }
 
