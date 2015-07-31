@@ -9,11 +9,9 @@
     .panel-heading
       .panel-title
         = f.fields_for :students do |student_f|
+          - remove_link_text = student_f.link_to_remove glyph("Remove#{ (' ' + student_f.object.name) unless student_f.object.new_record?}", 'trash').html_safe
+          = student_f.text_field :name, label: 'Student', help: remove_link_text
 
-          - remove_link_text = glyph("Remove#{ (' ' + student_f.object.name) unless student_f.object.new_record?}", 'trash')
-
-          = student_f.text_field :name,
-            label: "Student (#{ student_f.link_to_remove(remove_link_text) })".html_safe
         %p= f.link_to_add glyph('Add a student', 'plus'), :students
         = f.submit 'Save'
 

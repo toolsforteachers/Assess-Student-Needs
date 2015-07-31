@@ -6,7 +6,7 @@ describe Indicator do
 
   it 'has notes attached (eg from GDS import'
   it 'fixes the imported fraction images'
-
+  it 'updates the ancestry cache on the objective (unless it is an objective, then that would have been done already)'
   describe '#deletable?' do
     let(:indicator) { Fabricate(:indicator, type: 'Indicators::Subject') }
 

@@ -27,9 +27,7 @@ Then(/^I should see "(.*?)" in the list of students$/) do |list_of_student_names
 end
 
 When(/^I the follow the add lesson link$/) do
-  within(:css, 'li.add-lesson') do
-    click_link('Lesson')
-  end
+  click_link('Add a new lesson')
 end
 
 Then(/^I should be the teacher of "(.*?)"$/) do |group_name|
