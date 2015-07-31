@@ -2,6 +2,7 @@ Given(/^I add a group named "(.*?)" with a student named "(.*?)"$/) do |group_na
   visit new_group_path
   fill_in 'Class name', with: group_name
   click_link 'Add a student'
+  select 'Maths', from: 'Subject'
   fill_in 'Student', with: 'Ann'
   click_button "Save"
 end
