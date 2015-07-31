@@ -1,10 +1,12 @@
-Given(/^I add a new lesson for "(.*?)"$/) do |group_name|
-  Fabricate(:indicators_objective, name: 'bar')
-  Fabricate(:indicators_objective, name: 'foo')
+Given(/^"(.*?)" is studying "(.*?)"$/) do |group_name, subject_name|
+  subject = Indicators::Subject.find_by(name: subject_name)
+  group = Group.find_by(name: group_name)
+  group.update_attributes subject: subject
+end
 
+Given(/^I add a new lesson for "(.*?)"$/) do |group_name|
   group = Group.find_by(name: group_name)
   visit new_group_lesson_path(group)
-
   fill_in('Goal', with: 'Do stuff')
   select 'foo', from: 'Objective'
   click_link 'Add an objective'
@@ -57,4 +59,15 @@ Then(/^I should see "(.*?)" in the "(.*?)" section$/) do |student_name, section_
   within('.panel', text: section_name) do
     page.should have_text(student_name)
   end
+end
+
+When(/^I try to add a lesson I should instead edit "(.*?)"$/) do |group_name|
+  click_link "Year 6A"
+  click_link "Add a new lesson"
+
+  page.should have_text('To add objectives, you should first')
+  click_link "choose a subject"
+
+  select 'Maths', from: 'Subject'
+  click_button "Save"
 end

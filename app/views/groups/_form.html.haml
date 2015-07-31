@@ -4,6 +4,7 @@
       .panel-title
         = f.text_field :name, label: 'Class name'
         = f.select :teacher_id, Teacher.all.map{ |t| [t.name, t.id]}, { selected: current_teacher.id }, { disabled: true }
+        = f.select :subject_id, Indicators::Subject.all.map{ |t| [t.name, t.id]}, include_blank: true
   .panel.panel-default
     .panel-heading
       .panel-title
