@@ -71,10 +71,12 @@ class GdsCurriculumPage
           next if li.blank?
 
           if li.css('ul li').blank?
-            parent.children.create!(
-              type: 'Indicators::Objective',
-              name: li.inner_html)
-
+            # prevent nested objectives being created at the incorrect (upper) level
+            unless li.css_path.match /ul:nth.*.li:nth.*>.ul.* >.li:nth.*/
+              parent.children.create!(
+                type: 'Indicators::Objective',
+                name: li.inner_html)
+            end
           else
             # this is a nested li ul lu
             # the outer li becomes the Prompt
