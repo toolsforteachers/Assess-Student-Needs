@@ -13,7 +13,7 @@
 - @lesson.objectives.each do |objective|
   .panel.panel-default
     .panel-heading
-      = objective.indicator.delimited_ancestry_names
+      = objective.indicator.cached_ancestry_name
     .panel-body
       - @lesson.assessments.where(indicator: objective.indicator).each do |assessment|
         %table.table
