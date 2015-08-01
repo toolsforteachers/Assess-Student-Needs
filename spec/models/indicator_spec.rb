@@ -6,7 +6,18 @@ describe Indicator do
 
   it 'has notes attached (eg from GDS import'
   it 'fixes the imported fraction images'
-  it 'updates the ancestry cache on the objective (unless it is an objective, then that would have been done already)'
+
+  context 'prevent changing parent' do
+    let!(:orig_parent) { Fabricate(:indicators_subject) }
+    let!(:new_parent) { Fabricate(:indicators_subject) }
+    let!(:child) { Fabricate(:indicators_level, parent: orig_parent) }
+
+    it 'prevents changing the parent' do
+      child.update_attributes parent: new_parent
+      expect(child.errors.messages.keys).to include(:parent)
+    end
+  end
+
   describe '#deletable?' do
     let(:indicator) { Fabricate(:indicator, type: 'Indicators::Subject') }
 

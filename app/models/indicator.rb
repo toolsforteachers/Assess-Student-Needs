@@ -5,6 +5,7 @@ class Indicator < ActiveRecord::Base
 
   validates :name, presence: :true
   validates :type, presence: :true
+  validate :prevent_parental_update
 
   before_destroy :check_deletable
 
@@ -27,7 +28,15 @@ class Indicator < ActiveRecord::Base
     true
   end
 
+  protected
+
   def check_deletable
     raise "Undeletable" unless deletable?
+  end
+
+  def prevent_parental_update
+    if parent_id_changed? && self.persisted?
+      errors.add(:parent, "cannot be changed")
+    end
   end
 end
