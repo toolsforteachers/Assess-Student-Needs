@@ -74,7 +74,7 @@ describe Indicator do
       before { allow(indicator).to receive(:deletable?) { false } }
 
       it 'is not deleted' do
-        expect{ indicator.destroy }.to raise_error
+        expect{ indicator.destroy }.to raise_error("Undeletable")
       end
     end
   end
