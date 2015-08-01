@@ -18,6 +18,10 @@ Fabricator(:indicators_strand, from: :indicator) do
   type 'Indicators::Strand'
 end
 
+Fabricator(:indicators_prompt, from: :indicator) do
+  type 'Indicators::Prompt'
+end
+
 Fabricator(:indicators_objective, from: :indicator) do
   type 'Indicators::Objective'
 end

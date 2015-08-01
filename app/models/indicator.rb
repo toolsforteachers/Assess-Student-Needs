@@ -8,6 +8,7 @@ class Indicator < ActiveRecord::Base
   validate :prevent_parental_update
 
   before_destroy :check_deletable
+  after_save :build_objective_cached_ancestry_name
 
   def to_s
     name.capitalize
@@ -39,4 +40,12 @@ class Indicator < ActiveRecord::Base
       errors.add(:parent, "cannot be changed")
     end
   end
+
+  def build_objective_cached_ancestry_name
+    self_and_descendants.each do |indicator|
+      indicator.set_cached_ancestry_name
+    end
+  end
+
+  def set_cached_ancestry_name ; end
 end

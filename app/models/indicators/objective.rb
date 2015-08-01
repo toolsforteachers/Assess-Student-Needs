@@ -1,6 +1,4 @@
 class Indicators::Objective < Indicator
-  after_save :set_cached_ancestry_name
-
   def allowable_child_types
     []
   end
