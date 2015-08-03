@@ -29,7 +29,7 @@ Acn::Application.configure do
   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for nginx
 
   if ENV['FORCE_SSL']
-    config.middleware.insert_before(Rack::Lock, Rack::Rewrite) do
+    config.middleware.insert_before(ActionDispatch::SSL, Rack::Rewrite) do
       r301 %r{.*}, 'https://www.toolsforteachers.org.uk$&', :if => Proc.new {|rack_env|
       rack_env['SERVER_NAME'] != 'www.toolsforteachers.org.uk'
       }
