@@ -6,8 +6,8 @@
     = link_to '#students', { data: { toggle: 'tab' } } do
       Students
   %li
-    = link_to '#judgements', { data: { toggle: 'tab' } } do
-      Teacher judgements
+    = link_to '#evaluations', { data: { toggle: 'tab' } } do
+      Evaluations
   %li.dropdown
     = link_to "#", { class: 'dropdown-toggle', data: { toggle: 'dropdown' } } do
       Settings
@@ -23,5 +23,5 @@
     = render partial: '/groups/students'
   #lessons.tab-pane{ class: "#{ 'active' if activate == :lessons }" }
     = render partial: '/groups/lessons'
-  #judgements.tab-pane
-    = render partial: '/groups/teacher_judgements'
+  #evaluations.tab-pane
+    = render partial: '/groups/evaluations'
