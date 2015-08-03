@@ -28,8 +28,15 @@ Acn::Application.configure do
   # config.action_dispatch.x_sendfile_header = "X-Sendfile" # for apache
   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for nginx
 
-  # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
-  config.force_ssl = true if ENV['FORCE_SSL']
+  if ENV['FORCE_SSL']
+    config.middleware.insert_before(Rack::Lock, Rack::Rewrite) do
+      r301 %r{.*}, 'https://www.toolsforteachers.org.uk$&', :if => Proc.new {|rack_env|
+      rack_env['SERVER_NAME'] != 'www.toolsforteachers.org.uk'
+      }
+    end
+    config.force_ssl = true
+  end
+
 
   # See everything in the log (default is :info)
   # config.log_level = :debug
