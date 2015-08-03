@@ -17,5 +17,5 @@ Acn::Application.routes.draw do
   resources :indicators_prompts, controller: 'indicators/prompts'
   resources :indicators_objectives, controller: 'indicators/objectives'
 
-  root to: 'groups#index'
+  root to: 'home#show'
 end

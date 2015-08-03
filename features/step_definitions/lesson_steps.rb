@@ -62,6 +62,7 @@ Then(/^I should see "(.*?)" in the "(.*?)" section$/) do |student_name, section_
 end
 
 When(/^I try to add a lesson I should instead edit "(.*?)"$/) do |group_name|
+  visit groups_path
   click_link "Year 6A"
   click_link "Add a new lesson"
 
