@@ -4,7 +4,7 @@
       = @lesson.new_record? ? 'Add a new lesson' : 'Edit lesson'
   .panel-body
     = bootstrap_nested_form_for [@group, @lesson], layout: 'horizontal' do |f|
-      = f.text_field :name, label: 'Goal'
+      = f.text_field :name, label: 'Goal', autofocus: true
       = f.date_field :lesson_date, label: 'Date'
 
       - if subject = @group.subject
