@@ -1,6 +1,6 @@
 - @page_header = 'Sign in (beta users)'
 
-.col-xs-4
+.col-sm-4
   = bootstrap_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
     = f.email_field :email, autofocus: true
     = f.password_field :password, autocomplete: "off"
