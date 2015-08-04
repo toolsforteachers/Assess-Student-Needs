@@ -72,4 +72,19 @@ Acn::Application.configure do
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
+
+
+  config.action_mailer.default_url_options = { :host => ENV['DEFAULT_URL_HOST'] }
+
+  ActionMailer::Base.delivery_method = :smtp
+
+  ActionMailer::Base.smtp_settings = {
+    :user_name => ENV['SENDGRID_USERNAME'],
+    :password => ENV['SENDGRID_PASSWORD'],
+    :domain => 'toolsforteachers.org.uk',
+    :address => 'smtp.sendgrid.net',
+    :port => 587,
+    :authentication => :plain,
+    :enable_starttls_auto => true
+  }
 end
