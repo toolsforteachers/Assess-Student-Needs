@@ -75,16 +75,4 @@ Acn::Application.configure do
 
 
   config.action_mailer.default_url_options = { :host => ENV['DEFAULT_URL_HOST'] }
-
-  ActionMailer::Base.delivery_method = :smtp
-
-  ActionMailer::Base.smtp_settings = {
-    :user_name => ENV['SENDGRID_USERNAME'],
-    :password => ENV['SENDGRID_PASSWORD'],
-    :domain => 'support.toolsforteachers.org.uk',
-    :address => 'smtp.sendgrid.net',
-    :port => 587,
-    :authentication => :plain,
-    :enable_starttls_auto => true
-  }
 end
