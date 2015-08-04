@@ -8,6 +8,9 @@
 
 - else
   .list-group
+    .list-group-item.larger-list-group-item
+      = link_to edit_group_path(@group) do
+        = glyph('Add students', 'plus')
     - @group.students.each do |student|
       .list-group-item.larger-list-group-item
         = link_to student.name, group_student_path(@group, student)
