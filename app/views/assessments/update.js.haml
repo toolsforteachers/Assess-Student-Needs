@@ -1,9 +1,8 @@
 :plain
-  var html = "#{ escape_javascript(render :partial => 'assessments/form',
-    locals: { student: @assessment.student,
-              assessment: @assessment,
-              objectives: @assessment.assessor.objectives }) } }"
+  var html = "#{ escape_javascript(render :partial => 'lessons/student',
+    locals: { assessment: @assessment,
+              student: @assessment.student }) } }"
 
-  $("table#student_#{ @assessment.student_id }").replaceWith(function() {
+  $("tr#student_#{ @assessment.student_id }").replaceWith(function() {
       return $(html).hide().fadeIn();
   });

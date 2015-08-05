@@ -11,3 +11,9 @@ $(document).on('click', '.btn.asssessment-score', function (e) {
   submit_button.removeClass('hidden');
   submit_button.addClass('btn btn-default');
 })
+
+$(document).on('change', 'table.assessment select', function (e) {
+  var submit_button = $(this).closest('form').find(':submit')
+  submit_button.removeClass('hidden');
+  submit_button.addClass('btn btn-default');
+})

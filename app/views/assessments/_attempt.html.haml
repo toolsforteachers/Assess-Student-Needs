@@ -1,4 +1,2 @@
-%td.attempt
-  = link_to [@group, attempt.assessor] do
-    %span.badge= attempt.score
-    Lesson
+= link_to [@group, attempt.assessor], title: "Lesson on: #{ attempt.updated_at }" do
+  %span.badge= "L #{ attempt.score }"

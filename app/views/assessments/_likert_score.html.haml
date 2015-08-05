@@ -1,0 +1,7 @@
+.btn-group{ data: { toggle: 'buttons' }}
+  - 0.upto(5) do |i|
+    = assessment_f.radio_button :score, i,
+      label: (i == 0 ? "n/a" : i.to_s),
+      class: 'asssessment-score',
+      label_class: "btn btn-primary#{ ' active' if i == assessment_f.object.score } asssessment-score",
+      inline: true
