@@ -1,18 +1,6 @@
 class AssessmentsController < ProtectedController
   before_filter :load_group
 
-  def new
-    @assessment = Assessment.new
-  end
-
-  def show
-    @assessment = Assessment.find(params[:id])
-  end
-
-  def edit
-    @assessment = Assessment.find(params[:id])
-  end
-
   def update
     @assessment = Assessment.find(params[:id])
     updated = @assessment.update_attributes(assessment_params)
