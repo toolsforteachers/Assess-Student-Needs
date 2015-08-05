@@ -1,3 +1,4 @@
+# :nocov:
 if Rails.env.production?
   ActionMailer::Base.delivery_method = :smtp
 
@@ -11,3 +12,4 @@ if Rails.env.production?
     :password       => ENV['SMTP_PASS']
   }
 end
+# :nocov:

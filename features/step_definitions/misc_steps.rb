@@ -1,3 +1,4 @@
+# :nocov:
 When /^I wait (\d+) seconds?$/ do |seconds|
   sleep seconds.to_i
 end
@@ -13,4 +14,4 @@ end
 When /^I press "(.*?)"$/ do |button_name|
   click_button button_name
 end
-
+# :nocov:

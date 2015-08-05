@@ -1,3 +1,4 @@
+# :nocov:
 World(FabricationMethods)
 
 def with_ivars(fabricator)
@@ -43,3 +44,4 @@ Then /^I should see the following (.*) in the database:$/ do |model_name, table|
   klass = Fabrication::Cucumber::StepFabricator.new(model_name).klass
   klass.where(table.rows_hash).count.should == 1
 end
+# :nocov:
