@@ -20,8 +20,6 @@
       = assessment_f.submit 'Save', class: 'hidden'
 
     %td.attempt
-      - assessment.assessor.objectives.each do |objective|
-
-        / kick out the current assessment
-        - student.indicator_assessments(objective.indicator).each do |attempt|
+      - objectives.each do |objective|
+        - assessment.previous_attempts_by(student, objectives.map(&:indicator)).each do |attempt|
           = render partial: "assessments/attempt", locals: { attempt: attempt, objective: objective }
