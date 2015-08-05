@@ -1,13 +1,9 @@
 table.assessment {
-  td.attempt {
-    text-align: right;
-  }
-
   td.student {
     white-space: nowrap;
   }
 
-  td.stream select {
+  td select {
     margin-right: 10px;
   }
 }

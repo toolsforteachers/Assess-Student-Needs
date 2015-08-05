@@ -18,4 +18,10 @@
     .panel-body= objective.indicator.cached_ancestry_name
 
 %table.assessment.table
-  = render partial: 'student', collection: @group.students
+  %thead
+    %tr
+      %th Student
+      %th
+      %th Previous attempts
+  %tbody
+    = render partial: 'student', collection: @group.students

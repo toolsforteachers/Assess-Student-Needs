@@ -1,9 +1,0 @@
-= bootstrap_form_for [@group, assessment], remote: true, layout: :inline do |assessment_f|
-  = assessment_f.hidden_field :assessor_id
-  = assessment_f.hidden_field :assessor_type
-  = assessment_f.hidden_field :student_id
-  = assessment_f.select :indicator_id, objectives.map{ |t| [truncate(t.stream, length: 20), t.indicator_id]}, hide_label: true
-
-  = render partial: 'assessments/likert_score', locals: { assessment_f: assessment_f }
-
-  = assessment_f.submit 'Save', class: 'submit-assessment hidden'

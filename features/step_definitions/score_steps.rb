@@ -25,8 +25,8 @@ end
 
 Then(/^I should see (\d+) for the last attempt by "(.*?)"$/) do |score, student_name|
   student = Student.find_by_name(student_name)
-save_and_open_page
+
   within(:css, "tr#student_#{ student.id } td.attempt") do
-    page.should have_text("L #{ score }")
+    page.should have_text("Foxes: #{ score }")
   end
 end
