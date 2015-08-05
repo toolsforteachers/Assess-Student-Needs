@@ -35,3 +35,4 @@ gem 'shoulda-matchers', :group => :test
 gem 'faker', :group => :test
 gem 'railroady', :group => [:development, :test]
 gem 'poltergeist', :group => [:test]
+gem 'simplecov', :require => false, :group => :test
