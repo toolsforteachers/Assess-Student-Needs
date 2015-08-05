@@ -1,4 +1,7 @@
 class Lesson < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :slug_candidates, use: [:slugged, :finders]
+
   belongs_to :group
   has_many :objectives, dependent: :destroy
   has_many :indicators, through: :objectives
@@ -15,4 +18,17 @@ class Lesson < ActiveRecord::Base
     reject_if: proc { |attributes| attributes['indicator_id'].blank? }
 
   default_scope { order('lesson_date desc') }
+
+
+  def slug_candidates
+    [
+      :name,
+      [:name, :group_name],
+      [:name, :group_name, :lesson_date]
+    ]
+  end
+
+  def group_name
+    group.try(:name)
+  end
 end
