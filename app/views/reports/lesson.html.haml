@@ -15,8 +15,10 @@
     .panel-heading
       = objective.indicator.cached_ancestry_name
     .panel-body
-      - @lesson.assessments.where(indicator: objective.indicator).each do |assessment|
-        %table.table
-          %tbody
-            %tr{ class: likert_style(assessment.student.indicator_score(assessment.indicator)) }
-              %td= assessment.student.name
+      %table.table
+        %tbody
+          - @lesson.assessments.where(indicator: objective.indicator).each do |assessment|
+
+            %tr{ class: likert_style(assessment.score) }
+              %td= "#{ assessment.student.name } scored: #{ assessment.score }"
+              %td= "Average score (all attempts): #{ assessment.student.average_score_for(assessment.indicator) }"

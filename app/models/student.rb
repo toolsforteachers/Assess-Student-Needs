@@ -7,20 +7,7 @@ class Student < ActiveRecord::Base
 
   default_scope { order('name asc') }
 
-  def indicator_assessments(indicator)
-    return [] unless indicator
-     assessments
-      .where(['assessments.indicator_id = ? and score > 0', indicator.id])
-      .order('assessments.created_at desc')
-  end
-
-  def indicator_score(indicator)
-    return [] unless indicator
-    indicator_assessments(indicator).limit(2).average(:score).to_i
-  end
-
-  def indicator_lessons(indicator)
-    return [] unless indicator
-    indicator_assessments(indicator).where("assessments.type = 'Lesson'")
+  def average_score_for(indicator)
+    assessments.by_indicator(indicator).average(:score).to_i
   end
 end
