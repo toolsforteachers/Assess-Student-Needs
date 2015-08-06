@@ -1,13 +1,10 @@
-%ul.nav.nav-tabs.nav-justified
+%ul.nav.nav-tabs
   %li{ class: "#{ 'active' if activate == :lessons }" }
     = link_to '#lessons', { data: { toggle: 'tab' } } do
       Lessons
   %li{ class: "#{ 'active' if activate == :students }" }
     = link_to '#students', { data: { toggle: 'tab' } } do
       Students
-  %li
-    = link_to '#evaluations', { data: { toggle: 'tab' } } do
-      Evaluations
   %li.dropdown
     = link_to "#", { class: 'dropdown-toggle', data: { toggle: 'dropdown' } } do
       Settings
@@ -23,5 +20,3 @@
     = render partial: '/groups/students'
   #lessons.tab-pane{ class: "#{ 'active' if activate == :lessons }" }
     = render partial: '/groups/lessons'
-  #evaluations.tab-pane
-    = render partial: '/groups/evaluations'
