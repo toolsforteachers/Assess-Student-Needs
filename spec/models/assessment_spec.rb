@@ -5,7 +5,7 @@ describe Assessment do
   it { should belong_to(:student) }
   it { should belong_to(:assessor) }
 
-  describe '#previous_attempts_by' do
+  describe '#attempts_at' do
     let!(:student) { Fabricate(:student) }
     let!(:indicator) { Fabricate(:indicators_objective) }
 
@@ -15,7 +15,7 @@ describe Assessment do
         student: student)
     end
 
-    subject { @assessment.previous_attempts_by(student, [indicator]) }
+    subject { @assessment.attempts_at(indicator) }
 
     context 'with an assessment' do
       it 'should be empty' do

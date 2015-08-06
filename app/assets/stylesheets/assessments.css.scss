@@ -1,9 +1,14 @@
 table.assessment {
   td.student {
-    white-space: nowrap;
+    width: '20%';
   }
-
-  td select {
-    margin-right: 10px;
+  td {
+  font-size: 14px;
   }
+  td.related_attempts {
+    text-align: right;
+  }
+}
+.popover-content a {
+  color: #fff;
 }

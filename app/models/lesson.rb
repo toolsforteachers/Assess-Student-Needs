@@ -31,4 +31,12 @@ class Lesson < ActiveRecord::Base
   def group_name
     group.try(:name)
   end
+
+  def multiple_objectives?
+    objectives.length > 1
+  end
+
+  def indicator
+    indicators.first unless multiple_objectives?
+  end
 end

@@ -17,11 +17,9 @@
     .panel-heading= objective.stream
     .panel-body= objective.indicator.cached_ancestry_name
 
-%table.assessment.table
-  %thead
-    %tr
-      %th Student
-      %th
-      %th Previous attempts
+%table.assessment.table.table-responsive
   %tbody
-    = render partial: 'student', collection: @group.students
+    - @group.students.each do |student|
+      - assessment = @lesson.assessments.where(student: student).first_or_initialize
+      = render partial: 'lessons/assessment',
+        locals: { assessment: assessment, indicators: @lesson.indicators }

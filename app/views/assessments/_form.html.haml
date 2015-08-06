@@ -1,0 +1,24 @@
+= bootstrap_form_for [@group, assessment], remote: true do |assessment_f|
+  = assessment_f.hidden_field :assessor_id
+  = assessment_f.hidden_field :assessor_type
+  = assessment_f.hidden_field :student_id
+
+  - if assessment.assessor.multiple_objectives?
+    = assessment_f.form_group :indicator_id do
+      - assessment.assessor.objectives.each do |objective|
+
+        = assessment_f.radio_button :indicator_id,
+          objective.indicator_id,
+          label: raw(stream_picker_label(assessment, objective))
+
+  - elsif assessment.assessor.indicator
+    = raw(previous_attempts_label(assessment))
+
+    = assessment_f.hidden_field :indicator_id, value: assessment.assessor.indicator.id
+
+  = assessment_f.text_area :notes, { hide_label: true, class: 'input-md' }
+
+  = render partial: 'assessments/likert_score',
+    locals: { assessment_f: assessment_f }
+
+  = assessment_f.submit 'Save', class: 'input-sm'

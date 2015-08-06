@@ -15,12 +15,10 @@ Feature: Teacher assesses a lesson
   @javascript
   Scenario: recording student scores
     When I record a score of 5 for "Ann" for "Foxes"
-    And I wait 1 second
     Then I should see "Ann" has 5 ticks for "Measuring stuff"
     Then I should see 4 for the last attempt by "Ann"
 
     When I record a score of 3 for "Bob" for "Owls"
-    And I wait 1 second
     Then I should see "Bob" has 3 ticks for "Adding up"
 
     When I follow "Report view"

@@ -1,8 +1,10 @@
 :plain
-  var html = "#{ escape_javascript(render :partial => 'lessons/student',
+  var html = "#{ escape_javascript(render :partial => 'lessons/assessment',
     locals: { assessment: @assessment,
-              student: @assessment.student }) } }"
+              indicators: @assessment.assessor.indicators }) } }"
 
   $("tr#student_#{ @assessment.student_id }").replaceWith(function() {
       return $(html).hide().fadeIn();
   });
+
+  $('[data-toggle="tooltip"]').tooltip();

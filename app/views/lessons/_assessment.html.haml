@@ -1,0 +1,13 @@
+%tr{ id: "student_#{ assessment.student.id }", class: likert_style(assessment.score) }
+  %td.col-sm-1.student= assessment.student.name
+  %td.col-sm-3
+    %p
+      = link_to "#assessment_form_#{assessment.student.id }", { data: { toggle: 'collapse'}, class: '' } do
+        = score_text(assessment)
+
+      = " (#{ assessment.stream })" if assessment.stream
+      = assessment.notes
+    .collapse{ id: "assessment_form_#{assessment.student.id }" }
+      .well
+        = render partial: 'assessments/form', locals: { assessment: assessment }
+

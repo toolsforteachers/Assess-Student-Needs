@@ -8,12 +8,14 @@ class Assessment < ActiveRecord::Base
   scope :by_indicator, ->(indicator) { where(indicator: indicator) }
   scope :by_student, ->(student) { where(student: student) }
 
-  def previous_attempts_by(student, indicators)
-    previous_attempts = []
-    indicators.each do |indicator|
-      attempt = Assessment.by_student(student).by_indicator(indicator)
-      previous_attempts << attempt
-    end
-    previous_attempts.flatten - [self]
+  def attempts_at(obj_indicator)
+    related_attempts = Assessment.by_student(student).by_indicator(obj_indicator)
+    related_attempts.flatten - [self]
+  end
+
+  def stream
+    return unless persisted?
+    return unless assessor.multiple_objectives?
+    assessor.objectives.where(indicator: indicator).first.stream
   end
 end
