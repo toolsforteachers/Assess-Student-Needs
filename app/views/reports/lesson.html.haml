@@ -15,10 +15,12 @@
     .panel-heading
       = objective.indicator.cached_ancestry_name
     .panel-body
-      %table.table
+      %table.table.assessment
         %tbody
           - @lesson.assessments.where(indicator: objective.indicator).each do |assessment|
-
+            - next unless assessment.student
             %tr{ class: likert_style(assessment.score) }
-              %td= "#{ assessment.student.name } scored: #{ assessment.score }"
-              %td= "Average score (all attempts): #{ assessment.student.average_score_for(assessment.indicator) }"
+              %td= "#{ assessment.student.name }: #{ assessment.score }"
+              %td= raw(previous_attempts_label(assessment))
+              %td= "Average score: #{ assessment.student.average_score_for(assessment.indicator) }"
+
