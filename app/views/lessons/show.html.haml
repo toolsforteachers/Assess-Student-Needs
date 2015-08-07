@@ -14,12 +14,16 @@
     = link_to group_lesson_report_path(@group, @lesson) do
       = glyph('Report view', 'print')
 
-- @lesson.objectives.each do |objective|
-  .panel.panel-default.objective
-    .panel-heading= objective.stream
-    .panel-body= objective.indicator.cached_ancestry_name
+/ - @lesson.objectives.each do |objective|
+/   .panel.panel-default.objective
+/     .panel-heading= objective.stream
+/     .panel-body= objective.indicator.cached_ancestry_name
 
-%table.assessment.table.table-responsive
+%table.assessment.table.table-responsive.table-striped.table-hover
+  %thead
+    %th Name
+    %th Score
+    %th Notes
   %tbody
     - @group.students.each do |student|
       - assessment = @lesson.assessments.where(student: student).first_or_initialize
