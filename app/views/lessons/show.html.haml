@@ -1,9 +1,11 @@
 - @page_header = link_to_group
 
-%h3
-  = @lesson.name
-  %small
-    = @lesson.lesson_date
+%h4 Subject: #{ @group.subject.try(:name) }
+
+= render partial: 'lessons/objectives/single', locals: { objective: @lesson.objective }
+
+%h4 Date: #{ @lesson.lesson_date }
+%p Notes: #{ @lesson.notes }
 %ul.nav.nav-pills
   %li.presentation
     = link_to edit_group_lesson_path(@group, @lesson) do
