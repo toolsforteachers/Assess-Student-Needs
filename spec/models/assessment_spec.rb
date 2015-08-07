@@ -5,6 +5,33 @@ describe Assessment do
   it { should belong_to(:student) }
   it { should belong_to(:assessor) }
 
+  describe '#alt_streams?' do
+    let(:lesson) { Fabricate(:lesson) }
+    let(:assessment) { Fabricate(:assessment, assessor: lesson) }
+
+    before do
+      allow(lesson).to receive(:multiple_objectives?) { has_multiple }
+    end
+
+    subject { assessment.alt_streams? }
+
+    context 'when the assessor has multiple objectives' do
+      let(:has_multiple) { true }
+
+      it 'should be true' do
+        expect(subject).to be_truthy
+      end
+    end
+
+    context 'when the assessor does not have multiple objectives' do
+      let(:has_multiple) { false }
+
+      it 'should be false' do
+        expect(subject).to be_falsy
+      end
+    end
+  end
+
   describe '#attempts_at' do
     let!(:student) { Fabricate(:student) }
     let!(:indicator) { Fabricate(:indicators_objective) }

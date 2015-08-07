@@ -3,7 +3,7 @@
   = assessment_f.hidden_field :assessor_type
   = assessment_f.hidden_field :student_id
 
-  - if assessment.stream
+  - if assessment.alt_streams?
     = assessment_f.form_group :indicator_id do
       - assessment.assessor.objectives.each do |objective|
 
