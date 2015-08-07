@@ -2,7 +2,8 @@
 
 %h4 Subject: #{ @group.subject.try(:name) }
 
-= render partial: 'lessons/objectives/single', locals: { objective: @lesson.objective }
+- unless @lesson.multiple_objectives?
+  = render partial: 'lessons/objectives/single', locals: { objective: @lesson.objective }
 
 %h4 Date: #{ @lesson.lesson_date }
 %p Notes: #{ @lesson.notes }
@@ -14,10 +15,9 @@
     = link_to group_lesson_report_path(@group, @lesson) do
       = glyph('Report view', 'print')
 
-/ - @lesson.objectives.each do |objective|
-/   .panel.panel-default.objective
-/     .panel-heading= objective.stream
-/     .panel-body= objective.indicator.cached_ancestry_name
+
+- if @lesson.multiple_objectives?
+  = render partial: 'lessons/objectives/multiple', locals: { objectives: @lesson.objectives }
 
 %table.assessment.table.table-responsive.table-bordered.table-hover
   %thead

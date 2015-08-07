@@ -1,0 +1,5 @@
+- objectives.each do |objective|
+  .panel.panel-default.objective
+    .panel-heading= objective.stream
+    .panel-body
+      = render partial: 'lessons/objectives/single', locals: { objective: objective }
