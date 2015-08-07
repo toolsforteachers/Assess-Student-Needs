@@ -34,5 +34,6 @@ gem "database_cleaner", :group => :test
 gem 'shoulda-matchers', :group => :test
 gem 'faker', :group => :test
 gem 'railroady', :group => [:development, :test]
+gem 'jshint', :group => [:development, :test]
 gem 'poltergeist', :group => [:test]
 gem 'simplecov', :require => false, :group => :test
