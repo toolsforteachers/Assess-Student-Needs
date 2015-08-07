@@ -26,7 +26,7 @@
       %th.col-xs-2 Stream
     %th.col-xs-1 Score
     %th Notes
-    %th.col-xs-1
+    %th.col-xs-1 Previous attempts
   %tbody
     - @group.students.each do |student|
       - assessment = @lesson.assessments.where(student: student).first_or_initialize

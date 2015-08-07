@@ -7,7 +7,8 @@ end
 Given(/^I add a new lesson for "(.*?)"$/) do |group_name|
   group = Group.find_by(name: group_name)
   visit new_group_lesson_path(group)
-  fill_in('Goal', with: 'Do stuff')
+  fill_in('Goal', with: 'something')
+  fill_in('Notes', with: 'Do stuff')
   select 'foo', from: 'Objective'
   click_link 'Add an objective'
   within(page.all(:css, '.well.objective').last) do
@@ -17,16 +18,18 @@ Given(/^I add a new lesson for "(.*?)"$/) do |group_name|
 end
 
 Then(/^the lesson should have (\d+) objectives$/) do |objective_count|
-  page.should have_css('.panel.objective', count: objective_count)
-  page.should have_css('.objective .panel-heading', text: 'Stream 1')
-  page.should have_css('.objective .panel-heading', text: 'Stream 1')
+  if objective_count.to_i > 1
+    page.should have_css('.panel.objective', count: objective_count)
+    page.should have_css('.objective .panel-heading', text: 'Stream 1')
 
+  end
+  page.should have_css('h4', text: "Level:", count: objective_count)
+  page.should have_css('h4', text: "Topic:", count: objective_count)
+  page.should have_css('h4', text: "Objective:", count: objective_count)
 end
 
-Then(/^the lesson name should be "(.*?)"$/) do |lesson_name|
-  within('h3') do
-    page.should have_text(lesson_name)
-  end
+Then(/^the lesson notes should be "(.*?)"$/) do |lesson_notes|
+  page.should have_text("Notes: #{ lesson_notes }")
 end
 
 Then(/^I should see the new lesson form$/) do
@@ -38,7 +41,7 @@ When(/^I edit the lesson$/) do
   within(page.all(:css, '.well.objective').last) do
     click_link('Remove')
   end
-  fill_in('Goal', with: 'new goal')
+  fill_in('Notes', with: 'new goal')
   click_button "Save"
 end
 
