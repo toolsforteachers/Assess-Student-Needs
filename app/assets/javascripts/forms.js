@@ -1,14 +1,14 @@
 $(document).on('nested:fieldAdded', function(event){
   var target = event.field.find('.objective-name');
   if (target) {
-    existing_nested_field_count = $('.objective-name').length;
+    var existing_nested_field_count = $('.objective-name').length;
     target.val('Stream ' + existing_nested_field_count);
-   };
+   }
  });
 
 $(document).on('click', '.toggle-assessment-form', function (e) {
   e.preventDefault();
-  tr = this.closest('tr');
+  var tr = $(this).closest('tr');
   $(tr).find('td.stream').toggleClass('hidden');
   $(tr).find('td.score').toggleClass('hidden');
   $(tr).find('td.notes').toggleClass('hidden');
