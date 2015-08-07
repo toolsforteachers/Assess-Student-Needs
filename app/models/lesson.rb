@@ -39,4 +39,8 @@ class Lesson < ActiveRecord::Base
   def indicator
     indicators.first unless multiple_objectives?
   end
+
+  def objective
+    objectives.first
+  end
 end
