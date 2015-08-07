@@ -5,6 +5,7 @@
   .panel-body
     = bootstrap_nested_form_for [@group, @lesson], layout: 'horizontal' do |f|
       = f.text_field :name, label: 'Goal', autofocus: true
+      = f.text_area :notes
       = f.date_field :lesson_date, label: 'Date'
 
       - if subject = @group.subject
