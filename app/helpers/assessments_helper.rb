@@ -11,9 +11,7 @@ module AssessmentsHelper
   end
 
   def score_text(assessment)
-    return 'Unscored' unless assessment.persisted?
-    return 'Score: n/a' if assessment.score.to_i == 0
-    "Score: #{ assessment.score }"
+    assessment.score.to_i == 0 ? 'n/a' : assessment.score
   end
 
   def stream_picker_label(assessment, objective)
