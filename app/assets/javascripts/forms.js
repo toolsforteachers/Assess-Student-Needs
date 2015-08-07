@@ -9,3 +9,13 @@ $(document).on('nested:fieldAdded', function(event){
 $(function () {
   $('[data-toggle="tooltip"]').tooltip();
 })
+
+$(document).on('click', '.toggle-assessment-form', function (e) {
+  e.preventDefault();
+  tr = this.closest('tr');
+  $(tr).find('td.score').toggleClass('hidden');
+  $(tr).find('td.notes').toggleClass('hidden');
+  $(tr).find('td.form').toggleClass('hidden');
+  $(tr).find('span.glyphicon').toggleClass('glyphicon-minus');
+});
+

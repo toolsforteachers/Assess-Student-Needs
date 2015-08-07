@@ -1,13 +1,14 @@
-%tr{ id: "student_#{ assessment.student.id }", class: likert_style(assessment.score) }
-  %td.col-sm-1.student= assessment.student.name
-  %td.col-sm-3
-    %p
-      = link_to "#assessment_form_#{assessment.student.id }", { data: { toggle: 'collapse'}, class: '' } do
-        = score_text(assessment)
+%tr{ id: "student_#{ assessment.student.id }" }
+  %td.col-xs-2.student
+    = link_to glyph(nil, 'plus'), "#", class: 'toggle-assessment-form'
+    = assessment.student.name
 
-      = " (#{ assessment.stream })" if assessment.stream
-      = assessment.notes
-    .collapse{ id: "assessment_form_#{assessment.student.id }" }
-      .well
-        = render partial: 'assessments/form', locals: { assessment: assessment }
+  %td.col-xs-1.score{ class: likert_style(assessment.score) }
+    = score_text(assessment)
 
+  %td.notes
+    = " (#{ assessment.stream })" if assessment.stream
+    = assessment.notes
+
+  %td.form.hidden{ colspan: 2 }
+    = render partial: 'assessments/form', locals: { assessment: assessment }

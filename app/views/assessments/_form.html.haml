@@ -16,9 +16,11 @@
 
     = assessment_f.hidden_field :indicator_id, value: assessment.assessor.indicator.id
 
-  = assessment_f.text_area :notes, { hide_label: true, class: 'input-md' }
 
-  = render partial: 'assessments/likert_score',
+  %p= render partial: 'assessments/likert_score',
     locals: { assessment_f: assessment_f }
+
+  = assessment_f.text_area :notes, { hide_label: true, class: 'input-sm' }
+
 
   = assessment_f.submit 'Save', class: 'input-sm'
