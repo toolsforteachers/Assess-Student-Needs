@@ -21,6 +21,6 @@
             - next unless assessment.student
             %tr{ class: likert_style(assessment.score) }
               %td= "#{ assessment.student.name }: #{ assessment.score }"
-              %td= raw(previous_attempts_label(assessment))
+              %td= raw(previous_attempts(assessment, true))
               %td= "Average score: #{ assessment.student.average_score_for(assessment.indicator) }"
 

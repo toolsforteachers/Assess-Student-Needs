@@ -21,9 +21,13 @@ module AssessmentsHelper
     "#{ objective.stream } (#{ s })"
   end
 
-  def previous_attempts_label(assessment)
+  def previous_attempts(assessment,label=false)
     attempts = assessment.attempts_at(assessment.indicator)
     s = attempts_text(attempts)
-    "Previous attempts: #{ s }" unless s.blank?
+    if label
+      "Previous attempts: #{ s }" unless s.blank?
+    else
+      s
+    end
   end
 end

@@ -1,14 +1,20 @@
 %tr{ id: "student_#{ assessment.student.id }" }
-  %td.col-xs-3.student
+  %td.student
     = link_to glyph(nil, 'plus'), "#", class: 'toggle-assessment-form'
     = assessment.student.name
 
-  %td.col-xs-1.score{ class: likert_style(assessment.score) }
+  - if assessment.alt_streams?
+    %td.stream
+      = assessment.stream
+
+  %td.score{ class: likert_style(assessment.score) }
     = score_text(assessment)
 
   %td.notes
-    = " (#{ assessment.stream })" if assessment.stream
     = assessment.notes
 
-  %td.form.hidden{ colspan: 2 }
+  %td.attempts
+    = raw(previous_attempts(assessment))
+
+  %td.assessment-form.hidden{ colspan: (assessment.alt_streams? ? 4 : 3) }
     = render partial: 'assessments/form', locals: { assessment: assessment }

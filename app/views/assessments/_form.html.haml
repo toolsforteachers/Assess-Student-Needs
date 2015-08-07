@@ -3,7 +3,7 @@
   = assessment_f.hidden_field :assessor_type
   = assessment_f.hidden_field :student_id
 
-  - if assessment.assessor.multiple_objectives?
+  - if assessment.stream
     = assessment_f.form_group :indicator_id do
       - assessment.assessor.objectives.each do |objective|
 
@@ -12,15 +12,13 @@
           label: raw(stream_picker_label(assessment, objective))
 
   - elsif assessment.assessor.indicator
-    = raw(previous_attempts_label(assessment))
+    = raw(previous_attempts(assessment, true))
 
     = assessment_f.hidden_field :indicator_id, value: assessment.assessor.indicator.id
-
 
   %p= render partial: 'assessments/likert_score',
     locals: { assessment_f: assessment_f }
 
   = assessment_f.text_area :notes, { hide_label: true, class: 'input-sm' }
-
 
   = assessment_f.submit 'Save', class: 'input-sm'

@@ -21,9 +21,12 @@
 
 %table.assessment.table.table-responsive.table-bordered.table-hover
   %thead
-    %th Name
-    %th Score
+    %th.col-xs-3 Name
+    - if @lesson.multiple_objectives?
+      %th.col-xs-2 Stream
+    %th.col-xs-1 Score
     %th Notes
+    %th.col-xs-1
   %tbody
     - @group.students.each do |student|
       - assessment = @lesson.assessments.where(student: student).first_or_initialize
