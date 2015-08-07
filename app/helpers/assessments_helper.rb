@@ -18,7 +18,7 @@ module AssessmentsHelper
     attempts = assessment.attempts_at(objective.indicator)
     s = attempts_text(attempts)
     return objective.stream if s.blank?
-    "#{ objective.stream } (#{ s })"
+    "#{ objective.stream } (Previous attempts: #{ s })"
   end
 
   def previous_attempts(assessment,label=false)
