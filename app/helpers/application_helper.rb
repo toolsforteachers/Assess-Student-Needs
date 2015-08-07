@@ -15,7 +15,7 @@ module ApplicationHelper
 
   def glyph(name, icon)
     s = "<span class='span glyphicon glyphicon-#{ icon }'></span> "
-    s += name
+    s += name if name
     raw s
   end
 end
