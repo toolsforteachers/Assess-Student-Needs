@@ -6,10 +6,6 @@ $(document).on('nested:fieldAdded', function(event){
    };
  });
 
-$(function () {
-  $('[data-toggle="tooltip"]').tooltip();
-})
-
 $(document).on('click', '.toggle-assessment-form', function (e) {
   e.preventDefault();
   tr = this.closest('tr');
