@@ -16,7 +16,7 @@ class Assessment < ActiveRecord::Base
   def stream
     return unless persisted?
     return unless alt_streams?
-    assessor.objective.try(:stream)
+    assessor.objectives.where(indicator: indicator).first.try(:stream)
   end
 
   def alt_streams?

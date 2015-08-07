@@ -1,5 +1,5 @@
 Fabricator(:objective) do
-  indicator { Fabricate(:indicator) }
+  indicator { Fabricate(:indicators_objective) }
   lesson
   stream { Faker::Lorem.characters(10) }
 end

@@ -1,3 +1,3 @@
 Fabricator(:assessment) do
-  indicator { Fabricate(:indicator) }
+  indicator { Fabricate(:indicators_objective) }
 end

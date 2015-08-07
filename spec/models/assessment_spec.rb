@@ -32,6 +32,40 @@ describe Assessment do
     end
   end
 
+  describe '#stream' do
+    let(:indicator) { Fabricate(:indicators_objective)  }
+    let(:lesson) do
+      Fabricate(:lesson, objectives:
+          [
+            Fabricate(:objective, stream: 'Stream 1', indicator: indicator),
+            Fabricate(:objective, stream: 'Stream 2')]
+        )
+    end
+
+    let(:assessment) do
+      Fabricate(:assessment, assessor: lesson, indicator: indicator)
+    end
+
+    subject { assessment.stream }
+
+    context 'when there is a lesson with an objective' do
+      it do
+        expect(subject).to eql('Stream 1')
+      end
+    end
+    context 'when the assessment has not been saved' do
+      before { expect(assessment).to receive(:persisted?) { false } }
+
+      it 'is null' do
+        expect(subject).to be_nil
+      end
+    end
+
+    context 'when there are no alt_streams' do
+      before { expect(assessment).to receive(:alt_streams?) { false } }
+    end
+  end
+
   describe '#attempts_at' do
     let!(:student) { Fabricate(:student) }
     let!(:indicator) { Fabricate(:indicators_objective) }
