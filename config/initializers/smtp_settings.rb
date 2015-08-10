@@ -6,7 +6,7 @@ if Rails.env.production?
     :enable_starttls_auto => true,
     :address        => 'smtp.gmail.com',
     :port           => 587,
-    :domain         => 'toolsforteachers.org.uk',
+    :domain         => 'gmail.com',
     :authentication => :plain,
     :user_name      => ENV['SMTP_USER'],
     :password       => ENV['SMTP_PASS']
