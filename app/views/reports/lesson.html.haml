@@ -1,9 +1,7 @@
 - @page_header = link_to_group
+= render partial: 'lessons/details', locals: { lesson: @lesson }
 
-%h3
-  = @lesson.notes
-  %small
-    = @lesson.lesson_date
+
 %ul.nav.nav-pills
   %li.presentation
     = link_to group_lesson_path(@group, @lesson) do
@@ -11,16 +9,16 @@
       Scoring view
 
 - @lesson.objectives.each do |objective|
-  .panel.panel-default
-    .panel-heading
-      = objective.indicator.cached_ancestry_name
-    .panel-body
-      %table.table.assessment
-        %tbody
-          - @lesson.assessments.where(indicator: objective.indicator).each do |assessment|
-            - next unless assessment.student
-            %tr{ class: likert_style(assessment.score) }
-              %td= "#{ assessment.student.name }: #{ assessment.score }"
-              %td= raw(previous_attempts(assessment, true))
-              %td= "Average score: #{ assessment.student.average_score_for(assessment.indicator) }"
+  %section
+    = render partial: 'lessons/objective', locals: { multiple_objectives: @lesson.multiple_objectives?,
+      objective: objective }
+
+    %table.table.assessment
+      %tbody
+        - @lesson.assessments.where(indicator: objective.indicator).each do |assessment|
+          - next unless assessment.student
+          %tr{ class: likert_style(assessment.score) }
+            %td= "#{ assessment.student.name }: #{ assessment.score }"
+            %td= raw(previous_attempts(assessment, true))
+            %td= "Average score: #{ assessment.student.average_score_for(assessment.indicator) }"
 

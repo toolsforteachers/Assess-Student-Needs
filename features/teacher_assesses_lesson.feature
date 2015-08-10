@@ -22,5 +22,5 @@ Feature: Teacher assesses a lesson
     Then I should see "Bob" has 3 ticks for "Adding up"
 
     When I follow "Report view"
-    And I should see "Bob" in the "Adding up" section
-    Then I should see "Ann" in the "Measuring stuff" section
+    And I should see "Bob" in the "Owls" section
+    Then I should see "Ann" in the "Foxes" section

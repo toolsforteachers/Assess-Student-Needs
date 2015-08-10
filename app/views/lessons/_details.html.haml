@@ -1,0 +1,18 @@
+%well
+  %table.table.no-row-lines
+    %tbody
+      %tr.active.lesson_subject
+        %td.text-muted.col-xs-1  Subject
+        %td.text-primary
+          %b #{ @group.subject.try(:name) }
+      %tr.active.lesson-teacher
+        %td.text-muted Teacher
+        %td.text-primary
+          %b #{ lesson.teacher }
+      %tr.active.lesson-date
+        %td.text-muted Date
+        %td.text-primary
+          %b #{ lesson.lesson_date }
+      %tr.lesson-notes
+        %td.text-muted Notes
+        %td.text-primary #{ lesson.notes }
