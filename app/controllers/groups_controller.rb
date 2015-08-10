@@ -42,7 +42,7 @@ class GroupsController < ProtectedController
   # POST /groups
   # POST /groups.json
   def create
-    @group = scoped_groups.new(group_params)
+    @group = Group.new(group_params)
 
     respond_to do |format|
       if @group.save
@@ -90,6 +90,6 @@ class GroupsController < ProtectedController
   end
 
   def group_params
-    params.require(:group).permit([:name, :subject_id, students_attributes: [:id, :name, :_destroy]])
+    params.require(:group).permit([:name, :teacher_id, :subject_id, students_attributes: [:id, :name, :_destroy]])
   end
 end
