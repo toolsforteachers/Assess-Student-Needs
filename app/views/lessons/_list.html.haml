@@ -1,0 +1,28 @@
+- if @group.lessons.empty?
+  .bs-component
+    .jumbotron
+      %p You don't have any lessons yet.
+      = link_to new_group_lesson_path(@group) do
+        .btn.btn-primary.btn-lg
+          Add a new lesson
+
+- else
+  .list-group
+    .list-group-item
+      = link_to glyph('Add a new lesson', 'plus'), new_group_lesson_path(@group)
+
+  %table.table.table-striped
+    %thead
+      %th.col-xs-1
+      %th.col-xs-2 Lesson date
+      %th.col-xs-2 Teacher
+      %th Notes
+    %tbody
+      - @group.lessons.each do |lesson|
+        %tr.clickable-row
+          %td.text-primary
+            = link_to group_lesson_path(@group, lesson) do
+              = glyph('View', 'cog')
+          %td.text-primary= lesson.lesson_date.to_s
+          %td.text-primary= 'Bob A.'
+          %td.text-primary= lesson.notes
