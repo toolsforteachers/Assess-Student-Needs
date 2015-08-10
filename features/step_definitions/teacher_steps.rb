@@ -1,5 +1,5 @@
 Given /^I am the teacher$/ do
-  @teacher ||= Fabricate(:teacher)
+  @teacher ||= Fabricate(:teacher, name: 'Toby P.')
   visit '/teachers/sign_in'
   fill_in "teacher_email", :with => @teacher.email
   fill_in "teacher_password", :with => @teacher.password

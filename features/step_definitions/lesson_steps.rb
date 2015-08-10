@@ -28,7 +28,11 @@ Then(/^the lesson should have (\d+) objectives$/) do |objective_count|
 end
 
 Then(/^the lesson notes should be "(.*?)"$/) do |lesson_notes|
-  page.should have_text("Notes: #{ lesson_notes }")
+  page.should have_css('tr.lesson-notes', lesson_notes)
+end
+
+Then(/^the lesson teacher should be "(.*?)"$/) do |teacher_name|
+  page.should have_css('tr.lesson-teacher', teacher_name)
 end
 
 Then(/^I should see the new lesson form$/) do

@@ -1,11 +1,13 @@
+table {
+  font-size: 13px !important;
+}
+
 table.assessment {
-  td.student {
-    width: '20%';
-  }
-  td {
-  font-size: 14px;
-  }
   td.related_attempts {
     text-align: right;
   }
+}
+
+table.no-row-lines td {
+    border-top: none !important;
 }

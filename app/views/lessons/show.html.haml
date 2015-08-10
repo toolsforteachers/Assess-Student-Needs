@@ -1,9 +1,23 @@
 - @page_header = link_to_group
+%well
+  %table.table.no-row-lines
+    %tbody
+      %tr.active.lesson_subject
+        %td.text-muted.col-xs-1  Subject
+        %td.text-primary
+          %b #{ @group.subject.try(:name) }
+      %tr.active.lesson-teacher
+        %td.text-muted Teacher
+        %td.text-primary
+          %b #{ @lesson.teacher }
+      %tr.active.lesson-date
+        %td.text-muted Date
+        %td.text-primary
+          %b #{ @lesson.lesson_date }
+      %tr.lesson-notes
+        %td.text-muted Notes
+        %td.text-primary  #{ @lesson.notes }
 
-%h4 Subject: #{ @group.subject.try(:name) }
-
-%h4 Date: #{ @lesson.lesson_date }
-%p Notes: #{ @lesson.notes }
 %ul.nav.nav-pills
   %li.presentation
     = link_to edit_group_lesson_path(@group, @lesson) do

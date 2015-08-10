@@ -5,4 +5,8 @@ class Teacher < ActiveRecord::Base
   has_many :groups
   has_many :lessons
   validates_presence_of :name
+
+  def to_s
+    name
+  end
 end

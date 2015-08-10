@@ -10,6 +10,7 @@ Scenario: when the group has a subject
   When I add a new lesson for "Year 6A"
   Then the lesson should have 2 objectives
   And the lesson notes should be "Do stuff"
+  And the lesson teacher should be "Toby P."
 
   When I edit the lesson
   Then the lesson should have 1 objectives
