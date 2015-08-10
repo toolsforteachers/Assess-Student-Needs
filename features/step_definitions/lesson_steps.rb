@@ -23,9 +23,9 @@ Then(/^the lesson should have (\d+) objectives$/) do |objective_count|
     page.should have_css('.objective .panel-heading', text: 'Stream 1')
 
   end
-  page.should have_css('h4', text: "Level:", count: objective_count)
-  page.should have_css('h4', text: "Topic:", count: objective_count)
-  page.should have_css('h4', text: "Objective:", count: objective_count)
+  page.should have_css('td', text: "Level", count: objective_count)
+  page.should have_css('td', text: "Topic", count: objective_count)
+  page.should have_css('td', text: "Objective", count: objective_count)
 end
 
 Then(/^the lesson notes should be "(.*?)"$/) do |lesson_notes|

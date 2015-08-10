@@ -1,7 +1,15 @@
 .panel.panel-default.objective
-  - if multiple_objectives
-    .panel-heading= objective.stream
+  .panel-heading
+    = multiple_objectives ? objective.stream : 'All students'
   .panel-body
-    %h4 Level: #{ objective.level }
-    %h4 Topic: #{ objective.topic }
-    %h4 Objective:  #{ objective.objective }
+    %table.table
+      %tbody
+        %tr
+          %td.text-muted Level
+          %td.text-primary #{ objective.level }
+        %tr
+          %td.text-muted Topic
+          %td.text-primary #{ objective.topic }
+        %tr
+          %td.text-muted Objective
+          %td.text-primary #{ objective.objective }
