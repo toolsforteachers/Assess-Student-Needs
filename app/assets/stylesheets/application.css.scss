@@ -11,20 +11,3 @@
  *= require_self
  *= require_tree .
 */
-
-ul.list-group {
-  margin-top:10px;
-}
-
-.list-group-item > .badge.left {
-  float: left !important;
-  margin-right: 12px;
-}
-
-.list-group-item > right {
-  float: right;
-}
-
-.larger-list-group-item {
-  font-size: 15px;
-}
