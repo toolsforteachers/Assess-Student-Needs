@@ -7,7 +7,6 @@ end
 Given(/^I add a new lesson for "(.*?)"$/) do |group_name|
   group = Group.find_by(name: group_name)
   visit new_group_lesson_path(group)
-  fill_in('Goal', with: 'something')
   fill_in('Notes', with: 'Do stuff')
   select 'foo', from: 'Objective'
   click_link 'Add an objective'
@@ -45,9 +44,9 @@ When(/^I edit the lesson$/) do
   click_button "Save"
 end
 
-Given /^I add a lesson "([^"]*)" for "([^"]*)" with indicators "([^\"]*)" as "([^\"]*)"$/ do |lesson_name, group_name, indicator_names, objective_names|
+Given /^I add a lesson "([^"]*)" for "([^"]*)" with indicators "([^\"]*)" as "([^\"]*)"$/ do |lesson_notes, group_name, indicator_names, objective_names|
   group = Group.find_by(name: group_name)
-  lesson = Fabricate(:lesson, group: group, name: lesson_name)
+  lesson = Fabricate(:lesson, group: group, notes: lesson_notes)
 
   indicator_names.split(',').each_with_index do |indicator_name, index|
     indicator = Indicator.find_by(name: indicator_name)

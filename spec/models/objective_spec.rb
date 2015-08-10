@@ -8,7 +8,7 @@ RSpec.describe Objective, type: :model do
   it { should validate_length_of(:stream).is_at_most(15) }
 
   context 'indicator attributes' do
-    let(:i_subject) { Fabricate(:indicators_subject, name: 'Maths') }
+    let(:i_subject) { Fabricate(:indicators_subject, name: 'Doing some maths') }
     let(:level) { Fabricate(:indicators_level, name: 'Year 1', parent: i_subject) }
     let(:topic) { Fabricate(:indicators_topic, name: 'Number', parent: level) }
     let(:strand) { Fabricate(:indicators_strand, name: 'addition and subtraction', parent: topic) }

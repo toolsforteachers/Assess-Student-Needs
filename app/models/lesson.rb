@@ -9,7 +9,6 @@ class Lesson < ActiveRecord::Base
 
   validates :lesson_date, presence: :true
   validates :group_id, presence: :true
-  validates :name, presence: :true
 
   delegate :students, to: :group
 
@@ -22,9 +21,9 @@ class Lesson < ActiveRecord::Base
 
   def slug_candidates
     [
-      :name,
-      [:name, :group_name],
-      [:name, :group_name, :lesson_date]
+      :lesson_date,
+      [:lesson_date, :group_name],
+      [:lesson_date, :group_name, 'teacher']
     ]
   end
 
