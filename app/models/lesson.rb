@@ -3,6 +3,8 @@ class Lesson < ActiveRecord::Base
   friendly_id :slug_candidates, use: [:slugged, :finders]
 
   belongs_to :group
+  belongs_to :teacher
+
   has_many :objectives, dependent: :destroy
   has_many :indicators, through: :objectives
   has_many :assessments, as: :assessor

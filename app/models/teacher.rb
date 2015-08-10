@@ -3,6 +3,6 @@ class Teacher < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :groups
-  has_many :lessons, through: :groups
+  has_many :lessons
   validates_presence_of :name
 end
