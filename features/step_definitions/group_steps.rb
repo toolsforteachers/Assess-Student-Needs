@@ -21,8 +21,10 @@ Then(/^the "(.*?)" group should subject "(.*?)"$/) do |group_name, subject_name|
 end
 
 Then(/^I should see "(.*?)" in the list of students$/) do |list_of_student_names|
-  list_of_student_names.split(',').each do |student_name|
-    page.should have_css('.list-group-item', text: student_name)
+  within('table.students') do
+    list_of_student_names.split(',').each do |student_name|
+      page.should have_text(student_name)
+    end
   end
 end
 

@@ -17,6 +17,6 @@
 
 .tab-content
   #students.tab-pane{ class: "#{ 'active' if activate == :students }" }
-    = render partial: '/groups/students'
+    = render partial: '/students/list'
   #lessons.tab-pane{ class: "#{ 'active' if activate == :lessons }" }
     = render partial: '/lessons/list'

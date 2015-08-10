@@ -1,0 +1,27 @@
+- if @group.students.empty?
+  .bs-component
+    .jumbotron
+      %p You don't have any students yet.
+      = link_to edit_group_path(@group) do
+        .btn.btn-primary.btn-lg
+          Add some students
+
+- else
+  .list-group
+    .list-group-item
+      = link_to edit_group_path(@group) do
+        = glyph('Add students', 'plus')
+
+  %table.table.table-striped.students
+    %thead
+      %th.col-xs-1
+      %th.col-xs-2 Name
+      %th Notes
+    %tbody
+      - @group.students.each do |student|
+        %tr
+          %td.text-primary
+            = link_to group_student_path(@group, student) do
+              = glyph('View', 'cog')
+          %td.text-primary= link_to student.name, group_student_path(@group, student)
+          %td
