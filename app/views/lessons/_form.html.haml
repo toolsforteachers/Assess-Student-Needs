@@ -11,12 +11,8 @@
 
       - if subject = @group.subject
         = f.fields_for :objectives do |objective_f|
-          .well.objective
-            = objective_f.text_field :stream, label: 'Stream', class: 'objective-name'
-            = objective_f.select :indicator_id,
-              subject.objectives.map{ |t| [t.cached_ancestry_name, t.id]},
-              label: "Objective",
-              help:  objective_f.link_to_remove(glyph('Remove', 'trash')).html_safe
+          = render partial: 'objectives/fields',
+            locals: { objective_f: objective_f, subject: subject }
 
         %p= f.link_to_add glyph('Add an objective', 'plus'), :objectives
       - else
