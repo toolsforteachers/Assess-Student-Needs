@@ -1,4 +1,4 @@
-= f.select :teacher_id, Teacher.all.map{ |t| [t.name, t.id]},
+= f.select :teacher_id, Teacher.all.map{ |t| [t.name, t.id] },
   { selected: current_teacher.id },
-  { disabled: true, wrapper_class: 'select-name-input'}
+  { disabled: true, wrapper_class: 'name-input' }
 = f.hidden_field :teacher_id, value: current_teacher.id
