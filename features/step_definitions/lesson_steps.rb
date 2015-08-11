@@ -5,13 +5,26 @@ Given(/^"(.*?)" is studying "(.*?)"$/) do |group_name, subject_name|
 end
 
 Given(/^I add a new lesson for "(.*?)"$/) do |group_name|
+  setup_maths_indicators
+
   group = Group.find_by(name: group_name)
   visit new_group_lesson_path(group)
   fill_in('Notes', with: 'Do stuff')
-  select 'foo', from: 'Objective'
+
+  within(page.all(:css, '.well.objective').first) do
+    fill_in 'Stream', with: 'Foxes'
+    select 'Year 2', from: 'Level'
+    select 'Numbers', from: 'Topic'
+    select 'Addition and subtraction'
+  end
+
   click_link 'Add an objective'
+
   within(page.all(:css, '.well.objective').last) do
-    select 'bar', from: 'Objective'
+    fill_in 'Stream', with: 'Owls'
+    select 'Year 3', from: 'Level'
+    select 'Numbers', from: 'Topic'
+    select 'Advanced addition and subtraction'
   end
   click_button "Save"
 end

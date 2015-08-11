@@ -78,3 +78,14 @@ When(/^I delete "(.*?)"$/) do |indicator_name|
   click_link 'Delete'
   page.should have_text("#{ indicator_name } was successfully deleted.")
 end
+
+def setup_maths_indicators
+  subject = Indicators::Subject.find_by(name: 'Maths')
+  level_1 = Fabricate(:indicators_level, name: 'Year 2', parent: subject)
+  level_2 = Fabricate(:indicators_level, name: 'Year 3', parent: subject)
+  topic_1 = Fabricate(:indicators_topic, name: 'Number', parent: level_1)
+  topic_2 = Fabricate(:indicators_topic, name: 'Number', parent: level_2)
+  prompt = Fabricate(:indicators_prompt, name: 'Student will:', parent: level_1)
+  objective = Fabricate(:indicators_objective, name: 'Addition and subtraction', parent: prompt)
+  objective = Fabricate(:indicators_objective, name: 'Advanced addition and subtraction', parent: topic_2)
+end
