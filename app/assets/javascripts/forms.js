@@ -17,3 +17,7 @@ $(document).on('click', '.toggle-assessment-form', function (e) {
   $(tr).find('span.glyphicon').toggleClass('glyphicon-minus');
 });
 
+$(document).on('click', '.glyphicon-collapser', function() {
+  $(this).find('span.glyphicon').toggleClass('glyphicon-plus');
+  $(this).find('span.glyphicon').toggleClass('glyphicon-minus');
+});

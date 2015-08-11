@@ -11,7 +11,7 @@
 
       - if subject = @group.subject
         = f.fields_for :objectives do |objective_f|
-          = render partial: 'objectives/fields',
+          = render partial: 'objectives/indicators/fields',
             locals: { objective_f: objective_f, subject: subject }
 
         %p= f.link_to_add glyph('Add an objective', 'plus'), :objectives

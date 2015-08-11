@@ -1,0 +1,17 @@
+- collection.each do |indicator|
+  %li.list-group-item
+    = indicator.friendly_type
+    \:
+    %b= indicator
+
+    - if indicator.is_a?(Indicators::Objective)
+      = link_to '#', class: 'pick-indicator', id: "indicator_#{ indicator.id }" do
+        = glyph('Select', 'ok')
+
+    - unless indicator.leaf?
+      = link_to "#collapse_#{ indicator.id }", class: 'glyphicon-collapser',
+        data: { toggle: 'collapse' }, id: "link_to_#{ indicator.id }" do
+        = glyph(nil, 'plus')
+
+      %ul.collapse{ id: "collapse_#{ indicator.id }" }
+        = render partial: 'objectives/indicators/pickable_item', locals: { collection: indicator.children }

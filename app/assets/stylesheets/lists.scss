@@ -18,3 +18,10 @@ ul.list-group {
 .list-group-item {
   font-size: 13px;
 }
+
+ul.indicator-picker {
+  li {
+    border: 0;
+    padding: 4px !important;
+  }
+}
