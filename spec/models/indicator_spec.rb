@@ -7,6 +7,8 @@ describe Indicator do
   it 'has notes attached (eg from GDS import'
   it 'fixes the imported fraction images'
 
+  it 'should get rid of cached_ancestry_name'
+
   context 'prevent changing parent' do
     let!(:orig_parent) { Fabricate(:indicators_subject) }
     let!(:new_parent) { Fabricate(:indicators_subject) }
