@@ -3,13 +3,13 @@ module ApplicationHelper
     link_to "Class: #{ @group.name }", group_path(@group)
   end
 
-  def likert_style(score)
-    case score.to_i
-      when 5 then 'success'
-      when 4 then 'info'
-      when 3 then 'active'
-      when 2 then 'warning'
-      when 1 then 'danger'
+  def progress_style(score)
+    case score
+      when 1 then :success
+      when 0.8..1 then :info
+      when 0.6..0.8 then :active
+      when 0.4..0.6 then :warning
+      when 0.2..0.4 then :danger
     end
   end
 

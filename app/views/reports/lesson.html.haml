@@ -17,8 +17,8 @@
       %tbody
         - @lesson.assessments.where(indicator: objective.indicator).each do |assessment|
           - next unless assessment.student
-          %tr{ class: likert_style(assessment.score) }
-            %td= "#{ assessment.student.name }: #{ assessment.score }"
+          %tr{ class: progress_style(assessment.score) }
+            %td= "#{ assessment.student.name }: #{ assessment.mark }"
             %td= raw(previous_attempts(assessment, true))
-            %td= "Average score: #{ assessment.student.average_score_for(assessment.indicator) }"
+            %td= "Average score: #{ number_to_percentage(assessment.student.average_score_for(assessment.indicator) * 100, precision: 0) }"
 
