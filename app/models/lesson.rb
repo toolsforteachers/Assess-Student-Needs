@@ -4,6 +4,7 @@ class Lesson < ActiveRecord::Base
 
   belongs_to :group
   belongs_to :teacher
+  belongs_to :subject, class_name: 'Indicators::Subject'
 
   has_many :objectives, dependent: :destroy
   has_many :indicators, through: :objectives
@@ -11,6 +12,7 @@ class Lesson < ActiveRecord::Base
 
   validates :lesson_date, presence: :true
   validates :group_id, presence: :true
+  validates :subject_id, presence: :true
 
   delegate :students, to: :group
 
@@ -19,8 +21,6 @@ class Lesson < ActiveRecord::Base
     reject_if: proc { |attributes| attributes['indicator_id'].blank? }
 
   default_scope { order('lesson_date desc') }
-
-  attr_accessor :subject_id
 
   def slug_candidates
     [
