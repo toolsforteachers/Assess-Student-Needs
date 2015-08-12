@@ -22,10 +22,13 @@ module AssessmentsHelper
   end
 
   def previous_attempts(assessment,label=false)
-    attempts = assessment.attempts_at(assessment.indicator)
-    s = attempts_text(attempts)
+    attempts = []
+    assessment.assessor.indicators.each do |indicator|
+      attempts << assessment.attempts_at(indicator)
+    end
+    s = attempts_text(attempts.flatten)
     if label
-      "Previous attempts: #{ s }" unless s.blank?
+        "#{ label }: #{ s }" unless s.blank?
     else
       s
     end

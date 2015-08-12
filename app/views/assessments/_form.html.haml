@@ -12,7 +12,7 @@
           label: raw(stream_picker_label(assessment, objective))
 
   - elsif assessment.assessor.indicator
-    = raw(previous_attempts(assessment, true))
+    = raw(previous_attempts(assessment, 'Previous attempts'))
 
     = assessment_f.hidden_field :indicator_id, value: assessment.assessor.indicator.id
 
