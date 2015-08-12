@@ -20,8 +20,8 @@
     %tbody
       - @group.students.each do |student|
         %tr
-          %td.text-primary
+          %td
             = link_to group_student_path(@group, student) do
-              = glyph('View', 'cog')
-          %td.text-primary= link_to student.name, group_student_path(@group, student)
+              View
+          %td= link_to student.name, group_student_path(@group, student)
           %td

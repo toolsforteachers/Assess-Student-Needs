@@ -21,10 +21,10 @@
     %tbody
       - @group.lessons.each do |lesson|
         %tr.clickable-row
-          %td.text-primary
+          %td
             = link_to group_lesson_path(@group, lesson) do
-              = glyph('View', 'cog')
-          %td.text-primary= lesson.subject
-          %td.text-primary= lesson.lesson_date.to_s
-          %td.text-primary= lesson.teacher
-          %td.text-primary= truncate(lesson.notes, length: 150)
+              View
+          %td= lesson.subject
+          %td= lesson.lesson_date.to_s
+          %td= lesson.teacher
+          %td= truncate(lesson.notes, length: 150)
