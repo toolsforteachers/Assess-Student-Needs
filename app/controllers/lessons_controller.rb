@@ -3,7 +3,6 @@ class LessonsController < ProtectedController
 
   def new
     @lesson = @group.lessons.new lesson_date: Date.today
-    @lesson.objectives.build(stream: 'Stream 1')
   end
 
   def edit
@@ -26,10 +25,10 @@ class LessonsController < ProtectedController
 
   def create
     @lesson = scoped_lessons.new(lesson_params)
-    @lesson.group = @group
 
     if @lesson.save
-      redirect_to group_lesson_path(@group, @lesson), notice: 'Lesson was successfully created.'
+      redirect_to new_group_lesson_objective_path(@group, @lesson),
+        notice: 'Lesson was successfully created. Now select an objective.'
     else
       @lesson.objectives.build if @lesson.objectives.empty?
       render action: "new"
@@ -42,8 +41,7 @@ class LessonsController < ProtectedController
   protected
 
   def lesson_params
-    params.require(:lesson).permit([:lesson_date, :notes, :teacher_id,
-      objectives_attributes: [:id, :stream, :indicator_id, :_destroy]])
+    params.require(:lesson).permit([:lesson_date, :notes, :teacher_id, :subject_id])
   end
 
   def scoped_lessons
