@@ -14,6 +14,7 @@
   %table.table.table-striped
     %thead
       %th.col-xs-2
+      %th.col-xs-2 Subject
       %th.col-xs-3 Lesson date
       %th.col-xs-3 Teacher
       %th Notes
@@ -23,6 +24,7 @@
           %td.text-primary
             = link_to group_lesson_path(@group, lesson) do
               = glyph('View', 'cog')
+          %td.text-primary= lesson.subject
           %td.text-primary= lesson.lesson_date.to_s
           %td.text-primary= lesson.teacher
           %td.text-primary= truncate(lesson.notes, length: 150)
