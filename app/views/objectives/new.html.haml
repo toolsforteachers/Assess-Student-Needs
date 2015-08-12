@@ -1,9 +1,7 @@
 - @page_header = link_to_group
 = render partial: 'lessons/details', locals: { lesson: @lesson }
 
-
 .well.objective.lesson
-
   = bootstrap_form_for [@group, @lesson, @objective] do |f|
 
     = f.text_field :stream, label: 'Stream',

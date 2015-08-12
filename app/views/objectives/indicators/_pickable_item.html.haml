@@ -5,8 +5,8 @@
     %b= indicator
 
     - if indicator.is_a?(Indicators::Objective)
-      = link_to '#', class: 'pick-indicator', id: "indicator_#{ indicator.id }" do
-        = glyph('Select', 'ok')
+      = link_to 'Select', '#', class: 'btn btn-default btn-xs pick-indicator',
+        id: "indicator_#{ indicator.id }"
 
     - unless indicator.leaf?
       = link_to "#collapse_#{ indicator.id }", class: 'glyphicon-collapser',

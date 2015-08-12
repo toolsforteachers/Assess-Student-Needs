@@ -5,6 +5,8 @@ class Objective < ActiveRecord::Base
   validates :indicator_id, presence: :true
   validates :stream, length: { maximum: 15 }, presence: true
 
+   default_scope { order('stream') }
+
   def objective
     indicator.name
   end

@@ -1,11 +1,3 @@
-$(document).on('nested:fieldAdded', function(event){
-  var target = event.field.find('.objective-name');
-  if (target) {
-    var existing_nested_field_count = $('.objective-name').length;
-    target.val('Stream ' + existing_nested_field_count);
-   }
- });
-
 $(document).on('click', '.toggle-assessment-form', function (e) {
   e.preventDefault();
   var tr = $(this).closest('tr');
@@ -20,4 +12,11 @@ $(document).on('click', '.toggle-assessment-form', function (e) {
 $(document).on('click', '.glyphicon-collapser', function() {
   $(this).find('span.glyphicon').toggleClass('glyphicon-plus');
   $(this).find('span.glyphicon').toggleClass('glyphicon-minus');
+});
+
+$(document).on('click', '.lesson .pick-indicator', function(e) {
+  e.preventDefault();
+  var indicator_id = $(this).attr('id').split('_')[1];
+  $('#objective_indicator_id').val(indicator_id);
+  $('#objective_indicator_id').closest('form').submit();
 });
