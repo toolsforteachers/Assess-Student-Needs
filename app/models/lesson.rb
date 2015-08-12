@@ -20,6 +20,7 @@ class Lesson < ActiveRecord::Base
 
   default_scope { order('lesson_date desc') }
 
+  attr_accessor :subject_id
 
   def slug_candidates
     [

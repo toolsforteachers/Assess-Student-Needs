@@ -8,4 +8,5 @@ describe Lesson do
   it { should have_many(:objectives) }
   it { should have_many(:indicators) }
   it { should delegate_method(:students).to(:group) }
+  it { should respond_to(:subject_id) }
 end
