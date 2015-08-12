@@ -18,14 +18,16 @@ describe Student do
       end
     end
 
-    context 'with one score of 2 and one score of 5' do
+    context 'with one score of 2/5 and one score of 4/4' do
       before do
-        Fabricate(:assessment, score: 2, indicator: indicator, student: student)
-        Fabricate(:assessment, score: 5, indicator: indicator, student: student)
+        Fabricate(:assessment,
+          mark: 2, out_of: 5, indicator: indicator, student: student)
+        Fabricate(:assessment,
+          mark: 4, out_of: 4, indicator: indicator, student: student)
       end
 
-      it 'is 3' do
-        expect(subject).to eql(3)
+      it 'is 0.7' do
+        expect(subject).to eq(0.7)
       end
     end
   end

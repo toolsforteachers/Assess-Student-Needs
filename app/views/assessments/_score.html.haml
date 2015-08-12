@@ -1,0 +1,7 @@
+= assessment_f.hidden_field :out_of, value: n
+.btn-group{ data: { toggle: 'buttons' }}
+  - 0.upto(n) do |i|
+    = assessment_f.radio_button :mark, i,
+      label: (i == 0 ? "n/a" : i.to_s),
+      label_class: "btn btn-sm btn-primary#{ ' active' if i == assessment_f.object.mark } asssessment-mark",
+      inline: true

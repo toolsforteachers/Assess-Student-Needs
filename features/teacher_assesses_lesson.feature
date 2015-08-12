@@ -10,7 +10,7 @@ Feature: Teacher assesses a lesson
       | Adding up       |
       | Measuring stuff |
     And I add a lesson "Adding Up" for "Year 6A" with indicators "Adding up,Measuring stuff" as "Owls,Foxes"
-    And "Ann" already has a score of 4 for "Measuring stuff"
+    And "Ann" already has a mark of 4 out of 5 for "Measuring stuff"
 
   @javascript
   Scenario: recording student scores

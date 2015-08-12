@@ -4,7 +4,7 @@ When /^I record a score of (\d+) for "([^"]*)" for "([^"]*)"$/ do |score, studen
   within(:css, "tr#student_#{ student.id }") do
     page.find(".glyphicon-plus").click
     choose(indicator_name)
-    find("#assessment_score_#{ score }").trigger('click')
+    find("#assessment_mark_#{ score }").trigger('click')
     fill_in 'Notes', with: 'some text'
     click_button("Save")
   end
@@ -17,10 +17,10 @@ Then /^I should see "([^"]*)" has (\d+) ticks for "([^"]*)"$/ do |student_name, 
   end
 end
 
-When(/^"(.*?)" already has a score of (\d+) for "(.*?)"$/) do |student_name, score, indicator_name|
+When(/^"(.*?)" already has a mark of (\d+) out of (\d+) for "(.*?)"$/) do |student_name, mark, out_of, indicator_name|
   indicator = Indicator.find_by(name: indicator_name)
   student = Student.find_by(name: student_name)
-  Fabricate(:assessment, score: score,
+  Fabricate(:assessment, mark: mark, out_of: out_of,
     indicator: indicator, student: student)
 end
 

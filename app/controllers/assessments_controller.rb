@@ -39,7 +39,7 @@ class AssessmentsController < ProtectedController
   end
 
   def assessment_params
-    params.require(:assessment).permit([:assessor_type, :assessor_id, :score,
+    params.require(:assessment).permit([:assessor_type, :assessor_id, :mark, :out_of,
       :indicator_id, :student_id, :notes])
   end
 end

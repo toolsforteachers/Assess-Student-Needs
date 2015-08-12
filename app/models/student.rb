@@ -11,7 +11,13 @@ class Student < ActiveRecord::Base
   default_scope { order('name asc') }
 
   def average_score_for(indicator)
-    assessments.by_indicator(indicator).average(:score).to_i
+    scores = scores_for(indicator)
+    return 0 if scores.empty?
+    scores.sum / scores.size.to_f
+  end
+
+  def scores_for(indicator)
+    assessments.by_indicator(indicator).map(&:score)
   end
 
   def slug_candidates

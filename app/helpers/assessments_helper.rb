@@ -7,11 +7,11 @@ module AssessmentsHelper
   end
 
   def attempt_text(attempt)
-    "L #{ attempt.score }"
+    "L #{ attempt.mark }"
   end
 
   def score_text(assessment)
-    assessment.score.to_i == 0 ? 'n/a' : assessment.score
+    assessment.mark.to_i == 0 ? 'n/a' : assessment.mark
   end
 
   def stream_picker_label(assessment, objective)
