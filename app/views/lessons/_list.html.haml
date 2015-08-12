@@ -13,9 +13,9 @@
 
   %table.table.table-striped
     %thead
-      %th.col-xs-1
-      %th.col-xs-2 Lesson date
-      %th.col-xs-2 Teacher
+      %th.col-xs-2
+      %th.col-xs-3 Lesson date
+      %th.col-xs-3 Teacher
       %th Notes
     %tbody
       - @group.lessons.each do |lesson|
@@ -25,4 +25,4 @@
               = glyph('View', 'cog')
           %td.text-primary= lesson.lesson_date.to_s
           %td.text-primary= lesson.teacher
-          %td.text-primary= lesson.notes
+          %td.text-primary= truncate(lesson.notes, length: 150)
