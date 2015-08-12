@@ -5,18 +5,13 @@
   .panel-body
     = bootstrap_nested_form_for [@group, @lesson], layout: 'horizontal' do |f|
 
-      = f.date_field :lesson_date, label: 'Date', wrapper_class: 'date-input'
+      = f.select :subject_id, Indicators::Subject.all.map{ |t| [t.name, t.id]},
+        {}, { wrapper_class: 'name-input' }
+
       = render partial: 'teachers/fields/select_name', locals: { f: f }
+
+      = f.date_field :lesson_date, label: 'Date', wrapper_class: 'date-input'
+
       = f.text_area :notes, autofocus: true
 
-      - if subject = @group.subject
-        = f.fields_for :objectives do |objective_f|
-          = render partial: 'objectives/indicators/fields',
-            locals: { objective_f: objective_f, subject: subject }
-
-        %p= f.link_to_add glyph('Add an objective', 'plus'), :objectives
-      - else
-        .well.objective
-          To add objectives, you should first
-          = link_to "choose a subject for this class", edit_group_path(@group)
       = f.submit 'Save'

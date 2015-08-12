@@ -6,8 +6,9 @@ Background:
 
 @javascript
 Scenario: when the group has a subject
-  When "Year 6A" is studying "Maths"
-  When I add a new lesson for "Year 6A"
+  Given "Year 6A" is studying "Maths"
+  And I add a new "Maths" lesson for "Year 6A"
+  And I add two objectives to that lesson
   Then the lesson should have 2 objectives
   And the lesson notes should be "Do stuff"
   And the lesson teacher should be "Toby P."

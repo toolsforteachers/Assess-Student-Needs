@@ -1,0 +1,10 @@
+- if subject = @group.subject
+  = f.fields_for :objectives do |objective_f|
+    = render partial: 'objectives/indicators/fields',
+      locals: { objective_f: objective_f, subject: subject }
+
+  %p= f.link_to_add glyph('Add an objective', 'plus'), :objectives
+- else
+  .well.objective
+    To add objectives, you should first
+    = link_to "choose a subject for this class", edit_group_path(@group)

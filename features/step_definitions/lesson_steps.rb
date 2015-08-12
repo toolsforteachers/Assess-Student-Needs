@@ -4,13 +4,17 @@ Given(/^"(.*?)" is studying "(.*?)"$/) do |group_name, subject_name|
   group.update_attributes subject: subject
 end
 
-Given(/^I add a new lesson for "(.*?)"$/) do |group_name|
+Given(/^I add a new "(.*?)" lesson for "(.*?)"$/) do |subject_name, group_name|
   setup_maths_indicators
 
   group = Group.find_by(name: group_name)
   visit new_group_lesson_path(group)
   fill_in('Notes', with: 'Do stuff')
+  select(subject_name, from: 'Subject')
+  click_button "Save"
+end
 
+When(/^I add two objectives to that lesson$/) do
   within(page.all(:css, '.well.objective').first) do
     fill_in 'Stream', with: 'Foxes'
     select 'Year 2', from: 'Level'
@@ -26,7 +30,6 @@ Given(/^I add a new lesson for "(.*?)"$/) do |group_name|
     select 'Numbers', from: 'Topic'
     select 'Advanced addition and subtraction'
   end
-  click_button "Save"
 end
 
 Then(/^the lesson should have (\d+) objectives$/) do |objective_count|
