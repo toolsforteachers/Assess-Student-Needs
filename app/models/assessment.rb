@@ -22,4 +22,9 @@ class Assessment < ActiveRecord::Base
   def alt_streams?
     assessor.multiple_objectives?
   end
+
+  def score
+    return 0 if mark.to_i == 0
+    mark.to_f / out_of.to_f
+  end
 end

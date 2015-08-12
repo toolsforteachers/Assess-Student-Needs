@@ -96,4 +96,30 @@ describe Assessment do
       end
     end
   end
+
+  context '#score' do
+    let(:assessment) { Fabricate(:assessment, mark: mark, out_of: out_of)}
+    subject { assessment.score }
+
+    context 'with 7 out of 8' do
+      let(:mark) { 7 }
+      let(:out_of) { 8 }
+
+      it { expect(subject).to eq(0.875) }
+    end
+
+    context 'with 0 out of 5' do
+      let(:mark) { 0 }
+      let(:out_of) { 5 }
+
+      it { expect(subject).to eq(0) }
+    end
+
+    context 'with 6 out of 6' do
+      let(:mark) { 6 }
+      let(:out_of) { 6 }
+
+      it { expect(subject).to eq(1) }
+    end
+  end
 end
