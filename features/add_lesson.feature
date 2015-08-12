@@ -9,10 +9,12 @@ Scenario: when the group has a subject
   Given "Year 6A" is studying "Maths"
   And I add a new "Maths" lesson for "Year 6A"
   And I add two objectives to that lesson
-  Then the lesson should have 2 objectives
+  Then the lesson should have streams titled "Foxes,Owls"
   And the lesson notes should be "Do stuff"
   And the lesson teacher should be "Toby P."
 
-  When I edit the lesson
-  Then the lesson should have 1 objectives
-  And the lesson notes should be "new goal"
+  When I change the first objective name to "Donkeys"
+  Then the lesson should have streams titled "Donkeys,Owls"
+
+  When I remove the first objective
+  Then the lesson should have streams titled "Lesson"

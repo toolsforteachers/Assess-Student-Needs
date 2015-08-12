@@ -14,4 +14,24 @@
 
       = f.text_area :notes, autofocus: true
 
+      - if @lesson.persisted?
+        = f.fields_for :objectives do |objective_f|
+          .panel.panel-default.objective
+            .panel-heading
+              = objective_f.text_field :stream, help: objective_f.link_to_remove(glyph('Remove', 'trash'))
+            .panel-body
+              %table.table.table-condensed
+                %tbody
+                  %tr
+                    %td.text-muted.col-xs-2 Level
+                    %td.text-primary #{ objective_f.object.level }
+                  %tr
+                    %td.text-muted Topic
+                    %td.text-primary #{ objective_f.object.topic }
+                  %tr
+                    %td.text-muted Objective
+                    %td.text-primary #{ objective_f.object.objective }
+
+
+
       = f.submit 'Save'

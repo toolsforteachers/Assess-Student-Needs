@@ -5,8 +5,6 @@ Given(/^"(.*?)" is studying "(.*?)"$/) do |group_name, subject_name|
 end
 
 Given(/^I add a new "(.*?)" lesson for "(.*?)"$/) do |subject_name, group_name|
-  setup_maths_indicators
-
   group = Group.find_by(name: group_name)
   visit new_group_lesson_path(group)
   fill_in('Notes', with: 'Do stuff')
@@ -17,30 +15,41 @@ end
 When(/^I add two objectives to that lesson$/) do
   within(page.all(:css, '.well.objective').first) do
     fill_in 'Stream', with: 'Foxes'
-    select 'Year 2', from: 'Level'
-    select 'Numbers', from: 'Topic'
-    select 'Addition and subtraction'
+    click_link 'Level: Year 1'
+    click_link 'Topic: Number'
+    click_link 'Prompt: Student will'
+    click_link 'Select'
   end
 
-  click_link 'Add an objective'
+  click_link 'Add objective'
 
   within(page.all(:css, '.well.objective').last) do
     fill_in 'Stream', with: 'Owls'
-    select 'Year 3', from: 'Level'
-    select 'Numbers', from: 'Topic'
-    select 'Advanced addition and subtraction'
+    click_link 'Level: Year 2'
+    click_link 'Topic: Number'
+    click_link 'Select'
   end
 end
 
-Then(/^the lesson should have (\d+) objectives$/) do |objective_count|
-  if objective_count.to_i > 1
-    page.should have_css('.panel.objective', count: objective_count)
-    page.should have_css('.objective .panel-heading', text: 'Stream 1')
-
+Then(/^the lesson should have streams titled "(.*?)"$/) do |streams|
+  streams.split(',').each do |stream|
+    page.should have_css('.panel.objective', text: "#{ stream } objective")
   end
-  page.should have_css('td', text: "Level", count: objective_count)
-  page.should have_css('td', text: "Topic", count: objective_count)
-  page.should have_css('td', text: "Objective", count: objective_count)
+end
+
+When(/^I remove the first objective$/) do
+  click_link 'Edit lesson'
+
+  within '.objective', match: :first do
+    click_link 'Remove'
+  end
+  click_button 'Save'
+end
+
+When(/^I change the first objective name to "(.*?)"$/) do |new_name|
+  click_link 'Edit lesson'
+  fill_in('lesson_objectives_attributes_0_stream', with: new_name )
+  click_button 'Save'
 end
 
 Then(/^the lesson notes should be "(.*?)"$/) do |lesson_notes|
@@ -53,15 +62,6 @@ end
 
 Then(/^I should see the new lesson form$/) do
   page.should have_css('form#new_lesson')
-end
-
-When(/^I edit the lesson$/) do
-  click_link('Edit lesson')
-  within(page.all(:css, '.well.objective').last) do
-    click_link('Remove')
-  end
-  fill_in('Notes', with: 'new goal')
-  click_button "Save"
 end
 
 Given /^I add a lesson "([^"]*)" for "([^"]*)" with indicators "([^\"]*)" as "([^\"]*)"$/ do |lesson_notes, group_name, indicator_names, objective_names|

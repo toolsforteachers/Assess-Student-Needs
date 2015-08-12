@@ -1,16 +1,16 @@
 - collection.each do |indicator|
   %li.list-group-item
-    = indicator.friendly_type
-    \:
-    %b= indicator
+    - link_text = "#{ indicator.friendly_type}: <b>#{ indicator }</b>"
 
     - if indicator.is_a?(Indicators::Objective)
+      = raw link_text
       = link_to 'Select', '#', class: 'btn btn-default btn-xs pick-indicator',
         id: "indicator_#{ indicator.id }"
 
     - unless indicator.leaf?
       = link_to "#collapse_#{ indicator.id }", class: 'glyphicon-collapser',
         data: { toggle: 'collapse' }, id: "link_to_#{ indicator.id }" do
+        = raw link_text
         = glyph(nil, 'plus')
 
       %ul.collapse{ id: "collapse_#{ indicator.id }" }

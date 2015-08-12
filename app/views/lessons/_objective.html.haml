@@ -1,11 +1,11 @@
 .panel.panel-default.objective
   .panel-heading
-    = multiple_objectives ? "#{ objective.stream } goal" : 'Lesson goal'
+    = multiple_objectives ? "#{ objective.stream } objective" : 'Lesson objective'
   .panel-body
-    %table.table
+    %table.table.table-condensed
       %tbody
         %tr
-          %td.text-muted Level
+          %td.text-muted.col-xs-2 Level
           %td.text-primary #{ objective.level }
         %tr
           %td.text-muted Topic

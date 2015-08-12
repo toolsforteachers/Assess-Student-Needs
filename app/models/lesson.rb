@@ -16,9 +16,7 @@ class Lesson < ActiveRecord::Base
 
   delegate :students, to: :group
 
-  accepts_nested_attributes_for :objectives,
-    allow_destroy: true,
-    reject_if: proc { |attributes| attributes['indicator_id'].blank? }
+  accepts_nested_attributes_for :objectives, allow_destroy: true
 
   default_scope { order('lesson_date desc') }
 
