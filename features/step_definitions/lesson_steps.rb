@@ -82,15 +82,3 @@ Then(/^I should see "(.*?)" in the "(.*?)" section$/) do |student_name, section_
     page.should have_text(student_name)
   end
 end
-
-When(/^I try to add a lesson I should instead edit "(.*?)"$/) do |group_name|
-  visit groups_path
-  click_link "Year 6A"
-  click_link "Add a new lesson"
-
-  page.should have_text('To add objectives, you should first')
-  click_link "choose a subject"
-
-  select 'Maths', from: 'Subject'
-  click_button "Save"
-end
