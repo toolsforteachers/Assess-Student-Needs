@@ -7,7 +7,9 @@ Acn::Application.routes.draw do
       resource :report, action: :lesson
       resources :objectives
     end
-    resources :students
+    resources :students do
+      resources :progress, only: [:show]
+    end
   end
 
   resources :indicators
