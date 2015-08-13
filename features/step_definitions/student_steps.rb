@@ -8,11 +8,15 @@ Given(/^"(.*?)" has been marked against two objectives$/) do |student_name|
   Fabricate(:assessment, student: student, indicator: indicator_2, mark: 4, out_of: 5)
 end
 
-When(/^I visit the progress page for "(.*?)"$/) do |student_name|
+When(/^I visit the student page for "(.*?)"$/) do |student_name|
   click_link "Year 6A"
   click_link student_name
 end
 
-Then(/^I should see (\d+) assessment records$/) do |assessment_record_count|
-  page.should have_css('.assessment', count: assessment_record_count)
+Then(/^I should see (\d+) activity records$/) do |activity_record_count|
+  page.should have_css('.activity', count: activity_record_count)
+end
+
+Then(/^I should (\d+) indicator progress records$/) do |progress_record_count|
+  page.should have_css('.indicator-progress', count: progress_record_count)
 end

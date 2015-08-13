@@ -1,0 +1,26 @@
+- @page_header = "Student: #{ @student.name }"
+
+%ul.nav.nav-tabs
+  %li{ class: "#{ 'active' if activate == :activity }" }
+    = link_to '#activity', { data: { toggle: 'tab' } } do
+      Activity log
+
+  - current_teacher_subjects.each do |subject|
+
+    - if subject.levels.empty?
+      %li{ class: "#{ 'active' if activate == "indicator_#{ subject.id }" }" }
+        = link_to subject, group_student_progress_path(@group, @student, subject)
+
+    - else
+      - subjectable_ids = subject.levels.map{ |level| "indicator_#{ level.id }" }
+      %li.dropdown{ class: "#{ 'active' if subjectable_ids.include?(activate)  }" }
+        = link_to '#', class: 'dropdown-toggle', data: { toggle: 'dropdown' } do
+          = subject
+          %span.caret
+        %ul.dropdown-menu
+          - subject.levels.map do |level|
+            %li= link_to level, group_student_progress_path(@group, @student, level)
+
+.tab-content
+  #activity.tab-pane{ class: "#{ 'active' if activate == :activity }" }
+    = render partial: 'students/activity', locals: { student: @student }
