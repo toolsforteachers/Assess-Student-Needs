@@ -78,7 +78,7 @@ Given /^I add a lesson "([^"]*)" for "([^"]*)" with indicators "([^\"]*)" as "([
 end
 
 Then(/^I should see "(.*?)" in the "(.*?)" section$/) do |student_name, section_name|
-  within('section', text: section_name) do
+  within('.panel.objective', text: section_name) do
     page.should have_text(student_name)
   end
 end

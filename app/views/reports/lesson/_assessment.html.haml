@@ -1,0 +1,4 @@
+%tr.score{ class: progress_style(assessment.score) }
+  %td= "#{ assessment.student.name }: #{ assessment.mark }"
+  %td= raw(previous_attempts(assessment, 'Previous attempts'))
+  %td= "Average score: #{ number_to_percentage(assessment.student.average_score_for(assessment.indicator) * 100, precision: 0) }"

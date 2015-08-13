@@ -9,16 +9,7 @@
       Scoring view
 
 - @lesson.objectives.each do |objective|
-  %section
-    = render partial: 'lessons/objective', locals: { multiple_objectives: @lesson.multiple_objectives?,
-      objective: objective }
+  - sub_content = render(partial: 'reports/lesson/objective', locals: { lesson: @lesson, objective: objective })
+  = render partial: 'lessons/objective', locals: { multiple_objectives: @lesson.multiple_objectives?,      objective: objective, sub_content: sub_content }
 
-    %table.table.assessment
-      %tbody
-        - @lesson.assessments.where(indicator: objective.indicator).each do |assessment|
-          - next unless assessment.student
-          %tr{ class: progress_style(assessment.score) }
-            %td= "#{ assessment.student.name }: #{ assessment.mark }"
-            %td= raw(previous_attempts(assessment, true))
-            %td= "Average score: #{ number_to_percentage(assessment.student.average_score_for(assessment.indicator) * 100, precision: 0) }"
 
