@@ -5,7 +5,7 @@
   .panel-body
     = bootstrap_nested_form_for [@group, @lesson], layout: 'horizontal' do |f|
 
-      = f.select :subject_id, Indicators::Subject.all.map{ |t| [t.name, t.id]},
+      = f.select :subject_id, current_teacher_subjects.map{ |t| [t.name, t.id]},
         {}, { wrapper_class: 'name-input' }
 
       = render partial: 'teachers/fields/select_name', locals: { f: f }

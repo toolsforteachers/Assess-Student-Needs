@@ -1,6 +1,6 @@
 class IndicatorsController < ProtectedController
   def index
-    @subjects = Indicators::Subject.all
+    @subjects = current_teacher_subjects
   end
 
   def show

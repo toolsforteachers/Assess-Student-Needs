@@ -4,4 +4,10 @@ class ProtectedController < ApplicationController
   def load_group
     @group = current_teacher.groups.find(params[:group_id])
   end
+
+  helper_method :current_teacher_subjects
+
+  def current_teacher_subjects
+    Indicators::Subject.all
+  end
 end

@@ -3,7 +3,7 @@
     .panel-heading
       .panel-title
         = f.text_field :name, label: 'Class name', autofocus: true
-        = f.select :subject_id, Indicators::Subject.all.map{ |t| [t.name, t.id]}, include_blank: true
+        = f.select :subject_id, current_teacher_subjects.map{ |t| [t.name, t.id]}, include_blank: true
         = render partial: 'teachers/fields/select_name', locals: { f: f }
   .panel.panel-default
     .panel-heading

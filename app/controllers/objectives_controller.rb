@@ -23,7 +23,7 @@ class ObjectivesController < ProtectedController
   end
 
   def load_subject
-    @subject = Indicators::Subject.find_by(id: @lesson.subject_id)
+    @subject = current_teacher_subjects.find_by(id: @lesson.subject_id)
   end
 
   def objective_params
