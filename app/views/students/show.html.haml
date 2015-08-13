@@ -1,1 +1,8 @@
 - @page_header = @student.name
+
+- @student.assessments.each do |assessment|
+  .assessment
+    - if assessment.assessor.is_a?(Lesson)
+      = render partial: 'lesson', locals: { assessment: assessment }
+    - else
+      = assessment.inspect

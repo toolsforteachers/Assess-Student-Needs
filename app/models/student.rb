@@ -5,7 +5,7 @@ class Student < ActiveRecord::Base
   friendly_id :slug_candidates, use: [:slugged, :finders]
 
   belongs_to :group
-  has_many :assessments
+  has_many :assessments, -> { order(updated_at: :desc) }
   validates :name, presence: :true, uniqueness: { scope: :group_id }
 
   default_scope { order('name asc') }
