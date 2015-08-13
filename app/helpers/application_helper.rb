@@ -5,11 +5,13 @@ module ApplicationHelper
 
   def progress_style(score)
     case score
-      when 1 then :success
-      when 0.8..1 then :info
-      when 0.6..0.8 then :active
-      when 0.4..0.6 then :warning
-      when 0.2..0.4 then :danger
+      when 1 then :score_100
+      when 0.8..1 then :score_80
+      when 0.6..0.8 then :score_60
+      when 0.4..0.6 then :score_40
+      when 0.2..0.4 then :score_20
+      else
+        :score_0
     end
   end
 
