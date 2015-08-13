@@ -8,6 +8,10 @@ class Assessment < ActiveRecord::Base
   scope :by_indicator, ->(indicator) { where(indicator: indicator) }
   scope :by_student, ->(student) { where(student: student) }
 
+  delegate :topic, to: :indicator
+  delegate :level, to: :indicator
+  delegate :objective, to: :indicator
+
   def attempts_at(obj_indicator)
     related_attempts = Assessment.by_student(student).by_indicator(obj_indicator)
     related_attempts.flatten - [self]

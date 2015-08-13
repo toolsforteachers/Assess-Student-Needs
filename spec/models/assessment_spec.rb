@@ -4,6 +4,9 @@ describe Assessment do
   it { should belong_to(:indicator) }
   it { should belong_to(:student) }
   it { should belong_to(:assessor) }
+  it { should delegate_method(:level).to(:indicator) }
+  it { should delegate_method(:topic).to(:indicator) }
+  it { should delegate_method(:objective).to(:indicator) }
 
   describe '#alt_streams?' do
     let(:lesson) { Fabricate(:lesson) }
