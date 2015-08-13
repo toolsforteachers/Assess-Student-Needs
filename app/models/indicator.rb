@@ -45,11 +45,11 @@ class Indicator < ActiveRecord::Base
     ancestry.where(type: 'Indicators::Strand').first.try(:name)
   end
 
-  protected
-
   def ancestry
     @ancestry ||= self_and_ancestors.reverse_order
   end
+
+  protected
 
   def check_deletable
     raise "Undeletable" unless deletable?

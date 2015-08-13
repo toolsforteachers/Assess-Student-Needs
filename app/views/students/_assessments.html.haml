@@ -1,0 +1,17 @@
+%table.table
+  %thead
+    %th Date
+    %th Teacher
+    %th Objective
+    %th Score
+  - student.assessments.each do |assessment|
+    - if assessment.assessor.is_a?(Lesson)
+      %tr.assessment
+        %td= assessment.assessor.lesson_date
+        %td= assessment.assessor.teacher.name
+        %td= assessment.indicator.ancestry.join(' > ')
+        %td{ class: progress_style(assessment.score) }= score_text(assessment)
+
+    - else
+      .assessment
+

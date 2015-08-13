@@ -1,8 +1,18 @@
 - @page_header = @student.name
 
-- @student.assessments.each do |assessment|
-  .assessment
-    - if assessment.assessor.is_a?(Lesson)
-      = render partial: 'lesson', locals: { assessment: assessment }
-    - else
-      = assessment.inspect
+%ul.nav.nav-tabs
+  %li.active
+    = link_to '#activity', { data: { toggle: 'tab' } } do
+      Activity
+  %li
+    = link_to '#progress', { data: { toggle: 'tab' } } do
+      Progress
+
+
+.tab-content
+  #activity.tab-pane.active
+    = render partial: 'assessments', locals: { student: @student }
+  #progress.tab-pane
+    = render partial: '/lessons/list'
+
+/
