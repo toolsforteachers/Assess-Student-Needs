@@ -3,6 +3,10 @@ class Indicators::Subject < Indicator
 
   default_scope { order('name') }
 
+  def levels
+    descendants.where(type: 'Indicators::Level')
+  end
+
   def allowable_child_types
     [:level, :topic]
   end
