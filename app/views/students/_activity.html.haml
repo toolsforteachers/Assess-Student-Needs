@@ -5,8 +5,9 @@
     %th Objective
     %th.col-xs-4 Score
   - student.assessments.each do |assessment|
-    %tr.activity
-      %td= assessment.assessed_at
-      %td= assessment.assessor_by.name
-      %td= assessment.indicator.ancestry.join(' > ')
-      %td= render partial: 'assessments/progress_bar', locals: { assessment: assessment }
+    %tbody
+      %tr.activity
+        %td= assessment.assessed_at
+        %td= assessment.assessed_by
+        %td= assessment.indicator.ancestry.join(' > ')
+        %td= render partial: 'assessments/progress_bar', locals: { assessment: assessment }

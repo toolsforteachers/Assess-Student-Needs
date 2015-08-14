@@ -2,7 +2,7 @@
 
 %ul.nav.nav-tabs
   %li{ class: "#{ 'active' if activate == :activity }" }
-    = link_to '#activity', { data: { toggle: 'tab' } } do
+    = link_to [@group, @student] do
       Activity log
 
   - current_teacher_subjects.each do |subject|
@@ -20,7 +20,3 @@
         %ul.dropdown-menu
           - subject.levels.map do |level|
             %li= link_to level, group_student_progress_path(@group, @student, level)
-
-.tab-content
-  #activity.tab-pane{ class: "#{ 'active' if activate == :activity }" }
-    = render partial: 'students/activity', locals: { student: @student }

@@ -1,1 +1,4 @@
 = render partial: 'tabs', locals: { activate: :activity }
+.tab-content
+  .tab-pane.active
+    = render partial: 'students/activity', locals: { student: @student }
