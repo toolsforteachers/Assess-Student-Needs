@@ -9,7 +9,18 @@
           Add a new subject
     - else
       - @subjects.each do |subject|
-        %p= link_to subject.name, indicator_path(subject)
 
+        - if subject.levels.empty?
+          %h3
+            = subject
+            %small= link_to 'View', indicator_path(subject)
+
+        - else
+          - subjectable_ids = subject.levels.map{ |level| "indicator_#{ level.id }" }
+          %h3
+            = subject
+            - subject.levels.map do |level|
+              %small= link_to level, indicator_path(level)
+      %br
       = link_to new_indicators_subject_path do
         = glyph('Add a new subject', 'plus')
