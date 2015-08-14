@@ -1,3 +1,6 @@
 .indicator-progress
   .score{ class: progress_style(assessment.score), style: "width: #{ number_to_percentage(assessment.score * 100, precision: 0) }" }
     = assessment.mark
+- unless assessment.notes.blank?
+  Notes:
+  %em= assessment.notes
