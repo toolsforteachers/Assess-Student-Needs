@@ -1,5 +1,5 @@
 %tr
-  %td.col-xs-2= "#{ assessment.student.name }: #{ assessment.mark }"
+  %td.col-xs-2= link_to assessment.student, [@group, assessment.student]
   %td.col-xs-2= raw(previous_attempts(assessment))
   %td= render partial: 'assessments/progress_bar',
     locals: { assessment: assessment }

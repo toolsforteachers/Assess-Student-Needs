@@ -1,7 +1,7 @@
 %tr{ id: "student_#{ assessment.student.id }" }
   %td.student
     = link_to glyph(nil, 'plus'), "#", class: 'toggle-assessment-form'
-    = assessment.student.name
+    = assessment.student
 
   - if assessment.alt_streams?
     %td.stream

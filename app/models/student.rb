@@ -30,4 +30,8 @@ class Student < ActiveRecord::Base
   def group_name
     group.try(:name)
   end
+
+  def to_s
+    name
+  end
 end
