@@ -1,6 +1,6 @@
 module ApplicationHelper
   def link_to_group
-    link_to "Class: #{ @group.name }", group_path(@group)
+    link_to "Class: #{ @group }", group_path(@group)
   end
 
   def progress_style(score)

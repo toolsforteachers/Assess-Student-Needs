@@ -10,7 +10,7 @@
 
     - else
       - current_teacher.groups.each do |group|
-        %p= link_to group.name, group
+        %p= link_to group, group
 
       = link_to new_group_path do
         = glyph('Add a new class', 'plus')

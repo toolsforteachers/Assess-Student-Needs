@@ -17,4 +17,8 @@ class Group < ActiveRecord::Base
   accepts_nested_attributes_for :students,
     allow_destroy: true,
     reject_if: proc { |attributes| attributes['name'].blank? }
+
+  def to_s
+    name
+  end
 end
