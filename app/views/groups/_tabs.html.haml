@@ -1,9 +1,9 @@
 %ul.nav.nav-tabs
   %li{ class: "#{ 'active' if activate == :lessons }" }
-    = link_to '#lessons', { data: { toggle: 'tab' } } do
+    = link_to group_lessons_path(@group) do
       Lessons
   %li{ class: "#{ 'active' if activate == :students }" }
-    = link_to '#students', { data: { toggle: 'tab' } } do
+    = link_to group_students_path(@group) do
       Students
   %li.dropdown
     = link_to "#", { class: 'dropdown-toggle', data: { toggle: 'dropdown' } } do
@@ -13,10 +13,3 @@
       %li.edit-group
         = link_to edit_group_path(@group) do
           = glyph('Edit class', 'cog')
-
-
-.tab-content
-  #students.tab-pane{ class: "#{ 'active' if activate == :students }" }
-    = render partial: '/students/list'
-  #lessons.tab-pane{ class: "#{ 'active' if activate == :lessons }" }
-    = render partial: '/lessons/list'

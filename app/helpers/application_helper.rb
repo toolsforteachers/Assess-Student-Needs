@@ -1,6 +1,11 @@
 module ApplicationHelper
-  def link_to_group
-    link_to "Class: #{ @group }", group_path(@group)
+  def link_to_group(group=nil)
+    group ||= @group
+    link_to "Class: #{ group }", group_lessons_path(group)
+  end
+
+  def link_to_group_students
+    link_to "Class: #{ @group }", group_students_path(@group)
   end
 
   def progress_style(score)

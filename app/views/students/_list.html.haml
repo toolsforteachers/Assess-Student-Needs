@@ -1,4 +1,4 @@
-- if @group.students.empty?
+- if @students.empty?
   .bs-component
     .jumbotron
       %p You don't have any students yet.
@@ -18,7 +18,7 @@
       %th.col-xs-2 Name
       %th Notes
     %tbody
-      - @group.students.each do |student|
+      - @students.each do |student|
         %tr
           %td
             = link_to group_student_path(@group, student) do

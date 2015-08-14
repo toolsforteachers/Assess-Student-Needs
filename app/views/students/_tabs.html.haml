@@ -1,4 +1,4 @@
-- @page_header = "Student: #{ @student }"
+- @page_header = raw "#{ link_to(@group, group_students_path(@group)) } #{ @student }"
 
 %ul.nav.nav-tabs
   %li{ class: "#{ 'active' if activate == :activity }" }

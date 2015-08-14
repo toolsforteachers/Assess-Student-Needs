@@ -10,6 +10,7 @@ end
 
 When(/^I visit the student page for "(.*?)"$/) do |student_name|
   click_link "Year 6A"
+  click_link 'Students'
   click_link student_name
 end
 

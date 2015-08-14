@@ -12,11 +12,7 @@ class GroupsController < ProtectedController
   # GET /groups/1
   # GET /groups/1.json
   def show
-    @group = scoped_groups.find(params[:id])
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @group }
-    end
+    redirect_to group_lessons_path(params[:id])
   end
 
   # GET /groups/new

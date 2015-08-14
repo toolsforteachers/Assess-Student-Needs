@@ -1,0 +1,6 @@
+- @page_header = link_to_group_students
+= render partial: 'groups/tabs', locals: { activate: :students }
+
+.tab-content
+  .tab-pane.active
+    = render partial: 'list'

@@ -21,6 +21,7 @@ Then(/^the "(.*?)" group should subject "(.*?)"$/) do |group_name, subject_name|
 end
 
 Then(/^I should see "(.*?)" in the list of students$/) do |list_of_student_names|
+  click_link 'Students'
   within('table.students') do
     list_of_student_names.split(',').each do |student_name|
       page.should have_text(student_name)
@@ -29,6 +30,7 @@ Then(/^I should see "(.*?)" in the list of students$/) do |list_of_student_names
 end
 
 When(/^I the follow the add lesson link$/) do
+  click_link 'Lessons'
   click_link('Add a new lesson')
 end
 
