@@ -1,6 +1,5 @@
 module AssessmentsHelper
   def attempts_text(attempts)
-    return if attempts.empty?
     attempts.map do |attempt|
       link_to attempt_text(attempt), [@group, attempt.assessor]
     end.join('; ')
@@ -14,12 +13,7 @@ module AssessmentsHelper
     assessment.mark.to_i == 0 ? 'n/a' : assessment.mark
   end
 
-  def previous_attempts(assessment,label=false)
-    s = attempts_text(assessment.attempts_at(assessment))
-    if label
-        "#{ label }: #{ s }" unless s.blank?
-    else
-      s
-    end
+  def previous_attempts(assessment)
+    attempts_text(assessment.previous_attempts_at_indicator)
   end
 end

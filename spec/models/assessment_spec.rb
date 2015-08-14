@@ -10,7 +10,7 @@ describe Assessment do
   it { should delegate_method(:assessed_at).to(:assessor) }
   it { should delegate_method(:assessed_by).to(:assessor) }
 
-  describe '#attempts_at' do
+  describe '#previous_attempts_at_indicator' do
     let!(:student) { Fabricate(:student) }
     let!(:indicator) { Fabricate(:indicators_objective) }
 
@@ -20,7 +20,7 @@ describe Assessment do
         student: student)
     end
 
-    subject { @assessment.attempts_at(indicator) }
+    subject { @assessment.previous_attempts_at_indicator }
 
     context 'with an assessment' do
       it 'should be empty' do
