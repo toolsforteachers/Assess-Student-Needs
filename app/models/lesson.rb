@@ -43,4 +43,12 @@ class Lesson < ActiveRecord::Base
   def objective
     objectives.first
   end
+
+  def assessed_at
+    lesson_date
+  end
+
+  def assessed_by
+    teacher
+  end
 end

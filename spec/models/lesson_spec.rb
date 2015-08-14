@@ -11,4 +11,20 @@ describe Lesson do
   it { should have_many(:indicators) }
   it { should delegate_method(:students).to(:group) }
   it { should respond_to(:subject_id) }
+
+  let(:lesson) { Fabricate(:lesson)}
+
+  describe '#assessed_at' do
+    it do
+      expect(lesson).to receive(:lesson_date).once
+      lesson.assessed_at
+    end
+  end
+
+  describe '#assessed_by' do
+    it do
+      expect(lesson).to receive(:teacher).once
+      lesson.assessed_by
+    end
+  end
 end

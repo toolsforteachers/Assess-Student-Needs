@@ -12,6 +12,9 @@ class Assessment < ActiveRecord::Base
   delegate :level, to: :indicator
   delegate :objective, to: :indicator
 
+  delegate :assessed_at, to: :assessor
+  delegate :assessed_by, to: :assessor
+
   def attempts_at(obj_indicator)
     related_attempts = Assessment.by_student(student).by_indicator(obj_indicator)
     related_attempts.flatten - [self]

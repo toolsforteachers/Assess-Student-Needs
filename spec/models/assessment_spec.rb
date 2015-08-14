@@ -7,6 +7,8 @@ describe Assessment do
   it { should delegate_method(:level).to(:indicator) }
   it { should delegate_method(:topic).to(:indicator) }
   it { should delegate_method(:objective).to(:indicator) }
+  it { should delegate_method(:assessed_at).to(:assessor) }
+  it { should delegate_method(:assessed_by).to(:assessor) }
 
   describe '#alt_streams?' do
     let(:lesson) { Fabricate(:lesson) }

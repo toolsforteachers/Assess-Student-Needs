@@ -17,7 +17,9 @@
             %td.text-muted Objective
             %td #{ leaf.objective }
       - objective = leaf
+
       - assessments = Assessment.by_indicator(objective).by_student(@student)
+
       - unless assessments.empty?
         %table.table
           %thead
@@ -26,14 +28,7 @@
             %th Score
 
           - assessments.each do |assessment|
-            - if assessment.assessor.is_a?(Lesson)
-              %tr.activity
-                %td= assessment.assessor.lesson_date
-                %td= assessment.assessor.teacher.name
-                %td= render partial: 'assessments/progress_bar', locals: { assessment: assessment }
-
-            - else
-              .activity
-
-
-      SHOULD BE @indicator.objectives
+            %tr.activity
+              %td= assessment.assessed_at
+              %td= assessment.assessed_by
+              %td= render partial: 'assessments/progress_bar', locals: { assessment: assessment }
