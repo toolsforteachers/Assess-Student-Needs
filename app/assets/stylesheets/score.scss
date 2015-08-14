@@ -26,4 +26,10 @@ $color_20: #BD3030;
     text-decoration: underline;
   }
 }
-
+.indicator-progress {
+  line-height: 2.4;
+  width: 100%;
+  .score {
+    padding-left: 4px;
+  }
+}

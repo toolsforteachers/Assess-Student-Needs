@@ -1,4 +1,8 @@
 %table.table.assessment
+  %thead
+    %th.col-xs-2 Student
+    %th.col-xs-2 Previous attempts
+    %th Score for this lesson
   %tbody
     - lesson.assessments.where(indicator: objective.indicator).each do |assessment|
       - next unless assessment.student
