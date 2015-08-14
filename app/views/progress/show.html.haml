@@ -4,21 +4,19 @@
   Progress:
   = @indicator
 
-- @indicator.leaves.each do |leaf|
-  - next unless leaf.is_a?(Indicators::Objective)
+- @indicator.leaves.where(type: 'Indicators::Objective').each do |indicator|
   .panel.panel-default.objective
     .panel-body
       %table.table.table-condensed
         %tbody
           %tr
             %td.col-xs-2.text-muted Topic
-            %td #{ leaf.topic }
+            %td #{ indicator.topic }
           %tr
             %td.text-muted Objective
-            %td #{ leaf.objective }
-      - objective = leaf
+            %td #{ indicator }
 
-      - assessments = Assessment.by_indicator(objective).by_student(@student)
+      - assessments = Assessment.by_indicator(indicator).by_student(@student)
 
       - unless assessments.empty?
         %table.table
