@@ -21,4 +21,6 @@ Acn::Application.routes.draw do
   resources :indicators_objectives, controller: 'indicators/objectives'
 
   root to: 'home#show'
+
+  get '*a', :to => 'errors#routing'
 end
