@@ -14,4 +14,8 @@ end
 When /^I press "(.*?)"$/ do |button_name|
   click_button button_name
 end
+
+When(/^I force a page reload$/) do
+  visit current_url # force the page to reload - weird
+end
 # :nocov:
