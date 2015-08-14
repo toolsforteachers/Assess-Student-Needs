@@ -18,5 +18,6 @@ Then(/^I should see (\d+) activity records$/) do |activity_record_count|
 end
 
 Then(/^I should (\d+) indicator progress records$/) do |progress_record_count|
+  click_link 'Year 1'
   page.should have_css('.indicator-progress', count: progress_record_count)
 end

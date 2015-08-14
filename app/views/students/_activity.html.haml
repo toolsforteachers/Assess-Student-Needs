@@ -1,16 +1,16 @@
 %table.table
   %thead
-    %th Date
-    %th Teacher
+    %th.col-xs-2 Date
+    %th.col-xs-2 Teacher
     %th Objective
-    %th Score
+    %th.col-xs-4 Score
   - student.assessments.each do |assessment|
     - if assessment.assessor.is_a?(Lesson)
       %tr.activity
         %td= assessment.assessor.lesson_date
         %td= assessment.assessor.teacher.name
         %td= assessment.indicator.ancestry.join(' > ')
-        %td{ class: progress_style(assessment.score) }= score_text(assessment)
+        %td= render partial: 'assessments/progress_bar', locals: { assessment: assessment }
 
     - else
       .activity
