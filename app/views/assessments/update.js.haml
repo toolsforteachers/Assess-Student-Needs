@@ -1,10 +1,32 @@
 :plain
-  var html = "#{ escape_javascript(render :partial => 'lessons/assessment',
+  var score_html = "#{ escape_javascript(render :partial => 'lessons/student_indicator_fields/score',
     locals: { assessment: @assessment,
-              indicators: @assessment.assessor.indicators }) } }"
+              indicator: @assessment.indicator }) } }"
 
-  $("tr#student_#{ @assessment.student_id }").replaceWith(function() {
-      return $(html).hide().fadeIn();
+  var notes_html = "#{ escape_javascript(render :partial => 'lessons/student_indicator_fields/notes',
+    locals: { assessment: @assessment,
+              indicator: @assessment.indicator }) } }"
+
+  var form_html = "#{ escape_javascript(render :partial => 'lessons/student_indicator_fields/form',
+    locals: { assessment: @assessment,
+              indicator: @assessment.indicator }) } }"
+
+  var glyph_html = "#{ escape_javascript(render :partial => 'lessons/student_indicator_fields/glyph',
+    locals: { assessment: @assessment,
+              indicator: @assessment.indicator }) } }"
+
+  $("td#student_#{ @assessment.student.id }_indicator_#{ @assessment.indicator.id }_score").replaceWith(function() {
+      return $(score_html).hide().fadeIn();
   });
 
-  $('[data-toggle="tooltip"]').tooltip();
+  $("td#student_#{ @assessment.student.id }_indicator_#{ @assessment.indicator.id }_notes").replaceWith(function() {
+      return $(notes_html).hide().fadeIn();
+  });
+
+  $("td#student_#{ @assessment.student.id }_indicator_#{ @assessment.indicator.id }_form").replaceWith(function() {
+      return $(form_html).hide().fadeIn();
+  });
+
+  $("a#student_#{ @assessment.student.id }_indicator_#{ @assessment.indicator.id }_glyph").replaceWith(function() {
+      return $(glyph_html).hide().fadeIn();
+  });

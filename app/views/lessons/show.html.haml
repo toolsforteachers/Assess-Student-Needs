@@ -27,6 +27,4 @@
     %th.col-xs-2 Previous attempts
   %tbody
     - @group.students.each do |student|
-      - assessment = @lesson.assessments.where(student: student).first_or_initialize
-      = render partial: 'lessons/assessment',
-        locals: { assessment: assessment, indicators: @lesson.indicators }
+      = render partial: 'lessons/student', locals: { student: student }

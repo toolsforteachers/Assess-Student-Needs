@@ -20,16 +20,6 @@ class Assessment < ActiveRecord::Base
     related_attempts.flatten - [self]
   end
 
-  def stream
-    return unless persisted?
-    return unless alt_streams?
-    assessor.objectives.where(indicator: indicator).first.try(:stream)
-  end
-
-  def alt_streams?
-    assessor.multiple_objectives?
-  end
-
   def score
     return 0 if mark.to_i == 0
     mark.to_f / out_of.to_f

@@ -10,67 +10,6 @@ describe Assessment do
   it { should delegate_method(:assessed_at).to(:assessor) }
   it { should delegate_method(:assessed_by).to(:assessor) }
 
-  describe '#alt_streams?' do
-    let(:lesson) { Fabricate(:lesson) }
-    let(:assessment) { Fabricate(:assessment, assessor: lesson) }
-
-    before do
-      allow(lesson).to receive(:multiple_objectives?) { has_multiple }
-    end
-
-    subject { assessment.alt_streams? }
-
-    context 'when the assessor has multiple objectives' do
-      let(:has_multiple) { true }
-
-      it 'should be true' do
-        expect(subject).to be_truthy
-      end
-    end
-
-    context 'when the assessor does not have multiple objectives' do
-      let(:has_multiple) { false }
-
-      it 'should be false' do
-        expect(subject).to be_falsy
-      end
-    end
-  end
-
-  describe '#stream' do
-    let(:indicator) { Fabricate(:indicators_objective)  }
-    let(:lesson) do
-      Fabricate(:lesson, objectives:
-          [
-            Fabricate(:objective, stream: 'Stream 1', indicator: indicator),
-            Fabricate(:objective, stream: 'Stream 2')]
-        )
-    end
-
-    let(:assessment) do
-      Fabricate(:assessment, assessor: lesson, indicator: indicator)
-    end
-
-    subject { assessment.stream }
-
-    context 'when there is a lesson with an objective' do
-      it do
-        expect(subject).to eql('Stream 1')
-      end
-    end
-    context 'when the assessment has not been saved' do
-      before { expect(assessment).to receive(:persisted?) { false } }
-
-      it 'is null' do
-        expect(subject).to be_nil
-      end
-    end
-
-    context 'when there are no alt_streams' do
-      before { expect(assessment).to receive(:alt_streams?) { false } }
-    end
-  end
-
   describe '#attempts_at' do
     let!(:student) { Fabricate(:student) }
     let!(:indicator) { Fabricate(:indicators_objective) }

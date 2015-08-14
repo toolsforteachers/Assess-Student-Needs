@@ -2,19 +2,7 @@
   = assessment_f.hidden_field :assessor_id
   = assessment_f.hidden_field :assessor_type
   = assessment_f.hidden_field :student_id
-
-  - if assessment.alt_streams?
-    = assessment_f.form_group :indicator_id do
-      - assessment.assessor.objectives.each do |objective|
-
-        = assessment_f.radio_button :indicator_id,
-          objective.indicator_id,
-          label: raw(stream_picker_label(assessment, objective))
-
-  - elsif assessment.assessor.indicator
-    = raw(previous_attempts(assessment, 'Previous attempts'))
-
-    = assessment_f.hidden_field :indicator_id, value: assessment.assessor.indicator.id
+  = assessment_f.hidden_field :indicator_id
 
   %p= render partial: 'assessments/score',
     locals: { assessment_f: assessment_f, n: 5 }
