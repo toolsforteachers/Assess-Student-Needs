@@ -1,0 +1,6 @@
+<p><%= t("devise.mailer.invitation_instructions.hello", email: @resource.email) %></p>
+<p><%= @resource.invited_by %> has invited you to Tools for Teachers, you can accept it through the link below.</p>
+
+<p><%= link_to t("devise.mailer.invitation_instructions.accept"), accept_invitation_url(@resource, :invitation_token => @token) %></p>
+
+<p><%= t("devise.mailer.invitation_instructions.ignore").html_safe %></p>

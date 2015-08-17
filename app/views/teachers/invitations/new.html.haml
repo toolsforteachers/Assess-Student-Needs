@@ -1,0 +1,7 @@
+- @page_header = 'Invite colleagues'
+
+.col-sm-4
+  = bootstrap_form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => {:method => :post} do |f|
+    - resource.class.invite_key_fields.each do |field|
+      = f.email_field field, label: "Your colleague's email address"
+    = f.submit "Send invitation"

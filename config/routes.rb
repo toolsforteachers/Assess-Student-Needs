@@ -1,5 +1,5 @@
 Acn::Application.routes.draw do
-  devise_for :teachers, :controllers => { registrations: 'registrations' }
+  devise_for :teachers, controllers: { registrations: 'registrations' }
 
   resources :groups do
     resources :assessments
