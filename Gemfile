@@ -21,6 +21,7 @@ gem 'friendly_id'
 gem 'paranoia', '~> 2.0'
 gem 'closure_tree'
 gem 'rack-rewrite'
+gem 'devise_invitable'
 
 gem 'quiet_assets', group: :development
 gem "rspec-rails", :group => [:development, :test]
