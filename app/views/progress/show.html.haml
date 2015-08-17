@@ -4,14 +4,15 @@
   Progress:
   = @indicator
 
-- @indicator.leaves.where(type: 'Indicators::Objective').each do |indicator|
+- @indicators.each do |indicator|
   .panel.panel-default.objective
     .panel-body
       %table.table.table-condensed
         %tbody
           %tr
             %td.col-xs-2.text-muted Topic
-            %td #{ indicator.topic }
+            %td
+              %strong #{ indicator.topic }
           %tr
             %td.text-muted Objective
             %td #{ indicator }
