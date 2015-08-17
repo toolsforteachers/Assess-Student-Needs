@@ -2,7 +2,6 @@ Given(/^I add a group named "(.*?)" with a student named "(.*?)"$/) do |group_na
   visit new_group_path
   fill_in 'Class name', with: group_name
   click_link 'Add a student'
-  select 'Maths', from: 'Subject'
   fill_in 'Student', with: 'Ann'
   click_button "Save"
 end
@@ -14,10 +13,6 @@ end
 
 When /^the "(.*)" group should have (\d+) students$/ do |group_name, count|
   Group.find_by_name(group_name).students.length.should eql(count.to_i)
-end
-
-Then(/^the "(.*?)" group should subject "(.*?)"$/) do |group_name, subject_name|
-  Group.find_by_name(group_name).subject.name.should eql(subject_name)
 end
 
 Then(/^I should see "(.*?)" in the list of students$/) do |list_of_student_names|

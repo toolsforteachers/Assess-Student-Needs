@@ -1,9 +1,3 @@
-Given(/^"(.*?)" is studying "(.*?)"$/) do |group_name, subject_name|
-  subject = Indicators::Subject.find_by(name: subject_name)
-  group = Group.find_by(name: group_name)
-  group.update_attributes subject: subject
-end
-
 Given(/^I add a new "(.*?)" lesson for "(.*?)"$/) do |subject_name, group_name|
   group = Group.find_by(name: group_name)
   visit new_group_lesson_path(group)

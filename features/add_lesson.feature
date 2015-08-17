@@ -6,8 +6,7 @@ Background:
 
 @javascript
 Scenario: when the group has a subject
-  Given "Year 6A" is studying "Maths"
-  And I add a new "Maths" lesson for "Year 6A"
+  Given I add a new "Maths" lesson for "Year 6A"
   And I add two objectives to that lesson
   Then the lesson should have streams titled "Foxes,Owls"
   And the lesson notes should be "Do stuff"
