@@ -1,6 +1,6 @@
 class Teacher < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable
+         :recoverable, :rememberable, :invitable
 
   has_many :groups
   has_many :lessons
