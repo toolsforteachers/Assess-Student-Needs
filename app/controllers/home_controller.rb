@@ -1,9 +1,7 @@
 class HomeController < ActionController::Base
+  layout 'application'
+
   def show
-    if current_teacher
-      redirect_to groups_path
-    else
-      render layout: 'application'
-    end
+    redirect_to groups_path if current_teacher
   end
 end
