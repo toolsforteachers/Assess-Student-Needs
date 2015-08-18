@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150818144020) do
+ActiveRecord::Schema.define(version: 20150818151156) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -114,8 +114,8 @@ ActiveRecord::Schema.define(version: 20150818144020) do
   add_index "students", ["group_id"], name: "index_students_on_group_id", using: :btree
 
   create_table "teachers", force: :cascade do |t|
-    t.string   "email",                  limit: 255, default: "", null: false
-    t.string   "encrypted_password",     limit: 255, default: "", null: false
+    t.string   "email",                  limit: 255, default: "",    null: false
+    t.string   "encrypted_password",     limit: 255, default: "",    null: false
     t.string   "reset_password_token",   limit: 255
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -124,8 +124,8 @@ ActiveRecord::Schema.define(version: 20150818144020) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip",     limit: 255
     t.string   "last_sign_in_ip",        limit: 255
-    t.datetime "created_at",                                      null: false
-    t.datetime "updated_at",                                      null: false
+    t.datetime "created_at",                                         null: false
+    t.datetime "updated_at",                                         null: false
     t.string   "name",                   limit: 255
     t.string   "invitation_token"
     t.datetime "invitation_created_at"
@@ -135,6 +135,7 @@ ActiveRecord::Schema.define(version: 20150818144020) do
     t.integer  "invited_by_id"
     t.string   "invited_by_type"
     t.integer  "invitations_count",                  default: 0
+    t.boolean  "admin",                              default: false
   end
 
   add_index "teachers", ["email"], name: "index_teachers_on_email", unique: true, using: :btree
