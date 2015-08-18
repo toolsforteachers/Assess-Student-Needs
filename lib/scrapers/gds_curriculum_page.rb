@@ -26,16 +26,19 @@ class GdsCurriculumPage
   end
 
   def check_h2
-    if @node.name == 'h2' and /^Year/.match(@node.inner_html)
+    if @node.name == 'h2'
       reset_all
-      @level = @subject.children.create!(
-        type: 'Indicators::Level',
-        name: @node.inner_html.gsub(' programme of study', ''))
+
+      if /^Year/.match(@node.inner_html)
+        @level = @subject.children.create!(
+          type: 'Indicators::Level',
+          name: @node.inner_html.gsub(' programme of study', ''))
+      end
     end
   end
 
   def check_h3
-    if @node.name == 'h3'
+    if @node.name == 'h3' && @level
       topic_strand = @node.inner_html.split(' - ')
 
       # note - this might exist for the same level
