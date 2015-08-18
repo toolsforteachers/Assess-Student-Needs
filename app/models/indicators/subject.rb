@@ -1,5 +1,8 @@
 class Indicators::Subject < Indicator
-  validates :name, uniqueness: true
+  belongs_to :curriculum
+
+  validates :name, uniqueness: { scope: :curriculum_id }
+  validates :curriculum_id, presence: true
 
   default_scope { order('name') }
 

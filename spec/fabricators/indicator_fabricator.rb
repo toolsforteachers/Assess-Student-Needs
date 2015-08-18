@@ -2,12 +2,9 @@ Fabricator(:indicator) do
   name { Faker::Lorem.sentence }
 end
 
-Fabricator(:subject, from: :indicator) do
-  type 'Indicators::Subject'
-end
-
 Fabricator(:indicators_subject, from: :indicator) do
   type 'Indicators::Subject'
+  curriculum
 end
 
 Fabricator(:indicators_level, from: :indicator) do

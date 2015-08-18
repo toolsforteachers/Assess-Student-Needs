@@ -19,7 +19,7 @@ describe Indicator do
   end
 
   describe '#deletable?' do
-    let(:indicator) { Fabricate(:indicator, type: 'Indicators::Subject') }
+    let(:indicator) { Fabricate(:indicators_subject) }
 
     context 'by default' do
       it 'can be deleted' do
@@ -29,7 +29,7 @@ describe Indicator do
 
     context 'when it has children' do
       before do
-        Fabricate(:indicator, type: 'Indicators::Level', parent: indicator)
+        Fabricate(:indicators_level, parent: indicator)
         indicator.reload
       end
 
@@ -60,7 +60,7 @@ describe Indicator do
   end
 
   describe '#destroy' do
-    let(:indicator) { Fabricate(:indicator, type: 'Indicators::Subject') }
+    let(:indicator) { Fabricate(:indicators_subject) }
     let(:indicator_id) { indicator.id }
 
     context 'when it is deletable' do
