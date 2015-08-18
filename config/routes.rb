@@ -21,8 +21,6 @@ Acn::Application.routes.draw do
   resources :indicators_prompts, controller: 'indicators/prompts'
   resources :indicators_objectives, controller: 'indicators/objectives'
 
-  get '/nc2014', to: 'home#curricula'
-
   root to: 'home#show'
 
   get '*a', :to => 'errors#routing'
