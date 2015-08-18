@@ -14,3 +14,8 @@
         %h3
           = subject
           = raw subject.levels.map{ |level| "<small>#{ link_to level, indicator_path(level) }</small>" }.join(', ')
+
+    - if current_teacher.admin? && @curriculum
+      %br
+      = link_to new_indicators_subject_path(curriculum_id: @curriculum.id) do
+        = glyph('Add a new subject', 'plus')
