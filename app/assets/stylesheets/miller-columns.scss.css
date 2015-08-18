@@ -94,10 +94,10 @@ div.breadcrumb {
 }
 
 div.breadcrumb > span {
-  height: 1.25em;
+  height: 80px;
   line-height: 1.25em;
 
-  font-size: 0.7em;
+  font-size: 15px;
   font-weight: bold;
   color: #666;
 }
@@ -134,7 +134,7 @@ div.toolbar {
  *
  */
 div.breadcrumb, div.toolbar {
-  height: 1.25em;
+  height: 80px;
   background: linear-gradient(#f0f0f0, #d8d8d8);
 }
 
