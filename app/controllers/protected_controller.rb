@@ -8,6 +8,6 @@ class ProtectedController < ApplicationController
   helper_method :current_teacher_subjects
 
   def current_teacher_subjects
-    Indicators::Subject.all
+    Curriculum.first.subjects
   end
 end

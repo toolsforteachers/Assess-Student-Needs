@@ -12,6 +12,7 @@ Acn::Application.routes.draw do
     end
   end
 
+  resources :curricula
   resources :indicators
   resources :indicators_subjects, controller: 'indicators/subjects'
   resources :indicators_levels, controller: 'indicators/levels'

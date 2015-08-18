@@ -1,8 +1,4 @@
 class IndicatorsController < ProtectedController
-  def index
-    @subjects = current_teacher_subjects
-  end
-
   def show
     @indicator = Indicator.find(params[:id])
   end
