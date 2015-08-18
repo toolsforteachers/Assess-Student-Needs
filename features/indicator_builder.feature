@@ -1,10 +1,12 @@
-Feature: Teacher does stuff with the curriculum
+Feature: Admin does stuff with the curriculum
 
 Background:
   Given I am the teacher
+  And there is a curriculum "NC"
 
 @javascript
 Scenario: Adding a subject and several children
+  Given I am an admin
   When I visit the indicators page
   And I add a subject "Spanish"
   And I visit the indicators page
@@ -17,3 +19,7 @@ Scenario: Adding a subject and several children
   And I change the name of topic "Grammar" to "Grammatica"
   And I can not delete "Past and present"
   And I delete "Order a beer"
+
+Scenario: Not allowed!
+  When I visit the indicators page
+  Then I should not be allowed

@@ -22,3 +22,11 @@ end
 When(/^I sign out$/) do
   click_link 'Sign out'
 end
+
+Given(/^I am an admin$/) do
+  @teacher.update_attributes admin: true
+end
+
+Then(/^I should not be allowed$/) do
+  page.should have_text('not allowed')
+end

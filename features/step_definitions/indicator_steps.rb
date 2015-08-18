@@ -1,5 +1,10 @@
+
+Given(/^there is a curriculum "(.*?)"$/) do |curriculum_name|
+  Curriculum.create(name: curriculum_name)
+end
+
 When(/^I visit the indicators page$/) do
-  visit indicators_path
+  visit '/indicators'
 end
 
 When(/^I add a subject "(.*?)"$/) do |subject_name|

@@ -1,4 +1,6 @@
 class IndicatorsController < ProtectedController
+  before_filter :ensure_admin!
+
   def show
     @indicator = Indicator.find(params[:id])
   end

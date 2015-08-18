@@ -1,0 +1,21 @@
+- @page_header = 'Edit curricula'
+
+- Curriculum.all.each do |curriculum|
+  .well
+    %h2= curriculum
+    - curriculum.subjects.each do |subject|
+
+      - if subject.levels.empty?
+        %h3
+          = subject
+          %small= link_to 'View', indicator_path(subject)
+
+      - else
+        - subjectable_ids = subject.levels.map{ |level| "indicator_#{ level.id }" }
+        %h3
+          = subject
+          = raw subject.levels.map{ |level| "<small>#{ link_to level, indicator_path(level) }</small>" }.join(', ')
+
+    %br
+    = link_to new_indicators_subject_path(curriculum_id: curriculum.id) do
+      = glyph("Add a new subject to #{ curriculum }", 'plus')
