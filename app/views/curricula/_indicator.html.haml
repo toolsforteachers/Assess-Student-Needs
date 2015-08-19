@@ -1,6 +1,12 @@
-%li
-  = indicator
+%li.list-group-item
+
+  - if indicator.is_a?(Indicators::Objective)
+    = glyph(nil, 'blackboard')
+    = link_to indicator, '/discuss'
+  - else
+    = indicator
   - unless indicator.children.empty?
     %ul
       - indicator.children.each do |child|
         = render partial: 'indicator', locals: { indicator: child }
+
