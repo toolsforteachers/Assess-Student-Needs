@@ -16,4 +16,3 @@
 //= require yeti/bootswatch
 //= require jquery_nested_form
 //= require forms
-//= require social-share-button
