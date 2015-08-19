@@ -2,7 +2,7 @@
 
   - if indicator.is_a?(Indicators::Objective)
     = glyph(nil, 'blackboard')
-    = link_to indicator, '/discuss'
+    = link_to indicator, discussion_path(indicator)
   - else
     = indicator
   - unless indicator.children.empty?
