@@ -5,7 +5,7 @@
         Classes
     - Curriculum.all.each do |curriculum|
       %li
-        = link_to curriculum_path(curriculum) do
+        = link_to curriculum_path(curriculum), title: curriculum do
           = curriculum
   %ul.nav.navbar-nav.navbar-right.teacher-links
     %li

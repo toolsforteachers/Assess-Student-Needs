@@ -1,6 +1,22 @@
-
 Given(/^there is a curriculum "(.*?)"$/) do |curriculum_name|
   Curriculum.create(name: curriculum_name)
+end
+
+Given(/^there is a maths curriculum "(.*?)"$/) do |curriculum_name|
+  c = Curriculum.create(name: curriculum_name)
+  Fabricate(:indicators_subject, name: "Maths", curriculum: c)
+  setup_maths_indicators
+end
+
+When(/^I visit the "(.*?)" curriculum page$/) do |curriculum_name|
+  click_link 'Classes' # force the page to reload
+  within('ul.nav.navbar-nav', match: :first) do
+    click_link curriculum_name
+  end
+end
+
+When(/^I browse to the first objective$/) do
+  click_link 'Addition and subtraction'
 end
 
 When(/^I visit the indicators page$/) do
