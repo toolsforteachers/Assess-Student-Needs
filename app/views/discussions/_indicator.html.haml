@@ -1,5 +1,4 @@
-- collection.each do |indicator|
-  %li.list-group-item
-
-    = indicator
-    = render partial: 'discussions/indicator', locals: { collection: indicator.children }
+%li.list-group-item
+  = render partial: indicator.friendly_type.downcase, locals: { indicator: indicator }
+  %ul.list-group
+    = render partial: 'indicator', collection: indicator.children

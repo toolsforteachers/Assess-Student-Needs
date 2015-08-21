@@ -76,7 +76,7 @@ class GdsCurriculumPage
 
           if li.css('ul li').blank?
             # prevent nested objectives being created at the incorrect (upper) level
-            unless li.css_path.match /ul:nth.*.li:nth.*>.ul.* >.li:nth.*/
+            unless li.css_path.match /ul.*.li.*>.ul.* >.li.*/
               parent.children.create!(
                 type: 'Indicators::Objective',
                 name: li.inner_html)

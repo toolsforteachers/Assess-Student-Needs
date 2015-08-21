@@ -1,1 +1,8 @@
-.topic= topic
+.panel.panel-info.topic
+  .panel-heading
+    .panel-title
+      = topic
+      = render partial: 'discuss', locals: { indicator: topic }
+  .panel-body
+    %ul.list-group.indicator-picker
+      = render partial: 'indicator', collection: topic.children
