@@ -6,9 +6,7 @@ class Indicators::Subject < Indicator
 
   default_scope { order('name') }
 
-  def levels
-    @levels = descendants.where(type: 'Indicators::Level')
-  end
+  has_many :levels, class_name: 'Indicators::Level', foreign_key: :parent_id
 
   def allowable_child_types
     [:level, :topic]
