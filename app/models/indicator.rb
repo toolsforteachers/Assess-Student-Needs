@@ -1,4 +1,7 @@
 class Indicator < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :slug_candidates, use: [:slugged, :finders]
+
   has_closure_tree order: 'name', dependent: :destroy
   has_many :self_and_descendants, through: :descendant_hierarchies, source: :descendant
   has_many :self_and_ancestors, through: :ancestor_hierarchies, source: :ancestor
@@ -50,6 +53,10 @@ class Indicator < ActiveRecord::Base
   end
 
   protected
+
+  def slug_candidates
+    self_and_ancestors.reverse_order.map(&:to_s).join('/')
+  end
 
   def check_deletable
     raise "Undeletable" unless deletable?

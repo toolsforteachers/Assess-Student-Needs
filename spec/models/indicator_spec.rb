@@ -66,7 +66,7 @@ describe Indicator do
     context 'when it is deletable' do
       it 'gets deleted' do
         indicator.destroy
-        expect(Indicator.find_by(id: indicator_id)).to be_nil
+        expect(Indicator.find_by(slug: indicator_id)).to be_nil
       end
     end
 
