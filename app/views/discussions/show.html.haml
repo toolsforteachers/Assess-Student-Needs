@@ -3,15 +3,16 @@
 - content_for(:right_pane) do
   - @subject.levels.each do |level|
     .well
-      %h4
-        = "#{ @subject } :: #{ level }"
+      %h3
+        = link_to_unless @indicator == level, "#{ @subject } :: #{ level }", discussion_path(level)
       - level.topics.each do |topic|
         %p= link_to_unless_current topic, discussion_path(topic)
 
-%h2
-  = @indicator
-Discuss
-%ul.list-group.indicator-picker
-  %li.list-group-item
+= render partial: 'topic', collection: @topics, as: :topic
+/ %h2
+/   = @indicator
+/ Discuss
+/ %ul.list-group.indicator-picker
+/   %li.list-group-item
 
-    = render partial: 'indicator', locals: { collection: @indicator.children }
+/     = render partial: 'indicator', locals: { collection: @indicator.children }
