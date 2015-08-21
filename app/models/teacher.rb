@@ -9,4 +9,8 @@ class Teacher < ActiveRecord::Base
   def to_s
     name
   end
+
+  def curricula
+    Curriculum.all
+  end
 end

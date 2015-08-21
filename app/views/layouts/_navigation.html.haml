@@ -3,10 +3,8 @@
     %li
       = link_to groups_path do
         Classes
-    - Curriculum.all.each do |curriculum|
-      %li
-        = link_to curriculum_path(curriculum), title: curriculum do
-          = curriculum
+    %li
+      = link_to 'Curricula', curricula_path
   %ul.nav.navbar-nav.navbar-right.teacher-links
     %li
       = link_to '#', { class: 'dropdown-toggle', data: { toggle: 'dropdown' } } do

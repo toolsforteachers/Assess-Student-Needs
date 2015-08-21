@@ -8,15 +8,10 @@ Given(/^there is a maths curriculum "(.*?)"$/) do |curriculum_name|
   setup_maths_indicators
 end
 
-When(/^I visit the "(.*?)" curriculum page$/) do |curriculum_name|
-  click_link 'Classes' # force the page to reload
+When(/^I visit the curricula page$/) do
   within('ul.nav.navbar-nav', match: :first) do
-    click_link curriculum_name
+    click_link 'Curricula'
   end
-end
-
-When(/^I browse to the first objective$/) do
-  click_link 'Addition and subtraction'
 end
 
 When(/^I visit the indicators page$/) do

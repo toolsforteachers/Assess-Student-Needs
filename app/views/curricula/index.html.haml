@@ -1,0 +1,7 @@
+- @curricula.each do |curriculum|
+  .well
+    %h2= curriculum
+    - curriculum.subjects.each do |subject|
+      %h3
+        = subject
+        = raw subject.levels.map{ |level| "<small>#{ link_to level, discussion_path(level) }</small>" }.join(', ')

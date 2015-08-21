@@ -30,10 +30,12 @@
       .bs-docs-section.clearfix
         .row
           .col-lg-9
-            .page-header
-              .row
-                - if @page_header
+            - if @page_header
+              .page-header
+                .row
                   %h1= @page_header
+            - else
+              .page-header.no-border
 
         .row
           .col-lg-9
