@@ -55,7 +55,11 @@ class Indicator < ActiveRecord::Base
   protected
 
   def slug_candidates
-    self_and_ancestors.reverse_order.map(&:to_s).join('/')
+    if self.parent
+      "#{ self.parent.slug } #{ self.name }"
+    else
+      name
+    end
   end
 
   def check_deletable
