@@ -39,10 +39,10 @@
 
         .row
           - if content_for(:right_pane).present?
-            .col-xs-8
+            .col-sm-8
               = bootstrap_flash
               = yield
-            .col-xs-4
+            .col-sm-4.hidden-xs
               = yield(:right_pane)
           - else
             .col-xs-12
