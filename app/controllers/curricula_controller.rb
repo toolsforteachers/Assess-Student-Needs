@@ -1,5 +1,5 @@
 class CurriculaController < ProtectedController
   def index
-    @curricula = current_teacher.curricula
+    @curricula = current_teacher.curricula.includes(subjects: [:levels])
   end
 end

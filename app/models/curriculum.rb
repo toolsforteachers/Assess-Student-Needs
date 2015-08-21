@@ -4,6 +4,7 @@ class Curriculum < ActiveRecord::Base
 
   validates :name, uniqueness: true
   has_many :subjects, class_name: 'Indicators::Subject'
+  has_many :levels, through: :subjects
 
   def to_s
     name
