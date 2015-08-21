@@ -29,7 +29,7 @@
     .container
       .bs-docs-section.clearfix
         .row
-          .col-lg-9
+          .col-xs-12
             - if @page_header
               .page-header
                 .row
@@ -38,14 +38,21 @@
               .page-header.no-border
 
         .row
-          .col-lg-9
+          - if content_for(:right_pane).present?
+            .col-xs-8
+              = bootstrap_flash
+              = yield
+            .col-xs-4
+              = yield(:right_pane)
+          - else
+            .col-xs-12
+              = bootstrap_flash
+              = yield
 
-            = bootstrap_flash
-            = yield
 
       %footer
         .row
-          .col-lg-9
+          .col-xs-12
             %p
               %br
               &copy; Snap Lab Limited 2015

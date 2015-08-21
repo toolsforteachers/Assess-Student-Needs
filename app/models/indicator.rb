@@ -35,6 +35,14 @@ class Indicator < ActiveRecord::Base
     ancestry.where(type: 'Indicators::Objective').first.try(:name)
   end
 
+  def subject
+    ancestry.where(type: 'Indicators::Subject').first.try(:name)
+  end
+
+  def curriculum
+    ancestry.where(type: 'Indicators::Subject').first.try(:curriculum)
+  end
+
   def level
     ancestry.where(type: 'Indicators::Level').first.try(:name)
   end
