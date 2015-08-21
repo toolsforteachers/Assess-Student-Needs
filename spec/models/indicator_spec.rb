@@ -147,15 +147,15 @@ describe Indicator do
     let(:i_objective) { Fabricate(:indicators_objective, name: 'solve small problems', parent: strand) }
 
     it 'has an objective' do
-      expect(i_objective.objective).to eql('solve small problems')
+      expect(i_objective.objective.to_s).to eql('Solve small problems')
     end
 
     it 'has a topic' do
-      expect(i_objective.topic).to eql('Number - addition and subtraction')
+      expect(i_objective.topic.to_s).to eql('Number - Addition and subtraction')
     end
 
     it 'has a level' do
-      expect(i_objective.level).to eql('Year 1')
+      expect(i_objective.level.to_s).to eql('Year 1')
     end
   end
 end

@@ -32,28 +32,28 @@ class Indicator < ActiveRecord::Base
   end
 
   def objective
-    ancestry.where(type: 'Indicators::Objective').first.try(:name)
+    ancestry.where(type: 'Indicators::Objective').first
   end
 
   def subject
-    ancestry.where(type: 'Indicators::Subject').first.try(:name)
+    ancestry.where(type: 'Indicators::Subject').first
   end
 
   def curriculum
-    ancestry.where(type: 'Indicators::Subject').first.try(:curriculum)
+    subject.try(:curriculum)
   end
 
   def level
-    ancestry.where(type: 'Indicators::Level').first.try(:name)
+    ancestry.where(type: 'Indicators::Level').first
   end
 
   def topic
-    s = ancestry.where(type: 'Indicators::Topic').first.try(:name)
+    s = ancestry.where(type: 'Indicators::Topic').first
     strand ? "#{ s } - #{ strand }" : s
   end
 
   def strand
-    ancestry.where(type: 'Indicators::Strand').first.try(:name)
+    ancestry.where(type: 'Indicators::Strand').first
   end
 
   def ancestry
