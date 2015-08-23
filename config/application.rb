@@ -54,5 +54,7 @@ module Acn
     # Enable the asset pipeline
     config.assets.enabled = true
     config.assets.version = '1.1'
+
+    config.fb_app_id = ENV['FB_APP_ID'] || "858763877533128"
   end
 end

@@ -1,6 +1,6 @@
 - @subject.levels.each do |level|
   .well
     %h4
-      = link_to_unless @indicator == level, "#{ @subject } :: #{ level }", discussion_path(level)
+      = link_to_unless @indicator == level,  level, discussion_path(level)
     - level.topics.each do |topic|
       %p= link_to_unless_current topic, discussion_path(topic)

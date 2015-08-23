@@ -1,5 +1,5 @@
 Then(/^I should see the discussion fields$/) do
-  page.should have_css('.topic', text: 'Number')
+  page.should have_text('Discuss your experiences teaching Number to Year 1')
 end
 
 When(/^I am not logged in I still want to see the curriculum discussion$/) do

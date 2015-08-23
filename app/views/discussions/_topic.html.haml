@@ -1,8 +1,13 @@
 .panel.panel-info.topic
   .panel-heading
-    .panel-title
-      = topic
-      = render partial: 'discuss', locals: { indicator: topic }
+    .panel-title= "#{ topic.level }: #{ topic }"
   .panel-body
-    %ul.list-group.indicator-picker
-      = render partial: 'indicator', collection: topic.children
+    .well
+      .lead The curriculum says...
+      %ul.list-group.indicator-picker
+        = render partial: 'indicator', collection: topic.children
+
+    .well
+      .lead
+        Discuss your experiences teaching #{ topic } to #{ topic.level }
+      = render partial: 'discuss', locals: { topic: topic }
