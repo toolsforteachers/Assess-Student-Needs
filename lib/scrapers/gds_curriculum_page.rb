@@ -3,7 +3,7 @@ require 'nokogiri'
 require 'open-uri'
 
 class GdsCurriculumPage
-  attr_accessor :page, :subject, :level, :topic, :strand, :prompt, :objective, :node
+  attr_accessor :page, :subject, :level, :topic, :prompt, :objective, :node
 
   def initialize(page_url, subject, curriculum)
     @page = Nokogiri::HTML(open(page_url))
@@ -40,21 +40,12 @@ class GdsCurriculumPage
 
   def check_h3
     if @node.name == 'h3' && @level
-      topic_strand = @node.inner_html.split(' - ')
 
       # note - this might exist for the same level
-      @topic = Indicators::Topic.find_by(name: topic_strand[0], parent_id: @level.id)
+      @topic = Indicators::Topic.find_by(name: @node.inner_html, parent_id: @level.id)
       @topic ||= @level.children.create!(
         type: 'Indicators::Topic',
-        name: topic_strand[0])
-
-      if topic_strand[1]
-        @strand = @topic.children.create!(
-          type: 'Indicators::Strand',
-          name: topic_strand[1])
-      else
-        @strand = nil
-      end
+        name: @node.inner_html)
     end
   end
 
@@ -69,7 +60,7 @@ class GdsCurriculumPage
 
   def check_ul
     if @node.name == 'ul'
-      parent = @prompt || @strand || @topic
+      parent = @prompt || @topic
       if parent
         @node.css('li').each do |li|
           next if li.blank?
@@ -109,12 +100,12 @@ class GdsCurriculumPage
 
   def check_call_to_action
     if @node.attr('class') == 'call-to-action'
-      parent = @strand || @topic
+      parent = @topic
       # attach a note to the parent
     end
   end
 
   def reset_all
-     @level, @topic, @strand, @prompt = nil, nil, nil, nil
+     @level, @topic, @prompt = nil, nil, nil
   end
 end
