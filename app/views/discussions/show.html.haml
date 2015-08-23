@@ -1,11 +1,6 @@
 - @page_header = "#{ @subject } :: #{ @indicator.level }"
 
 - content_for(:right_pane) do
-  - @subject.levels.each do |level|
-    .well
-      %h3
-        = link_to_unless @indicator == level, "#{ @subject } :: #{ level }", discussion_path(level)
-      - level.topics.each do |topic|
-        %p= link_to_unless_current topic, discussion_path(topic)
+  = render partial: 'nav'
 
 = render partial: 'topic', collection: @topics, as: :topic
