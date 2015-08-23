@@ -6,6 +6,11 @@ describe Student do
   it { should have_many(:assessments) }
   it { should belong_to(:group) }
 
+  describe '#to_s' do
+    let(:student) { Fabricate(:student, name: 'Bob') }
+    it { expect(student.to_s).to eql('Bob') }
+  end
+
   describe '#average_score_for' do
     let(:student) { Fabricate(:student) }
     let(:indicator) { Fabricate(:indicators_objective) }

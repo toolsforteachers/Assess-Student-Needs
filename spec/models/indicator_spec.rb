@@ -132,7 +132,8 @@ describe Indicator do
   end
 
   context 'ancestorial attributes' do
-    let(:i_subject) { Fabricate(:indicators_subject, name: 'Doing some maths') }
+    let(:curriculum) { Fabricate(:curriculum) }
+    let(:i_subject) { Fabricate(:indicators_subject, name: 'Doing some maths', curriculum: curriculum) }
     let(:level) { Fabricate(:indicators_level, name: 'Year 1', parent: i_subject) }
     let(:topic) { Fabricate(:indicators_topic, name: 'Number', parent: level) }
     let(:i_objective) { Fabricate(:indicators_objective, name: 'solve small problems', parent: topic) }
@@ -147,6 +148,10 @@ describe Indicator do
 
     it 'has a level' do
       expect(i_objective.level.to_s).to eql('Year 1')
+    end
+
+    it 'has a curriculum' do
+      expect(i_objective.curriculum).to eql(curriculum)
     end
   end
 end

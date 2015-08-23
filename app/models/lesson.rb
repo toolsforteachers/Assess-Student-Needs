@@ -36,14 +36,6 @@ class Lesson < ActiveRecord::Base
     objectives.length > 1
   end
 
-  def indicator
-    indicators.first unless multiple_objectives?
-  end
-
-  def objective
-    objectives.first
-  end
-
   def assessed_at
     lesson_date
   end

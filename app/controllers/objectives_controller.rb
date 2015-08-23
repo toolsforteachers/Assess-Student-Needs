@@ -9,11 +9,8 @@ class ObjectivesController < ProtectedController
 
   def create
     @objective = scoped_objectives.new(objective_params)
-    if @objective.save
-      redirect_to group_lesson_path(@group, @lesson), notice: 'Objective was successfully added'
-    else
-      redirect_to group_lesson_path(@group, @lesson), error: 'The objective could not be added'
-    end
+    @objective.save!
+    redirect_to group_lesson_path(@group, @lesson), notice: 'Objective was successfully added'
   end
 
   protected

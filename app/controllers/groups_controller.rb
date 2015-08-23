@@ -60,22 +60,7 @@ class GroupsController < ProtectedController
       if @group.update_attributes(group_params)
         format.html { redirect_to @group, notice: 'Class was successfully updated.' }
         format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @group.errors, status: :unprocessable_entity }
       end
-    end
-  end
-
-  # DELETE /groups/1
-  # DELETE /groups/1.json
-  def destroy
-    @group = scoped_groups.find(params[:id])
-    @group.destroy
-
-    respond_to do |format|
-      format.html { redirect_to groups_url }
-      format.json { head :no_content }
     end
   end
 
