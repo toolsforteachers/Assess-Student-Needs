@@ -15,10 +15,6 @@ Fabricator(:indicators_topic, from: :indicator) do
   type 'Indicators::Topic'
 end
 
-Fabricator(:indicators_strand, from: :indicator) do
-  type 'Indicators::Strand'
-end
-
 Fabricator(:indicators_prompt, from: :indicator) do
   type 'Indicators::Prompt'
 end

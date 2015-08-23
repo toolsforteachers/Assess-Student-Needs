@@ -4,6 +4,6 @@ class Indicators::Topic < Indicator
   end
 
   def allowable_child_types
-    [:strand, :prompt, :objective]
+    [:prompt, :objective]
   end
 end

@@ -45,23 +45,13 @@ When(/^I add a topic "(.*?)" to "(.*?)"$/) do |topic_name, level_name|
   page.should have_text('Topic was successfully created')
 end
 
-When(/^I add a strand "(.*?)" to "(.*?)"$/) do |strand_name, topic_name|
-  click_link "Add a new strand"
-  fill_in "Strand", with: strand_name
-  click_button 'Save'
-
-  parent_name = Indicators::Strand.find_by(name: strand_name).parent.name
-  parent_name.should eql(topic_name)
-  page.should have_text('Strand was successfully created')
-end
-
-When(/^I add a prompt "(.*?)" to "(.*?)"$/) do |prompt_name, strand_name|
+When(/^I add a prompt "(.*?)" to "(.*?)"$/) do |prompt_name, topic_name|
   click_link "Add a new prompt"
   fill_in "Prompt", with: prompt_name
   click_button 'Save'
 
   parent_name = Indicators::Prompt.find_by(name: prompt_name).parent.name
-  parent_name.should eql(strand_name)
+  parent_name.should eql(topic_name)
   page.should have_text('Prompt was successfully created')
 end
 

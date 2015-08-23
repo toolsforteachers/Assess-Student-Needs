@@ -48,12 +48,7 @@ class Indicator < ActiveRecord::Base
   end
 
   def topic
-    s = ancestry.where(type: 'Indicators::Topic').first
-    strand ? "#{ s } - #{ strand }" : s
-  end
-
-  def strand
-    ancestry.where(type: 'Indicators::Strand').first
+    ancestry.where(type: 'Indicators::Topic').first
   end
 
   def ancestry

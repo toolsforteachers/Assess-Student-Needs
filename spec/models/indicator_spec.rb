@@ -96,10 +96,6 @@ describe Indicator do
       expect(Indicators::Topic.new.friendly_type).to eql('Topic')
     end
 
-    it 'is friendly for strands' do
-      expect(Indicators::Strand.new.friendly_type).to eql('Strand')
-    end
-
     it 'is friendly for prompts' do
       expect(Indicators::Prompt.new.friendly_type).to eql('Prompt')
     end
@@ -123,11 +119,7 @@ describe Indicator do
     end
 
     it 'is friendly for topics' do
-      expect(Indicators::Topic.new.allowable_child_types).to eql([:strand, :prompt, :objective])
-    end
-
-    it 'is friendly for strands' do
-      expect(Indicators::Strand.new.allowable_child_types).to eql([:prompt, :objective])
+      expect(Indicators::Topic.new.allowable_child_types).to eql([:prompt, :objective])
     end
 
     it 'is friendly for prompts' do
@@ -143,15 +135,14 @@ describe Indicator do
     let(:i_subject) { Fabricate(:indicators_subject, name: 'Doing some maths') }
     let(:level) { Fabricate(:indicators_level, name: 'Year 1', parent: i_subject) }
     let(:topic) { Fabricate(:indicators_topic, name: 'Number', parent: level) }
-    let(:strand) { Fabricate(:indicators_strand, name: 'addition and subtraction', parent: topic) }
-    let(:i_objective) { Fabricate(:indicators_objective, name: 'solve small problems', parent: strand) }
+    let(:i_objective) { Fabricate(:indicators_objective, name: 'solve small problems', parent: topic) }
 
     it 'has an objective' do
       expect(i_objective.objective.to_s).to eql('Solve small problems')
     end
 
     it 'has a topic' do
-      expect(i_objective.topic.to_s).to eql('Number - Addition and subtraction')
+      expect(i_objective.topic.to_s).to eql('Number')
     end
 
     it 'has a level' do

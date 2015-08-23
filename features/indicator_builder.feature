@@ -13,11 +13,10 @@ Scenario: Adding a subject and several children
   And I follow "View"
   And I add a level "Year 1" to "Spanish"
   And I add a topic "Grammar" to "Year 1"
-  And I add a strand "Past and present" to "Grammar"
-  And I add a prompt "Students should" to "Past and present"
+  And I add a prompt "Students should" to "Grammar"
   And I add an objective "Order a beer" to "Students should"
   And I change the name of topic "Grammar" to "Grammatica"
-  And I can not delete "Past and present"
+  And I can not delete "Year 1"
   And I delete "Order a beer"
 
 Scenario: Not allowed!

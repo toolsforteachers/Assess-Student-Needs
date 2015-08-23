@@ -50,8 +50,8 @@ class GdsCurriculumPage
   end
 
   def check_p
-    if @node.name == 'p' && (@strand || @topic)
-      parent = @strand || @topic
+    if @node.name == 'p' && @topic
+      parent = @topic
       @prompt = parent.children.create!(
         type: 'Indicators::Prompt',
         name: @node.inner_html)
