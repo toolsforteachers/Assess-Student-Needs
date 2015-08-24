@@ -1,18 +1,16 @@
 %well
-  %table.table.no-row-lines
-    %tbody
-      %tr.active.lesson_subject
-        %td.text-muted.col-xs-1 Subject
-        %td
-          %b #{ @lesson.subject.try(:name) }
-      %tr.active.lesson-teacher
-        %td.text-muted Teacher
-        %td
-          %b #{ lesson.teacher }
-      %tr.active.lesson-date
-        %td.text-muted Date
-        %td
-          %b #{ lesson.lesson_date }
-      %tr.active.lesson-notes
-        %td.text-muted Notes
-        %td #{ lesson.notes }
+%dl.dl-horizontal
+  %dt Subject
+  %dd
+    %mark #{ @lesson.subject.try(:name) }
+
+  %dt Teacher
+  %dd
+    %mark #{ lesson.teacher }
+
+  %dt Date
+  %dd
+    %mark #{ lesson.lesson_date }
+
+  %dt Notes
+  %dd #{ lesson.notes }
