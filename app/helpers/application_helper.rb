@@ -4,6 +4,10 @@ module ApplicationHelper
     link_to group, group_lessons_path(group)
   end
 
+  def back_to_group
+    raw "<p>#{ link_to glyph('Back', 'triangle-left'), group_path(@group) }"
+  end
+
   def progress_style(score)
     case score
       when 1 then :score_100
