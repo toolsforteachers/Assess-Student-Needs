@@ -9,9 +9,5 @@ Scenario:
   Then the "Year 6A" group should have 1 students
   And I should be the teacher of "Year 6A"
 
-  When I edit the group "Year 6A"
-  And I remove the student named "Ann"
-  Then the "Year 6A" group should have 0 students
-
   When I change the group "Year 6A" to "Year 6B"
   Then I should be the teacher of "Year 6B"

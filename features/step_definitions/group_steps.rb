@@ -24,7 +24,7 @@ Then(/^I should see "(.*?)" in the list of students$/) do |list_of_student_names
 end
 
 When(/^I the follow the add lesson link$/) do
-  click_link('Add a new lesson')
+  click_link('Add a new lesson', match: :first)
 end
 
 Then(/^I should be the teacher of "(.*?)"$/) do |group_name|
@@ -33,18 +33,16 @@ Then(/^I should be the teacher of "(.*?)"$/) do |group_name|
   end
 end
 
-When(/^I edit the group "(.*?)"$/) do |group_name|
-  visit edit_group_path(Group.find_by_name(group_name))
-end
-
-When(/^I remove the student named "(.*?)"$/) do |student_name|
-  click_link "Remove #{ student_name }"
-  click_button 'Save'
-end
-
 When(/^I change the group "(.*?)" to "(.*?)"$/) do |old_name, new_name|
   visit group_path(Group.find_by_name(old_name))
   click_link 'Edit this class'
   fill_in 'Class name', with: new_name
+  click_button 'Save'
+end
+
+
+When(/^I remove the student named "(.*?)"$/) do |student_name|
+  click_link "Manage students"
+  click_link "Remove #{ student_name }"
   click_button 'Save'
 end

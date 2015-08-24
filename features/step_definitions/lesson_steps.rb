@@ -1,6 +1,7 @@
 Given(/^I add a new "(.*?)" lesson for "(.*?)"$/) do |subject_name, group_name|
   group = Group.find_by(name: group_name)
-  visit new_group_lesson_path(group)
+  visit group_path(group)
+  click_link 'Add a new lesson', match: :first
   fill_in('Notes', with: 'Do stuff')
   select(subject_name, from: 'Subject')
   click_button "Save"

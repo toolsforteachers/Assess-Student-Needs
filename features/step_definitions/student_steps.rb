@@ -23,3 +23,17 @@ Then(/^I should (\d+) indicator progress records$/) do |progress_record_count|
   click_link 'Year 1'
   page.should have_css('.indicator-progress', count: progress_record_count)
 end
+
+When(/^I add the students "(.*?)" to "(.*?)"$/) do |student_list, group_name|
+  group = Group.find_by(name: group_name)
+  visit group_path(group)
+  click_link 'Manage students'
+
+  student_list.split(',').each do |student_name|
+    click_link 'Add a student'
+    within(all('.fields').last) do
+      fill_in 'Student', with: student_name
+    end
+  end
+  click_button "Save"
+end

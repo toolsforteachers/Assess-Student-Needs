@@ -4,17 +4,16 @@
       .panel-title
         = f.text_field :name, label: 'Class name', autofocus: true, wrapper_class: 'name-input'
         = render partial: 'teachers/fields/select_name', locals: { f: f }
-  .panel.panel-default
-    .panel-heading
-      .panel-title
-        = f.fields_for :students do |student_f|
-          - remove_link_text = student_f.link_to_remove glyph("Remove#{ (' ' + student_f.object.name) unless student_f.object.new_record?}", 'trash').html_safe
-          = student_f.text_field :name, label: 'Student', help: remove_link_text, wrapper_class: 'name-input'
 
-        %p= f.link_to_add glyph('Add a student', 'plus'), :students
-        = f.submit 'Save'
+  - if @group.new_record?
+    .panel.panel-default
+      .panel-heading
+        .panel-title
+          = f.fields_for :students do |student_f|
+            - remove_link_text = student_f.link_to_remove glyph("Remove#{ (' ' + student_f.object.name) unless student_f.object.new_record?}", 'trash').html_safe
+            = student_f.text_field :name, label: 'Student', help: remove_link_text, wrapper_class: 'name-input'
 
-%p
-.alert.alert-info
-  %strong Pending feature:
-  Add students from other classes
+          %p= f.link_to_add glyph('Add a student', 'plus'), :students
+          = f.submit 'Save'
+  - else
+    = f.submit 'Save'

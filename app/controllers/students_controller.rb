@@ -6,6 +6,5 @@ class StudentsController < ProtectedController
   end
 
   def index
-    @students = @group.students
   end
 end

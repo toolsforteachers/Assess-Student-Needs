@@ -1,0 +1,16 @@
+- @page_header = link_to_group
+
+%p
+  =link_to group_path(@group) do
+    = glyph('Back', 'triangle-left')
+
+= bootstrap_nested_form_for(@group) do |f|
+  .panel.panel-default
+    .panel-heading
+      .panel-title
+        = f.fields_for :students do |student_f|
+          - remove_link_text = student_f.link_to_remove glyph("Remove#{ (' ' + student_f.object.name) unless student_f.object.new_record?}", 'trash').html_safe
+          = student_f.text_field :name, label: 'Student', help: remove_link_text, wrapper_class: 'name-input'
+
+        %p= f.link_to_add glyph('Add a student', 'plus'), :students
+        = f.submit 'Save'
