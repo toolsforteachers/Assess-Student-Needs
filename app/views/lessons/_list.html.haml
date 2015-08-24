@@ -7,10 +7,8 @@
           Add a new lesson
 
 - else
-  .list-group
-    .list-group-item
-      = link_to glyph('Add a new lesson', 'plus'), new_group_lesson_path(@group)
-
+  .btn= link_to glyph('Add a new lesson', 'plus'), new_group_lesson_path(@group)
+  .btn= link_to glyph('Add students to the class', 'plus'), edit_group_path(@group)
   %table.table.table-striped
     %thead
       %th.col-xs-2

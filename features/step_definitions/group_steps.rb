@@ -16,8 +16,7 @@ When /^the "(.*)" group should have (\d+) students$/ do |group_name, count|
 end
 
 Then(/^I should see "(.*?)" in the list of students$/) do |list_of_student_names|
-  click_link 'Students'
-  within('table.students') do
+  within('.students') do
     list_of_student_names.split(',').each do |student_name|
       page.should have_text(student_name)
     end
@@ -25,7 +24,6 @@ Then(/^I should see "(.*?)" in the list of students$/) do |list_of_student_names
 end
 
 When(/^I the follow the add lesson link$/) do
-  click_link 'Lessons'
   click_link('Add a new lesson')
 end
 
