@@ -12,15 +12,12 @@
 - @indicators.each do |indicator|
   .panel.panel-default.objective
     .panel-body
-      %table.table.table-condensed
-        %tbody
-          %tr
-            %td.col-xs-2.text-muted Topic
-            %td
-              %strong #{ indicator.topic }
-          %tr
-            %td.text-muted Objective
-            %td #{ indicator }
+      %dl.dl-horizontal.lesson-details
+        %dt Topic
+        %dd #{ indicator.topic }
+
+        %dt Objective
+        %dd #{ raw indicator.objective }
 
       - assessments = Assessment.by_indicator(indicator).by_student(@student)
 
