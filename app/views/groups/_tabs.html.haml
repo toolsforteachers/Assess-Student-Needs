@@ -10,9 +10,9 @@
 
 - content_for(:right_pane) do
   .well
-    .lead= link_to 'My classes', groups_path
+    .lead Classes
 
-    %ul.list-unstyled
+    %ul
       - current_teacher.groups.each do |group|
         %li= link_to_unless group == @group, group, group
     %br
