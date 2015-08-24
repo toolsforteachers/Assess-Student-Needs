@@ -13,7 +13,7 @@ class Indicator < ActiveRecord::Base
   before_destroy :check_deletable
 
   def to_s
-    name.capitalize
+    name
   end
 
   def friendly_type

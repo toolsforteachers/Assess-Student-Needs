@@ -113,6 +113,7 @@ class GdsCurriculumPage
     li.css('span.fraction').each do |span|
       span.replace  span.css('img')[0]['alt']
     end
-    li.inner_html
+
+    li.inner_html.gsub('/government', 'https://www.gov.uk/government')
   end
 end
