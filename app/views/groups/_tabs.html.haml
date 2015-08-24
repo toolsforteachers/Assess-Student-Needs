@@ -5,11 +5,16 @@
   %li{ class: "#{ 'active' if activate == :students }" }
     = link_to group_students_path(@group) do
       Students
-  %li.dropdown
-    = link_to "#", { class: 'dropdown-toggle', data: { toggle: 'dropdown' } } do
-      Settings
-      %span.caret
-    %ul.dropdown-menu
-      %li.edit-group
-        = link_to edit_group_path(@group) do
-          = glyph('Edit class', 'cog')
+
+
+
+- content_for(:right_pane) do
+  .well
+    .lead= link_to 'My classes', groups_path
+
+    %ul.list-unstyled
+      - current_teacher.groups.each do |group|
+        %li= link_to_unless group == @group, group, group
+    %br
+    %p.small= link_to glyph('Edit this class', 'cog'), edit_group_path(@group)
+    %p.small= link_to glyph('Add a new class', 'plus'), new_group_path
