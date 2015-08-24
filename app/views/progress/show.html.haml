@@ -1,9 +1,11 @@
 = render partial: 'students/tabs', locals: { activate: "indicator_#{ @indicator.id }" }
 
 - content_for(:right_pane) do
-  .well
-    - @group.students.each do |student|
-      %p= link_to_unless_current student, group_student_progress_path(@group, student, @indicator)
+  .panel.panel-default
+    .panel-heading #{ @group }
+    .panel-body
+      - @group.students.each do |student|
+        %p= link_to_unless_current student, group_student_progress_path(@group, student, @indicator)
 
 %h3
   Progress:

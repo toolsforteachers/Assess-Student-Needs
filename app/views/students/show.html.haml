@@ -4,7 +4,9 @@
     = render partial: 'students/activity', locals: { student: @student }
 
 - content_for(:right_pane) do
-  .well
-    - @group.students.each do |student|
-      %p= link_to_unless_current student, [@group, student]
+  .panel.panel-default
+    .panel-heading #{ @group }
+    .panel-body
+      - @group.students.each do |student|
+        %p= link_to_unless_current student, [@group, student]
 
