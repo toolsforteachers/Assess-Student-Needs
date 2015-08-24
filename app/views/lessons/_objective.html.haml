@@ -2,16 +2,14 @@
   .panel-heading
     = multiple_objectives ? "#{ objective.stream } objective" : 'Lesson objective'
   .panel-body
-    %table.table.table-condensed
-      %tbody
-        %tr
-          %td.text-muted.col-xs-2 Level
-          %td #{ objective.level }
-        %tr
-          %td.text-muted Topic
-          %td #{ objective.topic }
-        %tr
-          %td.text-muted Objective
-          %td #{ raw objective.objective }
+    %dl.dl-horizontal.lesson-details
+      %dt Level
+      %dd #{ objective.level }
+
+      %dt Topic
+      %dd #{ objective.topic }
+
+      %dt Objective
+      %dd #{ raw objective.objective }
 
     = sub_content if defined?(sub_content)
