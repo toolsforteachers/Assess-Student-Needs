@@ -7,7 +7,7 @@
           %mark #{ @lesson.subject.try(:name) }
 
         %dt Teacher
-        %dd
+        %dd.lesson-teacher
           %mark #{ lesson.teacher }
 
         %dt Date
@@ -15,6 +15,6 @@
           %mark #{ lesson.lesson_date }
 
   .col-xs-6
-    %well
+    %well.lesson-notes
       %b Notes
       #{ lesson.notes }

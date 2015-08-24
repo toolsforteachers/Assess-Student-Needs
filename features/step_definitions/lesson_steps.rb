@@ -47,11 +47,11 @@ When(/^I change the first objective name to "(.*?)"$/) do |new_name|
 end
 
 Then(/^the lesson notes should be "(.*?)"$/) do |lesson_notes|
-  page.should have_css('tr.lesson-notes', lesson_notes)
+  page.should have_css('.lesson-notes', lesson_notes)
 end
 
 Then(/^the lesson teacher should be "(.*?)"$/) do |teacher_name|
-  page.should have_css('tr.lesson-teacher', teacher_name)
+  page.should have_css('.lesson-teacher', teacher_name)
 end
 
 Then(/^I should see the new lesson form$/) do
