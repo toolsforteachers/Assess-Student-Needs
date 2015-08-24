@@ -139,7 +139,7 @@ describe Indicator do
     let(:i_objective) { Fabricate(:indicators_objective, name: 'solve small problems', parent: topic) }
 
     it 'has an objective' do
-      expect(i_objective.objective.to_s).to eql('Solve small problems')
+      expect(i_objective.objective.to_s).to eql('solve small problems')
     end
 
     it 'has a topic' do

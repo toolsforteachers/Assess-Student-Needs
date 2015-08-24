@@ -3,7 +3,7 @@
     %span.badge.left= indicator.friendly_type
 
     - if indicator == @indicator
-      %mark= indicator
+      %mark= raw indicator
       %p= render partial: 'edit_controls'
     - else
       = link_to_indicator(indicator)
