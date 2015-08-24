@@ -22,6 +22,7 @@ gem 'paranoia', '~> 2.0'
 gem 'closure_tree'
 gem 'rack-rewrite'
 gem 'devise_invitable'
+gem 'faker'
 
 gem 'quiet_assets', group: :development
 gem "rspec-rails", :group => [:development, :test]
@@ -33,7 +34,6 @@ gem "capybara", :group => :test
 gem "launchy", :group => :test
 gem "database_cleaner", :group => :test
 gem 'shoulda-matchers', :group => :test
-gem 'faker', :group => [:development, :test]
 gem 'railroady', :group => [:development, :test]
 gem 'jshint', :group => [:development, :test]
 gem 'poltergeist', :group => [:test]
