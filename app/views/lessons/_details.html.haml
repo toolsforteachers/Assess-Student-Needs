@@ -1,16 +1,20 @@
-%well
-%dl.dl-horizontal
-  %dt Subject
-  %dd
-    %mark #{ @lesson.subject.try(:name) }
+.row
+  .col-sm-6
+    %well
+      %dl.dl-horizontal.lesson-details
+        %dt Subject
+        %dd
+          %mark #{ @lesson.subject.try(:name) }
 
-  %dt Teacher
-  %dd
-    %mark #{ lesson.teacher }
+        %dt Teacher
+        %dd
+          %mark #{ lesson.teacher }
 
-  %dt Date
-  %dd
-    %mark #{ lesson.lesson_date }
+        %dt Date
+        %dd
+          %mark #{ lesson.lesson_date }
 
-  %dt Notes
-  %dd #{ lesson.notes }
+  .col-sm-6
+    %well
+      %b Notes
+      #{ lesson.notes }
