@@ -12,7 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require yeti/loader
-//= require yeti/bootswatch
+//= require bootstrap
 //= require jquery_nested_form
 //= require forms
