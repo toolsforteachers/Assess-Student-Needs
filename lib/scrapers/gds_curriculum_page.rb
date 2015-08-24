@@ -70,7 +70,7 @@ class GdsCurriculumPage
             unless li.css_path.match /ul.*.li.*>.ul.* >.li.*/
               parent.children.create!(
                 type: 'Indicators::Objective',
-                name: li.inner_html)
+                name: parse_li(li))
             end
           else
             # this is a nested li ul lu
@@ -89,7 +89,7 @@ class GdsCurriculumPage
               li_ul.css('li').each do |li_ul_li|
                 sub_prompt.children.create!(
                   type: 'Indicators::Objective',
-                  name: li_ul_li.inner_html)
+                  name: parse_li(li_ul_li))
               end
             end
           end
@@ -107,5 +107,12 @@ class GdsCurriculumPage
 
   def reset_all
      @level, @topic, @prompt = nil, nil, nil
+  end
+
+  def parse_li(li)
+    li.css('span.fraction').each do |span|
+      span.replace  span.css('img')[0]['alt']
+    end
+    li.inner_html
   end
 end
