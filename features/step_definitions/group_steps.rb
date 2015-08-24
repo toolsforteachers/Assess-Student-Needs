@@ -41,3 +41,10 @@ When(/^I remove the student named "(.*?)"$/) do |student_name|
   click_link "Remove #{ student_name }"
   click_button 'Save'
 end
+
+When(/^I change the group "(.*?)" to "(.*?)"$/) do |old_name, new_name|
+  visit group_path(Group.find_by_name(old_name))
+  click_link 'Edit this class'
+  fill_in 'Class name', with: new_name
+  click_button 'Save'
+end
