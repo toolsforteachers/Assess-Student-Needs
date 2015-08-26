@@ -25,8 +25,4 @@ module ApplicationHelper
     s += name if name
     raw s
   end
-
-  def discussion_path(indicator)
-    "/discuss/#{ indicator.to_param }"
-  end
 end

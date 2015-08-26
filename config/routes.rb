@@ -20,7 +20,7 @@ Acn::Application.routes.draw do
   resources :indicators_prompts, controller: 'indicators/prompts'
   resources :indicators_objectives, controller: 'indicators/objectives'
 
-  get '/discuss/*indicator_id', to: 'discussions#show'
+  resources :discussions, only: [:show]
 
   root to: 'home#show'
 
