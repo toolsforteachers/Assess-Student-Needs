@@ -9,6 +9,7 @@ class Lesson < ActiveRecord::Base
   has_many :objectives, dependent: :destroy
   has_many :indicators, through: :objectives
   has_many :assessments, as: :assessor
+  has_many :teaching_materials, as: :attachable
 
   validates :lesson_date, presence: :true
   validates :group_id, presence: :true
