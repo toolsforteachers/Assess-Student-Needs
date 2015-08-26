@@ -4,6 +4,7 @@ Given(/^I add a new "(.*?)" lesson for "(.*?)"$/) do |subject_name, group_name|
   click_link 'Add a new lesson', match: :first
   fill_in('Notes', with: 'Do stuff')
   select(subject_name, from: 'Subject')
+  choose('Teacher judgement')
   click_button "Save"
 end
 
@@ -53,6 +54,10 @@ end
 
 Then(/^the lesson teacher should be "(.*?)"$/) do |teacher_name|
   page.should have_css('.lesson-teacher', teacher_name)
+end
+
+Then(/^the lesson evidenced mode should be "(.*?)"$/) do |evidenced_as|
+  page.should have_css('.lesson-evaluation', evidenced_as)
 end
 
 Then(/^I should see the new lesson form$/) do

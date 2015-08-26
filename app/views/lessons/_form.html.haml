@@ -12,6 +12,10 @@
 
       = f.date_field :lesson_date, label: 'Date', wrapper_class: 'date-input'
 
+      = f.form_group :evidenced do
+        = f.radio_button :evidenced, true, label: 'Evidenced'
+        = f.radio_button :evidenced, false, label: 'Teacher judgement'
+
       = f.text_area :notes, autofocus: true
 
       - if @lesson.persisted?

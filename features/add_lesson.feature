@@ -11,6 +11,7 @@ Scenario: when the group has a subject
   Then the lesson should have streams titled "Foxes,Owls"
   And the lesson notes should be "Do stuff"
   And the lesson teacher should be "Toby P."
+  And the lesson evidenced mode should be "Teacher judgement"
 
   When I change the first objective name to "Donkeys"
   Then the lesson should have streams titled "Donkeys,Owls"

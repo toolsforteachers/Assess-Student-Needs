@@ -14,6 +14,10 @@
         %dd
           %mark #{ lesson.lesson_date }
 
+        %dt
+        %dd.lesson-evaluation
+          %br
+          %mark= @lesson.evidenced ? 'Evidenced' : 'Teacher judgement'
   .col-xs-6
     %well.lesson-notes
       %b Notes
