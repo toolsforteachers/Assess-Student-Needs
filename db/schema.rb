@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150826133536) do
+ActiveRecord::Schema.define(version: 20150826143817) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -145,5 +145,15 @@ ActiveRecord::Schema.define(version: 20150826133536) do
   add_index "teachers", ["invitations_count"], name: "index_teachers_on_invitations_count", using: :btree
   add_index "teachers", ["invited_by_id"], name: "index_teachers_on_invited_by_id", using: :btree
   add_index "teachers", ["reset_password_token"], name: "index_teachers_on_reset_password_token", unique: true, using: :btree
+
+  create_table "teaching_materials", force: :cascade do |t|
+    t.string   "file_id"
+    t.integer  "attachable_id"
+    t.string   "attachable_type"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "teaching_materials", ["attachable_type", "attachable_id"], name: "index_teaching_materials_on_attachable_type_and_attachable_id", using: :btree
 
 end
