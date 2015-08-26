@@ -12,6 +12,12 @@
     = link_to group_lesson_report_path(@group, @lesson) do
       = glyph('Report view', 'print')
 
+  %li.presentation
+    = link_to glyph("Teaching materials (#{ @lesson.teaching_materials.count })", 'paperclip')
+
+    = form_for([@group, @lesson, TeachingMaterial.new]) do |f|
+      = f.attachment_field :file, direct: true
+      = f.submit
 
 = render partial: 'lessons/objective',
   collection: @lesson.objectives,
