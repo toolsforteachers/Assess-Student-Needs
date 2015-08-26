@@ -23,6 +23,7 @@ gem 'closure_tree'
 gem 'rack-rewrite'
 gem 'devise_invitable'
 gem 'faker'
+gem "refile", require: "refile/rails"
 
 gem 'quiet_assets', group: :development
 gem "rspec-rails", :group => [:development, :test]
