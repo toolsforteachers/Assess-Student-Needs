@@ -1,18 +1,3 @@
-// Example using 'Cerulean' bootswatch
-
-//Import bootstrap-sprockets
-@import "bootstrap-sprockets";
-
-// Import cerulean variables
-@import "bootswatch/yeti/variables";
-
-// Then bootstrap itself
-@import "bootstrap";
-
-// And finally bootswatch style itself
-@import "bootswatch/yeti/bootswatch";
-
-// Whatever application styles you have go last
 @import "forms";
 @import "lists";
 @import "score";
