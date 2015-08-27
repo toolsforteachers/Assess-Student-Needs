@@ -24,6 +24,4 @@ Acn::Application.routes.draw do
   resources :discussions, only: [:show]
 
   root to: 'home#show'
-
-  get '*a', :to => 'errors#routing'
 end
