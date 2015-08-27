@@ -153,6 +153,7 @@ GEM
       mime-types (>= 1.16, < 3)
     method_source (0.8.2)
     mime-types (2.6.1)
+    mini_magick (4.2.10)
     mini_portile (0.6.2)
     minitest (5.7.0)
     multi_json (1.11.2)
@@ -220,6 +221,9 @@ GEM
       mime-types
       rest-client (~> 1.8)
       sinatra (~> 1.4.5)
+    refile-mini_magick (0.1.0)
+      mini_magick (~> 4.0)
+      refile (~> 0.5)
     refile-s3 (0.1.0)
       aws-sdk (~> 2.0)
       refile (~> 0.5.0)
@@ -346,6 +350,7 @@ DEPENDENCIES
   rails (= 4.2.3)
   rails_12factor
   refile
+  refile-mini_magick
   refile-s3
   rspec-activemodel-mocks
   rspec-rails

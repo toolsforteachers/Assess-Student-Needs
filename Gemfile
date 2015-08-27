@@ -24,6 +24,7 @@ gem 'rack-rewrite'
 gem 'devise_invitable'
 gem 'faker'
 gem "refile", require: "refile/rails"
+gem "refile-mini_magick"
 gem "refile-s3"
 
 gem 'quiet_assets', group: :development
