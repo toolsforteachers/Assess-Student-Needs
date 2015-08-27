@@ -18,9 +18,9 @@
         %dd.lesson-evaluation
           %br
           %mark= @lesson.evidenced ? 'Evidenced' : 'Teacher judgement'
-
+        %dt Teaching materials
         - @lesson.teaching_materials.each do |teaching_material|
-          %dd= link_to 'Uploaded file', attachment_url(teaching_material, :file)
+          %dd= link_to teaching_material.file_filename, attachment_url(teaching_material, :file)
 
   .col-xs-6
     %well.lesson-notes
