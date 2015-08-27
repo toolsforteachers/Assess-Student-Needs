@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150826143817) do
+ActiveRecord::Schema.define(version: 20150827120603) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -150,8 +150,11 @@ ActiveRecord::Schema.define(version: 20150826143817) do
     t.string   "file_id"
     t.integer  "attachable_id"
     t.string   "attachable_type"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.string   "file_filename"
+    t.integer  "file_size"
+    t.string   "file_content_type"
   end
 
   add_index "teaching_materials", ["attachable_type", "attachable_id"], name: "index_teaching_materials_on_attachable_type_and_attachable_id", using: :btree
