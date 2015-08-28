@@ -1,6 +1,6 @@
 class Indicators::PromptsController < IndicatorsController
   def new
-    @indicator = Indicators::Prompt.new(parent_id: params[:parent_id])
+    @indicator = Indicators::Prompt.new(parent: @parent)
     super
   end
 

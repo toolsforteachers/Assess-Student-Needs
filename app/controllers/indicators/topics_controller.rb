@@ -1,6 +1,6 @@
 class Indicators::TopicsController < IndicatorsController
   def new
-    @indicator = Indicators::Topic.new(parent_id: params[:parent_id])
+    @indicator = Indicators::Topic.new(parent: @parent)
     super
   end
 

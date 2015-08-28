@@ -1,6 +1,6 @@
 class Indicators::ObjectivesController < IndicatorsController
   def new
-    @indicator = Indicators::Objective.new(parent_id: params[:parent_id])
+    @indicator = Indicators::Objective.new(parent: @parent)
     super
   end
 

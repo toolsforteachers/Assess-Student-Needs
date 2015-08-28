@@ -5,11 +5,11 @@ Background:
 
 @javascript
 Scenario: Adding a curriculum and several children
-  Given I am an admin
   When I visit the indicators page
   And I add a curriculum "National Curriculum"
   And I add a subject "Spanish"
   And I visit the indicators page
+  Then I should see 1 curricula
   And I follow "View"
   And I add a level "Year 1" to "Spanish"
   And I add a topic "Grammar" to "Year 1"
@@ -19,6 +19,16 @@ Scenario: Adding a curriculum and several children
   And I can not delete "Year 1"
   And I delete "Order a beer"
 
-Scenario:
+Scenario: Add my own curriculum but can't fiddle with someone else's
+  Given there is a maths curriculum "NC2014"
   When I visit the indicators page
+  Then I should see 0 curricula
+  And I add a curriculum "Fiddler"
+  And I visit the indicators page
+  Then I should see 1 curricula
+
+  And I go to the add a subject page for "NC2014"
+  Then I should not be allowed
+
+  When I try to edit the subject "Maths"
   Then I should not be allowed

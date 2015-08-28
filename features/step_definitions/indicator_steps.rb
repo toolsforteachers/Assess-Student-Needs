@@ -89,6 +89,20 @@ When(/^I delete "(.*?)"$/) do |indicator_name|
   page.should have_text("#{ indicator_name } was successfully deleted.")
 end
 
+Then(/^I should see (\d+) curricula$/) do |counter|
+  page.should have_css('.well.curriculum', count: counter)
+end
+
+When(/^I go to the add a subject page for "(.*?)"$/) do |curriculum_name|
+  c = Indicators::Curriculum.find_by(name: curriculum_name)
+  visit "/indicators_subjects/new?parent_id=#{ c.id }"
+end
+
+When(/^I try to edit the subject "(.*?)"$/) do |subject_name|
+  s = Indicators::Subject.find_by(name: subject_name)
+  visit edit_indicators_subject_path(s)
+end
+
 def setup_maths_indicators(curriculum_name)
   curriculum = Fabricate(:indicators_curriculum, name: curriculum_name)
   subject = Fabricate(:indicators_subject, name: 'Maths', parent: curriculum)

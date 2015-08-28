@@ -1,9 +1,8 @@
 class IndicatorsController < ProtectedController
-  before_filter :ensure_admin!
-  before_filter :load_scoped_curricula
+  before_filter :load_indicator, only: [:show, :edit, :update, :destroy]
+  before_filter :load_parent, only: [:new, :create]
 
   def show
-    @indicator = Indicator.find(params[:id])
   end
 
   def new
@@ -18,11 +17,9 @@ class IndicatorsController < ProtectedController
   end
 
   def edit
-    @indicator = Indicator.find(params[:id])
   end
 
   def update
-    @indicator = Indicator.find(params[:id])
     if @indicator.update_attributes(permitted_params)
       redirect_to @indicator, notice: "#{ @indicator.friendly_type } was successfully updated."
     else
@@ -31,7 +28,6 @@ class IndicatorsController < ProtectedController
   end
 
   def destroy
-    @indicator = Indicator.find(params[:id])
     indicator_parent = @indicator.parent
     msg = "#{ @indicator } was successfully deleted."
     if @indicator.destroy
@@ -41,9 +37,21 @@ class IndicatorsController < ProtectedController
     end
   end
 
+  def index
+    @curricula = CurriculumService.editable_by(current_teacher)
+  end
+
   protected
 
-  def load_scoped_curricula
-    @scoped_curricula = CurriculumService.editable_by(current_teacher)
+  def load_indicator
+    @indicator = CurriculumService.find_indicator(params[:id])
+    disallowed! unless CurriculumService.can_edit_indicator?(current_teacher, @indicator)
+  end
+
+  def load_parent
+    if params[:parent_id]
+      @parent = CurriculumService.find_indicator(params[:parent_id])
+      disallowed! unless CurriculumService.can_edit_indicator?(current_teacher, @parent)
+    end
   end
 end

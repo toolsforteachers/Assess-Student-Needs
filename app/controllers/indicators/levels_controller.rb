@@ -1,6 +1,6 @@
 class Indicators::LevelsController < IndicatorsController
   def new
-    @indicator = Indicators::Level.new(parent_id: params[:parent_id])
+    @indicator = Indicators::Level.new(parent: @parent)
     super
   end
 

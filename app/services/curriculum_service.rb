@@ -12,6 +12,14 @@ class CurriculumService
       (editable_by(teacher) << primary).uniq
     end
 
+    def can_edit_indicator?(teacher, indicator)
+      indicator.curriculum.created_by == teacher
+    end
+
+    def find_indicator(indicator_id)
+      eager_load(Indicator).find(indicator_id)
+    end
+
     private
 
     def eager_load(obj)
