@@ -4,4 +4,17 @@
 - content_for(:right_pane) do
   = render partial: 'nav'
 
-= render partial: 'topic', collection: @topics, as: :topic
+.panel.panel-info.topic
+  .panel-heading
+    .panel-title= "#{ @topic.level }: #{ @topic }"
+  .panel-body
+    .well
+      .lead The curriculum says...
+      %ul.list-group.indicator-picker
+        = render partial: 'indicator', collection: @topic.children
+
+    .well
+      .lead
+        Discuss your experiences teaching #{ @topic } to #{ @topic.level }
+      = render partial: 'discuss', locals: { indicator: @topic }
+

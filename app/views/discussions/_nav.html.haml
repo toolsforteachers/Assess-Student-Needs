@@ -1,6 +1,5 @@
 - @subject.levels.each do |level|
   .well
-    .lead
-      = link_to_unless @indicator == level,  level, discussion_path(level)
+    .lead= level
     - level.topics.each do |topic|
-      %p= link_to_unless_current topic, discussion_path(topic)
+      %p= link_to_unless @topic == topic, topic, discussion_path(topic)

@@ -1,7 +1,6 @@
 class DiscussionsController < ProtectedController
   def show
-    @indicator = Indicator.includes(:children).find_by(slug: params[:id])
-    @subject = Indicators::Subject.where(id: @indicator.subject).includes(levels: [:topics]).first
-    @topics = @indicator.topics
+    @topic = CurriculumService.first_topic(params[:id])
+    @subject = CurriculumService.find_indicator(@topic.subject) if @topic
   end
 end
