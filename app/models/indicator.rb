@@ -6,6 +6,9 @@ class Indicator < ActiveRecord::Base
   has_many :self_and_descendants, through: :descendant_hierarchies, source: :descendant
   has_many :self_and_ancestors, through: :ancestor_hierarchies, source: :ancestor
 
+  belongs_to :created_by, class_name: 'Teacher'
+
+  validates :created_by_id, presence: :true
   validates :name, presence: :true
   validates :type, presence: :true
   validate :prevent_parental_update
@@ -40,7 +43,7 @@ class Indicator < ActiveRecord::Base
   end
 
   def curriculum
-    subject.try(:curriculum)
+    ancestry.where(type: 'Indicators::Curriculum').first
   end
 
   def level

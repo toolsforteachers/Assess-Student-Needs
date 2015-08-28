@@ -3,6 +3,8 @@ require 'spec_helper'
 describe Indicator do
   it { should validate_presence_of(:name) }
   it { should validate_presence_of(:type) }
+  it { should belong_to(:created_by) }
+  it { should validate_presence_of(:created_by_id) }
 
   it 'has notes attached (eg from GDS import'
   it 'fixes the imported fraction images'
@@ -132,8 +134,8 @@ describe Indicator do
   end
 
   context 'ancestorial attributes' do
-    let(:curriculum) { Fabricate(:curriculum) }
-    let(:i_subject) { Fabricate(:indicators_subject, name: 'Doing some maths', curriculum: curriculum) }
+    let(:curriculum) { Fabricate(:indicators_curriculum) }
+    let(:i_subject) { Fabricate(:indicators_subject, name: 'Doing some maths', parent: curriculum) }
     let(:level) { Fabricate(:indicators_level, name: 'Year 1', parent: i_subject) }
     let(:topic) { Fabricate(:indicators_topic, name: 'Number', parent: level) }
     let(:i_objective) { Fabricate(:indicators_objective, name: 'solve small problems', parent: topic) }
