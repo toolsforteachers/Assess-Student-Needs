@@ -12,7 +12,7 @@ gem 'jquery-rails'
 gem 'devise'
 gem 'nested_form'
 gem 'bootstrap_form'
-gem 'rails_12factor'
+gem 'rails_12factor', group: :production
 gem 'puma'
 gem 'therubyracer'
 gem 'twitter-bootswatch-rails-helpers'
