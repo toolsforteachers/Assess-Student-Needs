@@ -8,10 +8,9 @@ class GdsCurriculumPage
   def initialize(page_url, subject, curriculum)
     @page = Nokogiri::HTML(open(page_url))
 
-    @subject = Indicator.create!(
+    @subject = curriculum.subjects.create!(
       type: 'Indicators::Subject',
-      name: subject || @page.at_css('h1').inner_html,
-      curriculum: curriculum)
+      name: subject || @page.at_css('h1').inner_html)
 
     #start at the first relevant level
     @node = @page.css('h2').select{ |n| /^Year/.match(n.inner_html) }.first

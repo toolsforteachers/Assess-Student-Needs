@@ -3,8 +3,6 @@ require 'spec_helper'
 describe Indicator do
   it { should validate_presence_of(:name) }
   it { should validate_presence_of(:type) }
-  it { should belong_to(:created_by) }
-  it { should validate_presence_of(:created_by_id) }
 
   it 'has notes attached (eg from GDS import'
   it 'fixes the imported fraction images'

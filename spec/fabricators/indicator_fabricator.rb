@@ -1,10 +1,10 @@
 Fabricator(:indicator) do
   name { Faker::Lorem.sentence }
-  created_by { Fabricate(:teacher) }
 end
 
 Fabricator(:indicators_curriculum, from: :indicator) do
   type 'Indicators::Curriculum'
+  created_by { Fabricate(:teacher) }
 end
 
 Fabricator(:indicators_subject, from: :indicator) do
