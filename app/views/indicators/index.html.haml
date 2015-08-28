@@ -1,6 +1,6 @@
 - @page_header = 'Edit curricula'
 
-- @curricula.each do |curriculum|
+- @scoped_curricula.each do |curriculum|
   .well
     %h2= curriculum
     - curriculum.subjects.each do |subject|

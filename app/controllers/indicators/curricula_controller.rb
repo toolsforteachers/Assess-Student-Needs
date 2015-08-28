@@ -10,10 +10,6 @@ class Indicators::CurriculaController < IndicatorsController
     super
   end
 
-  def index
-    @curricula = CurriculumService.editable_by(current_teacher)
-  end
-
   protected
 
   def permitted_params
