@@ -1,7 +1,3 @@
-Given(/^there is a curriculum "(.*?)"$/) do |curriculum_name|
-  Fabricate(:indicators_curriculum, name: curriculum_name)
-end
-
 When(/^I add a curriculum "(.*?)"$/) do |curriculum_name|
   click_link 'Add a new curriculum'
   fill_in 'Curriculum name', with: curriculum_name
