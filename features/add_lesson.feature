@@ -2,7 +2,7 @@ Feature: Teacher adds a lesson
 
 Background:
   Given I am the teacher of "Year 6A" with students "Ann"
-  And there is a subject "Maths"
+  And there is a maths curriculum "NC2014"
 
 @javascript
 Scenario: when the group has a subject

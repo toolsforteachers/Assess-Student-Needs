@@ -3,7 +3,7 @@ Feature: Teacher adds a group and some students
 @javascript
 Scenario:
   Given I am the teacher
-  And there is a subject "Maths"
+  And there is a maths curriculum "NC2014"
   And I am on the home page
   And I add a group named "Year 6A" with a student named "Ann"
   Then the "Year 6A" group should have 1 students

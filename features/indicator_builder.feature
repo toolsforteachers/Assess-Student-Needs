@@ -6,7 +6,7 @@ Background:
 @javascript
 Scenario: Adding a curriculum and several children
   Given I am an admin
-  And I visit the indicators page
+  When I visit the indicators page
   And I add a curriculum "National Curriculum"
   And I add a subject "Spanish"
   And I visit the indicators page
@@ -19,6 +19,6 @@ Scenario: Adding a curriculum and several children
   And I can not delete "Year 1"
   And I delete "Order a beer"
 
-Scenario: Not allowed!
+Scenario:
   When I visit the indicators page
   Then I should not be allowed

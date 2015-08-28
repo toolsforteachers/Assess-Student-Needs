@@ -1,4 +1,5 @@
 class IndicatorsController < ProtectedController
+  before_filter :ensure_admin!
   before_filter :load_scoped_curricula
 
   def show
@@ -21,6 +22,7 @@ class IndicatorsController < ProtectedController
   end
 
   def update
+    @indicator = Indicator.find(params[:id])
     if @indicator.update_attributes(permitted_params)
       redirect_to @indicator, notice: "#{ @indicator.friendly_type } was successfully updated."
     else

@@ -2,7 +2,7 @@ Feature: Teacher browses groups
 
 Background:
   Given I am the teacher of "Year 6A" with students "Ann,Bob,Clare"
-  And there is a subject "Maths"
+  And there is a maths curriculum "NC2014"
 
 Scenario: going to the group page and clicking the tabs
   When I am on the home page
