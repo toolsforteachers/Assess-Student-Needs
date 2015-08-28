@@ -1,5 +1,5 @@
 .text-muted
-  Created by #{ curriculum.created_by }
+  Added by #{ curriculum.created_by }
   - if curriculum.created_by == current_teacher
     %br
     = link_to "You can edit this curriculum", indicators_curriculum_path(curriculum)
