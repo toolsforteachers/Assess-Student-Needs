@@ -1,11 +1,15 @@
 Given(/^there is a curriculum "(.*?)"$/) do |curriculum_name|
-  Curriculum.create(name: curriculum_name)
+  Fabricate(:indicators_curriculum, name: curriculum_name)
+end
+
+When(/^I add a curriculum "(.*?)"$/) do |curriculum_name|
+  click_link 'Add a new curriculum'
+  fill_in 'Curriculum name', with: curriculum_name
+  click_button 'Save'
 end
 
 Given(/^there is a maths curriculum "(.*?)"$/) do |curriculum_name|
-  c = Curriculum.create(name: curriculum_name)
-  Fabricate(:indicators_subject, name: "Maths", curriculum: c)
-  setup_maths_indicators
+  setup_maths_indicators(curriculum_name)
 end
 
 When(/^I visit the curricula page$/) do
@@ -15,7 +19,7 @@ When(/^I visit the curricula page$/) do
 end
 
 When(/^I visit the indicators page$/) do
-  visit '/indicators'
+  visit indicators_curricula_path
 end
 
 When(/^I add a subject "(.*?)"$/) do |subject_name|
@@ -85,8 +89,9 @@ When(/^I delete "(.*?)"$/) do |indicator_name|
   page.should have_text("#{ indicator_name } was successfully deleted.")
 end
 
-def setup_maths_indicators
-  subject = Indicators::Subject.find_by(name: 'Maths')
+def setup_maths_indicators(curriculum_name)
+  curriculum = Fabricate(:indicators_curriculum, name: curriculum_name)
+  subject = Fabricate(:indicators_subject, name: 'Maths', parent: curriculum)
   level_1 = Fabricate(:indicators_level, name: 'Year 1', parent: subject)
   level_2 = Fabricate(:indicators_level, name: 'Year 2', parent: subject)
   topic_1 = Fabricate(:indicators_topic, name: 'Number', parent: level_1)

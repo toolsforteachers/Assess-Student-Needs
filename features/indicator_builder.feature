@@ -2,12 +2,12 @@ Feature: Admin does stuff with the curriculum
 
 Background:
   Given I am the teacher
-  And there is a curriculum "NC"
 
 @javascript
-Scenario: Adding a subject and several children
+Scenario: Adding a curriculum and several children
   Given I am an admin
-  When I visit the indicators page
+  And I visit the indicators page
+  And I add a curriculum "National Curriculum"
   And I add a subject "Spanish"
   And I visit the indicators page
   And I follow "View"

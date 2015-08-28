@@ -1,6 +1,6 @@
 class Indicators::SubjectsController < IndicatorsController
   def new
-    @indicator = Indicators::Subject.new(curriculum_id: params[:curriculum_id])
+    @indicator = Indicators::Subject.new(parent_id: params[:parent_id])
     super
   end
 
@@ -12,6 +12,6 @@ class Indicators::SubjectsController < IndicatorsController
   protected
 
   def permitted_params
-    params.require(:indicators_subject).permit([:name, :curriculum_id])
+    params.require(:indicators_subject).permit([:name, :parent_id])
   end
 end

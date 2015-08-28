@@ -6,8 +6,6 @@ class IndicatorsController < ProtectedController
   end
 
   def new
-    @indicator ||= Indicators::Subject.new
-    render action: 'new'
   end
 
   def create

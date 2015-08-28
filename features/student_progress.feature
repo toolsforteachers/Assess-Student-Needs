@@ -2,7 +2,7 @@ Feature: Viewing student progress
 
 Background:
   Given I am the teacher of "Year 6A" with students "Ann"
-  And there is a subject "Maths"
+  And there is a maths curriculum "NC2014"
 
 Scenario: when the group has a subject
   Given "Ann" has been marked against two objectives

@@ -3,7 +3,6 @@
     .panel-heading
       .panel-title
         = indicator_f.hidden_field :parent_id
-        = indicator_f.hidden_field :curriculum_id
         = indicator_f.text_area :name,
           label: "#{ @indicator.friendly_type } name"
       = indicator_f.submit 'Save'

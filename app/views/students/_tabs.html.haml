@@ -5,7 +5,7 @@
     = link_to [@group, @student] do
       Activity log
 
-  - current_teacher_subjects.each do |subject|
+  - CurriculumService.primary.subjects.each do |subject|
 
     - if subject.levels.empty?
       %li{ class: "#{ 'active' if activate == "indicator_#{ subject.id }" }" }

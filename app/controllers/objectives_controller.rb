@@ -20,9 +20,7 @@ class ObjectivesController < ProtectedController
   end
 
   def load_subject
-    @subject = current_teacher_subjects
-      .includes(levels: { topics: [:self_and_descendants]})
-      .find_by(id: @lesson.subject_id)
+    @subject = CurriculumService.primary.subjects.find_by(id: @lesson.subject_id)
   end
 
   def objective_params
