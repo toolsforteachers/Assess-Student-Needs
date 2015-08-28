@@ -28,13 +28,6 @@ ActiveRecord::Schema.define(version: 20150828133544) do
     t.integer  "out_of"
   end
 
-  create_table "curricula", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string   "slug"
-  end
-
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",                      null: false
     t.integer  "sluggable_id",              null: false
