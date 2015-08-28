@@ -5,7 +5,10 @@ namespace :asn do
 
   desc 'scrape gds'
   task scrape_gds: :environment do
-    nc = Curriculum.create!(name: 'National curriculum in England')
+
+    nc = Indicators::Curriculum.create!(name: 'National curriculum in England',
+      created_by: Teacher.find_by(email: 'toby@snaplab.co.uk'))
+
     GdsCurriculumPage.new(GDS_MATHS, 'Maths', nc)
     GdsCurriculumPage.new(GDS_ENGLISH, 'English', nc)
     GdsCurriculumPage.new(GDS_SCIENCE, 'Science', nc)
