@@ -5,18 +5,19 @@
     = link_to [@group, @student] do
       Activity log
 
-  - CurriculumService.primary.subjects.each do |subject|
+  - CurriculumService.viewable_by(current_teacher).each do |curriculum|
+    - curriculum.subjects.each do |subject|
 
-    - if subject.levels.empty?
-      %li{ class: "#{ 'active' if activate == "indicator_#{ subject.id }" }" }
-        = link_to subject, group_student_progress_path(@group, @student, subject)
+      - if subject.levels.empty?
+        %li{ class: "#{ 'active' if activate == "indicator_#{ subject.id }" }" }
+          = link_to subject, group_student_progress_path(@group, @student, subject)
 
-    - else
-      - subjectable_ids = subject.levels.map{ |level| "indicator_#{ level.id }" }
-      %li.dropdown{ class: "#{ 'active' if subjectable_ids.include?(activate)  }" }
-        = link_to '#', class: 'dropdown-toggle', data: { toggle: 'dropdown' } do
-          = subject
-          %span.caret
-        %ul.dropdown-menu
-          - subject.levels.map do |level|
-            %li= link_to level, group_student_progress_path(@group, @student, level)
+      - else
+        - subjectable_ids = subject.levels.map{ |level| "indicator_#{ level.id }" }
+        %li.dropdown{ class: "#{ 'active' if subjectable_ids.include?(activate)  }" }
+          = link_to '#', class: 'dropdown-toggle', data: { toggle: 'dropdown' } do
+            = subject
+            %span.caret
+          %ul.dropdown-menu
+            - subject.levels.map do |level|
+              %li= link_to level, group_student_progress_path(@group, @student, level)

@@ -3,7 +3,6 @@ Given(/^I add a new "(.*?)" lesson for "(.*?)"$/) do |subject_name, group_name|
   visit group_path(group)
   click_link 'Add a new lesson', match: :first
   fill_in('Notes', with: 'Do stuff')
-  select(subject_name, from: 'Subject')
   choose('Teacher judgement')
   click_button "Save"
 end
@@ -11,6 +10,7 @@ end
 When(/^I add two objectives to that lesson$/) do
   within(page.all(:css, '.well.objective').first) do
     fill_in 'Stream', with: 'Foxes'
+    click_link 'Maths'
     click_link 'Level: Year 1'
     click_link 'Topic: Number'
     click_link 'Prompt: Student will'
@@ -21,6 +21,7 @@ When(/^I add two objectives to that lesson$/) do
 
   within(page.all(:css, '.well.objective').last) do
     fill_in 'Stream', with: 'Owls'
+    click_link 'Maths'
     click_link 'Level: Year 2'
     click_link 'Topic: Number'
     click_link 'Select'

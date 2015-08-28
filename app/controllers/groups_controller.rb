@@ -71,6 +71,6 @@ class GroupsController < ProtectedController
   end
 
   def group_params
-    params.require(:group).permit([:name, :teacher_id, :subject_id, students_attributes: [:id, :name, :_destroy]])
+    params.require(:group).permit([:name, :teacher_id, students_attributes: [:id, :name, :_destroy]])
   end
 end

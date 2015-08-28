@@ -3,6 +3,12 @@
     = multiple_objectives ? "#{ objective.stream } objective" : 'Lesson objective'
   .panel-body
     %dl.dl-horizontal.lesson-details
+      %dt Curriculum
+      %dd #{ objective.curriculum }
+
+      %dt Subject
+      %dd #{ objective.subject }
+
       %dt Level
       %dd #{ objective.level }
 

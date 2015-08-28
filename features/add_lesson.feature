@@ -5,7 +5,7 @@ Background:
   And there is a maths curriculum "NC2014"
 
 @javascript
-Scenario: when the group has a subject
+Scenario:
   Given I add a new "Maths" lesson for "Year 6A"
   And I add two objectives to that lesson
   Then the lesson should have streams titled "Foxes,Owls"

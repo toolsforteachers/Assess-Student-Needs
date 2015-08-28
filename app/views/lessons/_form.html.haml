@@ -5,9 +5,6 @@
   .panel-body
     = bootstrap_nested_form_for [@group, @lesson], layout: 'horizontal' do |f|
 
-      = f.select :subject_id, CurriculumService.primary.subjects.map{ |t| [t.name, t.id]},
-        {}, { wrapper_class: 'name-input' }
-
       = render partial: 'teachers/fields/select_name', locals: { f: f }
 
       = f.date_field :lesson_date, label: 'Date', wrapper_class: 'date-input'
@@ -26,6 +23,12 @@
             .panel-body
               %table.table.table-condensed
                 %tbody
+                  %tr
+                    %td.text-muted.col-xs-2 Curriculum
+                    %td #{ objective_f.object.curriculum }
+                  %tr
+                    %td.text-muted.col-xs-2 Subject
+                    %td #{ objective_f.object.subject }
                   %tr
                     %td.text-muted.col-xs-2 Level
                     %td #{ objective_f.object.level }

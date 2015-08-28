@@ -2,10 +2,6 @@
   .col-xs-6
     %well
       %dl.dl-horizontal.lesson-details
-        %dt Subject
-        %dd
-          %mark #{ @lesson.subject.try(:name) }
-
         %dt Teacher
         %dd.lesson-teacher
           %mark #{ lesson.teacher }

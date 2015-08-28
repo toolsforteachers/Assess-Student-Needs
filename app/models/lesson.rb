@@ -4,7 +4,6 @@ class Lesson < ActiveRecord::Base
 
   belongs_to :group
   belongs_to :teacher
-  belongs_to :subject, class_name: 'Indicators::Subject'
 
   has_many :objectives, dependent: :destroy
   has_many :indicators, through: :objectives
@@ -13,7 +12,6 @@ class Lesson < ActiveRecord::Base
 
   validates :lesson_date, presence: :true
   validates :group_id, presence: :true
-  validates :subject_id, presence: :true
 
   delegate :students, to: :group
 

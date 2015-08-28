@@ -7,6 +7,8 @@ class Objective < ActiveRecord::Base
 
   default_scope { order('stream') }
 
+  delegate :curriculum, to: :indicator
+  delegate :subject, to: :indicator
   delegate :topic, to: :indicator
   delegate :level, to: :indicator
   delegate :objective, to: :indicator

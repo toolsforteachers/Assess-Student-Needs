@@ -1,7 +1,7 @@
 class ObjectivesController < ProtectedController
   before_filter :load_group
   before_filter :load_lesson
-  before_filter :load_subject, only: [:new]
+  before_filter :load_curricula, only: [:new]
 
   def new
     @objective = scoped_objectives.new(stream: "Stream #{ scoped_objectives.length + 1 }")
@@ -19,8 +19,8 @@ class ObjectivesController < ProtectedController
     @lesson = @group.lessons.find_by(slug: params[:lesson_id])
   end
 
-  def load_subject
-    @subject = CurriculumService.primary.subjects.find_by(id: @lesson.subject_id)
+  def load_curricula
+    @curricula = CurriculumService.viewable_by(current_teacher)
   end
 
   def objective_params
