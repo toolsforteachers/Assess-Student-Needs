@@ -1,5 +1,6 @@
 - @page_header = "#{ @subject } curriculum"
-
+= render partial: 'curricula/editable', locals: { curriculum: @subject.curriculum }
+%br
 - content_for(:right_pane) do
   = render partial: 'nav'
 

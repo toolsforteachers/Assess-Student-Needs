@@ -1,5 +1,5 @@
 When(/^I add a curriculum "(.*?)"$/) do |curriculum_name|
-  click_link 'Add a new curriculum'
+  visit new_indicators_curriculum_path
   fill_in 'Curriculum name', with: curriculum_name
   click_button 'Save'
 end
@@ -12,10 +12,6 @@ When(/^I visit the curricula page$/) do
   within('ul.nav.navbar-nav', match: :first) do
     click_link 'Curricula'
   end
-end
-
-When(/^I visit the indicators page$/) do
-  visit indicators_curricula_path
 end
 
 When(/^I add a subject "(.*?)"$/) do |subject_name|
