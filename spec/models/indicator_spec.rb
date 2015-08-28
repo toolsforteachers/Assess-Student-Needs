@@ -111,7 +111,7 @@ describe Indicator do
     end
 
     it 'is friendly for subjects' do
-      expect(Indicators::Subject.new.allowable_child_types).to eql([:level, :topic])
+      expect(Indicators::Subject.new.allowable_child_types).to eql([:level])
     end
 
     it 'is friendly for levels' do

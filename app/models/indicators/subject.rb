@@ -7,6 +7,6 @@ class Indicators::Subject < Indicator
   has_many :levels, -> { order (:name) }, class_name: 'Indicators::Level', foreign_key: :parent_id
 
   def allowable_child_types
-    [:level, :topic]
+    [:level]
   end
 end
