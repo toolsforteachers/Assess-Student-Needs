@@ -31,12 +31,6 @@ describe CurriculumService do
         expect(CurriculumService.viewable_by(teacher)).to match([curriculum])
       end
     end
-
-    describe '.can_edit_indicator?' do
-      it 'returns true' do
-        expect(CurriculumService.can_edit_indicator?(teacher, indicator)).to be_truthy
-      end
-    end
   end
 
   context 'for the given teacher' do
@@ -51,12 +45,6 @@ describe CurriculumService do
     describe '.viewable_by' do
       it 'returns all the curricula' do
         expect(CurriculumService.viewable_by(alt_teacher)).to match([curriculum])
-      end
-    end
-
-    describe '.can_edit_indicator?' do
-      it 'returns true' do
-        expect(CurriculumService.can_edit_indicator?(alt_teacher, indicator)).to be_falsey
       end
     end
   end
