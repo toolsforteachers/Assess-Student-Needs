@@ -14,6 +14,7 @@ Acn::Application.routes.draw do
   end
 
   resources :curricula
+
   resources :indicators, only: [:new, :edit]
   resources :indicators_curricula, controller: 'indicators/curricula'
   resources :indicators_subjects, controller: 'indicators/subjects'
@@ -21,8 +22,6 @@ Acn::Application.routes.draw do
   resources :indicators_topics, controller: 'indicators/topics'
   resources :indicators_prompts, controller: 'indicators/prompts'
   resources :indicators_objectives, controller: 'indicators/objectives'
-
-  resources :discussions, only: [:show]
 
   root to: 'home#show'
 end

@@ -1,12 +1,5 @@
 %li.list-group-item
-
-  - if indicator.is_a?(Indicators::Objective)
-    = glyph(nil, 'blackboard')
-    = link_to indicator, discussion_path(indicator)
-  - else
-    = indicator
+  = render partial: indicator.friendly_type.downcase, locals: { indicator: indicator }
   - unless indicator.children.empty?
-    %ul
-      - indicator.children.each do |child|
-        = render partial: 'indicator', locals: { indicator: child }
-
+    %ol
+      = render partial: 'indicator', collection: indicator.children

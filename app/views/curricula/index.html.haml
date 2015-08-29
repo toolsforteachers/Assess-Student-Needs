@@ -4,6 +4,6 @@
     - curriculum.subjects.each do |subject|
       %h3
         = subject
-        = raw subject.levels.map{ |level| "<small>#{ link_to level, discussion_path(level) }</small>" }.join(', ')
+        = raw subject.levels.map{ |level| "<small>#{ link_to level, curriculum_path(level) }</small>" }.join(', ')
     %br
     = render partial: 'curricula/editable', locals: { curriculum: curriculum }
