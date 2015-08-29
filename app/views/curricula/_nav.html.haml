@@ -1,5 +1,0 @@
-- @subject.levels.each do |level|
-  .well
-    .lead= level
-    - level.topics.each do |topic|
-      %p= link_to_unless @topic == topic, topic, curriculum_path(topic)

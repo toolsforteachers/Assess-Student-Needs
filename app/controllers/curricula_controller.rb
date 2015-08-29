@@ -5,6 +5,8 @@ class CurriculaController < ProtectedController
 
   def show
     @topic = CurriculumService.first_topic(params[:id])
-    @subject = CurriculumService.find_indicator(@topic.subject) if @topic
+    @level = @topic.level
+    @subject = @topic.subject
+    @levels = @subject.levels
   end
 end

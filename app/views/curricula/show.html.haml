@@ -1,8 +1,14 @@
 - @page_header = "#{ @subject } curriculum"
-= render partial: 'editable', locals: { curriculum: @subject.curriculum }
-%br
+
+- @levels.each do |level|
+  .btn= link_to_unless @level == level, level, curriculum_path(level)
+
 - content_for(:right_pane) do
-  = render partial: 'nav'
+  .well
+    .lead= @level
+    - @level.topics.each do |topic|
+      %p= link_to_unless @topic == topic, topic, curriculum_path(topic)
+  = render partial: 'editable', locals: { curriculum: @subject.curriculum }
 
 .panel.panel-info.topic
   .panel-heading
