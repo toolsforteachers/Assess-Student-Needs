@@ -45,13 +45,13 @@ class IndicatorsController < ProtectedController
 
   def load_indicator
     @indicator = CurriculumService.find_indicator(params[:id])
-    disallowed! unless CurriculumService.can_edit_indicator?(current_teacher, @indicator)
+    disallowed! unless IndicatorService.can_edit_indicator?(current_teacher, @indicator)
   end
 
   def load_parent
     if params[:parent_id]
       @parent = CurriculumService.find_indicator(params[:parent_id])
-      disallowed! unless CurriculumService.can_edit_indicator?(current_teacher, @parent)
+      disallowed! unless IndicatorService.can_edit_indicator?(current_teacher, @parent)
     end
   end
 end

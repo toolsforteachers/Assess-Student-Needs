@@ -23,5 +23,7 @@ Acn::Application.routes.draw do
   resources :indicators_prompts, controller: 'indicators/prompts'
   resources :indicators_objectives, controller: 'indicators/objectives'
 
+  resources :indicators_pedagogies, controller: 'indicators/pedagogies'
+
   root to: 'home#show'
 end

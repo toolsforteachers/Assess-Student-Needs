@@ -129,6 +129,10 @@ describe Indicator do
     it 'is friendly for objectives' do
       expect(Indicators::Objective.new.allowable_child_types).to eql([])
     end
+
+    it 'is friendly for pedagogies' do
+      expect(Indicators::Pedagogy.new.allowable_child_types).to eql([:topic])
+    end
   end
 
   context 'ancestorial attributes' do
