@@ -19,8 +19,5 @@
       %ul.list-group.indicator-picker
         = render partial: 'indicator', collection: @topic.children
 
-    .well
-      .lead
-        Discuss your experiences teaching #{ @topic } to #{ @topic.level }
-      = render partial: 'discuss', locals: { indicator: @topic }
+    = render partial: 'shared/discuss', locals: { url: curriculum_url(@topic), text: @topic }
 

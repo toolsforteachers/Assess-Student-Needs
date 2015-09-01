@@ -10,8 +10,8 @@ Scenario: Adding a three tier pedagogy
   And I add a pedagogy objective "I can use those skills"
 
   When I visit the pedagogies page
-  And I follow "I can ask questions"
-  Then I should see "I can use those skills" as the pedagogy objective
+  And I follow "Inquiry"
+  Then I should see "I can use those skills" as a pedagogy objective
 
 @javascript
 Scenario: Adding a two tier pedagogy
@@ -21,5 +21,5 @@ Scenario: Adding a two tier pedagogy
 
   When I visit the pedagogies page
   And I follow "Resilience"
-  Then I should see "Managing distraction" as the pedagogy objective
+  Then I should see "Managing distraction" as a pedagogy objective
 

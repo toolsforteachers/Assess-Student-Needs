@@ -26,6 +26,6 @@ When(/^I add a pedagogy objective "(.*?)"$/) do |objective_name|
   click_button 'Save'
 end
 
-Then(/^I should see "(.*?)" as the pedagogy objective$/) do |objective_name|
+Then(/^I should see "(.*?)" as a pedagogy objective$/) do |objective_name|
   page.should have_css('.objective', text: objective_name)
 end
