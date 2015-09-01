@@ -1,5 +1,14 @@
 - @page_header = 'Pedagogies'
 
+
+- if @pedagogies.empty?
+  .bs-component
+    .jumbotron
+      %p You don't have any pedagogies yet.
+      = link_to new_indicators_pedagogy_path do
+        .btn.btn-primary.btn-lg
+          = glyph('Add a new pedagogy', 'plus')
+
 - @pedagogies.each do |pedagogy|
   .well.curriculum
     %h2= pedagogy
