@@ -1,5 +1,6 @@
 class Indicators::Pedagogy < Indicator
   has_many :learning_attributes, -> { order (:name) }, class_name: 'Indicators::LearningAttribute', foreign_key: :parent_id
+  has_many :learning_skills, -> { order (:name) }, class_name: 'Indicators::LearningSkill', foreign_key: :parent_id
 
   validates :name, uniqueness: { scope: :created_by_id }
 
