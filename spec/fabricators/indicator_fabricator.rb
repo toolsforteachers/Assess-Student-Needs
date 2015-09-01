@@ -27,3 +27,8 @@ end
 Fabricator(:indicators_objective, from: :indicator) do
   type 'Indicators::Objective'
 end
+
+Fabricator(:indicators_pedagogy, from: :indicator) do
+  type 'Indicators::Pedagogy'
+  created_by { Fabricate(:teacher) }
+end

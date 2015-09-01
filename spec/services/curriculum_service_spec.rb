@@ -11,12 +11,6 @@ describe CurriculumService do
         expect(CurriculumService.primary).to eql(curriculum)
       end
     end
-
-    describe '.find_indicator' do
-      it 'returns the indicator' do
-        expect(CurriculumService.find_indicator(indicator.id)).to eql(indicator)
-      end
-    end
   end
 
   context 'for the given teacher' do
@@ -33,11 +27,11 @@ describe CurriculumService do
     end
   end
 
-  context 'for the given teacher' do
+  context 'for a different teacher' do
     let(:alt_teacher) { Fabricate(:teacher) }
 
     describe '.editable_by' do
-      it 'returns all the curricula' do
+      it 'returns no curricula' do
         expect(CurriculumService.editable_by(alt_teacher)).to be_empty
       end
     end

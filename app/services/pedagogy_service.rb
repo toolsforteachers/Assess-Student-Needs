@@ -5,7 +5,7 @@ class PedagogyService < IndicatorService
     end
 
     def viewable_by(teacher)
-      editable_by(teacher)
+      Indicators::Pedagogy.all
     end
 
     def first_topic(indicator_id)
