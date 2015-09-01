@@ -26,6 +26,6 @@ When(/^I add a pedagogy objective "(.*?)"$/) do |objective_name|
   click_button 'Save'
 end
 
-Then(/^I should see "(.*?)" as the pedagogy objective$/) do |arg1|
-  pending # express the regexp above with the code you wish you had
+Then(/^I should see "(.*?)" as the pedagogy objective$/) do |objective_name|
+  page.should have_css('.objective', text: objective_name)
 end

@@ -8,11 +8,11 @@ class PedagogyService < IndicatorService
       Indicators::Pedagogy.all
     end
 
-    def first_topic(indicator_id)
+    def first_skill(indicator_id)
       indicator = find_indicator(indicator_id)
-      if indicator.is_a?(Indicators::Topic)
+      if indicator.is_a?(Indicators::LearningSkill)
         indicator
-      elsif indicator.is_a?(Indicators::Level)
+      elsif indicator.is_a?(Indicators::LearningAttribute)
         indicator.topics.try(:first)
       else
         nil

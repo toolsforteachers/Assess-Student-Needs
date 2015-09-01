@@ -1,0 +1,5 @@
+%li.list-group-item
+  = render partial: indicator.friendly_type.downcase, locals: { indicator: indicator }
+  - unless indicator.children.empty?
+    %ol
+      = render partial: 'indicator', collection: indicator.children

@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 RSpec.describe Indicators::LearningSkill do
+  it { should have_many(:objectives) }
+
    context '#friendly_type' do
     it do
       expect(Indicators::LearningSkill.new.friendly_type).to eql('Learning skill')

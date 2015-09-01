@@ -1,0 +1,15 @@
+- @page_header = @pedagogy
+
+.panel.panel-info.topic
+  .panel-heading
+    .panel-title= "#{ @learning_skill }"
+  .panel-body
+    .well
+      %ul.list-group.indicator-picker
+        - @learning_skill.objectives.each do |objective|
+          %li.list-group-item.objective= objective
+    .well
+      .lead
+        Discuss your experiences teaching #{ @learning_skill }
+      = render partial: 'discuss', locals: { indicator: @topic }
+
