@@ -1,0 +1,8 @@
+- @pedagogies.each do |pedagogy|
+  .well.curriculum
+    %h2= pedagogy
+    - pedagogy.topics.each do |topic|
+      %h3
+        = topic
+    %br
+    = render partial: 'pedagogies/editable', locals: { pedagogy: pedagogy }

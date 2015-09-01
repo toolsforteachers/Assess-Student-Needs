@@ -1,0 +1,6 @@
+.text-muted
+  Added by #{ pedagogy.created_by }
+  - if pedagogy.created_by == current_teacher
+    %br
+    = link_to "You can edit this pedagogy", indicators_pedagogy_path(pedagogy)
+

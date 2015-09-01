@@ -14,6 +14,7 @@ Acn::Application.routes.draw do
   end
 
   resources :curricula
+  resources :pedagogies
 
   resources :indicators, only: [:new, :edit]
   resources :indicators_curricula, controller: 'indicators/curricula'
