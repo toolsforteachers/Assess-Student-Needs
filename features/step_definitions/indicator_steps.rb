@@ -15,14 +15,14 @@ When(/^I visit the curricula page$/) do
 end
 
 When(/^I add a subject "(.*?)"$/) do |subject_name|
-  click_link 'Add a new subject'
+  click_link 'Add a new Subject'
   fill_in 'Subject', with: subject_name
   click_button 'Save'
   page.should have_text('Subject was successfully created')
 end
 
 When(/^I add a level "(.*?)" to "(.*?)"$/) do |level_name, subject_name|
-  click_link "Add a new level"
+  click_link "Add a new Level"
   fill_in "Level", with: level_name
   click_button 'Save'
 
@@ -32,7 +32,7 @@ When(/^I add a level "(.*?)" to "(.*?)"$/) do |level_name, subject_name|
 end
 
 When(/^I add a topic "(.*?)" to "(.*?)"$/) do |topic_name, level_name|
-  click_link "Add a new topic"
+  click_link "Add a new Topic"
   fill_in "Topic", with: topic_name
   click_button 'Save'
 
@@ -42,7 +42,7 @@ When(/^I add a topic "(.*?)" to "(.*?)"$/) do |topic_name, level_name|
 end
 
 When(/^I add a prompt "(.*?)" to "(.*?)"$/) do |prompt_name, topic_name|
-  click_link "Add a new prompt"
+  click_link "Add a new Prompt"
   fill_in "Prompt", with: prompt_name
   click_button 'Save'
 
@@ -52,7 +52,7 @@ When(/^I add a prompt "(.*?)" to "(.*?)"$/) do |prompt_name, topic_name|
 end
 
 When(/^I add an objective "(.*?)" to "(.*?)"$/) do |objective_name, prompt_name|
-  click_link "Add a new objective"
+  click_link "Add a new Objective"
   fill_in "Objective", with: objective_name
   click_button 'Save'
 

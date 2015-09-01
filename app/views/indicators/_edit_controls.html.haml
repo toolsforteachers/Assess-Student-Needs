@@ -10,4 +10,4 @@
   - @indicator.allowable_child_types.map do |child_type|
     = link_to "/indicators_#{ child_type }s/new?parent_id=#{ @indicator.id }",
       class: 'btn' do
-      = glyph("Add a new #{ child_type }", 'plus')
+      = glyph("Add a new #{ child_type.to_s.humanize }", 'plus')
