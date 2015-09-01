@@ -13,7 +13,7 @@ class PedagogyService < IndicatorService
       if indicator.is_a?(Indicators::LearningSkill)
         indicator
       elsif indicator.is_a?(Indicators::LearningAttribute)
-        indicator.topics.try(:first)
+        indicator.learning_skills.try(:first)
       else
         nil
       end

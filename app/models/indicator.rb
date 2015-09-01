@@ -55,6 +55,10 @@ class Indicator < ActiveRecord::Base
     ancestry.where(type: 'Indicators::Pedagogy').first
   end
 
+  def learning_attribute
+    ancestry.where(type: 'Indicators::LearningAttribute').first
+  end
+
   def ancestry
     @ancestry ||= self_and_ancestors.reverse_order
   end

@@ -1,15 +1,34 @@
 - @page_header = @pedagogy
 
+- content_for :right_pane do
+  .well
+    - @pedagogy.children.each do |child|
+      %p= link_to_unless @section_header == child, child, pedagogy_path(child)
+
+  = render partial: 'editable', locals: { pedagogy: @pedagogy }
+
 .panel.panel-success.topic
   .panel-heading
-    .panel-title= "#{ @learning_skill }"
+    .panel-title= @section_header
   .panel-body
+
     .well
-      %ul.list-group.indicator-picker
-        - @learning_skill.objectives.each do |objective|
-          %li.list-group-item.objective= objective
-    .well
-      .lead
-        Discuss your experiences teaching #{ @learning_skill }
-      = render partial: 'discuss', locals: { indicator: @topic }
+      - if @section_header.children.first.leaf?
+        %ul.list-group.indicator-picker
+          %li.list-group-item
+            %ol.indicator-picker
+              - @section_header.objectives.each do |objective|
+                %li.objective= objective
+
+      - else
+        %ul.list-group.indicator-picker
+          - @section_header.children.each do |child|
+            %li.list-group-item
+              = child
+              %ol.indicator-picker
+                - child.objectives.each do |objective|
+                  %li.objective= objective
+
+
+    = render partial: 'shared/discuss', locals: { url: pedagogy_url(@learning_skill), text: @learning_skill }
 
