@@ -79,30 +79,6 @@ describe Indicator do
     end
   end
 
-  context '#friendly_type' do
-    it 'is friendly for indicators' do
-      expect(Indicator.new.friendly_type).to eql('Indicator')
-    end
-
-    it 'is friendly for objectives' do
-      expect(Indicators::Objective.new.friendly_type).to eql('Objective')
-    end
-  end
-
-  context '#allowable_child_types' do
-    it 'for indicators' do
-      expect(Indicator.new.allowable_child_types).to eql([])
-    end
-
-    it 'is friendly for objectives' do
-      expect(Indicators::Objective.new.allowable_child_types).to eql([])
-    end
-
-    it 'is friendly for pedagogies' do
-      expect(Indicators::Pedagogy.new.allowable_child_types).to eql([:topic])
-    end
-  end
-
   context 'ancestorial attributes' do
     let(:curriculum) { Fabricate(:indicators_curriculum) }
     let(:i_subject) { Fabricate(:indicators_subject, name: 'Doing some maths', parent: curriculum) }
