@@ -1,4 +1,4 @@
-Feature: Admin does stuff with the curriculum
+Feature: Teacher does stuff with the curriculum
 
 Background:
   Given I am the teacher
