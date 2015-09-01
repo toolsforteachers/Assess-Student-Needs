@@ -32,3 +32,11 @@ Fabricator(:indicators_pedagogy, from: :indicator) do
   type 'Indicators::Pedagogy'
   created_by { Fabricate(:teacher) }
 end
+
+Fabricator(:indicators_learning_attribute, from: :indicator) do
+  type 'Indicators::LearningAttribute'
+end
+
+Fabricator(:indicators_learning_skill, from: :indicator) do
+  type 'Indicators::LearningSkill'
+end

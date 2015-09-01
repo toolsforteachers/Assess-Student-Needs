@@ -20,23 +20,7 @@
           .panel.panel-default.objective
             .panel-heading
               = objective_f.text_field :stream, help: objective_f.link_to_remove(glyph('Remove', 'trash'))
-            .panel-body
-              %table.table.table-condensed
-                %tbody
-                  %tr
-                    %td.text-muted.col-xs-2 Curriculum
-                    %td #{ objective_f.object.curriculum }
-                  %tr
-                    %td.text-muted.col-xs-2 Subject
-                    %td #{ objective_f.object.subject }
-                  %tr
-                    %td.text-muted.col-xs-2 Level
-                    %td #{ objective_f.object.level }
-                  %tr
-                    %td.text-muted Topic
-                    %td #{ objective_f.object.topic }
-                  %tr
-                    %td.text-muted Objective
-                    %td #{ objective_f.object.objective }
+            = render partial: 'lessons/objective_details', locals: { objective: objective_f.object }
+
 
       = f.submit 'Save'

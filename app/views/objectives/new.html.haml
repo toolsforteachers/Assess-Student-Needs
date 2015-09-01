@@ -16,5 +16,8 @@
 
     = f.hidden_field :indicator_id
 
-    - @curricula.each do |curriculum|
-      = render partial: 'objectives/indicators/picker', locals: { curriculum: curriculum }
+    - @curricula.each do |indicator|
+      = render partial: 'objectives/indicators/picker', locals: { indicator: indicator }
+
+    - @pedagogies.each do |indicator|
+      = render partial: 'objectives/indicators/picker', locals: { indicator: indicator }

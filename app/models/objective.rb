@@ -12,4 +12,7 @@ class Objective < ActiveRecord::Base
   delegate :topic, to: :indicator
   delegate :level, to: :indicator
   delegate :objective, to: :indicator
+  delegate :pedagogy, to: :indicator
+  delegate :learning_attribute, to: :indicator
+  delegate :learning_skill, to: :indicator
 end

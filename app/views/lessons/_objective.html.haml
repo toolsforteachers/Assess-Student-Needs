@@ -2,20 +2,6 @@
   .panel-heading
     = multiple_objectives ? "#{ objective.stream } objective" : 'Lesson objective'
   .panel-body
-    %dl.dl-horizontal.lesson-details
-      %dt Curriculum
-      %dd #{ objective.curriculum }
-
-      %dt Subject
-      %dd #{ objective.subject }
-
-      %dt Level
-      %dd #{ objective.level }
-
-      %dt Topic
-      %dd #{ objective.topic }
-
-      %dt Objective
-      %dd #{ raw objective.objective }
+    = render partial: 'lessons/objective_details', locals: { objective: objective }
 
     = sub_content if defined?(sub_content)

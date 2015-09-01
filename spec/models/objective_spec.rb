@@ -9,4 +9,7 @@ RSpec.describe Objective, type: :model do
   it { should delegate_method(:level).to(:indicator) }
   it { should delegate_method(:topic).to(:indicator) }
   it { should delegate_method(:objective).to(:indicator) }
+  it { should delegate_method(:pedagogy).to(:indicator) }
+  it { should delegate_method(:learning_attribute).to(:indicator) }
+  it { should delegate_method(:learning_skill).to(:indicator) }
 end

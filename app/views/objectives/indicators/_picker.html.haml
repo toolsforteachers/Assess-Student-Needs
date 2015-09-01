@@ -1,5 +1,4 @@
 %ul.indicator-picker.list-group
   %li.list-group-item
-    Curriculum:
-    %b= curriculum
-    = render partial: 'objectives/indicators/pickable_item', locals: { collection: curriculum.children }
+    .text-info.prompt= indicator
+    = render partial: 'objectives/indicators/pickable_item', locals: { collection: indicator.children }
