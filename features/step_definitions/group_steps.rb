@@ -46,3 +46,13 @@ When(/^I remove the student named "(.*?)"$/) do |student_name|
   click_link "Remove #{ student_name }"
   click_button 'Save'
 end
+
+When(/^I try to add a duplicate group "(.*?)"$/) do |group_name|
+  visit new_group_path
+  fill_in 'Class name', with: group_name
+  click_button "Save"
+end
+
+Then(/^I should get a group validation error$/) do
+  page.should have_text 'name has already been taken'
+end

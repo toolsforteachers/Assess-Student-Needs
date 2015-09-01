@@ -35,19 +35,14 @@ class GroupsController < ProtectedController
 
   end
 
-  # POST /groups
-  # POST /groups.json
   def create
     @group = Group.new(group_params)
 
-    respond_to do |format|
-      if @group.save
-        format.html { redirect_to group_path(@group), notice: 'Class was successfully created.' }
-        format.json { render json: @group, status: :created, location: @group }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @group.errors, status: :unprocessable_entity }
-      end
+    if @group.save
+      redirect_to group_path(@group), notice: 'Class was successfully created.'
+
+    else
+      render action: "new"
     end
   end
 

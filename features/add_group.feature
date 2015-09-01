@@ -11,3 +11,6 @@ Scenario:
 
   When I change the group "Year 6A" to "Year 6B"
   Then I should be the teacher of "Year 6B"
+
+  When I try to add a duplicate group "Year 6B"
+  Then I should get a group validation error

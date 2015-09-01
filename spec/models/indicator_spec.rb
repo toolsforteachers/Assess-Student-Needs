@@ -59,6 +59,12 @@ describe Indicator do
     end
   end
 
+  context '#allowable_child_types' do
+    it do
+      expect(Indicator.new.allowable_child_types).to eql([])
+    end
+  end
+
   describe '#destroy' do
     let(:indicator) { Fabricate(:indicators_subject) }
     let(:indicator_id) { indicator.id }
