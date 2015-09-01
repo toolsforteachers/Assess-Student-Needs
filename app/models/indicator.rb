@@ -12,6 +12,7 @@ class Indicator < ActiveRecord::Base
 
   before_destroy :check_deletable
 
+  after_save :touch_root
   def to_s
     name
   end
@@ -68,6 +69,10 @@ class Indicator < ActiveRecord::Base
   end
 
   protected
+
+  def touch_root
+    root.touch
+  end
 
   def slug_candidates
     if self.parent
