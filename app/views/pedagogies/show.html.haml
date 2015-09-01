@@ -24,7 +24,7 @@
         %ul.list-group.indicator-picker
           - @section_header.children.each do |child|
             %li.list-group-item
-              = child
+              .text-primary.prompt= child
               %ol.indicator-picker
                 - child.objectives.each do |objective|
                   %li.objective= objective
