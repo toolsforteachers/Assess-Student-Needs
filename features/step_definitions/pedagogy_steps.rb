@@ -16,16 +16,16 @@ When(/^I add a learning skill "(.*?)"$/) do |learning_skill_name|
   click_button 'Save'
 end
 
-When(/^I add an objective "(.*?)"$/) do |objective_name|
-  click_link 'Add a new Objective'
-  fill_in 'Objective', with: objective_name
-  click_button 'Save'
-end
-
 When(/^I visit the pedagogies page$/) do
   click_link 'Pedagogies'
 end
 
-Then(/^I should see "(.*?)" as the objective$/) do |arg1|
+When(/^I add a pedagogy objective "(.*?)"$/) do |objective_name|
+  click_link "Add a new Objective"
+  fill_in "Objective", with: objective_name
+  click_button 'Save'
+end
+
+Then(/^I should see "(.*?)" as the pedagogy objective$/) do |arg1|
   pending # express the regexp above with the code you wish you had
 end

@@ -1,8 +1,15 @@
+- @page_header = 'Pedagogies'
+
 - @pedagogies.each do |pedagogy|
   .well.curriculum
     %h2= pedagogy
-    - pedagogy.topics.each do |topic|
+    - pedagogy.learning_attributes.each do |learning_attribute|
       %h3
-        = topic
+        = learning_attribute
+        - learning_attribute.learning_skills.each do |learning_skill|
+          %small= link_to learning_skill, pedagogy_path(learning_skill)
+
+    - pedagogy.learning_skills.each do |learning_skill|
+      %h4= link_to learning_skill, pedagogy_path(learning_skill)
     %br
     = render partial: 'pedagogies/editable', locals: { pedagogy: pedagogy }
