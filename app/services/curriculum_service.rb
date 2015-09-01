@@ -1,4 +1,4 @@
-class CurriculumService
+class CurriculumService < IndicatorService
   class << self
     def primary
       eager_load(Indicators::Curriculum).first
@@ -25,12 +25,6 @@ class CurriculumService
       else
         nil
       end
-    end
-
-    private
-
-    def eager_load(obj)
-      obj.includes(:self_and_descendants)
     end
   end
 end
