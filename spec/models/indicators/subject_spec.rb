@@ -12,4 +12,16 @@ RSpec.describe Indicators::Subject do
       expect(i_subject.levels).to match([level_1, level_2])
     end
   end
+
+   context '#friendly_type' do
+    it do
+      expect(Indicators::Subject.new.friendly_type).to eql('Subject')
+    end
+  end
+
+  context '#allowable_child_types' do
+    it do
+      expect(Indicators::Subject.new.allowable_child_types).to eql([:level])
+    end
+  end
 end

@@ -1,5 +1,5 @@
 class Indicators::Pedagogy < Indicator
-  has_many :topics, -> { order (:name) }, class_name: 'Indicators::Topic', foreign_key: :parent_id
+  has_many :learning_attributes, -> { order (:name) }, class_name: 'Indicators::LearningAttribute', foreign_key: :parent_id
 
   validates :name, uniqueness: { scope: :created_by_id }
 
@@ -7,6 +7,6 @@ class Indicators::Pedagogy < Indicator
   validates :created_by_id, presence: :true
 
   def allowable_child_types
-    [:topic]
+    [:learning_attribute, :learning_skill]
   end
 end

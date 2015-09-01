@@ -84,22 +84,6 @@ describe Indicator do
       expect(Indicator.new.friendly_type).to eql('Indicator')
     end
 
-    it 'is friendly for subjects' do
-      expect(Indicators::Subject.new.friendly_type).to eql('Subject')
-    end
-
-    it 'is friendly for levels' do
-      expect(Indicators::Level.new.friendly_type).to eql('Level')
-    end
-
-    it 'is friendly for topics' do
-      expect(Indicators::Topic.new.friendly_type).to eql('Topic')
-    end
-
-    it 'is friendly for prompts' do
-      expect(Indicators::Prompt.new.friendly_type).to eql('Prompt')
-    end
-
     it 'is friendly for objectives' do
       expect(Indicators::Objective.new.friendly_type).to eql('Objective')
     end
@@ -108,22 +92,6 @@ describe Indicator do
   context '#allowable_child_types' do
     it 'for indicators' do
       expect(Indicator.new.allowable_child_types).to eql([])
-    end
-
-    it 'is friendly for subjects' do
-      expect(Indicators::Subject.new.allowable_child_types).to eql([:level])
-    end
-
-    it 'is friendly for levels' do
-      expect(Indicators::Level.new.allowable_child_types).to eql([:topic])
-    end
-
-    it 'is friendly for topics' do
-      expect(Indicators::Topic.new.allowable_child_types).to eql([:prompt, :objective])
-    end
-
-    it 'is friendly for prompts' do
-      expect(Indicators::Prompt.new.allowable_child_types).to eql([:prompt, :objective])
     end
 
     it 'is friendly for objectives' do
