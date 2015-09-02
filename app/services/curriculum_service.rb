@@ -9,7 +9,7 @@ class CurriculumService < IndicatorService
     end
 
     def viewable_by(teacher)
-      (editable_by(teacher) << primary).uniq
+      eager_load(Indicators::Curriculum).where('created_by_id in(?)', [1, teacher.id])
     end
 
     def find_indicator(indicator_id)
