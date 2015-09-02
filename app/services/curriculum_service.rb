@@ -1,11 +1,11 @@
 class CurriculumService < IndicatorService
   class << self
     def primary
-      eager_load(Indicators::Curriculum).first
+      Indicators::Curriculum.first
     end
 
     def editable_by(teacher)
-      eager_load(teacher.curricula)
+      teacher.curricula
     end
 
     def viewable_by(teacher)
