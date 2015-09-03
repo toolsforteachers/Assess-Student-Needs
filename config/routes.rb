@@ -13,7 +13,9 @@ Acn::Application.routes.draw do
     end
   end
 
-  resources :curricula
+  resources :curricula do
+    resources :group_pickers
+  end
   resources :pedagogies
 
   resources :indicators, only: [:new, :edit]

@@ -26,3 +26,8 @@ end
 Then(/^I should not be allowed$/) do
   page.should have_text('not allowed')
 end
+
+Then(/^I should see the register prompt$/) do
+  page.should have_text('request a beta account')
+  current_path.should match('sign_in')
+end

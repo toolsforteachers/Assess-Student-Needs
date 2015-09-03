@@ -9,7 +9,7 @@ Scenario: Logged in as a teacher
   And I follow "Year 1"
   Then I should see the discussion fields
 
-  When I browse to "Addition and subtraction" and add it to a new lesson
+  When I browse to "Addition and subtraction" and click teach this
   Then I should be on the lesson page
 
 Scenario: Not logged in
@@ -17,5 +17,5 @@ Scenario: Not logged in
   And I follow "Year 1"
   Then I should see the discussion fields
 
-  When I browse to "Addition and subtraction" and add it to a new lesson
-  Then I should be on the lesson page
+  When I browse to "Addition and subtraction" and click teach this
+  Then I should see the register prompt
