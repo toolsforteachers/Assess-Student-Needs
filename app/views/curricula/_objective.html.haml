@@ -1,3 +1,7 @@
 %li
   = raw(indicator)
-  = render partial: 'shared/discussion_controls', locals: { indicator: indicator }
+  %p
+    = link_to new_curriculum_group_picker_path(indicator) do
+      = glyph('Teach this objective', 'plus')
+
+
