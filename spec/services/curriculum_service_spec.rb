@@ -37,7 +37,7 @@ describe CurriculumService do
     end
 
     describe '.viewable_by' do
-      it 'returns all the curricula' do
+      it 'returns the primary curriculum' do
         expect(CurriculumService.viewable_by(alt_teacher)).to match([curriculum])
       end
     end

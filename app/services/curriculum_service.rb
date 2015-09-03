@@ -9,11 +9,8 @@ class CurriculumService < IndicatorService
     end
 
     def viewable_by(teacher)
-      eager_load(Indicators::Curriculum).where('created_by_id in(?)', [1, teacher.id])
-    end
-
-    def find_indicator(indicator_id)
-      eager_load(Indicator).find(indicator_id)
+      Indicators::Curriculum.where('created_by_id in (?)',
+        [primary.created_by_id, teacher.id])
     end
 
     def first_topic(indicator_id)
