@@ -31,7 +31,7 @@ class IndicatorsController < ProtectedController
     indicator_parent = @indicator.parent
     msg = "#{ @indicator } was successfully deleted."
     if @indicator.destroy
-      redirect_to (indicator_parent || indicators_path), notice: msg
+      redirect_to (indicator_parent || '/'), notice: msg
     else
       redirect_to @indicator
     end

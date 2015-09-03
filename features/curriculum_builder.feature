@@ -29,3 +29,8 @@ Scenario: Add my own curriculum but can't fiddle with someone else's
 
   When I try to edit the subject "Maths"
   Then I should not be allowed
+
+@javascript
+Scenario: Creating and then deleting a curriculum
+  When I add a curriculum "My new curriculum"
+  Then I can safely delete the curriculum "My new curriculum"

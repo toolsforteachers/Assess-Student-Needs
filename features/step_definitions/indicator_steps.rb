@@ -99,6 +99,11 @@ When(/^I try to edit the subject "(.*?)"$/) do |subject_name|
   visit edit_indicators_subject_path(s)
 end
 
+Then(/^I can safely delete the curriculum "(.*?)"$/) do |curriculum_name|
+  click_link 'Delete'
+  page.should have_text(curriculum_name + ' was successfully deleted')
+end
+
 def setup_maths_indicators(curriculum_name)
   curriculum = Fabricate(:indicators_curriculum, name: curriculum_name)
   subject = Fabricate(:indicators_subject, name: 'Maths', parent: curriculum)
