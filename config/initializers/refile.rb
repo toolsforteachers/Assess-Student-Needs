@@ -8,6 +8,6 @@ unless Rails.env.test?
     bucket: "toolsforteachers-#{ Rails.env }"
   }
 
-  Refile.cache = Refile::S3.new(prefix: "cache", **aws)
+  Refile.cache = Refile::S3.new(max_size: 20.megabytes, prefix: "cache", **aws)
   Refile.store = Refile::S3.new(prefix: "store", **aws)
 end
