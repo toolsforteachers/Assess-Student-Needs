@@ -1,23 +1,25 @@
-- @lesson.objectives.each_with_index do |objective, i|
+- cache [student, @lesson] do
 
-  - assessment = @lesson.assessments.where(student: student, indicator: objective.indicator).first_or_initialize
-  %tr{ id: "student_#{ assessment.student.id }"}
-    - if i == 0
-      %td.student{ rowspan: @lesson.objectives.length }
-        - unless @lesson.multiple_objectives?
+  - @lesson.objectives.each_with_index do |objective, i|
+
+    - assessment = @lesson.assessments.where(student: student, indicator: objective.indicator).first_or_initialize
+    %tr{ id: "student_#{ assessment.student.id }"}
+      - if i == 0
+        %td.student{ rowspan: @lesson.objectives.length }
+          - unless @lesson.multiple_objectives?
+            = render partial: 'lessons/student_indicator_fields/glyph', locals: { assessment: assessment, indicator: objective.indicator }
+          = assessment.student
+
+      - if @lesson.multiple_objectives?
+        %td.stream
           = render partial: 'lessons/student_indicator_fields/glyph', locals: { assessment: assessment, indicator: objective.indicator }
-        = assessment.student
+          = objective.stream
 
-    - if @lesson.multiple_objectives?
-      %td.stream
-        = render partial: 'lessons/student_indicator_fields/glyph', locals: { assessment: assessment, indicator: objective.indicator }
-        = objective.stream
+      = render partial: 'lessons/student_indicator_fields/score', locals: { assessment: assessment, indicator: objective.indicator }
 
-    = render partial: 'lessons/student_indicator_fields/score', locals: { assessment: assessment, indicator: objective.indicator }
+      = render partial: 'lessons/student_indicator_fields/notes', locals: { assessment: assessment, indicator: objective.indicator }
 
-    = render partial: 'lessons/student_indicator_fields/notes', locals: { assessment: assessment, indicator: objective.indicator }
+      = render partial: 'lessons/student_indicator_fields/form', locals: { assessment: assessment, indicator: objective.indicator }
 
-    = render partial: 'lessons/student_indicator_fields/form', locals: { assessment: assessment, indicator: objective.indicator }
-
-    %td.attempts
-      = raw(previous_attempts(assessment))
+      %td.attempts
+        = raw(previous_attempts(assessment))
