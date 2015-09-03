@@ -14,9 +14,21 @@
 - @indicators.each do |indicator|
   .panel.panel-default.objective
     .panel-body
+
       %dl.dl-horizontal.lesson-details
-        %dt Topic
-        %dd #{ indicator.topic }
+        - if @indicator.curriculum
+          %dt Topic
+          %dd #{ indicator.topic }
+
+        - if @indicator.pedagogy
+
+          - if indicator.learning_attribute
+            %dt Learning attribute
+            %dd #{ indicator.learning_attribute }
+
+          - if indicator.learning_skill
+            %dt Learning skill
+            %dd #{ indicator.learning_skill }
 
         %dt Objective
         %dd #{ raw indicator.objective }

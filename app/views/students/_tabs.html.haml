@@ -1,6 +1,6 @@
 - @page_header = raw "#{ link_to_group } #{ @student }"
 
-%ul.nav.nav-tabs
+%ul.nav.nav-tabs.student
   %li{ class: "#{ 'active' if activate == :activity }" }
     = link_to [@group, @student] do
       Activity log
@@ -21,3 +21,13 @@
           %ul.dropdown-menu
             - subject.levels.map do |level|
               %li= link_to level, group_student_progress_path(@group, @student, level)
+
+
+  - unless PedagogyService.viewable_by(current_teacher).empty?
+    %li.dropdown{ class: "#{ 'active' if @indicator.is_a?(Indicators::Pedagogy) }" }
+      = link_to '#', class: 'dropdown-toggle', data: { toggle: 'dropdown' } do
+        Pedagogy
+        %span.caret
+      %ul.dropdown-menu
+        - PedagogyService.viewable_by(current_teacher).each do |pedagogy|
+          %li= link_to pedagogy, group_student_progress_path(@group, @student, pedagogy)

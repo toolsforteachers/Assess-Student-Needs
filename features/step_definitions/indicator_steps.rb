@@ -8,6 +8,10 @@ Given(/^there is a maths curriculum "(.*?)"$/) do |curriculum_name|
   setup_maths_indicators(curriculum_name)
 end
 
+Given(/^there is a pedagogy "(.*?)"$/) do |pedagogy_name|
+  setup_pedagogy(pedagogy_name)
+end
+
 When(/^I visit the curricula page$/) do
   within('ul.nav.navbar-nav', match: :first) do
     click_link 'Curricula'
@@ -105,4 +109,11 @@ def setup_maths_indicators(curriculum_name)
   prompt = Fabricate(:indicators_prompt, name: 'Student will:', parent: topic_1)
   Fabricate(:indicators_objective, name: 'Addition and subtraction', parent: prompt)
   Fabricate(:indicators_objective, name: 'Advanced addition and subtraction', parent: topic_2)
+end
+
+def setup_pedagogy(pedagogy_name)
+  pedagogy = Fabricate(:indicators_pedagogy, name: pedagogy_name)
+  la = Fabricate(:indicators_learning_attribute, name: 'Resilience', parent: pedagogy)
+  ls = Fabricate(:indicators_learning_skill, name: 'Should be able to', parent: la)
+  Fabricate(:indicators_objective, name: 'Keeps going', parent: ls)
 end
