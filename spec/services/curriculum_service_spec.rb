@@ -42,4 +42,12 @@ describe CurriculumService do
       end
     end
   end
+
+  context 'without a teacher' do
+    describe '.viewable_by' do
+      it 'returns the primary curriculum' do
+        expect(CurriculumService.viewable_by(nil)).to match([curriculum])
+      end
+    end
+  end
 end
