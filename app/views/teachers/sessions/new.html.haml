@@ -1,5 +1,10 @@
-- @page_header = 'Sign in (beta users)'
+- @page_header = 'Sign in'
 
+%h3
+  Or request a beta account:
+  = link_to 'admin@toolsforteachers.org.uk', 'mailto:admin@toolsforteachers.org.uk?subject=Beta%20testing'
+%br
+%p
 .col-sm-4
   = bootstrap_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
     = f.email_field :email, autofocus: true
@@ -8,8 +13,4 @@
     = f.submit 'Sign in'
   %br
   %p= link_to "Forgot your password?", new_password_path(resource_name)
-  %br
-  %p
-    Request a beta account:
-    = link_to 'admin@toolsforteachers.org.uk', 'mailto:admin@toolsforteachers.org.uk?subject=Beta%20testing'
 .row
