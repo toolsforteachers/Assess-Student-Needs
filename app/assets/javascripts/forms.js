@@ -18,3 +18,8 @@ $(document).on('click', '.lesson .pick-indicator', function(e) {
   $('#objective_indicator_id').val(indicator_id);
   $('#objective_indicator_id').closest('form').submit();
 });
+
+$(document).on('click', 'a.teaching-materials', function(e) {
+  e.preventDefault();
+  $('.teaching_material_upload_fields').toggleClass('hide');
+});

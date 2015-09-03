@@ -13,11 +13,11 @@
       = glyph('Report view', 'print')
 
   %li.presentation
-    = link_to glyph("Teaching materials (#{ @lesson.teaching_materials.count })", 'paperclip')
-
     = form_for([@group, @lesson, TeachingMaterial.new]) do |f|
-      = f.attachment_field :file, direct: true
-      = f.submit
+      = link_to glyph("Teaching materials (#{ @lesson.teaching_materials.count })", 'paperclip'), '#', class: 'teaching-materials'
+      .teaching_material_upload_fields.hide
+        %p= f.attachment_field :file, direct: true
+        %p= f.submit 'Save'
 
 = render partial: 'lessons/objective',
   collection: @lesson.objectives,
