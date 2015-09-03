@@ -32,5 +32,4 @@
     %th Notes
     %th.col-xs-2 Previous attempts
   %tbody
-    - @group.students.each do |student|
-      = render partial: 'lessons/student', locals: { student: student }
+    = render partial: 'lessons/student', collection: @group.students, as: :student
