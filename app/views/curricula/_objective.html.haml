@@ -1,1 +1,3 @@
-%li=  raw(indicator)
+%li
+  = raw(indicator)
+  = render partial: 'shared/discussion_controls', locals: { indicator: indicator }
