@@ -1,9 +1,9 @@
 class GroupPickersController < ProtectedController
-  before_action :load_curriculum
+  before_action :load_objective
 
   protected
 
-  def load_curriculum
-    @curriculum = CurriculumService.find_indicator(params[:curriculum_id])
+  def load_objective
+    @objective = IndicatorService.find_indicator(params[:objective_id])
   end
 end

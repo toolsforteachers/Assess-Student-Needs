@@ -1,1 +1,15 @@
-= @curriculum
+- @page_header = 'Choose a class'
+
+.lead Select one of your classes
+
+- if current_teacher.groups.any?
+  - current_teacher.groups.each do |group|
+    %p
+      = link_to objective_group_picker_lesson_pickers_path(@objective, group), method: :post do
+        = group
+
+- else
+  %p
+    = link_to new_group_path do
+      = glyph('Add a new class', 'plus')
+

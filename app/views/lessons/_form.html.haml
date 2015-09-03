@@ -15,7 +15,7 @@
 
       = f.text_area :notes, autofocus: true
 
-      - if @lesson.persisted?
+      - if @lesson.persisted? || @lesson.objectives.any?
         = f.fields_for :objectives do |objective_f|
           .panel.panel-default.objective
             .panel-heading

@@ -13,12 +13,16 @@ Acn::Application.routes.draw do
     end
   end
 
-  resources :curricula do
-    resources :group_pickers
-  end
+  resources :curricula
   resources :pedagogies
 
-  resources :indicators, only: [:new, :edit]
+  resources :objectives, only: [:new, :edit] do
+    resources :group_pickers, only: [:index] do
+      resources :lesson_pickers, only: [:create]
+    end
+  end
+
+  resources :indicators
   resources :indicators_curricula, controller: 'indicators/curricula'
   resources :indicators_subjects, controller: 'indicators/subjects'
   resources :indicators_levels, controller: 'indicators/levels'
