@@ -17,8 +17,8 @@
         %ul.list-group.indicator-picker
           %li.list-group-item
             %ol.indicator-picker
-              - @section_header.objectives.each do |objective|
-                %li.objective= objective
+              = render partial: 'objective', collection: @section_header.objectives, as: :objective
+
 
       - else
         %ul.list-group.indicator-picker
@@ -26,8 +26,7 @@
             %li.list-group-item
               .text-primary.prompt= child
               %ol.indicator-picker
-                - child.objectives.each do |objective|
-                  %li.objective= objective
+                = render partial: 'objective', collection: child.objectives, as: :objective
 
 
     = render partial: 'shared/discuss', locals: { url: pedagogy_url(@learning_skill), text: @learning_skill }
