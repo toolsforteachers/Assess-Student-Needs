@@ -1,29 +1,30 @@
-.panel-body
-  %dl.dl-horizontal.lesson-details
-    - if objective.curriculum
-      %dt Curriculum
-      %dd #{ objective.curriculum }
+- cache objective do
+  .panel-body
+    %dl.dl-horizontal.lesson-details
+      - if objective.curriculum
+        %dt Curriculum
+        %dd #{ objective.curriculum }
 
-      %dt Subject
-      %dd #{ objective.subject }
+        %dt Subject
+        %dd #{ objective.subject }
 
-      %dt Level
-      %dd #{ objective.level }
+        %dt Level
+        %dd #{ objective.level }
 
-      %dt Topic
-      %dd #{ objective.topic }
+        %dt Topic
+        %dd #{ objective.topic }
 
-    - elsif objective.pedagogy
-      %dt Pedagogy
-      %dd #{ objective.pedagogy }
+      - elsif objective.pedagogy
+        %dt Pedagogy
+        %dd #{ objective.pedagogy }
 
-      - if objective.learning_attribute
-        %dt Learning attribute
-        %dd #{ objective.learning_attribute }
+        - if objective.learning_attribute
+          %dt Learning attribute
+          %dd #{ objective.learning_attribute }
 
-      - if objective.learning_skill
-        %dt Learning skill
-        %dd #{ objective.learning_skill }
+        - if objective.learning_skill
+          %dt Learning skill
+          %dd #{ objective.learning_skill }
 
-    %dt Objective
-    %dd #{ raw objective.objective }
+      %dt Objective
+      %dd #{ raw objective.objective }

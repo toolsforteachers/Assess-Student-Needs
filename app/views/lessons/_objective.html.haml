@@ -1,8 +1,6 @@
-- cache objective do
-  .panel.panel-default.objective
-    .panel-heading
-      = multiple_objectives ? "#{ objective.stream } objective" : 'Lesson objective'
-    .panel-body
-      = render partial: 'lessons/objective_details', locals: { objective: objective }
-
-      = sub_content if defined?(sub_content)
+.panel.panel-default.objective
+  .panel-heading
+    = multiple_objectives ? "#{ objective.stream } objective" : 'Lesson objective'
+  .panel-body
+    = render partial: 'lessons/objective_details', locals: { objective: objective }
+    = sub_content if defined?(sub_content)
