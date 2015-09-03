@@ -13,7 +13,9 @@ Scenario: Logged in as a teacher
   Then I should be on the lesson page
 
 Scenario: Not logged in
-  When I am not logged in I still want to see the curriculum discussion
   When I visit the curricula page
   And I follow "Year 1"
   Then I should see the discussion fields
+
+  When I browse to "Addition and subtraction" and add it to a new lesson
+  Then I should be on the lesson page

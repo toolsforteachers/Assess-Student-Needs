@@ -13,6 +13,7 @@ Given(/^there is a pedagogy "(.*?)"$/) do |pedagogy_name|
 end
 
 When(/^I visit the curricula page$/) do
+  visit '/'
   within('ul.nav.navbar-nav', match: :first) do
     click_link 'Curricula'
   end

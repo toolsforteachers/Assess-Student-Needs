@@ -11,8 +11,3 @@ end
 Then(/^I should be on the lesson page$/) do
   pending # express the regexp above with the code you wish you had
 end
-
-When(/^I am not logged in I still want to see the curriculum discussion$/) do
-  pending
-  # note: remove this step entirely when we want to let everyone view the curriculum discussion
-end

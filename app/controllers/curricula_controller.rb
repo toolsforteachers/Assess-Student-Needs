@@ -1,4 +1,4 @@
-class CurriculaController < ProtectedController
+class CurriculaController < ApplicationController
   def index
     @curricula = CurriculumService.viewable_by(current_teacher)
   end
