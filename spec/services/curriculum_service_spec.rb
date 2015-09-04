@@ -50,4 +50,13 @@ describe CurriculumService do
       end
     end
   end
+
+  context 'with no curricula' do
+    before { Indicator.delete_all }
+    describe '.viewable_by' do
+      it 'returns an empty array when there is no curricula' do
+        expect(CurriculumService.viewable_by(teacher)).to eql([])
+      end
+    end
+  end
 end

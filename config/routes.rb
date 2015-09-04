@@ -33,5 +33,6 @@ Acn::Application.routes.draw do
   resources :indicators_pedagogies, controller: 'indicators/pedagogies'
   resources :indicators_learning_attributes, controller: 'indicators/learning_attributes'
   resources :indicators_learning_skills, controller: 'indicators/learning_skills'
-  root to: 'home#show'
+
+  root to: 'curricula#index'
 end

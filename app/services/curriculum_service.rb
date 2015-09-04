@@ -9,9 +9,14 @@ class CurriculumService < IndicatorService
     end
 
     def viewable_by(teacher)
-      return [primary] unless teacher
-      Indicators::Curriculum.where('created_by_id in (?)',
+      return [] unless primary
+
+      if teacher
+        Indicators::Curriculum.where('created_by_id in (?)',
         [primary.created_by_id, teacher.id])
+      else
+        [primary]
+      end
     end
 
     def first_topic(indicator_id)

@@ -15,6 +15,7 @@ Given(/^"(.*?)" has been marked against one pedagogy$/) do |student_name|
 end
 
 When(/^I visit the student page for "(.*?)"$/) do |student_name|
+  click_link "Classes"
   click_link "Year 6A"
   within('.students') do
     click_link student_name
