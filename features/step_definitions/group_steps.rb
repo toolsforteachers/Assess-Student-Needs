@@ -56,3 +56,8 @@ end
 Then(/^I should get a group validation error$/) do
   page.should have_text 'name has already been taken'
 end
+
+Then(/^I should see the new class prompt$/) do
+  page.should have_link 'Add a new class'
+end
+
