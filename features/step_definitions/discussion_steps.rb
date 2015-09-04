@@ -22,6 +22,12 @@ Then(/^I should pick a group and add a lesson with objective "(.*?)"$/) do |obje
   expect(new_objective_name).to eql(objective_name)
 end
 
-Then(/^I should see the new class prompt$/) do
-  page.should have_link 'Add a new class'
+Then(/^I should see that I already taught "(.*?)"$/) do |objective_name|
+  within('table.taught-this') do
+    page.should have_text('You taught this')
+    find('.lesson-date').click
+
+    lesson = Group.last.lessons.last
+    current_path.should match(group_lesson_path(lesson.group, lesson))
+  end
 end

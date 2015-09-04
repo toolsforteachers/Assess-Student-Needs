@@ -4,6 +4,8 @@ class Teacher < ActiveRecord::Base
 
   has_many :groups
   has_many :lessons
+  has_many :lesson_objectives, through: :lessons, source: :objectives
+
   has_many :curricula, class_name: 'Indicators::Curriculum', foreign_key: :created_by_id
   has_many :pedagogies, class_name: 'Indicators::Pedagogy', foreign_key: :created_by_id
 

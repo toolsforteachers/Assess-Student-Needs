@@ -1,3 +1,23 @@
 %p
   = link_to objective_group_pickers_path(objective) do
     = glyph('Teach this objective', 'plus')
+
+- if current_teacher
+  - taught_lesson_objectives = current_teacher.lesson_objectives.where(indicator: objective)
+  - if taught_lesson_objectives.any?
+    %table.table.table-condensed.smaller-text.taught-this
+      .text-info
+        You taught this objective:
+      %thead
+        %th Date
+        %th Class
+        %th Notes
+
+      %tbody
+        - taught_lesson_objectives.each do |lesson_objective|
+          %tr
+            %td= lesson_objective.lesson.group
+            %td= link_to lesson_objective.lesson.lesson_date, [lesson_objective.lesson.group,lesson_objective.lesson], class: 'lesson-date'
+            %td= lesson_objective.lesson.notes
+
+
