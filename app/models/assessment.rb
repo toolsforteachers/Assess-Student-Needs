@@ -3,8 +3,6 @@ class Assessment < ActiveRecord::Base
   belongs_to :indicator
   belongs_to :student
 
-  default_scope { includes(:student).order('students.name') }
-
   scope :by_indicator, ->(indicator) { where(indicator: indicator) }
   scope :by_student, ->(student) { where(student: student) }
 
