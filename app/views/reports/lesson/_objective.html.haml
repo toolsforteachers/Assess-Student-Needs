@@ -4,6 +4,6 @@
     %th.col-xs-2 Previous attempts
     %th Score for this lesson
   %tbody
-    - lesson.assessments.includes(:student).order(:mark).where(indicator: objective.indicator).each do |assessment|
+    - lesson.assessments.includes(:student).order([:mark, 'students.name']).where(indicator: objective.indicator).each do |assessment|
       - next unless assessment.student
       = render partial: 'reports/lesson/assessment', locals: { assessment: assessment }
