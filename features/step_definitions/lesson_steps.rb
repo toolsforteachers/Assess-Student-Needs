@@ -9,7 +9,6 @@ end
 
 When(/^I add two objectives to that lesson$/) do
   within(page.all(:css, '.well.objective').first) do
-    fill_in 'Stream', with: 'Foxes'
     click_link 'Maths'
     click_link 'Level: Year 1'
     click_link 'Topic: Number'
@@ -20,7 +19,6 @@ When(/^I add two objectives to that lesson$/) do
   click_link 'Add objective'
 
   within(page.all(:css, '.well.objective').last) do
-    fill_in 'Stream', with: 'Owls'
     click_link 'Maths'
     click_link 'Level: Year 2'
     click_link 'Topic: Number'
@@ -32,6 +30,10 @@ Then(/^the lesson should have streams titled "(.*?)"$/) do |streams|
   streams.split(',').each do |stream|
     page.should have_css('.panel.objective', text: "#{ stream } objective")
   end
+end
+
+Then(/^the lesson should have (\d+) streams$/) do |count|
+  page.should have_css('.panel.objective', count: count)
 end
 
 When(/^I remove the first objective$/) do
@@ -65,14 +67,13 @@ Then(/^I should see the new lesson form$/) do
   page.should have_css('form#new_lesson')
 end
 
-Given /^I add a lesson "([^"]*)" for "([^"]*)" with indicators "([^\"]*)" as "([^\"]*)"$/ do |lesson_notes, group_name, indicator_names, objective_names|
+Given /^I add a lesson "([^"]*)" for "([^"]*)" with indicators "([^\"]*)"$/ do |lesson_notes, group_name, indicator_names|
   group = Group.find_by(name: group_name)
   lesson = Fabricate(:lesson, group: group, notes: lesson_notes)
 
   indicator_names.split(',').each_with_index do |indicator_name, index|
     indicator = Indicator.find_by(name: indicator_name)
-    Fabricate(:objective, lesson: lesson, indicator: indicator,
-      stream: objective_names.split(',')[index])
+    Fabricate(:objective, lesson: lesson, indicator: indicator)
   end
 
   visit group_lesson_path(group, lesson)

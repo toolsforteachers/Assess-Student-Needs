@@ -13,7 +13,9 @@
       - if @lesson.multiple_objectives?
         %td.stream
           = render partial: 'lessons/student_indicator_fields/glyph', locals: { assessment: assessment, indicator: objective.indicator }
-          = objective.stream
+          = objective.type_of
+          \:
+          = objective.heading
 
       = render partial: 'lessons/student_indicator_fields/score', locals: { assessment: assessment, indicator: objective.indicator }
 

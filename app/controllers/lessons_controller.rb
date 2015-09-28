@@ -42,7 +42,7 @@ class LessonsController < ProtectedController
 
   def lesson_params
     params.require(:lesson).permit([[:lesson_date, :notes, :teacher_id],
-      objectives_attributes: [:id, :stream, :indicator_id, :_destroy]])
+      objectives_attributes: [:id, :indicator_id, :_destroy]])
   end
 
   def scoped_lessons

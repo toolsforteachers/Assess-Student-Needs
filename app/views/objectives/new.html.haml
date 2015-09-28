@@ -10,10 +10,6 @@
 .well.objective.lesson
   = bootstrap_form_for [@group, @lesson, @objective] do |f|
 
-    = f.text_field :stream, label: 'Stream',
-        wrapper_class: 'name-input',
-        class: 'objective-name'
-
     = f.hidden_field :indicator_id
 
     - @curricula.each do |indicator|

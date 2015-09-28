@@ -8,13 +8,10 @@ Background:
 Scenario:
   Given I add a new "Maths" lesson for "Year 6A"
   And I add two objectives to that lesson
-  Then the lesson should have streams titled "Foxes,Owls"
+  Then the lesson should have streams titled "Curriculum,Curriculum"
   And the lesson notes should be "Do stuff"
   And the lesson teacher should be "Toby P."
   And the lesson evidenced mode should be "Teacher judgement"
 
-  When I change the first objective name to "Donkeys"
-  Then the lesson should have streams titled "Donkeys,Owls"
-
   When I remove the first objective
-  Then the lesson should have streams titled "Lesson"
+  Then the lesson should have 1 streams

@@ -4,8 +4,6 @@ RSpec.describe Objective, type: :model do
   it { should belong_to(:indicator) }
   it { should belong_to(:lesson).touch(true) }
   it { should validate_presence_of(:indicator_id) }
-  it { should validate_presence_of(:stream) }
-  it { should validate_length_of(:stream).is_at_most(15) }
   it { should delegate_method(:level).to(:indicator) }
   it { should delegate_method(:topic).to(:indicator) }
   it { should delegate_method(:objective).to(:indicator) }
@@ -21,18 +19,43 @@ RSpec.describe Objective, type: :model do
 
     context 'with a pedagogical objective' do
       before do
-        allow(indicator).to receive(:learning_attribute).once.and_return('Revision')
+        allow(indicator).to receive(:pedagogy).once.and_return('Foo bar pedagogy')
       end
 
-      it { expect(subject).to eql('Revision') }
+      it { expect(subject).to eql('Pedagogy objective') }
     end
 
     context 'with a curriculum objective' do
       before do
-        allow(indicator).to receive(:subject).once.and_return('Maths')
+        allow(indicator).to receive(:curriculum).once.and_return('NC 2015')
       end
 
-      it { expect(subject).to eql('Maths') }
+      it { expect(subject).to eql('Curriculum objective') }
+    end
+  end
+
+  describe '#heading' do
+    let(:indicator) { Fabricate(:indicators_objective) }
+    let(:objective) { Fabricate(:objective, indicator: indicator) }
+
+    subject { objective.heading }
+
+    context 'with a pedagogical objective' do
+      before do
+        allow(indicator).to receive(:pedagogy).once.and_return('Foo bar pedagogy')
+        expect(indicator).to receive(:learning_skill).once
+      end
+
+      it { subject }
+    end
+
+    context 'with a curriculum objective' do
+      before do
+        allow(indicator).to receive(:curriculum).once.and_return('NC 2015')
+        expect(indicator).to receive(:subject).once
+      end
+
+      it { subject }
     end
   end
 end

@@ -19,8 +19,8 @@
         = f.fields_for :objectives do |objective_f|
           .panel.panel-default.objective
             .panel-heading
-              = objective_f.text_field :stream, help: objective_f.link_to_remove(glyph('Remove', 'trash'))
+              = objective_f.object.type_of
+              .small= objective_f.link_to_remove(glyph('Remove', 'trash'))
             = render partial: 'lessons/objective_details', locals: { objective: objective_f.object }
-
 
       = f.submit 'Save'

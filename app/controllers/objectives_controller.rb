@@ -5,7 +5,7 @@ class ObjectivesController < ProtectedController
   before_filter :load_pedagogies, only: [:new]
 
   def new
-    @objective = scoped_objectives.new(stream: "Stream #{ scoped_objectives.length + 1 }")
+    @objective = scoped_objectives.new
   end
 
   def create

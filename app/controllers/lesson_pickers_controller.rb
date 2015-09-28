@@ -4,7 +4,7 @@ class LessonPickersController < ProtectedController
   def create
     lesson = @group.lessons.new(
         group: @group, lesson_date: Date.today, teacher: current_teacher)
-    lesson.objectives.build(indicator: @objective, stream: 'Stream 1')
+    lesson.objectives.build(indicator: @objective)
     lesson.save
     redirect_to [@group, lesson], notice: 'Lesson was successfully created'
   end
