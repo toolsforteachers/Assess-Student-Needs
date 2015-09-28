@@ -1,6 +1,6 @@
-When /^I record a score of (\d+) for "([^"]*)" for "([^"]*)"$/ do |score, student_name, objective_name|
+When /^I record a score of (\d+) for "([^"]*)" for "([^"]*)"$/ do |score, student_name, indicator_name|
   student = Student.find_by_name(student_name)
-  indicator = Objective.find_by_stream(objective_name).indicator
+  indicator = Indicator.find_by(name: indicator_name)
 
   click_link("student_#{ student.id }_indicator_#{ indicator.id }_glyph")
   find("#assessment_mark_#{ score }").trigger('click')
@@ -28,7 +28,7 @@ end
 Then(/^I should see (\d+) for the last attempt by "(.*?)"$/) do |score, student_name|
   student = Student.find_by_name(student_name)
 
-  within(:css, "tr#student_#{ student.id }", match: :first) do
+  within all("tr#student_#{ student.id }")[1] do
     page.should have_text("L #{ score }")
   end
 end

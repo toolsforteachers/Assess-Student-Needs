@@ -14,6 +14,12 @@ class Objective < ActiveRecord::Base
   delegate :learning_skill, to: :indicator
 
   def type_of
-    subject || learning_attribute
+    return 'Curriculum objective' if curriculum
+    return 'Pedagogy objective' if pedagogy
+  end
+
+  def heading
+    return subject if curriculum
+    return learning_skill if pedagogy
   end
 end

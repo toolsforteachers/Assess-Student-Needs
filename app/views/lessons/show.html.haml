@@ -21,9 +21,7 @@
         %p= f.submit 'Upload'
         %p Maximum file size: 20MB
 
-= render partial: 'lessons/objective',
-  collection: @lesson.objectives,
-  locals: { multiple_objectives: @lesson.multiple_objectives? }
+= render partial: 'lessons/objective', collection: @lesson.objectives
 
 %table.assessment.table.table-responsive.table-bordered.table-hover
   %thead

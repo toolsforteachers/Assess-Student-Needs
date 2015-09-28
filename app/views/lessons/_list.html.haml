@@ -20,5 +20,5 @@
             = link_to group_lesson_path(@group, lesson) do
               = lesson.lesson_date.to_s
           %td= lesson.teacher
-          %td= lesson.objectives.map{ |objective| objective.type_of }.flatten.uniq.join(', ')
+          %td= lesson.objectives.map{ |objective| objective.heading }.flatten.uniq.join(', ')
           %td= truncate(lesson.notes, length: 150)
