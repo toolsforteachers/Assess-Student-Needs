@@ -9,16 +9,16 @@
 - else
   %table.table.table-striped
     %thead
-      %th.col-xs-2
       %th.col-xs-3 Lesson date
-      %th.col-xs-3 Teacher
+      %th.col-xs-2 Teacher
+      %th.col-xs-2 Subject
       %th Notes
     %tbody
-      - @group.lessons.each do |lesson|
+      - @group.lessons.includes(:indicators).each do |lesson|
         %tr.clickable-row
           %td
             = link_to group_lesson_path(@group, lesson) do
-              View
-          %td= lesson.lesson_date.to_s
+              = lesson.lesson_date.to_s
           %td= lesson.teacher
+          %td= lesson.objectives.map{ |objective| objective.type_of }.flatten.uniq.join(', ')
           %td= truncate(lesson.notes, length: 150)

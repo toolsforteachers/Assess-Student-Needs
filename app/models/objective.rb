@@ -15,4 +15,8 @@ class Objective < ActiveRecord::Base
   delegate :pedagogy, to: :indicator
   delegate :learning_attribute, to: :indicator
   delegate :learning_skill, to: :indicator
+
+  def type_of
+    subject || learning_attribute
+  end
 end
