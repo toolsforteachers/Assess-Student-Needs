@@ -13,6 +13,11 @@
       = glyph('Report view', 'print')
 
   %li.presentation
+    = link_to group_lesson_student_notes_path(@group, @lesson, format: :pdf) do
+      = glyph('Student notes', 'print')
+
+
+  %li.presentation
     = form_for([@group, @lesson, TeachingMaterial.new]) do |f|
       = link_to glyph("Teaching materials (#{ @lesson.teaching_materials.count })", 'paperclip'), '#', class: 'teaching-materials'
       .teaching_material_upload_fields.hide

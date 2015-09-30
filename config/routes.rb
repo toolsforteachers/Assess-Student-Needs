@@ -5,6 +5,7 @@ Acn::Application.routes.draw do
     resources :assessments
     resources :lessons do
       resource :report, action: :lesson
+      resource :student_notes, controller: :reports, action: :student_notes
       resources :objectives
       resources :teaching_materials
     end

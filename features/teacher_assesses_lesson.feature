@@ -27,3 +27,11 @@ Feature: Teacher assesses a lesson
     When I follow "Report view"
     And I should see "Bob" in the "Adding up" section
     Then I should see "Ann" in the "Measuring stuff" section
+
+
+  @javascript
+  Scenario: printing notes labels
+    When I record a score of 5 for "Ann" for "Measuring stuff"
+    And I follow "Student notes"
+    Then I should get a pdf
+    And the pdf should have text "Ann, some text"
