@@ -6,13 +6,10 @@
     %tr{ id: "student_#{ assessment.student.id }"}
       - if i == 0
         %td.student{ rowspan: @lesson.objectives.length }
-          - unless @lesson.multiple_objectives?
-            = render partial: 'lessons/student_indicator_fields/glyph', locals: { assessment: assessment, indicator: objective.indicator }
           = assessment.student
 
       - if @lesson.multiple_objectives?
         %td.stream
-          = render partial: 'lessons/student_indicator_fields/glyph', locals: { assessment: assessment, indicator: objective.indicator }
           = objective.type_of
           \:
           = objective.heading
@@ -20,8 +17,6 @@
       = render partial: 'lessons/student_indicator_fields/score', locals: { assessment: assessment, indicator: objective.indicator }
 
       = render partial: 'lessons/student_indicator_fields/notes', locals: { assessment: assessment, indicator: objective.indicator }
-
-      = render partial: 'lessons/student_indicator_fields/form', locals: { assessment: assessment, indicator: objective.indicator }
 
       %td.attempts
         = raw(previous_attempts(assessment))

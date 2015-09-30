@@ -26,6 +26,7 @@ $(document).on('click', 'a.teaching-materials', function(e) {
 
 $(document).ready(function() {
   $('.editable-score').editable({
+    showbuttons: false,
     source: [
           {value: 0, text: 'n/a'},
           {value: 1, text: '1'},
@@ -45,4 +46,8 @@ $(document).ready(function() {
     $(td).addClass('score');
     $(td).addClass('score_' + (params.newValue * 20));
   })
+});
+
+$(document).ready(function() {
+  $('.editable-notes').editable();
 });

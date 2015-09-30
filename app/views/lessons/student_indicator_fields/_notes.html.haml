@@ -1,2 +1,3 @@
-%td.notes{ id: "student_#{ assessment.student.id }_indicator_#{ indicator.id }_notes" }
-  = assessment.notes
+%td.notes
+  = link_to '#', data: { type: 'textarea', resource: 'assessment', name: 'notes', url: group_assessment_path(@group, assessment)}, class: 'editable-notes' do
+    = textarea_format(assessment.notes)
