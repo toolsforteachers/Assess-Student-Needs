@@ -20,12 +20,12 @@ class ReportsController < ProtectedController
         "rows"       => 4,
         "top_margin" => 38,
         "bottom_margin" => 38,
-        "left_margin" => 26,
-        "right_margin" => 26,
+        "left_margin" => 38,
+        "right_margin" => 38,
         "columns" => 2,
         "rows" => 4,
-        "column_gutter" => 18,
-        'row_gutter' => 0
+        "column_gutter" => 38,
+        'row_gutter' => 28
 
     }}
 
