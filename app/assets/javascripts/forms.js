@@ -23,3 +23,26 @@ $(document).on('click', 'a.teaching-materials', function(e) {
   e.preventDefault();
   $('.teaching_material_upload_fields').toggleClass('hide');
 });
+
+$(document).ready(function() {
+  $('.editable-score').editable({
+    source: [
+          {value: 0, text: 'n/a'},
+          {value: 1, text: '1'},
+          {value: 2, text: '2'},
+          {value: 3, text: '3'},
+          {value: 4, text: '4'},
+          {value: 5, text: '5'}
+       ],
+    params: {
+      'assessment[out_of]': 5
+    }
+  });
+
+  $('.editable-score').on('save', function(e, params) {
+    var td = this.closest('td');
+    $(td).removeClass();
+    $(td).addClass('score');
+    $(td).addClass('score_' + (params.newValue * 20));
+  })
+});

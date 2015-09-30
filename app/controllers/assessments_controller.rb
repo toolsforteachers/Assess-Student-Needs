@@ -3,8 +3,10 @@ class AssessmentsController < ProtectedController
 
   def update
     @assessment = Assessment.find(params[:id])
-    updated = @assessment.update_attributes(assessment_params)
-    render_update
+    @assessment.update_attributes!(assessment_params)
+    respond_to do |format|
+      format.json { head :no_content }
+    end
   end
 
   protected
@@ -13,13 +15,6 @@ class AssessmentsController < ProtectedController
   end
 
   def assessment_params
-    params.require(:assessment).permit([:assessor_type, :assessor_id, :mark, :out_of,
-      :indicator_id, :student_id, :notes])
-  end
-
-  def render_update
-    respond_to do |format|
-      format.js { render action: 'update' }
-    end
+    params.require(:assessment).permit([:mark, :out_of, :notes])
   end
 end

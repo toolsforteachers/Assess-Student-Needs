@@ -1,2 +1,3 @@
 %td.score{ id: "student_#{ assessment.student.id }_indicator_#{ indicator.id }_score", class: progress_style(assessment.score) }
-  = score_text(assessment)
+  = link_to '#', data: { type: 'select', resource: 'assessment', name: 'mark', url: group_assessment_path(@group, assessment)}, class: 'editable-score editable' do
+    = score_text(assessment)
