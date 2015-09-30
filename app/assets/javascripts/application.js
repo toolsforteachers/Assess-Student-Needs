@@ -13,6 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
+//= require bootstrap-editable
+//= require bootstrap-editable-rails
 //= require jquery_nested_form
 //= require forms
 //= require refile

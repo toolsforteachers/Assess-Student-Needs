@@ -26,6 +26,8 @@ gem "refile", require: "refile/rails"
 gem "refile-mini_magick"
 gem "refile-s3"
 gem 'prawn-labels'
+gem 'bootstrap-editable-rails'
+gem 'coffee-rails'
 
 gem 'quiet_assets', group: :development
 gem "rspec-rails", :group => [:development, :test]
