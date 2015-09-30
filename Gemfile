@@ -41,4 +41,3 @@ gem 'railroady', :group => [:development, :test]
 gem 'jshint', :group => [:development, :test]
 gem 'poltergeist', :group => [:test]
 gem 'simplecov', :require => false, :group => :test
-gem 'pdf-reader', group: :test
