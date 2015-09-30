@@ -2,7 +2,7 @@
 
   - @lesson.objectives.each_with_index do |objective, i|
 
-    - assessment = @lesson.assessments.where(student: student, indicator: objective.indicator).first_or_initialize
+    - assessment = @lesson.assessments.where(student: student, indicator: objective.indicator).first_or_create
     %tr{ id: "student_#{ assessment.student.id }"}
       - if i == 0
         %td.student{ rowspan: @lesson.objectives.length }

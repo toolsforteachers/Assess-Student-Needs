@@ -7,12 +7,6 @@ class AssessmentsController < ProtectedController
     render_update
   end
 
-  def create
-    @assessment = Assessment.new(assessment_params)
-    created = @assessment.save
-    render_update
-  end
-
   protected
   def load_group
     @group = Group.find(params[:group_id])
