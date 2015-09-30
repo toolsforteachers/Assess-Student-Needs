@@ -41,7 +41,7 @@ $(document).ready(function() {
   });
 
   $('.editable-score').on('save', function(e, params) {
-    var td = this.closest('td');
+    var td = $(this).closest('td');
     $(td).removeClass();
     $(td).addClass('score');
     $(td).addClass('score_' + (params.newValue * 20));

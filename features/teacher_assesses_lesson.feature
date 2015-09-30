@@ -31,6 +31,6 @@ Feature: Teacher assesses a lesson
 
   @javascript
   Scenario: printing notes labels
-    When I record a score of 5 for "Ann" for "Measuring stuff"
+    When I record a notes of "well done" for "Ann" for "Measuring stuff"
     And I follow "Student notes"
     Then I should get a pdf
