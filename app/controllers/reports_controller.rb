@@ -40,13 +40,7 @@ class ReportsController < ProtectedController
 
       pdf.font_size 10
 
-      pdf.stroke do
-        pdf.move_down 15
-        pdf.dash(5, space: 2, phase: 0)
-        pdf.line_width 1
-        pdf.stroke_horizontal_rule
-        pdf.move_down 10
-      end
+      pdf.move_down 15
       pdf.text "Date: #{ assessment.updated_at }"
       pdf.text "Teacher: #{ assessment.assessed_by.try(:name) }"
     end
