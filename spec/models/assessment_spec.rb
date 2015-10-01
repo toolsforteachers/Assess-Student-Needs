@@ -66,4 +66,15 @@ describe Assessment do
       it { expect(subject).to eq(1) }
     end
   end
+
+  context '.marked' do
+    before do
+      Fabricate(:assessment, mark: 1)
+      Fabricate(:assessment, mark: 0)
+    end
+
+    it 'has one marked assessment' do
+      expect(Assessment.marked.length).to eql(1)
+    end
+  end
 end

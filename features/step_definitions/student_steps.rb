@@ -14,6 +14,12 @@ Given(/^"(.*?)" has been marked against one pedagogy$/) do |student_name|
   Fabricate(:assessment, student: student, indicator: indicator, mark: 3, out_of: 5)
 end
 
+Given(/^"(.*?)" has been marked against na against one pedagogy$/) do |student_name|
+  student = Student.find_by(name: student_name)
+  indicator = Indicators::Pedagogy.first.leaves.first
+  Fabricate(:assessment, student: student, indicator: indicator, mark: 0, out_of: 5)
+end
+
 When(/^I visit the student page for "(.*?)"$/) do |student_name|
   click_link "Classes"
   click_link "Year 6A"

@@ -5,6 +5,7 @@ class Assessment < ActiveRecord::Base
 
   scope :by_indicator, ->(indicator) { where(indicator: indicator) }
   scope :by_student, ->(student) { where(student: student) }
+  scope :marked, -> { where('mark > 0') }
 
   delegate :topic, to: :indicator
   delegate :level, to: :indicator

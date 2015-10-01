@@ -33,7 +33,7 @@
         %dt Objective
         %dd #{ raw indicator.objective }
 
-      - assessments = Assessment.by_indicator(indicator).by_student(@student)
+      - assessments = Assessment.by_indicator(indicator).by_student(@student).marked
 
       - unless assessments.empty?
         %table.table

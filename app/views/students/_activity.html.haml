@@ -4,7 +4,7 @@
     %th.col-xs-2 Teacher
     %th Objective
     %th.col-xs-4 Score
-  - student.assessments.each do |assessment|
+  - student.assessments.marked.each do |assessment|
     %tbody
       %tr.activity
         %td= link_to assessment.assessed_at, [@group, assessment.assessor]
