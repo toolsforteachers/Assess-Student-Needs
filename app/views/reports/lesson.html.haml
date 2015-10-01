@@ -4,8 +4,7 @@
 %ul.nav.nav-pills
   %li.presentation
     = link_to group_lesson_path(@group, @lesson) do
-      .span.glyphicon.glyphicon-pencil
-      Scoring view
+      = glyph('Scoring view', 'pencil')
 
 - @lesson.objectives.each do |objective|
   - sub_content = render(partial: 'reports/lesson/objective', locals: { lesson: @lesson, objective: objective })

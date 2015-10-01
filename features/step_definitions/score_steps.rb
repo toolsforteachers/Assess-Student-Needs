@@ -44,3 +44,11 @@ When(/^I record a notes of "(.*?)" for "(.*?)" for "(.*?)"$/) do |notes, student
     find('button.editable-submit').click
   end
 end
+
+When(/^I request a PDF on the report view$/) do
+  click_link 'Report view'
+
+  within('.panel.objective', match: :first) do
+    click_link 'Export as PDF'
+  end
+end

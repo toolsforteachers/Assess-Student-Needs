@@ -28,6 +28,8 @@ gem "refile-s3"
 gem 'prawn-labels'
 gem 'bootstrap-editable-rails'
 gem 'coffee-rails'
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
 
 gem 'quiet_assets', group: :development
 gem "rspec-rails", :group => [:development, :test]

@@ -1,0 +1,26 @@
+.row
+  %h3 #{ @group }
+  %h4 Teacher: #{ @lesson.teacher }. Date: #{ @lesson.lesson_date }
+  %b Notes
+  #{ @lesson.notes }
+  %p
+  %b Objective
+  #{ @objective.indicator.ancestry.join(' > ') }
+%p
+.row
+  %table{ cellpadding: 4, cellspacing: 8 }
+    %thead
+      %th Student
+      %th Score
+      %th Notes
+    %tbody
+      - @lesson.assessments.marked.includes(:student).order([:mark, 'students.name']).where(indicator: @objective.indicator).each do |assessment|
+        - next unless assessment.student
+        %tr
+          %td.col-xs-2= assessment.student
+          %td
+            = score_text(assessment)
+            \/
+            = assessment.out_of
+          %td
+            = assessment.notes

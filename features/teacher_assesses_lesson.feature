@@ -34,3 +34,9 @@ Feature: Teacher assesses a lesson
     When I record a notes of "well done" for "Ann" for "Measuring stuff"
     And I follow "Student notes"
     Then I should get a pdf
+
+  @javascript
+  Scenario: generating the report pdf
+    When I record a score of 5 for "Ann" for "Measuring stuff"
+    And I request a PDF on the report view
+    Then I should get a pdf

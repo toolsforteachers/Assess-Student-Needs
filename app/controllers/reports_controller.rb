@@ -5,6 +5,15 @@ class ReportsController < ProtectedController
   def lesson
   end
 
+  def objective
+    @objective = Objective.find_by(id: params[:objective_id])
+    respond_to do |format|
+      format.pdf do
+        render pdf: "report", layout: 'pdf.html.haml'
+      end
+    end
+  end
+
   def student_notes
     assessments = @lesson.assessments
       .includes(:student)
