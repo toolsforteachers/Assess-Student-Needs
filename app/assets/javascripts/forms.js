@@ -26,6 +26,7 @@ $(document).on('click', 'a.teaching-materials', function(e) {
 
 $(document).ready(function() {
   $('.editable-score').editable({
+    mode: 'inline',
     showbuttons: false,
     source: [
           {value: 0, text: 'n/a'},
@@ -49,5 +50,9 @@ $(document).ready(function() {
 });
 
 $(document).ready(function() {
-  $('.editable-notes').editable();
+  $('.editable-notes').editable({
+    mode: 'inline',
+    emptytext: 'Notes',
+    rows: 5
+  });
 });

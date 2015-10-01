@@ -38,7 +38,7 @@ When(/^I record a notes of "(.*?)" for "(.*?)" for "(.*?)"$/) do |notes, student
   indicator = Indicator.find_by(name: indicator_name)
 
   within("#student_#{ student.id }", match: :first) do
-    click_link('Empty')
+    click_link('Notes')
     text_area = first(:css, 'textarea.input-large').native
     text_area.send_keys(notes)
     find('button.editable-submit').click
