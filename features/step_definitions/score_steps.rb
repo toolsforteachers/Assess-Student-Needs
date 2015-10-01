@@ -28,7 +28,7 @@ end
 Then(/^I should see (\d+) for the last attempt by "(.*?)"$/) do |score, student_name|
   student = Student.find_by_name(student_name)
 
-  within all("tr#student_#{ student.id }")[1] do
+  within all("tr#student_#{ student.id }")[0] do
     page.should have_text("L #{ score }")
   end
 end

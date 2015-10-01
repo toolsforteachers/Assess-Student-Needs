@@ -84,3 +84,9 @@ Then(/^I should see "(.*?)" in the "(.*?)" section$/) do |student_name, section_
     page.should have_text(student_name)
   end
 end
+
+Then(/^I should not see "(.*?)" in the "(.*?)" section$/) do |student_name, section_name|
+  within('.panel.objective', text: section_name) do
+    page.should_not have_text(student_name)
+  end
+end
