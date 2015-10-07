@@ -3,6 +3,10 @@ class Api::V1::BaseController < ApplicationController
 
   before_action :destroy_session
 
+  acts_as_token_authentication_handler_for Teacher, fallback: :none
+
+  before_action :authenticate_teacher!
+
   def destroy_session
     request.session_options[:skip] = true
   end

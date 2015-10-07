@@ -30,6 +30,7 @@ gem 'bootstrap-editable-rails'
 gem 'coffee-rails'
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
+gem 'simple_token_authentication'
 
 gem 'quiet_assets', group: :development
 gem "rspec-rails", :group => [:development, :test]
