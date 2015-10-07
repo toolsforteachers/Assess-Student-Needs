@@ -4,9 +4,6 @@ describe Indicator do
   it { should validate_presence_of(:name) }
   it { should validate_presence_of(:type) }
 
-  it 'has notes attached (eg from GDS import'
-  it 'fixes the imported fraction images'
-
   context 'prevent changing parent' do
     let!(:orig_parent) { Fabricate(:indicators_subject) }
     let!(:new_parent) { Fabricate(:indicators_subject) }
