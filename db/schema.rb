@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151007102500) do
+ActiveRecord::Schema.define(version: 20151007120640) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -93,6 +93,17 @@ ActiveRecord::Schema.define(version: 20151007102500) do
   end
 
   add_index "objectives", ["lesson_id"], name: "index_objectives_on_lesson_id", using: :btree
+
+  create_table "rating_scales", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "max_score"
+    t.jsonb    "ordinals",   default: {}, null: false
+    t.string   "slug"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  add_index "rating_scales", ["slug"], name: "index_rating_scales_on_slug", using: :btree
 
   create_table "students", force: :cascade do |t|
     t.string   "name",       limit: 255
