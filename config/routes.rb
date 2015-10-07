@@ -39,7 +39,7 @@ Acn::Application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :rating_scales, only: [:index]
+      resources :rating_scales, only: [:index, :show]
     end
   end
 
