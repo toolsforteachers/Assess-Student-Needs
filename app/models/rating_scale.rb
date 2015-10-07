@@ -4,4 +4,6 @@ class RatingScale < ActiveRecord::Base
 
   validates :name, presence: true
   validates :max_score, presence: true
+
+  alias :key :to_param
 end
