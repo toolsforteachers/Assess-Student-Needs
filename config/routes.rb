@@ -37,5 +37,11 @@ Acn::Application.routes.draw do
   resources :indicators_learning_attributes, controller: 'indicators/learning_attributes'
   resources :indicators_learning_skills, controller: 'indicators/learning_skills'
 
+  namespace :api do
+    namespace :v1 do
+      resources :rating_scales, only: [:index]
+    end
+  end
+
   root to: 'home#show'
 end
