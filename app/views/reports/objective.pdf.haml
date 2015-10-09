@@ -17,10 +17,14 @@
       - @lesson.assessments.marked.includes(:student).order([:mark, 'students.name']).where(indicator: @objective.indicator).each do |assessment|
         - next unless assessment.student
         %tr
-          %td.col-xs-2= assessment.student
-          %td
+          %td.col-xs-2{ valign: 'top' }= assessment.student
+          %td{ valign: 'top' }
             = score_text(assessment)
             \/
             = assessment.out_of
           %td
-            = assessment.notes
+            .indicator-progress
+              .score{ class: progress_style(assessment.score), style: "font-size: 11px !important;width: #{ number_to_percentage(assessment.score * 100, precision: 0) }" }
+                &nbsp;
+            - unless assessment.notes.blank?
+              %em= assessment.notes
