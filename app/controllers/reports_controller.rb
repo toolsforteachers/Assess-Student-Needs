@@ -40,18 +40,16 @@ class ReportsController < ProtectedController
 
     file = Prawn::Labels.render(assessments, :type => "Avery7165") do |pdf, assessment|
 
-      pdf.font_size 12
-      pdf.font("Helvetica", :style => :bold)
-
-      pdf.text "#{ assessment.student.name },"
       pdf.font("Helvetica")
-      pdf.text assessment.notes
-
       pdf.font_size 10
 
-      pdf.move_down 15
-      pdf.text "Date: #{ assessment.updated_at }"
-      pdf.text "Teacher: #{ assessment.assessed_by.try(:name) }"
+      pdf.text "#{ assessment.student.name },"
+      pdf.text assessment.notes
+
+      #
+      # pdf.move_down 15
+      # pdf.text "Date: #{ assessment.updated_at }"
+      # pdf.text "Teacher: #{ assessment.assessed_by.try(:name) }"
     end
 
     send_data file,
