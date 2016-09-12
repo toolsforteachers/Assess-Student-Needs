@@ -32,6 +32,7 @@ gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
 gem 'simple_token_authentication'
 gem 'active_model_serializers'
+gem 'certified'
 
 gem 'quiet_assets', group: :development
 gem "rspec-rails", :group => [:development, :test]
